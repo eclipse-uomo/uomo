@@ -1,0 +1,14 @@
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.eclipse.uomo</groupId>
+    <artifactId>org.eclipse.uomo.thirdparty</artifactId>
+    <packaging>pom</packaging>
+    <name>Eclipse UOMo Third Party Bundles</name>
+    <version>0.1.0</version>
+    <modules>
+    	<module>org.xmlpull.v1</module>
+    </modules>
+<!-- modules>
+        <module>org.eclipse.uomo.test</module>
+    </modules -->
+</project>
