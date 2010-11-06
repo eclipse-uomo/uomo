@@ -8,21 +8,22 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.core.impl;
+package org.eclipse.uomo.core;
 
 import java.util.Hashtable;
+
+import org.eclipse.uomo.core.impl.LogServiceImpl;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * OSGi part of implementation.
  * 
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 0.2 ($Revision$), $Date$
  */
 public class Activator implements BundleActivator, ServiceListener {
@@ -91,7 +92,7 @@ public class Activator implements BundleActivator, ServiceListener {
 	// }
 
 	public void serviceChanged(ServiceEvent ev) {
-		ServiceReference sr = ev.getServiceReference();
+//		ServiceReference sr = ev.getServiceReference();
 		if (ev != null) {
 			switch (ev.getType()) {
 			// case ServiceEvent.REGISTERED: {
@@ -108,5 +109,4 @@ public class Activator implements BundleActivator, ServiceListener {
 			}
 		}
 	}
-
 }

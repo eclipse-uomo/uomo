@@ -14,5 +14,7 @@
   <modules>
   	<module>org.eclipse.uomo.core</module>
   	<module>org.eclipse.uomo.units</module>
+  	<module>org.eclipse.uomo.xml</module>
+  	<module>org.eclipse.uomo.util</module>
   </modules>
 </project>

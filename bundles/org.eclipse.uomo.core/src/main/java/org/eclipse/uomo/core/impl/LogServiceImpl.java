@@ -15,22 +15,18 @@ import org.osgi.service.log.LogService;
 
 public class LogServiceImpl implements LogService {
 
-	@Override
 	public void log(int arg0, String arg1) {
 		OutputHelper.print(arg1);
 	}
 
-	@Override
 	public void log(int arg0, String arg1, Throwable arg2) {
 		OutputHelper.print(arg1 + " " + arg2);
 	}
 
-	@Override
 	public void log(ServiceReference arg0, int arg1, String arg2) {
 		OutputHelper.print(arg2);
 	}
 
-	@Override
 	public void log(ServiceReference arg0, int arg1, String arg2, Throwable arg3) {
 		log(arg1, arg2, arg3);
 	}
