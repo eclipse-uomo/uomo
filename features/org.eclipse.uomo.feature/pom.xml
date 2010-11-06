@@ -5,13 +5,12 @@
   <parent>
     <artifactId>org.eclipse.uomo.features</artifactId>
     <groupId>org.eclipse.uomo</groupId>
-    <version>0.5.2</version>
+    <version>0.6.0.SNAPSHOT</version>
   </parent>
   <groupId>org.eclipse.uomo</groupId>
   <artifactId>org.eclipse.uomo.feature</artifactId>
-  <version>0.5.2</version>
-  <name>Eclipse UOMo Feature</name>
-  <url>http://maven.apache.org</url>
+  <version>0.6.0.SNAPSHOT</version>
+  <name>UOMo Feature</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
