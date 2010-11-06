@@ -16,5 +16,6 @@
   	<module>org.eclipse.uomo.units</module>
   	<module>org.eclipse.uomo.xml</module>
   	<module>org.eclipse.uomo.util</module>
+  	<module>org.eclipse.uomo.ucum</module>
   </modules>
 </project>
