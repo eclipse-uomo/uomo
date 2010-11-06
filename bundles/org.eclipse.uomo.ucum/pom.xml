@@ -20,19 +20,19 @@
 		  <dependency>
             <groupId>org.eclipse.uomo</groupId>
             <artifactId>org.eclipse.uomo.core</artifactId>
-            <version>0.1.0</version>
+            <version>0.2.0.SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 		<dependency>
 			<groupId>org.eclipse.uomo</groupId>
 			<artifactId>org.eclipse.uomo.util</artifactId>
-			<version>0.2.6</version>
+			<version>0.3.0.SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.uomo</groupId>
 			<artifactId>org.eclipse.uomo.xml</artifactId>
-			<version>0.2.0</version>
+			<version>0.3.0.SNAPSHOT</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>

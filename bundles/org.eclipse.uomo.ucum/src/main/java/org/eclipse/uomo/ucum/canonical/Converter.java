@@ -12,8 +12,8 @@
 
 package org.eclipse.uomo.ucum.canonical;
 
-import static org.eclipse.uomo.core.impl.debug.OutputHelper.isConsoleOutput;
-import static org.eclipse.uomo.core.impl.debug.OutputHelper.println;
+import static org.eclipse.uomo.core.impl.OutputHelper.isConsoleOutput;
+import static org.eclipse.uomo.core.impl.OutputHelper.println;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
