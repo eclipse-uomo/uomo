@@ -1,0 +1,310 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>org.eclipse.uomo.bundles</artifactId>
+    <groupId>org.eclipse.uomo</groupId>
+    <version>0.6.0.SNAPSHOT</version>
+  </parent>
+  <groupId>org.eclipse.uomo</groupId>
+  <artifactId>org.eclipse.uomo.units</artifactId>
+  <name>UOMo Units of Measurement</name>
+  <version>0.5.5.SNAPSHOT</version>
+  
+  
+    <!-- =========================================================== -->
+    <!-- Dependency Management -->
+    <!-- -->
+    <!-- Reference: http://repo1.maven.org/maven2/ -->
+    <!-- =========================================================== -->
+    <dependencies>
+        <dependency>
+            <groupId>org.unitsofmeasurement</groupId>
+            <artifactId>unit-api</artifactId>
+            <version>0.6-RC1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ibm.icu</groupId>
+            <artifactId>icu4j</artifactId>
+            <version>4.0.1</version>
+        </dependency>
+         <dependency>
+            <groupId>org.eclipse.uomo</groupId>
+            <artifactId>org.eclipse.uomo.core</artifactId>
+            <version>0.2.0.SNAPSHOT</version>
+            <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>runtime</artifactId>
+                    <groupId>org.eclipse.core</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- ======================================================= -->
+    <!-- Build Settings -->
+    <!-- ======================================================= -->
+    <build>
+        <resources>
+        </resources>
+        <filters>
+        </filters>
+        <plugins>
+
+            <!-- ======================================================= -->
+            <!-- Pre-Compilation -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>javacc-maven-plugin</artifactId>
+                <version>2.6</version>
+                <executions>
+                    <execution>
+                        <id>javacc</id>
+                        <goals>
+                            <goal>javacc</goal>
+                        </goals>
+                        <configuration>
+                            <lookAhead>2</lookAhead>
+                            <isStatic>false</isStatic>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ======================================================= -->
+            <!-- License -->
+            <!-- ======================================================= 
+            <plugin>
+                <groupId>com.google.code.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <version>1.4.0</version>
+                <configuration>
+                    <basedir>${basedir}</basedir>
+                    <header>${basedir}/src/etc/header.txt</header>
+                    <quiet>false</quiet>
+                    <failIfMissing>true</failIfMissing>
+                    <aggregate>false</aggregate>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            TODO enable this only for major upgrades (ensure to copy LICENSE.txt 
+                to LICENSE.bak first) -->
+
+            <!-- ======================================================= -->
+            <!-- Compilation -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- ======================================================= -->
+            <!-- Resources -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- ======================================================= -->
+            <!-- Custom Javadoc plugin -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.javolution</groupId>
+                <artifactId>colapi</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>colorize</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- ======================================================= -->
+            <!-- Packaging -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Implementation-Title>${project.name}</Implementation-Title>
+                            <Implementation-Version>${project.version}
+                            </Implementation-Version>
+                            <!-- mode>development</mode> TODO call it stage? <SCM-Revision>${buildNumber}</SCM-Revision -->
+                            <SCM-Revision>$Revision: 226 $</SCM-Revision>
+                        </manifestEntries>
+                        <manifestFile>META-INF/MANIFEST.MF</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- ======================================================= -->
+            <!-- Packaging (OSGi bundle) -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <instructions>
+                        <Export-Package>org.eclipse.uomo.units.*</Export-Package>
+                        <Private-Package>org.eclipse.uomo.units.internal</Private-Package>
+                    </instructions>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+        <!-- ======================================================= -->
+        <!-- For deployment on dev.java.net subversion -->
+        <!-- See https://wagon-svn.dev.java.net/ -->
+        <!-- ======================================================= -->
+        <extensions>
+            <extension>
+                <groupId>org.jvnet.wagon-svn</groupId>
+                <artifactId>wagon-svn</artifactId>
+                <version>1.9</version>
+            </extension>
+        </extensions>
+    </build>
+
+
+
+    <!-- ======================================================= -->
+    <!-- Maven web site -->
+    <!-- ======================================================= -->
+    <reporting>
+        <plugins>
+            <!-- ======================================================= -->
+            <!-- Javadoc generation -->
+            <!-- -->
+            <!-- Do not set <docfilessubdirs> to true, since this -->
+            <!-- cause the unwanted copy of .svn sub-directories. -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>             <!-- Enables javadoc to handle assertions present in J2SE 1.4. -->
+                    <encoding>UTF-8</encoding>       <!-- The encoding of the source files. -->
+                    <docencoding>UTF-8</docencoding> <!-- The encoding of the generated HTML files. -->
+                    <charset>UTF-8</charset>         <!-- Specifies the HTML character set for this document. -->
+                    <locale>en</locale>              <!-- Locale that javadoc uses when generating documentation. -->
+                    <noqualifier>all</noqualifier>   <!-- Omit qualifying package name before class names in output. -->
+                    <quiet>true</quiet>              <!-- Shuts off non-error and non-warning messages. -->
+                    <keywords>true</keywords>        <!-- Adds HTML meta keyword tags to the generated files. -->
+                    <excludePackageNames>javax.measure.unit.format:javax.measure.unit.converter:javax.measure.util
+                    </excludePackageNames>
+                    <!-- Creates links to existing javadoc-generated -->
+                    <!-- documentation of external referenced classes. -->
+                    <links>
+                        <link>http://java.sun.com/javase/6/docs/api</link>
+                    </links>
+                </configuration>
+            </plugin>
+
+
+            <!-- ======================================================= -->
+            <!-- Code analysis -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <configuration>
+                    <sourceEncoding>${project.build.sourceEncoding}</sourceEncoding>
+                    <targetJdk>1.5</targetJdk>
+                </configuration>
+            </plugin>
+
+
+            <!-- ======================================================= -->
+            <!-- Report on test results -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+
+
+            <!-- ======================================================= -->
+            <!-- Report on test coverage -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>emma-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
+            </plugin>
+
+
+            <!-- ======================================================= -->
+            <!-- Static analysis for occurences of bug patterns -->
+            <!-- ======================================================= -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+
+    <!-- ==================================================== -->
+    <!-- Repositories. This is where Maven looks for dependencies. The Maven 
+        repository is implicit and doesn't need to be specified. -->
+    <!-- ==================================================== -->
+    <repositories>
+        <repository>
+            <id>maven-geotoolkit.org</id>
+            <name>GeoToolkit Repository for Maven</name>
+            <url>http://maven.geotoolkit.org/</url>
+        </repository>
+    </repositories>
+    
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <!-- ==================================================== -->
+    <!-- Deployment to public servers -->
+    <!-- ==================================================== -->
+    <distributionManagement>
+        <repository>
+            <id>java.net-maven2-repository</id>
+            <url>java-net:/maven2-repository/trunk/repository/</url>
+            <uniqueVersion>false</uniqueVersion>
+        </repository>
+    </distributionManagement>
+</project>
