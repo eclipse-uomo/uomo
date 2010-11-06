@@ -1,9 +1,3 @@
-====
-     The UCUM codes, UCUM table (regardless of format), and UCUM Specification are copyright © 1999-2010, Regenstrief Institute, Inc.
-     and the Unified Codes for Units of Measures (UCUM) Organization. All rights reserved.
-
-     See LICENSE.txt for full License
-====
 = Copyright Notice and License =
 
 The UCUM codes, UCUM table (regardless of format), and UCUM Specification are copyright © 1999-2009, Regenstrief Institute, Inc. and the Unified Codes for Units of Measures (UCUM) Organization. All rights reserved. 
