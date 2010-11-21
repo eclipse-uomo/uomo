@@ -15,8 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.uomo.core.ICode;
+import org.eclipse.uomo.core.IDescription;
+import org.eclipse.uomo.core.INames;
 
-public class Concept implements ICode {
+public class Concept implements ICode, IDescription, INames {
 
 	private ConceptKind kind;
 	/**
@@ -25,7 +27,7 @@ public class Concept implements ICode {
 	private String code;
 	
 	/**
-	 * case insensitive code for this concept
+	 * case insensitive (UPPERCASE) code for this concept
 	 */
 	private String codeUC;
 	
@@ -108,11 +110,11 @@ public class Concept implements ICode {
 	}
 
 	public String getDescription() {
-		return  kind.toString().toLowerCase()+" "+code+" ('"+names.get(0)+"')";
+		return  kind.toString().toLowerCase()+" "+code+" ('"+names.get(0)+"')"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 	}
 	
 	@Override
 	public String toString() {
-		return this.getCode() + " = " + getDescription();
+		return this.getCode() + " = " + getDescription(); //$NON-NLS-1$
 	}
 }

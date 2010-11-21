@@ -15,6 +15,7 @@ import java.math.BigDecimal;
 
 public class Value {
 
+	// TODO make this a "real" unit, should be at least UcumUnit
 	private String unit;
 	
 	private String unitUC;

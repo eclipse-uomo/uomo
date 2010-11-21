@@ -118,7 +118,7 @@ public class UcumEssenceService implements UcumService {
 	public List<Concept> search(ConceptKind kind, String text, boolean isRegex) {
 		assert checkStringParam(text) : paramError("search", "text",
 				"must not be null or empty");
-		return new Search().doSearch(model, kind, text, isRegex);
+		return new SearchImpl().doSearch(model, kind, text, isRegex);
 	}
 
 	/*
