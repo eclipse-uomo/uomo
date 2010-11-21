@@ -14,7 +14,7 @@ package org.eclipse.uomo.core;
 /**
  * Denote entity that has both name and symbol. This is true for units and
  * similar entities.
- * 
+ * @deprecated simple enough to use IName and ISymbol together
  * @version $Id: INameAndSymbol.java 63 2010-07-19 10:35:31Z werner.keil $
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
