@@ -169,7 +169,7 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
             CLASS_TO_METRIC_UNIT.put(Temperature.class, KELVIN);
             CLASS_TO_METRIC_UNIT.put(Mass.class, KILOGRAM);
             CLASS_TO_METRIC_UNIT.put(Length.class, METRE);
-            CLASS_TO_METRIC_UNIT.put(Substance.class, MOLE);
+            CLASS_TO_METRIC_UNIT.put(AmountOfSubstance.class, MOLE);
             CLASS_TO_METRIC_UNIT.put(TimeUnitAmount.class, SECOND);
             CLASS_TO_METRIC_UNIT.put(MagnetomotiveForce.class, AMPERE_TURN);
             CLASS_TO_METRIC_UNIT.put(Angle.class, RADIAN);
