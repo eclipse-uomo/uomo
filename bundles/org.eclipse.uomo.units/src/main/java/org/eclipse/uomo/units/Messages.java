@@ -16,6 +16,7 @@ import org.eclipse.osgi.util.NLS;
  * Message class for unit messages. These messages are used throughout the
  * package.
  * 
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = Messages.class.getPackage()

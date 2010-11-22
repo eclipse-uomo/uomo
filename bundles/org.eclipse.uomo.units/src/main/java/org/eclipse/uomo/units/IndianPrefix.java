@@ -24,8 +24,8 @@ import org.unitsofmeasurement.unit.Unit;
  * javax.measure.unit.NonSI.IndianPrefix.*; // Static import. ... Unit<Pressure>
  * LAKH_PASCAL = LAKH(PASCAL); Unit<Length> CRORE_METER = CRORE(METER); [/code]
  * 
- * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.3 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia:
  *      Indian numbering system</a>
