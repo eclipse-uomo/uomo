@@ -80,17 +80,17 @@ public class MoneyDemo {
 				carMileage).times(gazPrice); // .to(USD);
 
 		// Display trip.
-		System.out.println(TestMessages.MoneyDemo_Car_mileage + carMileage);
-		System.out.println(TestMessages.MoneyDemo_Trip_distance + tripDistance);
+		System.out.println(DemoMessages.MoneyDemo_Car_mileage + carMileage);
+		System.out.println(DemoMessages.MoneyDemo_Trip_distance + tripDistance);
 
 		// Display cost.
-		System.out.print(TestMessages.MoneyDemo_Gas_price);
+		System.out.print(DemoMessages.MoneyDemo_Gas_price);
 		System.out.println(gazPrice);
 		// UFormat format = MeasureFormat.getCurrencyFormat();
 		// System.out.println(format.format(gazPrice));
 		// MoneyAmount mo = MoneyAmount.valueOf(100, EUR);
 		// System.out.println(currFormat.format(mo));
-		System.out.println(TestMessages.MoneyDemo_Trip_cost + tripCost); // + " (" +
+		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost); // + " (" +
 
 //		System.out.println(TestMessages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(USD)); //$NON-NLS-1$
