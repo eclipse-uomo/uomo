@@ -17,5 +17,6 @@
   	<module>org.eclipse.uomo.xml</module>
   	<module>org.eclipse.uomo.util</module>
   	<module>org.eclipse.uomo.ucum</module>
+  	<module>org.eclipse.uomo.business</module>
   </modules>
 </project>

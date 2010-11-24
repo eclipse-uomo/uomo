@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UOMo Business
+Bundle-SymbolicName: org.eclipse.uomo.business
+Bundle-Version: 0.1.0.SNAPSHOT
+Bundle-Vendor: Eclipse.org
+Require-Bundle: org.eclipse.uomo.units;bundle-version="0.5.0"
+Bundle-RequiredExecutionEnvironment: OSGi/Minimum-1.1
