@@ -2,7 +2,7 @@ package org.eclipse.uomo.business.money;
 
 import org.eclipse.osgi.util.NLS;
 
-class TestMessages extends NLS {
+public class TestMessages extends NLS {
 	private static final String BUNDLE_NAME = TestMessages.class.getPackage().getName() + ".testmessages"; //$NON-NLS-1$
 	public static String MoneyDemo_Car_mileage;
 	public static String MoneyDemo_Gas_price;
