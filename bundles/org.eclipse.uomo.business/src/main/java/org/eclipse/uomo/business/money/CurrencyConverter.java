@@ -19,7 +19,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.uomo.business.internal.Messages;
+import org.eclipse.uomo.business.Messages;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;

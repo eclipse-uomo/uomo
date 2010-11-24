@@ -21,7 +21,7 @@ import org.eclipse.uomo.units.impl.MultiplyConverter;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.RationalConverter;
 import org.eclipse.uomo.units.impl.TransformedUnit;
-import org.eclipse.uomo.util.IName;
+import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.IncommensurableException;

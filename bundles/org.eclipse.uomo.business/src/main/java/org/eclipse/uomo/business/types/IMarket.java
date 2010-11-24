@@ -2,8 +2,8 @@ package org.eclipse.uomo.business.types;
 
 import java.util.*;
 
-import org.eclipse.uomo.util.IName;
-import org.eclipse.uomo.util.ISymbol;
+import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.core.ISymbol;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.Unit;
 

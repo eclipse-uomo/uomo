@@ -1,6 +1,6 @@
 package org.eclipse.uomo.business.types;
 
-import org.eclipse.uomo.util.UOMoRuntimeException;
+import org.eclipse.uomo.core.UOMoRuntimeException;
 
 
 /**

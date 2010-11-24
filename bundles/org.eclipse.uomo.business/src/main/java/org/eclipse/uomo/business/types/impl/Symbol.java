@@ -4,7 +4,7 @@ import static org.eclipse.uomo.business.types.BDTHelper.BDT_DELIM;
 import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IBDType;
-import org.eclipse.uomo.util.ISymbol;
+import org.eclipse.uomo.core.ISymbol;
 
 /**
  * Symbol - composed of market, symbol and country codes - at least one of

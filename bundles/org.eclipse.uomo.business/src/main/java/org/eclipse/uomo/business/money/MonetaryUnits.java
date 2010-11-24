@@ -13,7 +13,7 @@ package org.eclipse.uomo.business.money;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.uomo.util.IName;
+import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
