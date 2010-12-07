@@ -32,7 +32,7 @@ import org.unitsofmeasurement.unit.Unit;
  * <p> Although measurable instances are for the most part scalar quantities; 
  *     more complex implementations (e.g. vectors, data set) are allowed as 
  *     long as an agregate magnitude can be determined. For example:[code]
- *     class Velocity3D implements Measurable<Velocity> {
+ *     class Velocity3D implements IMeasure<Velocity> {
  *          private double x, y, z; // Meter per seconds.
  *          public double doubleValue(Unit<Velocity> unit) { ... } // Returns vector norm.
  *          ... 
@@ -44,9 +44,9 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 4.3, $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 5.0, $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public interface Measurable<Q extends Quantity<Q>> extends Quantity<Q> {
+public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
     
     /**
      * Returns the estimated value of this measurable quantity stated 
@@ -81,7 +81,7 @@ public interface Measurable<Q extends Quantity<Q>> extends Quantity<Q> {
      * @param  that the amount to be added.
      * @return <code>this + that</code>.
      */
-    Measurable<Q> plus(Measurable<Q> that);
+    IMeasure<Q> add(IMeasure<Q> that);
     
     /**
      * Returns the difference between this amount and the one specified.
@@ -89,7 +89,7 @@ public interface Measurable<Q extends Quantity<Q>> extends Quantity<Q> {
      * @param  that the number to be subtracted.
      * @return <code>this - that</code>.
      */
-    Measurable<Q> minus(Measurable<Q> that);
+    IMeasure<Q> substract(IMeasure<Q> that);
     
     /**
      * Returns the product of this amount with the one specified.
@@ -97,7 +97,7 @@ public interface Measurable<Q extends Quantity<Q>> extends Quantity<Q> {
      * @param  that the number multiplier.
      * @return <code>this · that</code>.
      */
-    Measurable<?> times(Measurable<?> that);
+    IMeasure<?> multiply(IMeasure<?> that);
     
     /**
      * Returns this amount divided by the one specified.
@@ -105,5 +105,7 @@ public interface Measurable<Q extends Quantity<Q>> extends Quantity<Q> {
      * @param  that the amount divisor.
      * @return <code>this / that</code>.
      */
-    Measurable<Q> divide(Measurable<Q> that);
+    IMeasure<Q> divide(IMeasure<Q> that);
+    
+    IMeasure<Q> to(Unit<Q> unit);
 }

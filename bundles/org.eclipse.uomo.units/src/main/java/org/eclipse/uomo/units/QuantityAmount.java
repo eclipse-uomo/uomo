@@ -33,8 +33,29 @@ import com.ibm.icu.util.MeasureUnit;
  * @version 1.1 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * TODO rename to Amount or MeasureAmount?
  */
-public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements Measurable<Q> {
+public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements IMeasure<Q> {
+	/**
+     * Indicates if this measure is exact.
+     */
+    private boolean _isExact;
 
+    /**
+     * Holds the exact value (when exact) stated in this measure unit.
+     */
+    private long _exactValue;
+
+    /**
+     * Holds the minimum value stated in this measure unit.
+     * For inexact measures: _minimum < _maximum 
+     */
+    private double _minimum;
+
+    /**
+     * Holds the maximum value stated in this measure unit.
+     * For inexact measures: _maximum > _minimum 
+     */
+    private double _maximum;
+    
 	protected QuantityAmount(Number number, MeasureUnit unit) {
 		super(number, unit);
 	}
@@ -50,7 +71,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
     public double doubleValue(Unit<Q> unit) {
     	Unit<Q> myUnit = getQuantityUnit();
     	try {
-			UnitConverter converter = unit.getConverterToAny(myUnit);
+			UnitConverter converter = unit.getConverterTo(myUnit);
 			return converter.convert(getNumber().doubleValue());
 		} catch (UnconvertibleException e) {
 			throw e;
@@ -88,4 +109,18 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
 	public Unit<Q> getQuantityUnit() {
     	return (Unit<Q>) getUnit();
     }
+    
+    /**
+     * Indicates if this measure amount is exact. An exact amount is 
+     * guarantee exact only when stated in this measure unit
+     * (e.g. <code>this.longValue()</code>); stating the amount
+     * in any other unit may introduce conversion errors. 
+     *
+     * @return <code>true</code> if this measure is exact;
+     *         <code>false</code> otherwise.
+     */
+    public boolean isExact() {
+        return _isExact;
+    }
+
 }

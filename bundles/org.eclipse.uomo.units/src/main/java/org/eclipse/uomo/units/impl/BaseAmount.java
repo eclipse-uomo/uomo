@@ -15,7 +15,7 @@ import java.math.BigInteger;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
-import org.eclipse.uomo.units.Measurable;
+import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.QuantityAmount;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
@@ -53,7 +53,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> {
 	}
 	
     @SuppressWarnings({ "rawtypes", "unchecked" })
-	public Measurable<Q> plus(Measurable<Q> that) {
+	public IMeasure<Q> add(IMeasure<Q> that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
 		return new BaseAmount(this.getNumber().doubleValue()
 				+ ((Measure)that).getNumber().doubleValue(), getQuantityUnit());
@@ -61,7 +61,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> {
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public Measurable<Q> minus(Measurable<Q> that) {
+	public IMeasure<Q> substract(IMeasure<Q> that) {
 		return new BaseAmount(this.getNumber().doubleValue()
 				- ((Measure)that).getNumber().doubleValue(), getQuantityUnit());
 
@@ -69,32 +69,32 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Measurable<?> times(Measurable<?> that) {
+	public IMeasure<?> multiply(IMeasure<?> that) {
 		Unit<?> unit = getQuantityUnit().multiply(that.getQuantityUnit());
-		return (Measurable<Q>)valueOf((getNumber().doubleValue() *
+		return (IMeasure<Q>)valueOf((getNumber().doubleValue() *
 				((Measure)that).getNumber().doubleValue()), unit);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public Measurable<Q> divide(Measurable<Q> that) {
+	public IMeasure<Q> divide(IMeasure<Q> that) {
 		Unit<?> unit = getQuantityUnit().divide(that.getQuantityUnit());
-		return (Measurable<Q>) valueOf((getNumber().doubleValue() /
+		return (IMeasure<Q>) valueOf((getNumber().doubleValue() /
 				((Measure)that).getNumber().doubleValue()), unit);
 	}
 	
-    public Measurable<Q> to(Unit<Q> unit) {
+    public IMeasure<Q> to(Unit<Q> unit) {
         return to(unit, MathContext.DECIMAL32);
     }
 
     @SuppressWarnings("unchecked")
-	public Measurable<Q> to(Unit<Q> unit, MathContext ctx) {
+	public IMeasure<Q> to(Unit<Q> unit, MathContext ctx) {
         if (this.getUnit().equals(unit))
             return this;
         UnitConverter cvtr = this.getQuantityUnit().getConverterTo(unit);
         if (cvtr == AbstractConverter.IDENTITY)
-            return (Measurable<Q>) valueOf(this.getNumber(), unit);
-        return (Measurable<Q>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
+            return (IMeasure<Q>) valueOf(this.getNumber(), unit);
+        return (IMeasure<Q>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
     }
 
     // Try to convert the specified value.
