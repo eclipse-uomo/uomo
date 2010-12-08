@@ -1,0 +1,34 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>org.eclipse.uomo.examples.units</artifactId>
+    <groupId>org.eclipse.uomo.examples</groupId>
+    <version>0.1.0.SNAPSHOT</version>
+  </parent>
+  <groupId>org.eclipse.uomo.examples.units</groupId>
+  <artifactId>org.eclipse.uomo.examples.units.pluginsample</artifactId>
+  <name>UOMo Plugin Sample</name>
+  <version>0.1.0.SNAPSHOT</version>
+  <dependencies>
+  	<dependency>
+  		<groupId>org.eclipse.uomo</groupId>
+  		<artifactId>org.eclipse.uomo.core</artifactId>
+  		<version>0.2.0.SNAPSHOT</version>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.unitsofmeasurement</groupId>
+  		<artifactId>unit-api</artifactId>
+  		<version>0.6-RC1</version>
+  		<type>bundle</type>
+  		<scope>compile</scope>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.eclipse.uomo</groupId>
+  		<artifactId>org.eclipse.uomo.units</artifactId>
+  		<version>0.5.5.SNAPSHOT</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  </dependencies>
+</project>

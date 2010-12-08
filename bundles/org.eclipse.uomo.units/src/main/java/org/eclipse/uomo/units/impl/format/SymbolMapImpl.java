@@ -192,30 +192,25 @@ class SymbolMapImpl implements SymbolMap {
         return prefixToSymbol.get(prefix);
     }
 
-	@Override
 	public void alias(Unit<?> unit, String symbol) {
 		symbolToUnit.put(symbol, unit);
 	}
 
-	@Override
 	public String getPrefix(UnitConverter converter) {
         ParsePrefix prefix = getPrefixObject(converter);
         if (prefix == null) return null;
         return prefixToSymbol.get(prefix);
 	}
 
-	@Override
 	public String getSymbol(Unit<?> unit) {
 		return unitToSymbol.get(unit);
 	}
 
-	@Override
 	public void label(Unit<?> unit, String symbol) {
         symbolToUnit.put(symbol, unit);
         unitToSymbol.put(unit, symbol);
 	}
 
-	@Override
 	public void prefix(UnitConverter cvtr, String prefix) {
 		throw new UnsupportedOperationException("Prefixes are not modifiable"); //$NON-NLS-1$
 	}

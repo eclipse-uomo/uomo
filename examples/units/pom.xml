@@ -1,0 +1,19 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>org.eclipse.uomo.examples</artifactId>
+		<groupId>org.eclipse.uomo</groupId>
+		<version>0.1.0.SNAPSHOT</version>
+	</parent>
+	<groupId>org.eclipse.uomo.examples</groupId>
+	<artifactId>org.eclipse.uomo.examples.units</artifactId>
+	<packaging>pom</packaging>
+	<name>Eclipse UOMo Units Examples</name>
+	<version>0.1.0.SNAPSHOT</version>
+	<modules>
+	   <module>org.eclipse.uomo.examples.units.console</module>
+	   <module>org.eclipse.uomo.examples.units.pluginsample</module>
+	</modules>
+</project>

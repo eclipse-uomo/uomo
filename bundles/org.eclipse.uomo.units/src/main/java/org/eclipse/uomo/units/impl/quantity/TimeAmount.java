@@ -64,7 +64,6 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 	 *            the unit in which the returned value is stated.
 	 * @return the value of this quantity when stated in the specified unit.
 	 */
-	@Override
 	public double doubleValue(Unit<Time> unit) {
 		Unit<Time> myUnit = getQuantityUnit();
 		try {
@@ -86,7 +85,6 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 	 *            the unit in which the returned value is stated.
 	 * @return the value of this quantity when stated in the specified unit.
 	 */
-	@Override
 	public long longValue(Unit<Time> unit) {
 		Unit<Time> myUnit = getQuantityUnit();
 		try {
@@ -101,21 +99,18 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 		}
 	}
 
-	@Override
 	public IMeasure<Time> add(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				+ ((TimeUnitAmount) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 
-	@Override
 	public IMeasure<Time> substract(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				- ((TimeUnitAmount) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 	
-	@Override
 	public IMeasure<Time> divide(IMeasure<Time> that) {
 		@SuppressWarnings("unchecked")
 		Unit<Time> unit = (Unit<Time>) getQuantityUnit().divide(that.getQuantityUnit());
@@ -126,7 +121,6 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 		return new TimeAmount(getNumber(), unit);
 	}
 
-	@Override
 	public IMeasure<?> multiply(IMeasure<?> that) {
 		@SuppressWarnings("unchecked")
 		Unit<Time> unit = (Unit<Time>) getQuantityUnit().multiply(that.getQuantityUnit());
@@ -153,7 +147,6 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 		return amount;
 	}
 	
-	@Override
 	public IMeasure<Time> to(Unit<Time> unit) {
 		return to(unit, MathContext.DECIMAL32);
 	}
