@@ -4,6 +4,7 @@ import static org.eclipse.uomo.business.types.BDTHelper.BDT_DELIM;
 import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IBDType;
+import org.eclipse.uomo.business.types.IMarket;
 import org.eclipse.uomo.core.ISymbol;
 
 /**
@@ -14,7 +15,7 @@ import org.eclipse.uomo.core.ISymbol;
  * @author: Administrator
  */
 public class Symbol implements IBDType, ISymbol {
-	String m_market = "";
+	IMarket m_market = null;
 	final String m_sym;
 	String m_country = "";
 
@@ -32,10 +33,10 @@ public class Symbol implements IBDType, ISymbol {
 		if (sp == -1)
 			throw new BDTypeException("Invalid symbol string: " + s);
 		else {
-			m_market = s.substring(0, sp);
+			String tmpMarket = s.substring(0, sp);
 			if (sp > 0) {
 				try {
-					Market.get(m_market);
+					m_market = Market.get(tmpMarket);
 				} // verify market is valid (added Oct. 3)
 				catch (BDTypeException e) {
 					throw new BDTypeException("Invalid market code in symbol: "
@@ -75,7 +76,7 @@ public class Symbol implements IBDType, ISymbol {
 	/**
 	 * Get market String from object
 	 */
-	public String getMarket() {
+	public IMarket getMarket() {
 		return m_market;
 	}
 
@@ -95,8 +96,8 @@ public class Symbol implements IBDType, ISymbol {
 
 		String s1 = "";
 
-		if (!m_market.equals(""))
-			s1 = m_market;
+		if (m_market != null && !m_market.equals(""))
+			s1 = m_market.getName();
 
 		s1 = s1 + BDT_DELIM + m_sym;
 

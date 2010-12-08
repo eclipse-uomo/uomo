@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uomo.business.Messages;
+import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
@@ -97,10 +98,10 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 	 * @return the corresponding converter.
 	 */
 	@SuppressWarnings("unchecked")
-	public CurrencyConverter(CurrencyUnit<?> source, Unit<Money> target,
+	public CurrencyConverter(CurrencyUnit<?> source, Unit<IMoney> target,
 			Number factor) {
 		if (target instanceof CurrencyUnit<?>) {
-			rate = new ExchangeRate(source, (CurrencyUnit<Money>) target,
+			rate = new ExchangeRate(source, (CurrencyUnit<IMoney>) target,
 					factor);
 		} else {
 			Currency defCurrency = Currency.getInstance(ULocale.getDefault());

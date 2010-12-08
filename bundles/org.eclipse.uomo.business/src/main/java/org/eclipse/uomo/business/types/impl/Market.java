@@ -10,13 +10,15 @@ import org.eclipse.uomo.business.types.IMarket;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.Unit;
 
+import com.ibm.icu.util.Holiday;
+
 /**
  * Market object - object is mutable, but only the holiday table for a market
  * will be changed on a regular basis (plus the closed indicators); open and
  * close times will only be changed at BDT Load time.
  * 
  * @author  paul.morrison, werner.keil
- * @version 0.2 ($Revision$), $Date$
+ * @version 0.3 ($Revision$), $Date$
  */
 public class Market {
 	static class MarketImpl implements IMarket {
@@ -39,8 +41,8 @@ public class Market {
 		Map<String, List<Time>> m_times = null; // HashMap of open and close times
 												// - key is fiType
 
-		Map m_holidays = null; // list of holidays - keyed on date
-		Map m_replHolidays = new HashMap(); // used to build new holiday
+		Map<Date, Holiday> m_holidays = null; // list of holidays - keyed on date
+		Map<Date, Holiday> m_replHolidays = new HashMap<Date, Holiday>(); // used to build new holiday
 												// list
 		// TODO introdude ICU4J Holiday type and related framework
 		
@@ -240,19 +242,19 @@ public class Market {
 			return m_timeZone;
 		}
 
-		public synchronized Map getHolidays() {
+		public synchronized Map<Date, Holiday> getHolidays() {
 			return m_holidays;
 		}
 
-		public synchronized void setHolidays(Map hm) {
+		public synchronized void setHolidays(Map<Date, Holiday> hm) {
 			m_holidays = hm;
 		}
 
-		public Map getReplHolidays() {
+		public Map<Date, Holiday> getReplHolidays() {
 			return m_replHolidays;
 		}
 
-		public void setReplHolidays(Map hm) {
+		public void setReplHolidays(Map<Date, Holiday> hm) {
 			m_replHolidays = hm;
 		}
 

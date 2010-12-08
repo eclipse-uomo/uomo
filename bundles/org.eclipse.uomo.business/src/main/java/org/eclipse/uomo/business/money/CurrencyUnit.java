@@ -21,6 +21,7 @@ import org.eclipse.uomo.units.impl.MultiplyConverter;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.RationalConverter;
 import org.eclipse.uomo.units.impl.TransformedUnit;
+import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Dimension;
@@ -38,8 +39,8 @@ import com.ibm.icu.util.ULocale;
  * @version 0.2.2, $Date: 2010-09-13 23:54:08 +0200 (Mo, 13 Sep 2010) $
  * @param <Q>
  */
-public class CurrencyUnit<Q extends Money> extends Currency implements
-		Unit<Money>, IName {
+public class CurrencyUnit<Q extends IMoney> extends Currency implements
+		Unit<IMoney>, IName {
 
 	/**
      * 
@@ -53,55 +54,55 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	/**
 	 * The Australian Dollar currency unit.
 	 */
-	public static final CurrencyUnit<Money> AUD = new CurrencyUnit<Money>("AUD"); //$NON-NLS-1$
+	public static final CurrencyUnit<IMoney> AUD = new CurrencyUnit<IMoney>("AUD"); //$NON-NLS-1$
 
 	/**
 	 * The Canadian Dollar currency unit.
 	 */
-	public static final CurrencyUnit<Money> CAD = new CurrencyUnit<Money>("CAD"); //$NON-NLS-1$
+	public static final CurrencyUnit<IMoney> CAD = new CurrencyUnit<IMoney>("CAD"); //$NON-NLS-1$
 
 	/**
 	 * The China Yan currency.
 	 */
-	public static final CurrencyUnit<Money> CNY = new CurrencyUnit<Money>("CNY"); //$NON-NLS-1$
+	public static final CurrencyUnit<IMoney> CNY = new CurrencyUnit<IMoney>("CNY"); //$NON-NLS-1$
 
 	/**
 	 * The Euro currency.
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final CurrencyUnit EUR = new CurrencyUnit<Money>("EUR"); //$NON-NLS-1$
+	public static final CurrencyUnit EUR = new CurrencyUnit<IMoney>("EUR"); //$NON-NLS-1$
 
 	/**
 	 * The British Pound currency.
 	 */
-	public static final CurrencyUnit<Money> GBP = new CurrencyUnit<Money>("GBP"); //$NON-NLS-1$
+	public static final CurrencyUnit<IMoney> GBP = new CurrencyUnit<IMoney>("GBP"); //$NON-NLS-1$
 
 	/**
 	 * The Japanese Yen currency.
 	 */
-	public static final CurrencyUnit<Money> JPY = new CurrencyUnit<Money>("JPY"); //$NON-NLS-1$
+	public static final CurrencyUnit<IMoney> JPY = new CurrencyUnit<IMoney>("JPY"); //$NON-NLS-1$
 
 	/**
 	 * The Korean Republic Won currency.
 	 */
-	public static final CurrencyUnit<Money> KRW = new CurrencyUnit<Money>("KRW"); //$NON-NLS-1$
+	public static final CurrencyUnit<IMoney> KRW = new CurrencyUnit<IMoney>("KRW"); //$NON-NLS-1$
 
 	/**
 	 * The Taiwanese dollar currency.
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final CurrencyUnit TWD = new CurrencyUnit<Money>("TWD"); //$NON-NLS-1$
+	public static final CurrencyUnit TWD = new CurrencyUnit<IMoney>("TWD"); //$NON-NLS-1$
 
 	/**
 	 * Holds the dimensionless unit <code>ONE</code>.
 	 */
-	public static final ProductUnit<Money> ONE = new ProductUnit<Money>();
+	public static final ProductUnit<IMoney> ONE = new ProductUnit<IMoney>();
 
 	/**
 	 * The United State dollar currency.
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final CurrencyUnit USD = new CurrencyUnit<Money>("USD"); //$NON-NLS-1$
+	public static final CurrencyUnit USD = new CurrencyUnit<IMoney>("USD"); //$NON-NLS-1$
 
 	/**
 	 * Returns the result of adding an offset to this unit. The returned unit is
@@ -112,7 +113,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	 *            <code>CELSIUS = KELVIN.add(273.15)</code>).
 	 * @return <code>this.transform(new AddConverter(offset))</code>
 	 */
-	public final Unit<Money> add(double offset) {
+	public final Unit<IMoney> add(double offset) {
 		if (offset == 0)
 			return this;
 		return transform(new AddConverter(offset));
@@ -144,7 +145,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	 *             unit.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public final Unit<Money> alternate(String symbol) {
+	public final Unit<IMoney> alternate(String symbol) {
 		return new AlternateUnit(symbol, this);
 	}
 
@@ -160,7 +161,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	 *            the approximate divisor.
 	 * @return <code>this.transform(new MultiplyConverter(1.0 / divisor))</code>
 	 */
-	public final Unit<Money> divide(double divisor) {
+	public final Unit<IMoney> divide(double divisor) {
 		if (divisor == 1)
 			return this;
 		return transform(new MultiplyConverter(1.0 / divisor));
@@ -181,7 +182,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 				BigInteger.valueOf(divisor)));
 	}
 
-	public UnitConverter getConverterTo(Unit<Money> that)
+	public UnitConverter getConverterTo(Unit<IMoney> that)
 			throws UnconvertibleException {
 		return new CurrencyConverter(this, that, 1);
 	}
@@ -193,7 +194,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	}
 
 	public Dimension getDimension() {
-		return Money.DIMENSION;
+		return IMoney.DIMENSION;
 	}
 
 	public Map<Unit<?>, Integer> getProductUnits() {
@@ -238,7 +239,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	 *            <code>KILOMETRE = METRE.multiply(1000)</code>).
 	 * @return <code>this.transform(new RationalConverter(factor, 1))</code>
 	 */
-	final Unit<Money> multiply(long factor) {
+	final Unit<IMoney> multiply(long factor) {
 		if (factor == 1)
 			return this;
 		return transform(new RationalConverter(BigInteger.valueOf(factor),
@@ -254,7 +255,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	 *            ).
 	 * @return <code>this.transform(new MultiplyConverter(factor))</code>
 	 */
-	public final Unit<Money> multiply(double factor) {
+	public final Unit<IMoney> multiply(double factor) {
 		if (factor == 1)
 			return this;
 		return transform(new MultiplyConverter(factor));
@@ -317,7 +318,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 			return ONE.divide(this.root(-n));
 	}
 
-	protected Unit<Money> toMetric() {
+	protected Unit<IMoney> toMetric() {
 		return this;
 	}
 
@@ -333,23 +334,23 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 	 * @return the unit after the specified transformation.
 	 */
 	@SuppressWarnings("unchecked")
-	public final Unit<Money> transform(UnitConverter operation) {
+	public final Unit<IMoney> transform(UnitConverter operation) {
 		if (this instanceof Unit<?>) {
-			Unit<Money> tf = this;
+			Unit<IMoney> tf = this;
 			Unit<?> parent = (Unit<?>) ((TransformedUnit<?>) tf)
 					.getParentUnit();
 			UnitConverter toParent = ((TransformedUnit<?>) tf).toParentUnit();
 			if (toParent == null)
-				return (Unit<Money>) parent;
+				return (Unit<IMoney>) parent;
 			UnitConverter toParentConcat = toParent.concatenate(operation);
 			if (toParentConcat == AbstractConverter.IDENTITY)
-				return (Unit<Money>) parent;
-			return new TransformedUnit<Money>((Unit<Money>) parent,
+				return (Unit<IMoney>) parent;
+			return new TransformedUnit<IMoney>((Unit<IMoney>) parent,
 					(AbstractConverter) toParentConcat);
 		}
 		if (operation == AbstractConverter.IDENTITY)
 			return this;
-		return new TransformedUnit<Money>(this, (AbstractConverter) operation);
+		return new TransformedUnit<IMoney>(this, (AbstractConverter) operation);
 	}
 
 	/**
@@ -367,7 +368,7 @@ public class CurrencyUnit<Q extends Money> extends Currency implements
 		return getName(ULocale.getDefault(), LONG_NAME, new boolean[] { false });
 	}
 
-	public Unit<Money> getSystemUnit() {
+	public Unit<IMoney> getSystemUnit() {
 		return toMetric();
 	}
 

@@ -21,9 +21,9 @@ import org.unitsofmeasurement.unit.Unit;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.3 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class LengthAmount extends BaseAmount<Length> {
+public class LengthAmount extends BaseAmount<Length> implements Length {
 
 	public LengthAmount(Number number, Unit<Length> unit) {
 		super(number, unit);

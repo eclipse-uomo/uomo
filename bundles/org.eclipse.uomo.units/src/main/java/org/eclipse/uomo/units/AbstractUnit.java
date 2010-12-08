@@ -101,7 +101,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
 	/**
 	 * Holds the dimensionless unit <code>ONE</code>.
 	 */
-	public static final ProductUnit<Dimensionless> ONE = new ProductUnit<Dimensionless>();
+	public static final Unit<Dimensionless> ONE = new ProductUnit<Dimensionless>();
 
 	/**
 	 * Holds the unique symbols collection (base unit or alternate units).

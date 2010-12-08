@@ -7,6 +7,8 @@ import org.eclipse.uomo.core.ISymbol;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.Unit;
 
+import com.ibm.icu.util.Holiday;
+
 /**
  * Insert the type's description here. Creation date: (9/20/00 2:35:47 PM)
  * @version $Revision$, Change date: ($Date$)
@@ -16,22 +18,22 @@ public interface IMarket extends IBDType, IName, ISymbol {
 	/**
 	 * Insert the method's description here. Creation date: (9/26/00 4:55:31 PM)
 	 * 
-	 * @return com.sun.java.util.collections.HashMap
+	 * @return java.util.HashMap
 	 */
-	Map getHolidays();
+	Map<Date, Holiday> getHolidays();
 
 	/**
 	 * Insert the method's description here. Creation date: (9/28/00 9:43:08 AM)
 	 * 
-	 * @return com.sun.java.util.collections.HashMap
+	 * @return java.util.HashMap
 	 */
-	Map getReplHolidays();
+	Map<Date, Holiday> getReplHolidays();
 
 	/**
 	 * Insert the method's description here. Creation date: (9/25/00 10:25:18
 	 * AM)
 	 * 
-	 * @return com.sun.java.util.collections.HashMap
+	 * @return java.util.HashMap
 	 */
 	Map<String, List<Time>> getTimes();
 
@@ -67,24 +69,24 @@ public interface IMarket extends IBDType, IName, ISymbol {
 	 * Insert the method's description here. Creation date: (9/26/00 4:52:54 PM)
 	 * 
 	 * @param hm
-	 *            com.sun.java.util.collections.HashMap
+	 *            java.util.HashMap
 	 */
-	void setHolidays(Map hm);
+	void setHolidays(Map<Date, Holiday> hm);
 
 	/**
 	 * Insert the method's description here. Creation date: (9/26/00 4:52:54 PM)
 	 * 
 	 * @param hm
-	 *            com.sun.java.util.collections.HashMap
+	 *            java.util.HashMap
 	 */
-	void setReplHolidays(Map hm);
+	void setReplHolidays(Map<Date, Holiday> hm);
 
 	/**
 	 * Insert the method's description here. Creation date: (9/25/00 10:25:57
 	 * AM)
 	 * 
 	 * @param hm
-	 *            com.sun.java.util.collections.HashMap
+	 *            java.util.HashMap
 	 */
 	void setTimes(Map<String, List<Time>> hm);
 }

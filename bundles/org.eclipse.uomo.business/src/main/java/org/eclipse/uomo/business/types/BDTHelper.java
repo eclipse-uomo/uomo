@@ -1,8 +1,18 @@
+/**
+ * Copyright (c) 1999, 2000, 2001, 2002, 2010, J. Paul Morrison and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Paul Morrison - initial API and implementation
+ */
 package org.eclipse.uomo.business.types;
 
 import java.util.*;
 
-import org.eclipse.uomo.business.types.impl.Percent;
+import org.eclipse.uomo.business.types.impl.PercentAmount;
 
 import com.ibm.icu.math.BigDecimal;
 import com.ibm.icu.math.MathContext;
@@ -15,12 +25,13 @@ import com.ibm.icu.math.MathContext;
  */
 
 public abstract class BDTHelper {
-	static final String copyright = "Copyright 1999, 2000, 2001, 2002, J. Paul Morrison.  At your option, you may copy, "
-			+ "distribute, or make derivative works under the terms of the Clarified Artistic License, "
-			+ "based on the Everything Development Company's Artistic License.  A document describing "
-			+ "this License may be found at http://www.jpaulmorrison.com/fbp/artistic2.htm. "
-			+ "THERE IS NO WARRANTY; USE THIS PRODUCT AT YOUR OWN RISK.";
-
+	static final String copyright = 
+		 " Copyright (c) 1999, 2000, 2001, 2002, 2010, J. Paul Morrison and others."+
+		 " All rights reserved. This program and the accompanying materials"+
+		 " are made available under the terms of the Eclipse Public License v1.0"+
+		 " which accompanies this distribution, and is available at"+
+		 " http://www.eclipse.org/legal/epl-v10.html";
+	
 	public static enum Operation {
 		EQ, // equal
 		LT, // less than
@@ -316,7 +327,7 @@ public abstract class BDTHelper {
 	 *            int - desired relationship (less than, equal, not equal, etc.)
 	 * @throws BDTypeException
 	 */
-	public static boolean comp(Percent x, Percent y, Operation op)
+	public static boolean comp(PercentAmount x, PercentAmount y, Operation op)
 			throws BDTypeException {
 
 		switch (op) {

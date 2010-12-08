@@ -13,6 +13,7 @@ package org.eclipse.uomo.business.money;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Dimension;
@@ -31,7 +32,7 @@ public final class MonetaryUnits implements SystemOfUnits, IName {
     private static HashSet<Unit<?>> UNITS = new HashSet<Unit<?>>();
 
 	// Use currency not defined as constant (Rupees).
-	public static final Unit<Money> INR = monetary(MoneyAmount.UNIT);
+	public static final Unit<IMoney> INR = monetary(MoneyAmount.UNIT);
 
     /**
      * Default constructor (prevents this class from being instantiated).

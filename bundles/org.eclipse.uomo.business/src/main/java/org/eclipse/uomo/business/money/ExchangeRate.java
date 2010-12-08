@@ -12,6 +12,8 @@ package org.eclipse.uomo.business.money;
 
 import java.util.Date;
 
+import org.eclipse.uomo.business.types.IMoney;
+
 import com.ibm.icu.util.Currency;
 import com.ibm.icu.util.DateInterval;
 
@@ -68,7 +70,7 @@ public class ExchangeRate {
 
 	@SuppressWarnings("unchecked")
 	public Currency getSourceUnit() {
-		return (CurrencyUnit<Money>) source;
+		return (CurrencyUnit<IMoney>) source;
 	}
 
 	public Currency getTarget() {
@@ -77,7 +79,7 @@ public class ExchangeRate {
 
 	@SuppressWarnings("unchecked")
 	public Currency getTargetUnit() {
-		return (CurrencyUnit<Money>) target;
+		return (CurrencyUnit<IMoney>) target;
 	}
 
 	public Number getFactor() {

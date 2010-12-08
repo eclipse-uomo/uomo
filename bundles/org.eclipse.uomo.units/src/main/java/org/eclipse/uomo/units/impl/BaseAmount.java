@@ -27,10 +27,10 @@ import com.ibm.icu.util.MeasureUnit;
 /**
  * Represents a generic quantity amount.
  * 
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.1, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.2, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> {
+public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> implements Comparable<BaseAmount<Q>>{
 	
 	public BaseAmount(Number number, Unit<Q> unit) {
 		super(number, (MeasureUnit) unit);
@@ -125,4 +125,10 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> {
 //                    "Generic amount conversion not implemented for amount of type " + value.getClass());
         }
     }
+
+	@Override
+	public int compareTo(BaseAmount<Q> o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

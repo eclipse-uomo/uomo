@@ -14,6 +14,7 @@ import static org.eclipse.uomo.units.SI.*;
 
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
+import org.unitsofmeasurement.quantity.Length;
 
 /**
  * @author <a href="mailto:desruisseaux@users.sourceforge.net">Martin Desruisseaux</a>
@@ -22,7 +23,7 @@ import org.eclipse.uomo.units.impl.quantity.MassAmount;
  */
 public class Demo {
 
-	private static LengthAmount getSomeLength() {
+	private static Length getSomeLength() {
         return new LengthAmount(20, METRE);
     }
 
@@ -31,7 +32,7 @@ public class Demo {
     }
 
     public static void main(String[] args) {
-        LengthAmount someLength = getSomeLength();
+        Length someLength = getSomeLength();
         System.out.println("toString = " + someLength);
         System.out.println();
 
