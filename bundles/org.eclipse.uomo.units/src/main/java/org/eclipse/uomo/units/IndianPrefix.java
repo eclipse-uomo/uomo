@@ -21,8 +21,9 @@ import org.unitsofmeasurement.unit.Unit;
  * Utility class holding prefixes used today in India, Pakistan, Bangladesh, Nepal
  * and Myanmar (Burma); based on grouping by two decimal places, rather than the
  * three decimal places common in most parts of the world. [code] import static
- * javax.measure.unit.NonSI.IndianPrefix.*; // Static import. ... Unit<Pressure>
- * LAKH_PASCAL = LAKH(PASCAL); Unit<Length> CRORE_METER = CRORE(METER); [/code]
+ * org.eclipse.uomo.units.IndianPrefix.*; // Static import. ... Unit<Pressure>
+ * LAKH_PASCAL = LAKH(PASCAL);
+ * Unit<Length>CRORE_METER = CRORE(METER); [/code]
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
@@ -46,7 +47,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> EK(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> EK(Unit<Q> unit) {
 		return unit;
 	}
 
@@ -61,7 +62,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(10)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> DAS(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> DAS(Unit<Q> unit) {
 		return unit.transform(E1);
 	}
 
@@ -76,7 +77,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(100)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> SAU(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> SAU(Unit<Q> unit) {
 		return unit.transform(E2);
 	}
 
@@ -91,7 +92,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e3)</code>.
 	 */
-	public static final <Q extends Quantity<?>> Unit<?> SAHASR(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> SAHASR(Unit<Q> unit) {
 		return unit.transform(E3);
 	}
 
@@ -101,7 +102,7 @@ public final class IndianPrefix {
 	 * </p>
 	 * Equivalent to {@link #SAHASR}.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> HAZAAR(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> HAZAAR(Unit<Q> unit) {
 		return SAHASR(unit);
 	}
 
@@ -116,7 +117,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e5)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> LAKH(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> LAKH(Unit<Q> unit) {
 		return unit.transform(E5);
 	}
 
@@ -134,7 +135,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e7)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> CRORE(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> CRORE(Unit<Q> unit) {
 		return unit.transform(E7);
 	}
 
@@ -152,7 +153,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e9)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> ARAWB(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> ARAWB(Unit<Q> unit) {
 		return unit.transform(E9);
 	}
 
@@ -167,7 +168,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e11)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> KHARAWB(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> KHARAWB(Unit<Q> unit) {
 		return unit.transform(E11);
 	}
 
@@ -182,7 +183,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e13)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> NEEL(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> NEEL(Unit<Q> unit) {
 		return unit.transform(E13);
 	}
 
@@ -197,7 +198,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e15)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> PADMA(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> PADMA(Unit<Q> unit) {
 		return unit.transform(E15);
 	}
 
@@ -212,7 +213,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e17)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> SHANKH(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> SHANKH(Unit<Q> unit) {
 		return unit.transform(E17);
 	}
 
@@ -227,7 +228,7 @@ public final class IndianPrefix {
 	 *            any unit.
 	 * @return <code>unit.times(1e19)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> MAHASHANKH(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> MAHASHANKH(Unit<Q> unit) {
 		return unit.transform(E19);
 	}
 

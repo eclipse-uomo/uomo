@@ -10,7 +10,6 @@
  */
 package org.eclipse.uomo.units;
 
-//import com.ibm.icu.text.n
 import java.math.BigInteger;
 
 import org.eclipse.uomo.units.impl.RationalConverter;
@@ -19,14 +18,15 @@ import org.unitsofmeasurement.unit.Unit;
 
 
 /**
- * Utility class holding prefixes used today in India, Pakistan, Bangladesh, Nepal
- * and Myanmar (Burma); based on grouping by two decimal places, rather than the
+ * Utility class holding prefixes used today in parts of India and Sri Lanka;
+ * based on grouping by two decimal places, rather than the
  * three decimal places common in most parts of the world. [code] import static
- * javax.measure.unit.NonSI.IndianPrefix.*; // Static import. ... Unit<Pressure>
- * LAKH_PASCAL = LAKH(PASCAL); Unit<Length> CRORE_METER = CRORE(METER); [/code]
+ * org.eclipse.uomo.units.TamilPrefix.*; // Static import. ... Unit<Pressure>
+ * ONDRU_PASCAL = ONDRU(PASCAL); 
+ * Unit<Length> PATHU_METER = PATHU(METER); [/code]
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.0 ($Revision$), $Date: 2010-11-28 $
+ * @version 1.1 ($Revision$), $Date: 2010-11-28 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
  *      Tamil units of measurement - Whole numbers</a>
@@ -47,7 +47,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1)</code>.
 	 */
-	public static final <Q extends Quantity<?>> Unit<?> onRu(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> onRu(Unit<Q> unit) {
 		return unit;
 	}
 	
@@ -62,7 +62,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(10)</code>.
 	 */
-	public static final <Q extends Quantity<?>> Unit<?> patthu(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> patthu(Unit<Q> unit) {
 		return unit.transform(E1);
 	}
 
@@ -77,7 +77,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(100)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> nooRu(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> nooRu(Unit<Q> unit) {
 		return unit.transform(E2);
 	}
 
@@ -92,7 +92,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e3)</code>.
 	 */
-	public static final <Q extends Quantity<?>> Unit<?> aayiram(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> aayiram(Unit<Q> unit) {
 		return unit.transform(E3);
 	}
 
@@ -107,7 +107,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e5)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> nooRaayiram(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> nooRaayiram(Unit<Q> unit) {
 		return unit.transform(E5);
 	}
 
@@ -125,7 +125,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e9)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> thoLLunn(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> thoLLunn(Unit<Q> unit) {
 		return unit.transform(E9);
 	}
 
@@ -140,7 +140,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e12)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> eegiyam(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> eegiyam(Unit<Q> unit) {
 		return unit.transform(E12);
 	}
 
@@ -155,7 +155,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e15)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> neLai(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> neLai(Unit<Q> unit) {
 		return unit.transform(E15);
 	}
 
@@ -170,7 +170,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e18)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> iLanji(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> iLanji(Unit<Q> unit) {
 		return unit.transform(E18);
 	}
 
@@ -185,7 +185,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e20)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> veLLam(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> veLLam(Unit<Q> unit) {
 		return unit.transform(E20);
 	}
 	
@@ -200,7 +200,7 @@ public final class TamilPrefix  {
 	 *            any unit.
 	 * @return <code>unit.times(1e21)</code>.
 	 */
-	public static final <Q extends Quantity<Q>> Unit<?> aambal(Unit<?> unit) {
+	public static final <Q extends Quantity<Q>> Unit<Q> aambal(Unit<Q> unit) {
 		return unit.transform(E21);
 	}
 	
@@ -211,7 +211,7 @@ public final class TamilPrefix  {
 		 * </p>
 		 * Sanskrit translation for {@link #onRu}.
 		 */
-		public static final <Q extends Quantity<?>> Unit<?> ONDRU (Unit<?> unit) {
+		public static final <Q extends Quantity<Q>> Unit<Q> ONDRU (Unit<Q> unit) {
 			return onRu(unit);
 		}
 		
@@ -221,7 +221,7 @@ public final class TamilPrefix  {
 		 * </p>
 		 * Sanskrit translation for {@link #patthu}.
 		 */
-		public static final <Q extends Quantity<?>> Unit<?> PATHU(Unit<?> unit) {
+		public static final <Q extends Quantity<Q>> Unit<Q> PATHU(Unit<Q> unit) {
 			return patthu(unit);
 		}
 	}

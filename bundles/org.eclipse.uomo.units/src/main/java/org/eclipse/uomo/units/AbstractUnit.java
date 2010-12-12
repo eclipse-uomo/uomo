@@ -81,7 +81,7 @@ import com.ibm.icu.util.MeasureUnit;
  *         Desruisseaux</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * 
- * @version 1.5 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.6 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * @see <a href="http://en.wikipedia.org/wiki/Units_of_measurement"> Wikipedia:
  *      Units of measurement</a>
  */
@@ -306,17 +306,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
 	 */
 	public UnitConverter getConverterTo(Unit<Q> that)
 			throws UnconvertibleException {
-		try {
-			return getConverterToAny(that);
-		} catch (UnconvertibleException e) { // Should not happen, except if the
-			// caller used raw types.
-			ClassCastException ex = new ClassCastException(
-					"Incompatible unit dimension"); //$NON-NLS-1$
-			ex.initCause(e);
-			throw ex;
-		} catch (IncommensurableException e) {
-			throw new UnconvertibleException(e);
-		}
+		return searchConverterTo(that);
 	}
 
 	/**
