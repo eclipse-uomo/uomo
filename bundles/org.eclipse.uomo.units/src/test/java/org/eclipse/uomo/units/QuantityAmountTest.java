@@ -45,7 +45,7 @@ public class QuantityAmountTest {
 	assertEquals("Wrong tuple element.", Double.valueOf(4.0), length
 		.getNumber());
 	assertEquals("Wrong conversion.", 4.0, length.doubleValue(METRE), 0.0);
-	assertEquals("Wrong conversion.", 400.0, length
+	assertEquals("Wrong conversion.", 0.04, length
 		.doubleValue(CENTI(METRE)), 0.0);
 
 	final LengthAmount other = new LengthAmount(8.0, METRE);
@@ -80,7 +80,7 @@ public class QuantityAmountTest {
 	assertEquals("Wrong tuple element.", BigInteger.valueOf(4), length
 		.getNumber());
 	assertEquals("Wrong conversion.", 4.0, length.doubleValue(METRE), 0.0);
-	assertEquals("Wrong conversion.", 400.0, length
+	assertEquals("Wrong conversion.", 0.04, length
 		.doubleValue(CENTI(METRE)), 0.0);
 
 	// Quantity equivalent to 'length', but backed by a double.
