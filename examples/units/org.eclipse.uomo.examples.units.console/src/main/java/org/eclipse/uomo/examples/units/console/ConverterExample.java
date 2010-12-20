@@ -1,4 +1,4 @@
-package org.eclipse.uomo.units.impl;
+package org.eclipse.uomo.examples.units.console;
 
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;

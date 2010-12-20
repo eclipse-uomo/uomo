@@ -34,8 +34,8 @@ import com.ibm.icu.util.ULocale;
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author Eric Russell
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.5 ($Revision: 215 $), $Date: 2010-09-19 22:12:08 +0200 (So, 19 Sep 2010) $
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.5.1 ($Revision: 215 $), $Date: 2010-09-19 22:12:08 +0200 (So, 19 Sep 2010) $
  * 
  */
 public abstract class AbstractFormat extends UFormat implements UnitFormat {

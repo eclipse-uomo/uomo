@@ -1,4 +1,4 @@
-package org.eclipse.uomo.units.impl;
+package org.eclipse.uomo.examples.units.console;
 
 import org.unitsofmeasurement.quantity.Acceleration;
 import org.unitsofmeasurement.quantity.Length;

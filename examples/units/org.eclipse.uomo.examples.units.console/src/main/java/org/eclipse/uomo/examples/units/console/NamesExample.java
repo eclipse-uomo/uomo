@@ -1,4 +1,4 @@
-package org.eclipse.uomo.units.impl;
+package org.eclipse.uomo.examples.units.console;
 
 import com.ibm.icu.impl.ICUService;
 import com.ibm.icu.util.ULocale;

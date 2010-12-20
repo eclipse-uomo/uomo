@@ -152,7 +152,7 @@ import com.ibm.icu.util.ULocale;
  * </table>
  * 
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4.1 ($Revision: 232 $), $Date: 2010-10-13 17:13:18 +0200 (Mi, 13 Okt 2010) $
  */
 public class LocalUnitFormatImpl extends AbstractFormat {

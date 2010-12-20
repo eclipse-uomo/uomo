@@ -18,30 +18,27 @@ import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.RationalConverter;
+import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 
-import com.ibm.icu.util.TimeUnit;
-import com.ibm.icu.util.TimeUnitAmount;
-
 /**
  * Represents a period of existence or persistence. The metric system unit for
  * this quantity is "s" (second).
  * 
+ * Due to an incompatible private constructor in ICU4J TimeUnit, this uses BaseUnit.
+ * TODO add conversions with ICU4J TimeUnitAmount where necessary
+ * 
  * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.3.1 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
+public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 
 	public TimeAmount(Number number, Unit<Time> unit) {
-		super(number, (TimeUnit) unit);
-	}
-
-	public TimeAmount(double number, Unit<Time> unit) {
-		super(number, (TimeUnit) unit);
+		super(number, unit);
 	}
 
 	/**
@@ -101,13 +98,13 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 
 	public IMeasure<Time> add(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
-				+ ((TimeUnitAmount) that).getNumber().doubleValue(),
+				+ ((BaseAmount) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 
 	public IMeasure<Time> substract(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
-				- ((TimeUnitAmount) that).getNumber().doubleValue(),
+				- ((BaseAmount) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 	
@@ -151,7 +148,7 @@ public class TimeAmount extends TimeUnitAmount implements IMeasure<Time> {
 		return to(unit, MathContext.DECIMAL32);
 	}
 	
-    protected IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
+    public IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
         if (this.getUnit().equals(unit))
             return this;
         UnitConverter cvtr = this.getQuantityUnit().getConverterTo(unit);

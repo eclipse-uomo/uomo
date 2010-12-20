@@ -26,6 +26,8 @@ import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.quantity.*;
 
+import com.ibm.icu.util.TimeUnit;
+
 /**
  * <p>
  * This class contains SI (Système International d'Unités) base units, and
