@@ -105,7 +105,7 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
      * @param  that the amount divisor.
      * @return <code>this / that</code>.
      */
-    IMeasure<Q> divide(IMeasure<Q> that);
+    IMeasure<?> divide(IMeasure<?> that);
     
     IMeasure<Q> to(Unit<Q> unit);
 }

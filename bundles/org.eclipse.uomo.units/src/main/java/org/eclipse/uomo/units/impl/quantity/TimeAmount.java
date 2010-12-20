@@ -32,8 +32,8 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * Due to an incompatible private constructor in ICU4J TimeUnit, this uses BaseUnit.
  * TODO add conversions with ICU4J TimeUnitAmount where necessary
  * 
- * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.5 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
 public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 
@@ -96,30 +96,32 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public IMeasure<Time> add(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
-				+ ((BaseAmount) that).getNumber().doubleValue(),
+				+ ((BaseAmount<Time>) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public IMeasure<Time> substract(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
-				- ((BaseAmount) that).getNumber().doubleValue(),
+				- ((BaseAmount<Time>) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 	
-	public IMeasure<Time> divide(IMeasure<Time> that) {
-		@SuppressWarnings("unchecked")
-		Unit<Time> unit = (Unit<Time>) getQuantityUnit().divide(that.getQuantityUnit());
+//	public IMeasure<Time> divide(IMeasure<?> that) {
+//		@SuppressWarnings("unchecked")
+//		Unit<Time> unit = (Unit<Time>) getQuantityUnit().divide(that.getQuantityUnit());
 		
 		// FIXME include number division
 //		return new TimeAmount((BigDecimal) getNumber())
 //				.divide((BigDecimal) ((Measure)that).getNumber()), unit);
-		return new TimeAmount(getNumber(), unit);
-	}
+//		return new TimeAmount(getNumber(), unit);
+//	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public IMeasure<?> multiply(IMeasure<?> that) {
-		@SuppressWarnings("unchecked")
 		Unit<Time> unit = (Unit<Time>) getQuantityUnit().multiply(that.getQuantityUnit());
 		
 		// FIXME include number division
@@ -138,8 +140,8 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 	 *            the unit in which the value is stated.
 	 * @return the corresponding amount.
 	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static TimeAmount valueOf(Number value, Unit<Time> unit) {
-		@SuppressWarnings({ "rawtypes", "unchecked" })
 		TimeAmount amount = new TimeAmount(value, unit);
 		return amount;
 	}
@@ -148,7 +150,8 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 		return to(unit, MathContext.DECIMAL32);
 	}
 	
-    public IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
+    @SuppressWarnings("unchecked")
+	public IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
         if (this.getUnit().equals(unit))
             return this;
         UnitConverter cvtr = this.getQuantityUnit().getConverterTo(unit);

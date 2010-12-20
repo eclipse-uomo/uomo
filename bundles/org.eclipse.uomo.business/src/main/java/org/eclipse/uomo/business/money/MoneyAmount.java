@@ -248,7 +248,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 		return minus((MoneyAmount)that);
 	}
 
-	public IMeasure<IMoney> divide(IMeasure<IMoney> that) {
+	public IMeasure<IMoney> divide(IMeasure<?> that) {
 		return divide((MoneyAmount)that);
 	}
 

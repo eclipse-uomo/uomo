@@ -77,7 +77,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public IMeasure<Q> divide(IMeasure<Q> that) {
+	public IMeasure<?> divide(IMeasure<?> that) {
 		Unit<?> unit = getQuantityUnit().divide(that.getQuantityUnit());
 		return (IMeasure<Q>) valueOf((getNumber().doubleValue() /
 				((Measure)that).getNumber().doubleValue()), unit);
