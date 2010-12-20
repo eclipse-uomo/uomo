@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
-package org.eclipse.uomo.units.impl.quantity;
+package org.eclipse.uomo.examples.units.console;
 
 
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
@@ -26,7 +26,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author werner.keil
  */
 
-public class Run {
+public class Runway {
 
 	public static void main(String[] argv) {
 

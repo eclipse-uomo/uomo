@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
-package org.eclipse.uomo.units.impl.quantity;
+package org.eclipse.uomo.examples.units.console;
 
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 
