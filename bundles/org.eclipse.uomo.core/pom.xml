@@ -14,8 +14,8 @@
     <dependencies>
            <dependency>
             <groupId>org.eclipse.osgi</groupId>
-            <artifactId>org.eclipse.osgi.services</artifactId>
-            <version>3.1.200.v20071203</version>
+            <artifactId>services</artifactId>
+            <version>3.1.200-v20070605</version>
         </dependency>
     </dependencies>
 
