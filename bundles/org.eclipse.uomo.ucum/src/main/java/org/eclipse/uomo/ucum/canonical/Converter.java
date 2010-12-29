@@ -17,6 +17,7 @@ import static org.eclipse.uomo.core.impl.OutputHelper.println;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.uomo.core.UOMoRuntimeException;
@@ -76,16 +77,16 @@ public class Converter implements UnitConverter {
 		}
 
 		// normalise
-		debug("normalise", res.getUnit());
+		debug("normalise", res.getUnit()); //$NON-NLS-1$
 		if (res.getUnit().hasOp() && res.getUnit().getOp() == Operator.DIVISION) {
 			res.getUnit().setOp(Operator.MULTIPLICATION);
 			flipExponents(res.getUnit().getTerm());
-			debug("flipped", res.getUnit());
+			debug("flipped", res.getUnit()); //$NON-NLS-1$
 		}
 
 		if (!res.getUnit().hasComp() || res.getUnit().getComp() == one) {
 			res.setUnit(res.getUnit().getTerm());
-			debug("trimmed", res.getUnit());
+			debug("trimmed", res.getUnit()); //$NON-NLS-1$
 		}
 
 		// everything in scope is a multiplication operation. If comp is a term,
@@ -101,13 +102,13 @@ public class Converter implements UnitConverter {
 			end.setOp(Operator.MULTIPLICATION);
 			end.setTermCheckOp(res.getUnit().getTerm());
 			res.setUnit((Term) res.getUnit().getComp());
-			debug("reorged", res.getUnit());
+			debug("reorged", res.getUnit()); //$NON-NLS-1$
 		}
 
 		if (res.hasUnit()
 				&& (!res.getUnit().hasComp() || res.getUnit().getComp() == one)) {
 			res.setUnit(res.getUnit().getTerm());
-			debug("trimmed", res.getUnit());
+			debug("trimmed", res.getUnit()); //$NON-NLS-1$
 		}
 		// now we have a linear list of terms, each with one component.
 		// we scan through the list looking for common components to factor out
@@ -120,7 +121,7 @@ public class Converter implements UnitConverter {
 
 		if (res.hasUnit() && !res.getUnit().hasTerm())
 			res.getUnit().setOp(null);
-		debug("norm finished", res.getUnit());
+		debug("norm finished", res.getUnit()); //$NON-NLS-1$
 		// System.out.println("value: "+res.getValue().toPlainString()+"; units: "+new
 		// ExpressionComposer().compose(res.getUnit()));
 		return res;
@@ -128,7 +129,7 @@ public class Converter implements UnitConverter {
 
 	private void debug(String state, Term unit) {
 		if (isConsoleOutput()) { // avoiding any call if no debug output set
-			println(state + ": " + new ExpressionComposer().compose(unit));
+			println(state + ": " + new ExpressionComposer().compose(unit)); //$NON-NLS-1$
 		}
 	}
 
@@ -190,7 +191,7 @@ public class Converter implements UnitConverter {
 		} else if (comp instanceof Symbol)
 			return convertSymbol(ctxt, (Symbol) comp);
 		else
-			throw new UOMoRuntimeException("unknown component type "
+			throw new UOMoRuntimeException("unknown component type " //$NON-NLS-1$
 					+ comp.getClass().toString());
 	}
 
@@ -210,7 +211,7 @@ public class Converter implements UnitConverter {
 			String u = unit.getValue().getUnit();
 			if (unit.isSpecial()) {
 				if (!handlers.exists(unit.getCode()))
-					throw new UOMoRuntimeException("Not handled yet (special unit)");
+					throw new UOMoRuntimeException("Not handled yet (special unit)"); //$NON-NLS-1$
 				else {
 					u = handlers.get(unit.getCode()).getUnits();
 					ctxt.multiplyValue(handlers.get(unit.getCode()).getValue());
@@ -235,7 +236,7 @@ public class Converter implements UnitConverter {
 					applyExponent((Term) ret, comp.getExponent());
 					return ret;
 				} else
-					throw new UOMoRuntimeException("unknown component type "
+					throw new UOMoRuntimeException("unknown component type " //$NON-NLS-1$
 							+ comp.getClass().toString());
 			} else {
 				Canonical t1 = convertTerm(canonical);
@@ -278,44 +279,37 @@ public class Converter implements UnitConverter {
 	}
 
 	public UnitConverter concatenate(UnitConverter converter) {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	public double convert(double value) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public BigDecimal convert(BigDecimal value, MathContext ctx)
 			throws ArithmeticException {
-		// TODO Auto-generated method stub
-		return null;
+		return value;
 	}
 
 	public List<UnitConverter> getCompoundConverters() {
-		// TODO Auto-generated method stub
-		return null;
+		final List<UnitConverter> compound = new ArrayList<UnitConverter>();
+		compound.add(this);
+		return compound;
 	}
 
 	public UnitConverter inverse() {
-		// TODO Auto-generated method stub
-		return null;
+		return this;
 	}
 
 	public boolean isIdentity() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isLinear() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public Number convert(Number value) {
-		// TODO Auto-generated method stub
-		return null;
+		return value;
 	}
-
 }
