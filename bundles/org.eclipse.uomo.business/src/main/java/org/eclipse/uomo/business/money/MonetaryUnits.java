@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.3, $Date: 2010-10-13 16:45:05 +0200 (Mi, 13 Okt 2010) $
+ * @version 0.4, $Date: 2010-10-13 16:45:05 +0200 (Mi, 13 Okt 2010) $
  */
 public final class MonetaryUnits implements SystemOfUnits, IName {
 	
@@ -77,7 +77,7 @@ public final class MonetaryUnits implements SystemOfUnits, IName {
 		return null;
 	}
 
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
+	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}

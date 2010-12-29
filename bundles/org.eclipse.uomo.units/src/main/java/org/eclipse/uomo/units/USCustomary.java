@@ -46,7 +46,7 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.9 ($Revision: 230 $), $Date: 2010-07-09 00:38:11 +0100 (Fr, 09 Jul
+ * @version 1.10 ($Revision: 230 $), $Date: 2010-07-09 00:38:11 +0100 (Fr, 09 Jul
  *          2010) $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
@@ -388,7 +388,7 @@ public final class USCustomary implements SystemOfUnits, IName {
 	}
 
 	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
+	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}

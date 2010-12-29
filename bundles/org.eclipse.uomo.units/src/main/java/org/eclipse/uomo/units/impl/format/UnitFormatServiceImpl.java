@@ -10,10 +10,13 @@
  */
 package org.eclipse.uomo.units.impl.format;
 
+import java.io.IOException;
+import java.text.ParsePosition;
 import java.util.Locale;
 
 import org.eclipse.uomo.units.AbstractFormat;
 import org.unitsofmeasurement.service.UnitFormatService;
+import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitFormat;
 
 import com.ibm.icu.util.ULocale;
@@ -38,6 +41,23 @@ public class UnitFormatServiceImpl implements UnitFormatService {
 	@Override
 	public UnitFormat getUnitFormat(Locale locale) {
 		return AbstractFormat.getUnitFormat(ULocale.forLocale(locale));
+	}
+
+	@Override
+	public Appendable format(Unit<?> arg0, Appendable arg1) throws IOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	@Deprecated
+	/**
+	 * @deprecated error in API, fixed in RC2
+	 */
+	public Unit<?> parse(CharSequence arg0, ParsePosition arg1)
+			throws IllegalArgumentException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

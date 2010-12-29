@@ -26,8 +26,6 @@ import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.quantity.*;
 
-import com.ibm.icu.util.TimeUnit;
-
 /**
  * <p>
  * This class contains SI (Système International d'Unités) base units, and
@@ -49,7 +47,7 @@ import com.ibm.icu.util.TimeUnit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.26 ($Revision: 230 $), $Date: 2010-10-13 16:45:08 +0200 (Mi, 13 Okt 2010) $
+ * @version 1.27 ($Revision: 230 $), $Date: 2010-10-13 16:45:08 +0200 (Mi, 13 Okt 2010) $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>
@@ -772,7 +770,7 @@ public final class SI implements SystemOfUnits, IName {
 	}
 
 	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
+	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> qType) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -32,12 +32,6 @@
             <artifactId>org.eclipse.uomo.core</artifactId>
             <version>0.2.0.SNAPSHOT</version>
             <scope>compile</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>runtime</artifactId>
-                    <groupId>org.eclipse.core</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

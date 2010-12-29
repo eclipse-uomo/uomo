@@ -71,7 +71,7 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.13 ($Revision: 230 $), $Date: 2010-09-06 00:47:59 +0200 (Mo, 06 Sep
+ * @version 1.14 ($Revision: 230 $), $Date: 2010-09-06 00:47:59 +0200 (Mo, 06 Sep
  *          2010) $
  */
 final class NonSI implements SystemOfUnits, IName {
@@ -668,9 +668,8 @@ final class NonSI implements SystemOfUnits, IName {
 	}
 
 	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
+	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
