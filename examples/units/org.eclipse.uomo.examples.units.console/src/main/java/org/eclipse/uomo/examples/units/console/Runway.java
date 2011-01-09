@@ -28,6 +28,7 @@ import org.unitsofmeasurement.unit.Unit;
 
 public class Runway {
 
+	@SuppressWarnings("unused")
 	public static void main(String[] argv) {
 
 		// final Unit<Length> klik = new Unit("kilometre",
@@ -38,9 +39,9 @@ public class Runway {
 
 		Trip trip = new Trip(2); // specify number of legs
 
-		trip.addLeg(0, new TripLeg("YKK", "NYC", new LengthAmount(1, klik)));
+		trip.addLeg(0, new Trip.Leg("YKK", "NYC", new LengthAmount(1, klik)));
 
-		trip.addLeg(1, new TripLeg("NYC", "LAX", new LengthAmount(0, klik)));
+		trip.addLeg(1, new Trip.Leg("NYC", "LAX", new LengthAmount(0, klik)));
 
 		LengthAmount totDist = new LengthAmount(0, klik);
 
@@ -55,8 +56,7 @@ public class Runway {
 		// System.out.println(totDist.showInUnits(klik,2));
 		System.out.println(((AbstractUnit<?>) totDist.getQuantityUnit())
 				.getName());
-		// Distance nextDist = new Distance(0, klik2); // this willl fail!
-
-		System.out.println(((IName) klik2).getName());
+		// Distance nextDist = new Distance(0, klik2); // this will fail!
+		//System.out.println(((IName) klik2).getName());
 	}
 }

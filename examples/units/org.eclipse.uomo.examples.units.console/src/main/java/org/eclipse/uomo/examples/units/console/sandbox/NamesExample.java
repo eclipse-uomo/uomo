@@ -1,4 +1,4 @@
-package org.eclipse.uomo.examples.units.console;
+package org.eclipse.uomo.examples.units.console.sandbox;
 
 import com.ibm.icu.impl.ICUService;
 import com.ibm.icu.util.ULocale;
@@ -10,7 +10,8 @@ public class NamesExample {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-//		ICUService.Factory factory = ICUService.SimpleFactory((Object)"a", "b");
+		ICUService.Factory factory = new ICUService.SimpleFactory((Object)"a", "b");
+		System.out.println(factory);
 	}
 
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,15 +12,15 @@
  * Provides quantitative properties or attributes of thing such as
  * mass, time, distance, heat, and angular separation.
  * Quantities of different kinds are represented by sub-types of the
- * {@link org.unitsofmeasure.Quantity} interface, which can be
- * created by a {@link javax.measure.quantity.QuantityFactory}.
+ * {@link org.unitsofmeasurement.quantity.Quantity} interface, which can be
+ * created by a new {@link org.eclipse.uomo.units.impl.BaseAmount} instance or its subclasses.
  *
  * <p> Only quantities defined in the <a href="http://en.wikipedia.org/wiki/International_System_of_Units">International System of Units</a>
  *     are provided here. Users can create their own quantity types by extending the {@link
- *     org.unitsofmeasure.Quantity Quantity} interface.</p>
+ *     org.unitsofmeasurement.quantity.Quantity Quantity} interface.</p>
  *
  * <p> This package supports <cite>measurable</cite> quantities, which can be
- *     expressed as ({@link java.lang.Number}, {@link org.unitsofmeasure.Unit}) tuples.
+ *     expressed as ({@link java.lang.Number}, {@link org.unitsofmeasurement.unit.Unit}) tuples.
  *     Those tuples are not expected to be used directly in numerically intensive code.
  *     They are more useful as metadata converted to the application internal representation
  *     (for example {@code double} primitive type with the requirement to provide values in
@@ -47,7 +47,7 @@
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 2.1, $Date: 2010-08-08 19:56:23 +0100 (So, 08 Aug 2010) $
+ * @version 2.2, $Date: 2011-01-09 19:56:23 +0100 (So, 09 Jan 2011) $
  */
 package org.eclipse.uomo.units.impl.quantity;
 
