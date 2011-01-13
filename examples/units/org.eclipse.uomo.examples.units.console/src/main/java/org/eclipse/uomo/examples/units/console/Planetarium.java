@@ -8,22 +8,34 @@
  * Contributors:
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
-package org.eclipse.uomo.units.impl;
+package org.eclipse.uomo.examples.units.console;
 
+import static org.eclipse.uomo.core.impl.OutputHelper.CONSOLE_OUTPUT;
 import static org.eclipse.uomo.core.impl.OutputHelper.println;
 
+import org.eclipse.uomo.examples.units.types.Planet;
 import org.junit.Test;
 
 /**
  * @author Werner Keil
- * @version 1.3 ($Revision: 90 $), $Date: 2010-07-28 18:39:26 +0100 (Mi, 28 Jul 2010) $
+ * @version 1.4 ($Revision: 90 $), $Date: 2011-01-11 18:39:26 +0100 (Tu, 11 Jan
+ *          2011) $
  */
-public class PlanetTest {
+public class Planetarium {
+	private static final Planetarium solarSystem = new Planetarium();
+
+	private Planetarium() {
+		System.setProperty(CONSOLE_OUTPUT, "true");
+	}
+	
+	public static void main(String[] argv) {
+		solarSystem.testPlanets();
+	}
 
 	@Test
 	public void testPlanets() {
 		Planet[] solarSystem = Planet.values();
-		
+
 		for (Planet planet : solarSystem) {
 			println(planet);
 		}

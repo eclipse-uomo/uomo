@@ -14,6 +14,7 @@ package org.eclipse.uomo.examples.units.console;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 
 import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.examples.units.types.Trip;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
@@ -45,11 +46,11 @@ public class Runway {
 
 		LengthAmount totDist = new LengthAmount(0, klik);
 
-		for (int i = 0; i < trip.tripleg.length; i++) {
+		for (Trip.Leg leg : trip.getLegs()) {
 
 			// totDist = totDist.add(trip.tripleg[i].getDist()); FIXME
 			totDist = new LengthAmount(totDist.getNumber().doubleValue()
-					+ trip.tripleg[i].getDist().getNumber().doubleValue(), klik);
+					+ leg.getDist().getNumber().doubleValue(), klik);
 		}
 
 		System.out.println(totDist);

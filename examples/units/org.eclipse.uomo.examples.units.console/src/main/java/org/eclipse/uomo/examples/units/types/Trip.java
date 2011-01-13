@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Paul Morrison - initial API and implementation
  */
-package org.eclipse.uomo.examples.units.console;
+package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 
@@ -16,12 +16,12 @@ import org.eclipse.uomo.units.impl.quantity.LengthAmount;
  * @author paul.morrison
  * @author werner.keil
  */
-class Trip {
+public class Trip {
 
 	/**
 	 * @author paul.morrison
 	 */
-	static class Leg {
+	public static class Leg {
 
 		String fromAirport;
 		String toAirport;
@@ -40,6 +40,10 @@ class Trip {
 	}
 
 	Leg tripleg[];
+
+	public Leg[] getLegs() {
+		return tripleg;
+	}
 
 	public Trip(int no) {
 

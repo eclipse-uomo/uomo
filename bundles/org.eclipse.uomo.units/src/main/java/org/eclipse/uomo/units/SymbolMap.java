@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,13 @@ import org.unitsofmeasurement.unit.UnitConverter;
 /**
  * <p> This interface provides a set of mappings between
  *     {@link Unit Units} and symbols (both ways),
- *     and from {@link org.eclipse.uomo.units.internal.AbstractConverter.unit.UnitConverter
+ *     and from {@link org.unitsofmeasurement.UnitConverter
  *     UnitConverter}s to prefixes symbols (also both ways).</p>
  *     
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author Eric Russell
- * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.0 ($Revision$), $Date$
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.1 , $Date: 2011-01-11 $
  */
 public interface SymbolMap {
 

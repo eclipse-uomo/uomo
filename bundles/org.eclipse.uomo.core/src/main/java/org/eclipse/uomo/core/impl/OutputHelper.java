@@ -18,7 +18,7 @@ package org.eclipse.uomo.core.impl;
  * @author Werner Keil
  */
 public abstract class OutputHelper {
-	private static final String CONSOLE_OUTPUT = "consoleOutput";
+	public static final String CONSOLE_OUTPUT = "consoleOutput";
 
 	public static final boolean isConsoleOutput() {
 		return ("true".equals(System.getProperty(CONSOLE_OUTPUT)));
