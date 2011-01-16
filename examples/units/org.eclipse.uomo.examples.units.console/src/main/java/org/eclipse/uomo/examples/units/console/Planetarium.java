@@ -14,7 +14,6 @@ import static org.eclipse.uomo.core.impl.OutputHelper.CONSOLE_OUTPUT;
 import static org.eclipse.uomo.core.impl.OutputHelper.println;
 
 import org.eclipse.uomo.examples.units.types.Planet;
-import org.junit.Test;
 
 /**
  * @author Werner Keil
@@ -32,7 +31,7 @@ public class Planetarium {
 		solarSystem.testPlanets();
 	}
 
-	@Test
+//	@Test
 	public void testPlanets() {
 		Planet[] solarSystem = Planet.values();
 
