@@ -33,12 +33,6 @@
             <name>Openl10.net</name>
             <url>http://nexus.openl10n.net/content/groups/public/</url>
         </repository>
-                
-        <repository>
-            <id>elasticSearch</id>
-            <name>ElasticSearch (Google Code)</name>
-            <url>http://code.google.com/p/elasticsearch/source/browse/#svn/maven</url>
-        </repository>
     </repositories>
 	
 </project>

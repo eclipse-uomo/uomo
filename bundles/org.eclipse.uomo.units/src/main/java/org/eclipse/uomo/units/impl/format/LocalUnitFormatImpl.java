@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil, Eric Russell - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.format;
 
@@ -180,7 +180,13 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 
 	/** Multiplicand character */
 	private static final char MIDDLE_DOT = '\u00b7'; //$NON-NLS-1$
-
+	
+	/** Exponent 1 character */
+	private static final char EXPONENT_1 = '\u00b9'; //$NON-NLS-1$
+	
+	/** Exponent 2 character */
+	private static final char EXPONENT_2 = '\u00b2'; //$NON-NLS-1$
+	
 	/** Operator precedence for the addition and subtraction operations */
 	private static final int ADDITION_PRECEDENCE = 0;
 
@@ -190,6 +196,8 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 	/** Operator precedence for the exponentiation and logarithm operations */
 	private static final int EXPONENT_PRECEDENCE = PRODUCT_PRECEDENCE + 2;
 
+
+	
 	/**
 	 * Operator precedence for a unit identifier containing no mathematical
 	 * operations (i.e., consisting exclusively of an identifier and possibly a
@@ -454,7 +462,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 		if (continued) {
 			buffer.append(MIDDLE_DOT);
 		}
-		StringBuffer temp = new StringBuffer();
+		StringBuilder temp = new StringBuilder();
 		int unitPrecedence = formatInternal(unit, temp);
 
 		if (unitPrecedence < PRODUCT_PRECEDENCE) {
@@ -473,10 +481,10 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 					buffer.append('\u2070'); //$NON-NLS-1$
 					break;
 				case '1':
-					buffer.append('\u00b9'); //$NON-NLS-1$
+					buffer.append(EXPONENT_1); //$NON-NLS-1$
 					break;
 				case '2':
-					buffer.append('\u00b2'); //$NON-NLS-1$
+					buffer.append(EXPONENT_2);
 					break;
 				case '3':
 					buffer.append('\u00b3'); //$NON-NLS-1$
@@ -586,7 +594,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 			} else {
 				expr.append((int) base);
 			}
-			expr.append('^');
+			expr.append('^'); 
 			buffer.insert(0, expr);
 			return EXPONENT_PRECEDENCE;
 		} else if (converter instanceof MultiplyConverter) {
@@ -676,6 +684,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 	 * @see java.text.Format#format(java.lang.Object, java.lang.StringBuffer,
 	 *      java.text.FieldPosition)
 	 */
+	@Override
 	public StringBuffer format(Object obj, StringBuffer toAppendTo,
 			FieldPosition pos) {
 		try {
