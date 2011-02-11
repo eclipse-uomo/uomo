@@ -5,11 +5,11 @@
   <parent>
     <artifactId>org.eclipse.uomo.features</artifactId>
     <groupId>org.eclipse.uomo</groupId>
-    <version>0.6.0.RC1</version>
+    <version>0.6.0.RC2</version>
   </parent>
   <groupId>org.eclipse.uomo</groupId>
   <artifactId>org.eclipse.uomo.feature</artifactId>
-  <version>0.6.0.RC1</version>
+  <version>0.6.0.RC2</version>
   <name>UOMo Feature</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

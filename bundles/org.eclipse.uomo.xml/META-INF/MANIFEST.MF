@@ -4,7 +4,4 @@ Bundle-Name: UOMo XML
 Bundle-SymbolicName: org.eclipse.uomo.xml
 Bundle-Version: 0.3.0.SNAPSHOT
 Require-Bundle: org.eclipse.uomo.core;bundle-version="0.1.0",
- org.apache.commons.lang,
- org.apache.xerces,
- org.xmlpull.v1;bundle-version="1.1.3",
- org.junit;bundle-version="4.8.1"
+ org.xmlpull.v1;bundle-version="1.1.3"

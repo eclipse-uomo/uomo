@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uomo"
       label="Eclipse UOMo"
-      version="0.5.2.SNAPSHOT"
+      version="0.6.0.RC2"
       provider-name="Eclipse.org">
 
    <description url="http://www.eclipse.org/uomo">
@@ -18,15 +18,18 @@
    </license>
 
    <requires>
-      <import plugin="com.ibm.icu" version="4.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.osgi"/>
-      <import plugin="org.apache.commons.lang"/>
-      <import plugin="org.apache.xerces"/>
+      <import plugin="com.ibm.icu" version="4.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.core" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.unitsofmeasurement.unit-api" version="0.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="org.eclipse.uomo.core" version="0.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.xmlpull.v1" version="1.1.3" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.util" version="0.2.6" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.uomo.xml" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.uomo.xml" version="0.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.units" version="0.5.0" match="greaterOrEqual"/>
-      <import plugin="org.unitsofmeasurement.unit-api"/>
+      <import plugin="org.eclipse.osgi" version="3.6.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi.services" version="3.2.100" match="greaterOrEqual"/>
    </requires>
 
    <plugin

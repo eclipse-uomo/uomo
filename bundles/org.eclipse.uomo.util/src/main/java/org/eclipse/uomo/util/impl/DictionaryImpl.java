@@ -35,13 +35,11 @@ public class DictionaryImpl implements DictionaryService {
 		return fLanguage;
 	}
 
-	@Override
 	public void registerDictionary(Dictionary dictionary) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void unregisterDictionary(Dictionary dictionary) {
 		// TODO Auto-generated method stub
 		

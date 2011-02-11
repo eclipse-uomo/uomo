@@ -1,12 +1,12 @@
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>org.eclipse.uomo</artifactId>
 		<groupId>org.eclipse.uomo</groupId>
-		<version>0.6.0.RC1</version>
+		<version>0.6.0.RC2</version>
 	</parent>
+	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo.examples</artifactId>
 	<packaging>pom</packaging>
