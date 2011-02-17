@@ -89,10 +89,26 @@ public class BaseUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> {
     public boolean equals(Object that) {
         if (this == that)
             return true;
-        if (!(that instanceof BaseUnit<?>))
-            return false;
-        BaseUnit<?> thatUnit = (BaseUnit<?>) that;
-        return this.symbol.equals(thatUnit.symbol);
+        if (!(that instanceof BaseUnit<?>)) {
+        	if (!(that instanceof Unit<?>)) {
+        		return false;
+        	} else {
+        		if (that instanceof TransformedUnit<?>) {
+        			if (((TransformedUnit<?>) that).getParentUnit() instanceof BaseUnit<?>) {        				
+        				if(this.getSymbol().equals(((TransformedUnit<?>)that).getParentUnit().getSymbol())) {
+        					for (UnitConverter comp : ((TransformedUnit<?>) that).toParentUnit().getCompoundConverters()) {
+        						// FIXME evaluate factor 1 for TU
+//								System.out.println(comp.toString());
+							}
+        				}
+        			}
+        		}
+        		return false;
+        	}
+        }  else {        	
+	        BaseUnit<?> thatUnit = (BaseUnit<?>) that;
+	        return this.symbol.equals(thatUnit.symbol);
+        }
     }
 
     @Override

@@ -21,6 +21,8 @@ public class ConverterExample {
 	    System.out.println(ELECTRON_VOLT.isCompatible(WATT.multiply(HOUR)));
 	    // Retrieval of the unit dimension (depends upon the current model).
 	    System.out.println(ELECTRON_VOLT.getDimension());
+	    System.out.println(KILOGRAM.equals(KILO(GRAM)));
+	    System.out.println(KILOGRAM.equals(KILO(OUNCE)));
 	}
 
 }
