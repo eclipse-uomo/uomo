@@ -3,7 +3,8 @@
       id="org.eclipse.uomo"
       label="Eclipse UOMo"
       version="0.6.0.RC2"
-      provider-name="Eclipse.org">
+      provider-name="Eclipse.org"
+      plugin="org.eclipse.uomo">
 
    <description url="http://www.eclipse.org/uomo">
       Eclipse UOMo
@@ -206,6 +207,13 @@ This Agreement is governed by the laws of the State of New York and the intellec
 
    <plugin
          id="org.unitsofmeasurement.unit-api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.uomo"
          download-size="0"
          install-size="0"
          version="0.0.0"
