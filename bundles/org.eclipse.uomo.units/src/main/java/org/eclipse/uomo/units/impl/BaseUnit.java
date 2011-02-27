@@ -97,7 +97,7 @@ public class BaseUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> {
         			if (((TransformedUnit<?>) that).getParentUnit() instanceof BaseUnit<?>) {        				
         				if(this.getSymbol().equals(((TransformedUnit<?>)that).getParentUnit().getSymbol())) {
         					for (UnitConverter comp : ((TransformedUnit<?>) that).toParentUnit().getCompoundConverters()) {
-        						// FIXME evaluate factor 1 for TU
+        						// FIXME evaluate factor 1 for TU (Bug 338334)
 //								System.out.println(comp.toString());
 							}
         				}

@@ -4,6 +4,7 @@ import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.USCustomary;
 import org.eclipse.uomo.units.impl.quantity.AreaAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
+import org.eclipse.uomo.units.impl.quantity.MassAmount;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 import org.unitsofmeasurement.quantity.Area;
@@ -32,5 +33,9 @@ public class HelloUnits {
 		AreaAmount area = new AreaAmount(length.getNumber().doubleValue() * length.getNumber().doubleValue(), 
 				(Unit<Area>) length.getQuantityUnit().multiply(SI.METRE));
 		System.out.println(area);
+		
+		MassAmount mass = new MassAmount(1000, SI.GRAM);
+		MassAmount mass2 = new MassAmount(1, SI.KILOGRAM);
+		System.out.println(mass.equals(mass2));
 	}
 }

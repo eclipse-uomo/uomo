@@ -157,7 +157,8 @@ Unit<?> addExpr() throws ParseException {
 //    throw new Error("Missing return statement in function");
   }
 
-    Unit exponentExpr() throws ParseException {
+    @SuppressWarnings("unused")
+	Unit exponentExpr() throws ParseException {
         Unit result = AbstractUnit.ONE;
         Exponent exponent = null;
         Token token = null;
@@ -243,7 +244,6 @@ Unit<?> addExpr() throws ParseException {
             }
         }
         {if (true) return result.transform(new LogConverter(base));}
-        break;
       default:
         jj_la1[9] = jj_gen;
         jj_consume_token(-1);
@@ -299,7 +299,8 @@ Unit<?> addExpr() throws ParseException {
 //    throw new Error("Missing return statement in function");
   }
 
-  Token sign() throws ParseException {
+  @SuppressWarnings("unused")
+Token sign() throws ParseException {
         Token result = null;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
     case PLUS:
@@ -363,7 +364,6 @@ Unit<?> addExpr() throws ParseException {
                 pow = -pow;
             }
             {if (true) return new Exponent(pow, 1);}
-        break;
       case OPEN_PAREN:
         jj_consume_token(OPEN_PAREN);
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
