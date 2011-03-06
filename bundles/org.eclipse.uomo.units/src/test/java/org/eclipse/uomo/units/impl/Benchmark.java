@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ import static org.eclipse.uomo.units.SI.KILOGRAM;
 import static org.eclipse.uomo.units.SI.Prefix.*;
 
 import java.util.Random;
+import java.util.logging.Logger;
 
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
 import org.unitsofmeasurement.quantity.Quantity;
@@ -24,11 +25,14 @@ import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version $Revision$, $Date$
  * @param <Q> a quantity
  */
 public class Benchmark<Q extends Quantity<Q>> {
+    // Create logger object (usually with the class name)
+	private static Logger benchmarkLogger = Logger.getLogger(Benchmark.class.getName());
+	
 	private static final int N = 100000;
 
 	// Because of generic array creation.
@@ -53,7 +57,7 @@ public class Benchmark<Q extends Quantity<Q>> {
 			sum += m[i].doubleValue(targetUnit);
 		}
 		time = System.currentTimeMillis() - time;
-		System.out.println("Using quantities: ellapsed time=" + (time / 1000f)
+		benchmarkLogger.info("Using quantities: ellapsed time=" + (time / 1000f)
 				+ " s., result=" + sum);
 		return time;
 	}
@@ -75,7 +79,7 @@ public class Benchmark<Q extends Quantity<Q>> {
 			sum += cv.convert(m[i]);
 		}
 		time = System.currentTimeMillis() - time;
-		System.out.println("Using primitives: ellapsed time=" + (time / 1000f)
+		benchmarkLogger.info("Using primitives: ellapsed time=" + (time / 1000f)
 				+ " s., result=" + sum);
 		return time;
 	}
@@ -89,7 +93,7 @@ public class Benchmark<Q extends Quantity<Q>> {
 				final long seed = r.nextLong();
 				long t1 = usingQuantities(seed);
 				long t2 = usingDouble(seed);
-				System.out.println("Ratio: " + (float) t1 / (float) t2);
+				benchmarkLogger.fine("Ratio: " + (float) t1 / (float) t2);
 				Thread.sleep(100);
 			}
 		} catch (IncommensurableException ie) {

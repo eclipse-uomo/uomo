@@ -79,9 +79,9 @@ import com.ibm.icu.util.MeasureUnit;
  * @author <a href="mailto:steve@unidata.ucar.edu">Steve Emmerson</a>
  * @author <a href="mailto:desruisseaux@users.sourceforge.net">Martin
  *         Desruisseaux</a>
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * 
- * @version 1.6 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.7 ($Revision: 312 $), $Date: 2011-03-07 00:50:44 +0430 $
  * @see <a href="http://en.wikipedia.org/wiki/Units_of_measurement"> Wikipedia:
  *      Units of measurement</a>
  */
@@ -96,7 +96,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
 	/**
 	 * Holds the name.
 	 */
-	private final String name;
+	private String name;
 
 	/**
 	 * Holds the dimensionless unit <code>ONE</code>.
@@ -123,6 +123,10 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
 		this.name = name;
 	}
 
+	void setName(String name) {
+		this.name = name;
+	}
+	
 	@Override
 	public String getName() {
 		return name;

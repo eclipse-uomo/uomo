@@ -1,3 +1,13 @@
+/**
+ * Copyright (c) 2005, 2011, Werner Keil and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Werner Keil - initial API and implementation
+ */
 package org.eclipse.uomo.examples.units.console;
 
 import org.eclipse.uomo.units.SI;
@@ -34,6 +44,7 @@ public class HelloUnits {
 				(Unit<Area>) length.getQuantityUnit().multiply(SI.METRE));
 		System.out.println(area);
 		
+		// TODO Bug 338334 this could be a JUnit test, convert into after issue resolved.
 		MassAmount mass = new MassAmount(1000, SI.GRAM);
 		MassAmount mass2 = new MassAmount(1, SI.KILOGRAM);
 		System.out.println(mass.equals(mass2));

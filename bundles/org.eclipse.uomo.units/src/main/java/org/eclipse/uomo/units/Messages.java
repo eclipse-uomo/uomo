@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,11 +44,11 @@ public class Messages extends NLS {
 	public static String SI_K;
 	public static String SI_kat;
 	public static String SI_kg;
-	public static String SI_kilogram;
+	public static String SI_kg_name;
 	public static String SI_lm;
 	public static String SI_lx;
 	public static String SI_m;
-	public static String SI_metre;
+	public static String SI_m_name;
 	public static String SI_mol;
 	public static String SI_N;
 	public static String SI_OhmS;
@@ -62,4 +62,5 @@ public class Messages extends NLS {
 	public static String SI_V;
 	public static String SI_W;
 	public static String SI_Wb;
+	public static String US_lb_name;
 }

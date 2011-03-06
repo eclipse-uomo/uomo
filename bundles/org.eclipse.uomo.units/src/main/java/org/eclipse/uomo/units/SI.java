@@ -117,7 +117,7 @@ public final class SI implements SystemOfUnits, IName {
 	 * @see #GRAM
 	 */
 	public static final Unit<Mass> KILOGRAM = addUnit(new BaseUnit<Mass>(
-			Messages.SI_kg, Messages.SI_kilogram));
+			Messages.SI_kg, Messages.SI_kg_name));
 
 	/**
 	 * The base unit for length quantities (<code>m</code>). One metre was
@@ -125,7 +125,7 @@ public final class SI implements SystemOfUnits, IName {
 	 * 1/299,792,458 of a second.
 	 */
 	public static final Unit<Length> METRE = addUnit(new BaseUnit<Length>(
-			Messages.SI_m, Messages.SI_metre));
+			Messages.SI_m, Messages.SI_m_name));
 
 	/**
 	 * The base unit for amount of substance quantities (<code>mol</code>). The
@@ -141,7 +141,7 @@ public final class SI implements SystemOfUnits, IName {
 	 * transition between two hyperfine levels of the ground state of cesium
 	 * (1967 Standard).
 	 * 
-	 * FIXME this is not alligned with TimeUnit from ICU4J
+	 * FIXME this is not aligned with TimeUnit from ICU4J due to TimeUnit so far cannot be extended 
 	 */
 	public static final Unit<Time> SECOND = addUnit(new BaseUnit<Time>(
 			Messages.SI_s));

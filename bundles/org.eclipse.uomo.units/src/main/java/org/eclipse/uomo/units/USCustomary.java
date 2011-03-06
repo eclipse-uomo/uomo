@@ -46,8 +46,7 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.10 ($Revision: 230 $), $Date: 2010-07-09 00:38:11 +0100 (Fr, 09 Jul
- *          2010) $
+ * @version 1.11 ($Revision: 330 $), $Date: 2011-03-07 00:28:11 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -134,7 +133,7 @@ public final class USCustomary implements SystemOfUnits, IName {
 	 * standard name <code>lb</code>).
 	 */
 	public static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(45359237)
-			.divide(100000000));
+			.divide(100000000), Messages.US_lb_name);
 
 	/**
 	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
@@ -352,6 +351,25 @@ public final class USCustomary implements SystemOfUnits, IName {
 	// private static final int INTERNATIONAL_FOOT_DIViSOR = 10000;
 
 	/**
+	 * Adds a new named unit to the collection.
+	 * 
+	 * @param unit the unit being added.
+	 * @param name the name of the unit.
+	 * @return <code>unit</code>.
+	 */
+	@SuppressWarnings("unchecked")
+	private static <U extends Unit<?>> U addUnit(U unit, String name) {
+		if (name != null && unit instanceof AbstractUnit) {
+			AbstractUnit<?> aUnit = (AbstractUnit<?>)unit;
+			aUnit.setName(name);
+			UNITS.add(aUnit);
+			return (U) aUnit;
+		}
+		UNITS.add(unit);
+		return unit;
+	}
+	
+	/**
 	 * Adds a new unit to the collection.
 	 * 
 	 * @param unit
@@ -359,8 +377,7 @@ public final class USCustomary implements SystemOfUnits, IName {
 	 * @return <code>unit</code>.
 	 */
 	private static <U extends Unit<?>> U addUnit(U unit) {
-		UNITS.add(unit);
-		return unit;
+		return addUnit(unit, null);
 	}
 
 	// ///////////////////
