@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,17 +47,17 @@ import org.unitsofmeasurement.quantity.*;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.27 ($Revision: 230 $), $Date: 2010-10-13 16:45:08 +0200 (Mi, 13 Okt 2010) $
+ * @version 1.28 ($Revision: 231 $), $Date: 2011-03-07 02:25:08 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>
  */
-public final class SI implements SystemOfUnits, IName {
+public final class SI extends AbstractSystemOfUnits implements IName {
 
 	/**
 	 * Holds collection of SI units.
 	 */
-	private static final HashSet<Unit<?>> UNITS = new HashSet<Unit<?>>();
+	private static final Set<Unit<?>> UNITS = new HashSet<Unit<?>>();
 
 	/**
 	 * The singleton instance of {@code SI}.
@@ -765,8 +765,7 @@ public final class SI implements SystemOfUnits, IName {
 
 	@Override
 	public Set<Unit<?>> getUnits(Dimension dimension) {
-		// TODO Auto-generated method stub
-		return null;
+		return Helper.getUnitsOfDimension(UNITS, dimension);
 	}
 
 	@Override

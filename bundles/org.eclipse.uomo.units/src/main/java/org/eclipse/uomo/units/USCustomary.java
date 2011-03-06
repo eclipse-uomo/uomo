@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -45,13 +45,13 @@ import org.unitsofmeasurement.unit.Unit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
- * @version 1.11 ($Revision: 330 $), $Date: 2011-03-07 00:28:11 +0430 $
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.12 ($Revision: 331 $), $Date: 2011-03-07 02:28:11 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
  */
-public final class USCustomary implements SystemOfUnits, IName {
+public final class USCustomary extends AbstractSystemOfUnits implements IName {
 
 	/**
 	 * Holds collection of units.
@@ -400,8 +400,7 @@ public final class USCustomary implements SystemOfUnits, IName {
 
 	@Override
 	public Set<Unit<?>> getUnits(Dimension dimension) {
-		// TODO Auto-generated method stub
-		return null;
+		return Helper.getUnitsOfDimension(UNITS, dimension);
 	}
 
 	@Override
