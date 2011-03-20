@@ -350,57 +350,11 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 
 	// private static final int INTERNATIONAL_FOOT_DIViSOR = 10000;
 
-	/**
-	 * Adds a new named unit to the collection.
-	 * 
-	 * @param unit the unit being added.
-	 * @param name the name of the unit.
-	 * @return <code>unit</code>.
-	 */
-	@SuppressWarnings("unchecked")
-	private static <U extends Unit<?>> U addUnit(U unit, String name) {
-		if (name != null && unit instanceof AbstractUnit) {
-			AbstractUnit<?> aUnit = (AbstractUnit<?>)unit;
-			aUnit.setName(name);
-			UNITS.add(aUnit);
-			return (U) aUnit;
-		}
-		UNITS.add(unit);
-		return unit;
-	}
-	
-	/**
-	 * Adds a new unit to the collection.
-	 * 
-	 * @param unit
-	 *            the unit being added.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends Unit<?>> U addUnit(U unit) {
-		return addUnit(unit, null);
-	}
 
-	// ///////////////////
-	// Collection View //
-	// ///////////////////
-	/**
-	 * Returns a read only view over the units defined in this class.
-	 * 
-	 * @return the collection of NonSI units.
-	 */
-	@Override
-	public Set<Unit<?>> getUnits() {
-		return Collections.unmodifiableSet(UNITS);
-	}
 
 	@Override
 	public String getName() {
 		return getClass().getSimpleName();
-	}
-
-	@Override
-	public Set<Unit<?>> getUnits(Dimension dimension) {
-		return Helper.getUnitsOfDimension(UNITS, dimension);
 	}
 
 	@Override

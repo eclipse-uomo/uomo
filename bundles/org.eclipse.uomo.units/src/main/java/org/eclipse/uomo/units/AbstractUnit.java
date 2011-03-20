@@ -23,6 +23,7 @@ import org.eclipse.uomo.units.impl.AddConverter;
 import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.DimensionImpl;
+import org.eclipse.uomo.units.impl.LogConverter;
 import org.eclipse.uomo.units.impl.MultiplyConverter;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.RationalConverter;
@@ -537,6 +538,17 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
 		if (divisor == 1)
 			return this;
 		return transform(new MultiplyConverter(1.0 / divisor));
+	}
+	
+	/**
+	 * Returns the logarithmic result of this unit.
+	 * 
+	 * @param base
+	 *            the logarithmic base.
+	 * @return <code>this.transform(new MultiplyConverter(1.0 / divisor))</code>
+	 */	
+	public final Unit<Q> log(double base) {
+		return transform(new LogConverter(base));
 	}
 
 	/**

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo Units of Measurement
 Bundle-SymbolicName: org.eclipse.uomo.units;singleton:=true
-Bundle-Version: 0.5.5.SNAPSHOT
+Bundle-Version: 0.5.5
 Bundle-Activator: org.eclipse.uomo.units.Activator
 Bundle-Vendor: Eclipse.org
 Require-Bundle: com.ibm.icu;bundle-version="4.2.0";visibility:=reexport,

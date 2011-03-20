@@ -18,6 +18,10 @@ public class Messages extends NLS {
 	public static String Planet_SurfaceGravity;
 	public static String Planet_Usage;
 	public static String Planet_SurfaceWeight;
+	public static String REP_100mR;
+	public static String REP_1R;
+	public static String REP_2dot5R;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

@@ -10,6 +10,7 @@
  */
 package org.eclipse.uomo.units;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,8 +18,59 @@ import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
-abstract class AbstractSystemOfUnits implements SystemOfUnits {
+public abstract class AbstractSystemOfUnits implements SystemOfUnits {
+	/**
+	 * Holds collection of units.
+	 */
+	protected static final Set<Unit<?>> UNITS = new HashSet<Unit<?>>();
 
+	// ///////////////////
+	// Collection View //
+	// ///////////////////
+	/**
+	 * Returns a read only view over the units defined in this class.
+	 * 
+	 * @return the collection of NonSI units.
+	 */
+	public Set<Unit<?>> getUnits() {
+		return Collections.unmodifiableSet(UNITS);
+	}
+	
+	@Override
+	public Set<Unit<?>> getUnits(Dimension dimension) {
+		return Helper.getUnitsOfDimension(UNITS, dimension);
+	}
+
+	/**
+	 * Adds a new named unit to the collection.
+	 * 
+	 * @param unit the unit being added.
+	 * @param name the name of the unit.
+	 * @return <code>unit</code>.
+	 */
+	@SuppressWarnings("unchecked")
+	protected static <U extends Unit<?>> U addUnit(U unit, String name) {
+		if (name != null && unit instanceof AbstractUnit) {
+			AbstractUnit<?> aUnit = (AbstractUnit<?>)unit;
+			aUnit.setName(name);
+			UNITS.add(aUnit);
+			return (U) aUnit;
+		}
+		UNITS.add(unit);
+		return unit;
+	}
+
+	/**
+	 * Adds a new unit to the collection.
+	 * 
+	 * @param unit
+	 *            the unit being added.
+	 * @return <code>unit</code>.
+	 */
+	protected static <U extends Unit<?>> U addUnit(U unit) {
+		UNITS.add(unit);
+		return unit;
+	}
 	static class Helper {
 		static Set<Unit<?>> getUnitsOfDimension(final Set<Unit<?>> units, 
 				Dimension dimension) {

@@ -24,7 +24,7 @@ import org.unitsofmeasurement.unit.Unit;
  */
 public class EnergyAmount extends BaseAmount<Energy> {
 
-	protected EnergyAmount(Number number, Unit<Energy> unit) {
+	public EnergyAmount(Number number, Unit<Energy> unit) {
 		super(number, unit);
 	}
 

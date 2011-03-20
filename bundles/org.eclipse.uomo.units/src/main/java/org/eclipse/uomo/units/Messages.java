@@ -63,4 +63,6 @@ public class Messages extends NLS {
 	public static String SI_W;
 	public static String SI_Wb;
 	public static String US_lb_name;
+	public static String NonSI_R;
+	public static String NonSI_R_name;
 }

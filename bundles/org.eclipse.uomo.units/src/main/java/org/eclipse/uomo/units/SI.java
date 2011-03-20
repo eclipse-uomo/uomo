@@ -11,8 +11,6 @@
 package org.eclipse.uomo.units;
 
 import java.math.BigInteger;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.uomo.core.IName;
@@ -53,11 +51,6 @@ import org.unitsofmeasurement.quantity.*;
  *      International System of Units</a>
  */
 public final class SI extends AbstractSystemOfUnits implements IName {
-
-	/**
-	 * Holds collection of SI units.
-	 */
-	private static final Set<Unit<?>> UNITS = new HashSet<Unit<?>>();
 
 	/**
 	 * The singleton instance of {@code SI}.
@@ -386,30 +379,17 @@ public final class SI extends AbstractSystemOfUnits implements IName {
 	public static final Unit<Volume> CUBIC_METRE = addUnit(new ProductUnit<Volume>(
 			(AbstractUnit<?>) SQUARE_METRE.multiply(METRE)));
 
-	// ///////////////////
-	// Collection View //
-	// ///////////////////
+	// //////////
+	// Others //
+	// //////////
 	/**
-	 * Returns a read only view over theunits defined in this class.
-	 * 
-	 * @return the collection of SI units.
+	 * A unit used to measure the ionizing ability of radiation (standard name
+	 * <code>Roentgen</code>).
 	 */
-	public Set<Unit<?>> getUnits() {
-		return Collections.unmodifiableSet(UNITS);
-	}
-
-	/**
-	 * Adds a new unit to the collection.
-	 * 
-	 * @param unit
-	 *            the unit being added.
-	 * @return <code>unit</code>.
-	 */
-	private static <U extends Unit<?>> U addUnit(U unit) {
-		UNITS.add(unit);
-		return unit;
-	}
-
+	@SuppressWarnings("unchecked")
+	public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(COULOMB.divide(KILOGRAM)
+			.multiply(2.58e-4), Messages.NonSI_R_name);
+	
 	public static class Prefix {
 
 		private Prefix() {
@@ -761,11 +741,6 @@ public final class SI extends AbstractSystemOfUnits implements IName {
 	@Override
 	public String getName() {
 		return getClass().getSimpleName();
-	}
-
-	@Override
-	public Set<Unit<?>> getUnits(Dimension dimension) {
-		return Helper.getUnitsOfDimension(UNITS, dimension);
 	}
 
 	@Override
