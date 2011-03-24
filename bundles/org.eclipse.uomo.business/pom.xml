@@ -14,7 +14,7 @@
 		<dependency>
 			<groupId>org.eclipse.uomo</groupId>
 			<artifactId>org.eclipse.uomo.units</artifactId>
-			<version>0.5.5.SNAPSHOT</version>
+			<version>0.5.5</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
