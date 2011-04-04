@@ -11,15 +11,12 @@
 package org.eclipse.uomo.units;
 
 import java.math.BigInteger;
-import java.util.Set;
-
 import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.Messages;
 import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.RationalConverter;
-import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.quantity.*;
@@ -45,7 +42,7 @@ import org.unitsofmeasurement.quantity.*;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.28 ($Revision: 231 $), $Date: 2011-03-07 02:25:08 +0430 $
+ * @version 1.29 ($Revision: 232 $), $Date: 2011-04-05 02:50:08 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>

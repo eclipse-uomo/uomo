@@ -13,10 +13,6 @@ package org.eclipse.uomo.units;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.quantity.Area;
@@ -29,7 +25,6 @@ import org.unitsofmeasurement.quantity.Temperature;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.quantity.Velocity;
 import org.unitsofmeasurement.quantity.Volume;
-import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -46,17 +41,12 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.12 ($Revision: 331 $), $Date: 2011-03-07 02:28:11 +0430 $
+ * @version 1.13 ($Revision: 332 $), $Date: 2011-04-05 02:52:11 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
  */
 public final class USCustomary extends AbstractSystemOfUnits implements IName {
-
-	/**
-	 * Holds collection of units.
-	 */
-	private static final Set<Unit<?>> UNITS = new HashSet<Unit<?>>();
 
 	/**
 	 * Default constructor (prevents this class from being instantiated).

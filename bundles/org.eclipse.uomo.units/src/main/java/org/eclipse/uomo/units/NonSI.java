@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -40,13 +40,10 @@ import static org.eclipse.uomo.units.USCustomary.INCH;
 import static org.eclipse.uomo.units.USCustomary.REVOLUTION;
 
 import java.math.BigInteger;
-import java.util.Set;
-
 import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.impl.LogConverter;
 import org.eclipse.uomo.units.impl.RationalConverter;
 import org.unitsofmeasurement.quantity.*;
-import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.Unit;
 
 /**
@@ -68,11 +65,11 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.15 ($Revision: 230 $), $Date: 2010-09-06 00:47:59 +0200 (Mo, 06 Sep
- *          2010) $
+ * @version 1.16 ($Revision: 231 $), $Date: 2011-04-05 02:57:59 +0200 (Mo, 06 Sep
+ *          2011) $
  *          TODO expose relevant units like ROENTGEN, etc. via other SOU?
  */
-public final class NonSI extends AbstractSystemOfUnits implements IName {
+final class NonSI extends AbstractSystemOfUnits implements IName {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
@@ -622,10 +619,7 @@ public final class NonSI extends AbstractSystemOfUnits implements IName {
 	 * A unit used to measure the ionizing ability of radiation (standard name
 	 * <code>Roentgen</code>).
 	 */
-	@SuppressWarnings("unchecked")
-	static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(COULOMB.divide(KILOGRAM)
-			.multiply(2.58e-4), Messages.NonSI_R_name);
-
+	static final Unit<IonizingRadiation> ROENTGEN = SI.ROENTGEN;
 
 	@Override
 	public String getName() {

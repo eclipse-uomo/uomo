@@ -10,27 +10,19 @@
  */
 package org.eclipse.uomo.examples.units.types;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.eclipse.uomo.units.SI;
 import org.unitsofmeasurement.quantity.Energy;
 import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- *
+ * @version 0.3
  */
-public class Seismic implements SystemOfUnits, IName {
-	/**
-	 * Holds collection of seismic units.
-	 */
-	private static final Set<Unit<?>> UNITS = new HashSet<Unit<?>>();
+public class Seismic extends AbstractSystemOfUnits implements IName {
 
 	// Richter scale.
 	public static final  Unit<Energy> RICHTER_MAGNITUDE = (SI.JOULE.multiply(1.5d)).add(4.4d);
@@ -67,23 +59,6 @@ public class Seismic implements SystemOfUnits, IName {
 	 */
 	@Override
 	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.unit.SystemOfUnits#getUnits()
-	 */
-	@Override
-	public Set<Unit<?>> getUnits() {
-		return Collections.unmodifiableSet(UNITS);
-	}
-
-	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.unit.SystemOfUnits#getUnits(org.unitsofmeasurement.unit.Dimension)
-	 */
-	@Override
-	public Set<Unit<?>> getUnits(Dimension dimension) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -11,6 +11,7 @@
 package org.eclipse.uomo.examples.units.console;
 
 import static org.eclipse.uomo.units.SI.*;
+import static org.eclipse.uomo.units.SI.Prefix.*;
 import static org.eclipse.uomo.units.USCustomary.FOOT;
 
 import org.eclipse.uomo.units.IMeasure;
@@ -56,8 +57,7 @@ public class Demo {
         System.out.println();
 
         Mass someMass = getSomeMass();
-        System.out.println("toString = " + someMass);
-        
+        System.out.println("toString = " + someMass);        
         IMeasure<Mass> moreMass = getMoreMass();
         System.out.println("toString2 = " + moreMass);
         System.out.println();
@@ -70,5 +70,11 @@ public class Demo {
         
         IMeasure<Length> convertedLength = moreLength.to(FOOT);
         System.out.println("converted = " + convertedLength);
+        
+        System.out.println();
+        someLength = new LengthAmount(1, MILLI(METRE));
+        System.out.println("len1 = " + someLength);
+        someMass = new MassAmount(50, MILLI(GRAM));
+        System.out.println("mass1 = " + someMass);
     }
 }

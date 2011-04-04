@@ -425,7 +425,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 
 			if (unit instanceof TransformedUnit) {
 				TransformedUnit transUnit = (TransformedUnit) unit;
-				parentUnit = transUnit.getParentUnit();
+				if (parentUnit== null) parentUnit = transUnit.getParentUnit();
 //				String x = parentUnit.toString();
 				converter = transUnit.toParentUnit();
 			}

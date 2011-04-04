@@ -14,22 +14,22 @@ import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 
 /**
- * <p> This interface represents the measurable, countable, or comparable 
+ * <p> This interface represents the IMeasure, countable, or comparable 
  *     property or aspect of a thing.</p>
  *     
  * <p> Implementing instances are typically the result of a measurement:[code]
- *         Measurable<Mass> weight = BaseAmount.valueOf(180.0, POUND);
+ *         IMeasure<Mass> weight = BaseAmount.valueOf(180.0, POUND);
  *     [/code]
  *     They can also be created from custom classes:[code]
- *     class Delay implements Measurable<Duration> {
+ *     class Delay implements IMeasure<Duration> {
  *          private long nanoSeconds; // Implicit internal unit.
  *          public double doubleValue(Unit<Velocity> unit) { ... }
  *          public long longValue(Unit<Velocity> unit) { ... }
  *     }
- *     Thread.wait(new Delay(24, HOUR)); // Assuming Thread.wait(Measurable<Duration>) method.
+ *     Thread.wait(new Delay(24, HOUR)); // Assuming Thread.wait(IMeasure<Duration>) method.
  *     [/code]</p>
  *     
- * <p> Although measurable instances are for the most part scalar quantities; 
+ * <p> Although IMeasure instances are for the most part scalar quantities; 
  *     more complex implementations (e.g. vectors, data set) are allowed as 
  *     long as an agregate magnitude can be determined. For example:[code]
  *     class Velocity3D implements IMeasure<Velocity> {
@@ -44,12 +44,12 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 5.1, $Date: 2011-03-07 00:57:44 +0430 $
+ * @version 5.2, $Date: 2011-04-05 03:03:44 +0430 $
  */
 public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
     
     /**
-     * Returns the estimated value of this measurable quantity stated 
+     * Returns the estimated value of this measurement stated 
      * in the specified unit as a <code>double</code>.
      * 
      * @param unit the unit in which the measurement value is stated.
@@ -58,7 +58,7 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
     double doubleValue(Unit<Q> unit);
 
     /**
-     * Returns the estimated value of this quantity stated in the specified 
+     * Returns the estimated value of this measurement stated in the specified 
      * unit as a <code>long</code>.
      * 
      * @param unit the unit in which the measurement value is stated.
@@ -70,7 +70,7 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
     
     /**
      * Get the unit (convenience to avoid cast).
-     * @draft UOMo 0.5
+     * @draft UOMo 0.6
      * @provisional This API might change or be removed in a future release.
      */
     Unit<Q> getQuantityUnit();
