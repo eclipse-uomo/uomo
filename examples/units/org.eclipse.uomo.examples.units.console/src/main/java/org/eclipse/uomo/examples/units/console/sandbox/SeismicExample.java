@@ -12,7 +12,6 @@ package org.eclipse.uomo.examples.units.console.sandbox;
 
 import org.eclipse.uomo.examples.units.types.Seismic;
 import org.eclipse.uomo.units.impl.quantity.EnergyAmount;
-import org.unitsofmeasurement.quantity.Energy;
 import com.ibm.icu.util.Measure;
 
 /**

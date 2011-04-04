@@ -33,7 +33,7 @@ public class Seismic implements SystemOfUnits, IName {
 	private static final Set<Unit<?>> UNITS = new HashSet<Unit<?>>();
 
 	// Richter scale.
-	public static final  Unit<Energy> RICHTER_MAGNITUDE = SI.JOULE.multiply(1.5d).add(4.4d);
+	public static final  Unit<Energy> RICHTER_MAGNITUDE = (SI.JOULE.multiply(1.5d)).add(4.4d);
 	// e = 10 ^ (4.4 +3 M / 2)
 		//SI.JOULE.divide(Math.pow(10, 4.4d)).transform(new LogConverter());
 	

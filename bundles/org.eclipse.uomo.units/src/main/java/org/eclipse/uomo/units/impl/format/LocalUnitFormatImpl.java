@@ -423,10 +423,11 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 				}
 			}
 
-			if (unit instanceof TransformedUnit<?>) {
-				TransformedUnit<?> transUnit = (TransformedUnit<?>) unit;
+			if (unit instanceof TransformedUnit) {
+				TransformedUnit transUnit = (TransformedUnit) unit;
 				parentUnit = transUnit.getParentUnit();
 //				String x = parentUnit.toString();
+				converter = transUnit.toParentUnit();
 			}
 
 			unitPrecedence = formatInternal(parentUnit, temp);
@@ -643,6 +644,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 				} else {
 					return formatConverter(compound.getLeft(), true,
 							unitPrecedence, buffer);
+					// FIXME use getRight() here, too
 				}
 			}
 				// return formatConverter(compound.getRight(), true,
