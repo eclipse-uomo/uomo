@@ -1,6 +1,7 @@
 package org.eclipse.uomo.business.types.impl;
 
-import static org.eclipse.uomo.business.types.BDTHelper.BDT_DELIM;
+import static org.eclipse.uomo.core.impl.DataHelper.BDT_DELIM;
+
 import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IBDType;

@@ -1,9 +1,10 @@
 package org.eclipse.uomo.business.types.impl;
 
 import static org.eclipse.uomo.business.types.BDTHelper.Operation.*;
+
 import org.eclipse.uomo.business.types.BDTHelper;
-import org.eclipse.uomo.business.types.IBDType;
 import org.eclipse.uomo.business.types.Percent;
+import org.eclipse.uomo.core.IBasicType;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -14,7 +15,7 @@ import com.ibm.icu.math.BigDecimal;
  * 
  * @author paul.morrison
  */
-public class PercentAmount extends BaseAmount<Percent> implements IBDType {
+public class PercentAmount extends BaseAmount<Percent> implements IBasicType {
 	final static long serialVersionUID = 362498820763181265L;
 
 	int m_precision = 15; // will be held, but not set

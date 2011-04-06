@@ -25,13 +25,6 @@ import com.ibm.icu.math.MathContext;
  */
 
 public abstract class BDTHelper {
-	static final String copyright = 
-		 " Copyright (c) 1999, 2000, 2001, 2002, 2010, J. Paul Morrison and others."+
-		 " All rights reserved. This program and the accompanying materials"+
-		 " are made available under the terms of the Eclipse Public License v1.0"+
-		 " which accompanies this distribution, and is available at"+
-		 " http://www.eclipse.org/legal/epl-v10.html";
-	
 	public static enum Operation {
 		EQ, // equal
 		LT, // less than
@@ -40,8 +33,6 @@ public abstract class BDTHelper {
 		GE, // greater than or equal
 		NE; // not equal
 	}
-	
-	public static final char BDT_DELIM = ';';
 	
 	// Define a MathContext object providing 20 digits
 	public static MathContext MATH_CONTEXT = new MathContext(20);
@@ -91,54 +82,6 @@ public abstract class BDTHelper {
 
 	static HashMap<String, IMarket> s_marketTable = new HashMap<String, IMarket>(); // table
 																					// of
-																					// markets
-
-	// The following table will be loaded from a database - but not before DCUT3
-
-	static HashMap<String, SimpleTimeZone> s_timeZoneTable = null; // table of
-																	// time
-																	// zones
-
-	static {
-
-		s_timeZoneTable = new HashMap<String, SimpleTimeZone>();
-
-		SimpleTimeZone tz;
-
-		tz = addTimeZone("UTC", 0.0); // UTC - same as GMT
-		tz = addTimeZone("GMT", 0.0); // UTC - same as GMT
-
-		tz = addTimeZone("EST", -5.0); // Eastern Standard Time
-		tz.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		tz.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-
-		tz = addTimeZone("NST", -3.5); // Newfoundland
-		tz.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		tz.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-
-		tz = addTimeZone("AST", -4.0); // Atlantic Standard Time
-		tz.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		tz.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-
-		tz = addTimeZone("CST", -6.0); // Central Standard Time
-		tz.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		tz.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-
-		tz = addTimeZone("SST", -6.0); // Central Standard Time (Sask) - no DST
-
-		tz = addTimeZone("MST", -7.0); // Mountain Standard Time
-		tz.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		tz.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-
-		tz = addTimeZone("PST", -8.0); // Pacific Standard Time
-		tz.setStartRule(Calendar.APRIL, 1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-		tz.setEndRule(Calendar.OCTOBER, -1, Calendar.SUNDAY, 2 * 60 * 60 * 1000);
-
-		addTimeZone("JST", 9.0); // Japan standard time - no daylight savings
-									// time
-
-	}
-
 	/**
 	 * Dummy constructor for BDTHelper - ensures no instance can be built
 	 */
@@ -202,26 +145,6 @@ public abstract class BDTHelper {
 	// hm.put(s2, list);
 	//
 	// }
-	/**
-	 * Add a java.util.SimpleTimeZone
-	 * 
-	 * @param String
-	 *            - identifier of time zone
-	 * @param double - hours to be added to UTC to get local time (may be
-	 *        fractional)
-	 * @return SimpleTimeZone
-	 */
-	private static SimpleTimeZone addTimeZone(String id, double off) {
-
-		int offset = (new Double(off * 3600000)).intValue();
-
-		SimpleTimeZone tz = new SimpleTimeZone(offset, id);
-
-		s_timeZoneTable.put(id, tz);
-
-		return tz;
-
-	}
 
 	/**
 	 * Use value (BigDecimal) to calculate vulgar fraction, and set fields. This
