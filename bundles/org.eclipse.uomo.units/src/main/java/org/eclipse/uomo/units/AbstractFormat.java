@@ -33,7 +33,6 @@ import com.ibm.icu.util.ULocale;
  *        Unit.valueOf("ft").equals(SI.METRE.multiply(3048).divide(10000))[/code]</p>
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author Eric Russell
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.5.1 ($Revision: 215 $), $Date: 2010-09-19 22:12:08 +0200 (So, 19 Sep 2010) $
  * 
