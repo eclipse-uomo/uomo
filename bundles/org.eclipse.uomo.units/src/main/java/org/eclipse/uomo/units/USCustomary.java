@@ -33,15 +33,12 @@ import org.unitsofmeasurement.unit.Unit;
  * This class contains units from the United States customary system.
  * </p>
  * <p>
- * This class is not intended to be implemented by clients.
- * </p>
  * 
- * @noimplement This class is not intended to be implemented by clients.
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.13 ($Revision: 332 $), $Date: 2011-04-05 02:52:11 +0430 $
+ * @version 1.14 ($Revision: 332 $), $Date: 2011-04-05 02:52:11 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>

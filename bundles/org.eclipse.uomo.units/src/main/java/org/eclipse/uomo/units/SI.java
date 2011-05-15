@@ -33,16 +33,12 @@ import org.unitsofmeasurement.quantity.*;
  * org.eclipse.uomo.units.SI.*; // Static import. ... Unit<Pressure> HECTOPASCAL
  * = HECTO(PASCAL); Unit<Length> KILOMETRE = KILO(METRE); [/code]
  * </p>
- * <p>
- * This class is not intended to be implemented by clients.
- * </p>
  * 
- * @noimplement This class is not intended to be implemented by clients.
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.29 ($Revision: 232 $), $Date: 2011-04-05 02:50:08 +0430 $
+ * @version 1.30 ($Revision: 232 $), $Date: 2011-04-05 02:50:08 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>
