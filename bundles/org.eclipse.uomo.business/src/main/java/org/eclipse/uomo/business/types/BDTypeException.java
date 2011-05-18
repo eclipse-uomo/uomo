@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 1999, 2000, 2001, 2002, 2011, J. Paul Morrison and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Paul Morrison - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.business.types;
 
@@ -15,8 +15,7 @@ import org.eclipse.uomo.core.UOMoRuntimeException;
 
 /**
  * Basic Data Type Exception class
- * @author paul.morrison
- * @author werner.keil
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public class BDTypeException extends UOMoRuntimeException  {
 	final static long serialVersionUID = 362498820763181265L;

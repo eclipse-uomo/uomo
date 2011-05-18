@@ -12,7 +12,7 @@ import com.ibm.icu.util.Holiday;
 /**
  * Insert the type's description here. Creation date: (9/20/00 2:35:47 PM)
  * @version $Revision$, Change date: ($Date$)
- * @author: paul.morrison, werner.keil
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public interface IMarket extends IBDType, IName, ISymbol {
 	/**

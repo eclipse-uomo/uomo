@@ -13,7 +13,7 @@ import org.eclipse.uomo.core.ISymbol;
  * market and country will usually be present - if both are missing, we use the
  * default country
  * 
- * @author: Administrator
+ * @author: Werner Keil
  */
 public class Symbol implements IBDType, ISymbol {
 	IMarket m_market = null;

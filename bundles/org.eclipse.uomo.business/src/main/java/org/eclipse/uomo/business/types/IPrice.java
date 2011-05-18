@@ -3,7 +3,7 @@ package org.eclipse.uomo.business.types;
 /**
  * This interfaces includes Monetary Price and Percent Price.
  * 
- * @author paul.morrison
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public interface IPrice  extends IBDType {
 

@@ -6,20 +6,19 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Paul Morrison - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 
 /**
- * @author paul.morrison
- * @author werner.keil
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public class Trip {
 
 	/**
-	 * @author paul.morrison
+	 * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
 	 */
 	public static class Leg {
 

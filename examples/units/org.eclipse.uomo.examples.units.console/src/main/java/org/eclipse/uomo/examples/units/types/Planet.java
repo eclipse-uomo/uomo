@@ -6,7 +6,7 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Josh Bloch, Werner Keil - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.examples.units.types;
 
@@ -23,10 +23,9 @@ import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @author Josh Bloch
- * @version 1.0.7, $Date: 2011-03-06 $
+ * @version 1.0.8, $Date: 2011-03-06 $
  * 
- *          This <type>enum</type> is based on Josh Bloch's example in <a
+ *          This <type>enum</type> is inspired by Josh Bloch's example in <a
  *          href="http://java.sun.com/docs/books/effective/">Effective Java
  *          Second Edition</a>
  * 
