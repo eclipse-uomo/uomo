@@ -18,6 +18,10 @@ public class Messages extends NLS {
 	public static String CurrencyConverter_exchangeRate_not_set;
 	public static String CurrencyConverter_toString;
 	public static String Market_invalid_code;
+	public static String StockTicker_invalid_symbol;
+	public static String StockTicker_invalid_market;
+	public static String StockTicker_invalid_country;
+	public static String StockTicker_missing_symbol;
 	
 	static {
 		// initialize resource bundle
