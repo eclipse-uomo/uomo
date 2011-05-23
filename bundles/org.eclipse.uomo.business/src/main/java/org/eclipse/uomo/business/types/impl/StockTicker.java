@@ -43,7 +43,7 @@ public class StockTicker implements IBDType, ISymbol {
 
 		int sp = s.indexOf(BDT_DELIM);
 		if (sp == -1)
-			throw new BDTypeException(Messages.StockTicker_1 + s);
+			throw new BDTypeException(Messages.StockTicker_invalid_symbol + s);
 		else {
 			String tmpMarket = s.substring(0, sp);
 			if (sp > 0) {
@@ -51,7 +51,7 @@ public class StockTicker implements IBDType, ISymbol {
 					m_market = Market.get(tmpMarket);
 				} // verify market is valid (added Oct. 3)
 				catch (BDTypeException e) {
-					throw new BDTypeException(Messages.StockTicker_2
+					throw new BDTypeException(Messages.StockTicker_invalid_market
 							+ s);
 				}
 			}
@@ -66,12 +66,12 @@ public class StockTicker implements IBDType, ISymbol {
 				if (!m_country.equals("") //$NON-NLS-1$
 						&& !(BDTHelper.getCountries().containsKey(m_country)))
 					throw new BDTypeException(
-							Messages.StockTicker_4 + s);
+							Messages.StockTicker_invalid_country + s);
 			}
 		}
 
 		if (m_sym.equals("")) //$NON-NLS-1$
-			throw new BDTypeException(Messages.StockTicker_6
+			throw new BDTypeException(Messages.StockTicker_missing_symbol
 					+ s);
 
 		if (m_market.equals("") && m_country.equals("")) //$NON-NLS-1$ //$NON-NLS-2$
