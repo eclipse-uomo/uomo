@@ -10,20 +10,17 @@
  */
 package org.eclipse.uomo.units.impl.format;
 
-import java.io.IOException;
-import java.text.ParsePosition;
 import java.util.Locale;
 
 import org.eclipse.uomo.units.AbstractFormat;
 import org.unitsofmeasurement.service.UnitFormatService;
-import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitFormat;
 
 import com.ibm.icu.util.ULocale;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.4 ($Revision: 308 $), $Date: 2010-11-02 15:56:52 +0000 (Di, 02 Nov 2010) $
+ * @version 0.5 ($Revision: 308 $), $Date: 2010-11-02 15:56:52 +0000 (Di, 02 Nov 2010) $
  */
 public class UnitFormatServiceImpl implements UnitFormatService {
 
@@ -34,30 +31,12 @@ public class UnitFormatServiceImpl implements UnitFormatService {
 
 	@Override
 	public UnitFormat getUnitFormat(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return getUnitFormat();
 	}
 
 	@Override
 	public UnitFormat getUnitFormat(Locale locale) {
 		return AbstractFormat.getUnitFormat(ULocale.forLocale(locale));
-	}
-
-	@Override
-	public Appendable format(Unit<?> arg0, Appendable arg1) throws IOException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	@Deprecated
-	/**
-	 * @deprecated error in API, fixed in RC2
-	 */
-	public Unit<?> parse(CharSequence arg0, ParsePosition arg1)
-			throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 }

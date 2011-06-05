@@ -14,13 +14,12 @@ import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.eclipse.uomo.units.SI;
 import org.unitsofmeasurement.quantity.Energy;
-import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.3
+ * @version 0.4
  */
 public class Seismic extends AbstractSystemOfUnits implements IName {
 
@@ -52,15 +51,5 @@ public class Seismic extends AbstractSystemOfUnits implements IName {
 	 */
 	public static final SystemOfUnits getInstance() {
 		return INSTANCE;
-	}
-	
-	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.unit.SystemOfUnits#getUnit(java.lang.Class)
-	 */
-	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	}	
 }

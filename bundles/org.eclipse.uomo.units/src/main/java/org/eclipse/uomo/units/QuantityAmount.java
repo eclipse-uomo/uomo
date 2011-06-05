@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,16 +28,16 @@ import com.ibm.icu.util.MeasureUnit;
  *
  * @see java.lang.Number
  * @see MeasureUnit
- * @author <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @param <Q> The type of the quantity.
- * @version 1.1 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.2 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * TODO rename to Amount or MeasureAmount?
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements IMeasure<Q> {
 	/**
      * Indicates if this measure is exact.
      */
-    private boolean _isExact;
+    private boolean isExact;
 
     /**
      * Holds the exact value (when exact) stated in this measure unit.
@@ -120,7 +120,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
      *         <code>false</code> otherwise.
      */
     public boolean isExact() {
-        return _isExact;
+        return isExact;
     }
 
 }

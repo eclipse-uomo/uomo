@@ -38,7 +38,7 @@ import org.unitsofmeasurement.quantity.*;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.30 ($Revision: 232 $), $Date: 2011-04-05 02:50:08 +0430 $
+ * @version 1.31 ($Revision: 232 $), $Date: 2011-04-05 02:50:08 +0430 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>
@@ -734,11 +734,5 @@ public final class SI extends AbstractSystemOfUnits implements IName {
 	@Override
 	public String getName() {
 		return getClass().getSimpleName();
-	}
-
-	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> qType) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

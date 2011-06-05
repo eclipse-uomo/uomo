@@ -343,10 +343,4 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	public String getName() {
 		return getClass().getSimpleName();
 	}
-
-	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

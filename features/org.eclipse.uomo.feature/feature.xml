@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uomo"
       label="Eclipse UOMo"
-      version="0.6.0.RC2"
+      version="0.6.0.RC3"
       provider-name="Eclipse.org"
       plugin="org.eclipse.uomo">
 

@@ -627,7 +627,7 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	}
 
 	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Quantity<Q>> arg0) {
+	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
 		// TODO Auto-generated method stub
 		return null;
 	}

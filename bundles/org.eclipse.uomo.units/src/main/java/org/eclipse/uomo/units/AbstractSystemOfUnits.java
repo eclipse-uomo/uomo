@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
@@ -30,7 +31,7 @@ public abstract class AbstractSystemOfUnits implements SystemOfUnits {
 	/**
 	 * Returns a read only view over the units defined in this class.
 	 * 
-	 * @return the collection of NonSI units.
+	 * @return the collection of units.
 	 */
 	public Set<Unit<?>> getUnits() {
 		return Collections.unmodifiableSet(UNITS);
@@ -41,6 +42,11 @@ public abstract class AbstractSystemOfUnits implements SystemOfUnits {
 		return Helper.getUnitsOfDimension(UNITS, dimension);
 	}
 
+	@Override
+	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
+		return QuantityFactory.getInstance(quantityType).getMetricUnit();
+	}
+	
 	/**
 	 * Adds a new named unit to the collection.
 	 * 
