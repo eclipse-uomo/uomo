@@ -14,13 +14,13 @@ import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
 import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.units.impl.ProductUnit;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.quantity.Area;
 import org.unitsofmeasurement.quantity.Information;
 import org.unitsofmeasurement.quantity.Energy;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.quantity.Temperature;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.quantity.Velocity;
@@ -186,6 +186,18 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	public static final Unit<Angle> SECOND_ANGLE = addUnit(MINUTE_ANGLE
 			.divide(60));
 
+	/**
+	 * A unit of angle equal to <code>0.01 {@link SI#RADIAN}</code> (standard
+	 * name <code>centiradian</code>).
+	 */
+	public static final Unit<Angle> CENTIRADIAN = addUnit(RADIAN.divide(100));
+
+	/**
+	 * A unit of angle measure equal to <code>1/400 {@link #REVOLUTION}</code>
+	 * (standard name <code>grade</code> ).
+	 */
+	public static final Unit<Angle> GRADE = addUnit(REVOLUTION.divide(400));
+	
 	// ////////////
 	// TimeUnit //
 	// ////////////
@@ -233,9 +245,16 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	 * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
 	 * ).
 	 */
-	// public static final Unit<Area> ARE = NonSI.ARE;
 	public static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
 
+	/**
+	 * A unit of area (standard name <code>sft</code>
+	 * ).
+	 */
+	public static final Unit<Area> SQUARE_FOOT = addUnit(new ProductUnit<Area>(
+			(AbstractUnit<?>) FOOT.multiply(FOOT)));
+
+	
 	// ///////////////
 	// Data Amount //
 	// ///////////////

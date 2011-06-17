@@ -14,17 +14,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.uomo.units.SI;
+import org.eclipse.uomo.units.USCustomary;
 import org.unitsofmeasurement.service.SystemOfUnitsService;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.5 ($Revision$), $Date$
+ * @version 0.6 ($Revision$), $Date$
  */
 public class SystemOfUnitsServiceImpl implements SystemOfUnitsService {
 
 	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
 
+	public SystemOfUnitsServiceImpl() {
+		souMap.put(SI.class.getSimpleName(), SI.getInstance());
+		souMap.put(USCustomary.class.getSimpleName(), USCustomary.getInstance());
+	}
+	
 	@Override
 	public SystemOfUnits getSystemOfUnits() {
 		return getSystemOfUnits(SI.class.getSimpleName());

@@ -36,8 +36,6 @@ import static org.eclipse.uomo.units.SI.TESLA;
 import static org.eclipse.uomo.units.SI.WATT;
 import static org.eclipse.uomo.units.SI.WEBER;
 import static org.eclipse.uomo.units.SI.Prefix.*;
-import static org.eclipse.uomo.units.USCustomary.INCH;
-import static org.eclipse.uomo.units.USCustomary.REVOLUTION;
 
 import java.math.BigInteger;
 import org.eclipse.uomo.core.IName;
@@ -151,6 +149,19 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	// Length //
 	// //////////
 
+	/**
+	 * A unit of length equal to <code>0.3048 m</code> (standard name
+	 * <code>ft</code>).
+	 */
+	static final Unit<Length> FOOT = addUnit(METRE.multiply(3048)
+			.divide(10000));
+	
+	/**
+	 * A unit of length equal to <code>0.0254 m</code> (standard name
+	 * <code>in</code>).
+	 */
+	static final Unit<Length> INCH = addUnit(FOOT.divide(12));
+	
 	/**
 	 * A unit of length equal to <code>1E-10 m</code> (standard name
 	 * <code>\u00C5ngstr\u00F6m</code>).
@@ -288,18 +299,6 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(
 			AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
 
-	/**
-	 * A unit of mass equal to <code>2240 {@link #POUND}</code> (long ton,
-	 * standard name <code>ton_uk</code>).
-	 */
-	static final Unit<Mass> TON_UK = addUnit(POUND.multiply(2240));
-
-	/**
-	 * A unit of mass equal to <code>1000 kg</code> (metric ton, standard name
-	 * <code>t</code>).
-	 */
-	static final Unit<Mass> METRIC_TON = addUnit(KILOGRAM.multiply(1000));
-
 	// ///////////////////
 	// Electric charge //
 	// ///////////////////
@@ -335,18 +334,17 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	static final Unit<Temperature> RANKINE = addUnit(KELVIN.multiply(5)
 			.divide(9));
 
-	/**
-	 * A unit of angle equal to <code>0.01 {@link SI#RADIAN}</code> (standard
-	 * name <code>centiradian</code>).
-	 */
-	static final Unit<Angle> CENTIRADIAN = addUnit(RADIAN.divide(100));
+	// /////////
+	// Angle //
+	// /////////
 
 	/**
-	 * A unit of angle measure equal to <code>1/400 {@link #REVOLUTION}</code>
-	 * (standard name <code>grade</code> ).
+	 * A unit of angle equal to a full circle or <code>2<i>&pi;</i>
+	 * {@link SI#RADIAN}</code> (standard name <code>rev</code>).
 	 */
-	static final Unit<Angle> GRADE = addUnit(REVOLUTION.divide(400));
-
+	static final Unit<Angle> REVOLUTION = addUnit(RADIAN.multiply(2)
+			.multiply(Math.PI).asType(Angle.class));
+	
 	// ////////////
 	// Velocity //
 	// ////////////
@@ -624,11 +622,5 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	@Override
 	public String getName() {
 		return getClass().getSimpleName();
-	}
-
-	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

@@ -19,6 +19,12 @@ import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
+/**
+ * <p> An abstract base class for unit systems.</p>
+ *
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 1.1, $Date: 2010-09-13 18:42:10 +0200 (Mo, 13 Sep 2010) $
+ */
 public abstract class AbstractSystemOfUnits implements SystemOfUnits {
 	/**
 	 * Holds collection of units.
@@ -87,6 +93,7 @@ public abstract class AbstractSystemOfUnits implements SystemOfUnits {
 						dimSet.add(u);
 					}
 				}
+				return dimSet;
 			}
 			return null;
 		}
