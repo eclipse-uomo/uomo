@@ -176,9 +176,9 @@ public final class Imperial extends AbstractSystemOfUnits implements IName {
 	// //////////
 	/**
 	 * A unit of volume equal to one cubic decimeter (default label
-	 * <code>L</code>, also recognized <code>µL, mL, cL, dL</code>).
+	 * <code>L</code>, also recognized <code>ÂµL, mL, cL, dL</code>).
 	 */
-	static final Unit<Volume> LITER = addUnit(CUBIC_METRE.divide(1000));
+	static final Unit<Volume> LITRE = addUnit(CUBIC_METRE.divide(1000));
 
 	/**
 	 * A unit of volume equal to one cubic inch (<code>in³</code>).
@@ -187,17 +187,30 @@ public final class Imperial extends AbstractSystemOfUnits implements IName {
 			Volume.class));
 
 	/**
+	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
+	 * name <code>gal_uk</code>).
+	 */
+	static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
+			.divide(100000));
+
+	/**
 	 * A unit of volume equal to one UK gallon, Liquid Unit.
 	 */
 	public static final Unit<Volume> GALLON_LIQUID = addUnit(CUBIC_INCH
 			.multiply(277.42));
-
+	
+	/**
+	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
+	 * (standard name <code>oz_fl_uk</code>).
+	 */
+	static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK
+			.divide(160));
+	
 	/**
 	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_LIQUID}</code>
 	 * (standard name <code>oz_fl</code>).
 	 */
-	public static final Unit<Volume> OUNCE_LIQUID = addUnit(GALLON_LIQUID
-			.divide(160));
+	public static final Unit<Volume> OUNCE_LIQUID = OUNCE_LIQUID_UK;
 
 	/**
 	 * A unit of volume equal to <code>5 {@link #OUNCE_LIQUID}</code> (standard name
@@ -221,7 +234,7 @@ public final class Imperial extends AbstractSystemOfUnits implements IName {
 	 * A unit of volume <code>~ 1 drop or 0.95 grain of water </code> (standard
 	 * name <code>min</code>).
 	 */
-	public static final Unit<Volume> MINIM = addUnit(MICRO(LITER).multiply(
+	public static final Unit<Volume> MINIM = addUnit(MICRO(LITRE).multiply(
 			59.1938802d));
 
 	/**

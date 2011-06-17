@@ -242,18 +242,23 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	// ////////
 
 	/**
-	 * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
-	 * ).
-	 */
-	public static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
-
-	/**
 	 * A unit of area (standard name <code>sft</code>
 	 * ).
 	 */
 	public static final Unit<Area> SQUARE_FOOT = addUnit(new ProductUnit<Area>(
 			(AbstractUnit<?>) FOOT.multiply(FOOT)));
 
+	/**
+	 * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
+	 * ).
+	 */
+	public static final Unit<Area> ARE = NonSI.ARE;
+	
+	/**
+	 * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
+	 * <code>ha</code>).
+	 */
+	static final Unit<Area> HECTARE = addUnit(ARE.multiply(100)); // Exact.
 	
 	// ///////////////
 	// Data Amount //

@@ -375,12 +375,6 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	 */
 	static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
 
-	/**
-	 * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
-	 * <code>ha</code>).
-	 */
-	static final Unit<Area> HECTARE = addUnit(ARE.multiply(100)); // Exact.
-
 	// ///////////////
 	// Data Amount //
 	// ///////////////
@@ -563,25 +557,7 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	// //////////
 	// Volume //
 	// //////////
-	/**
-	 * A unit of volume equal to one cubic decimeter (default label
-	 * <code>L</code>, also recognized <code>ÂµL, mL, cL, dL</code>).
-	 */
-	static final Unit<Volume> LITRE = addUnit(CUBIC_METRE.divide(1000));
 
-	/**
-	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
-	 * name <code>gal_uk</code>).
-	 */
-	static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
-			.divide(100000));
-
-	/**
-	 * A unit of volume equal to <code>1 / 160 {@link #GALLON_UK}</code>
-	 * (standard name <code>oz_fl_uk</code>).
-	 */
-	static final Unit<Volume> OUNCE_LIQUID_UK = addUnit(GALLON_UK
-			.divide(160));
 
 	// /////////////
 	// Viscosity //
