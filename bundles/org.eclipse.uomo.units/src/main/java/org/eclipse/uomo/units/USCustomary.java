@@ -14,6 +14,7 @@ import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
 import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.quantity.Area;
@@ -21,6 +22,7 @@ import org.unitsofmeasurement.quantity.Information;
 import org.unitsofmeasurement.quantity.Energy;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Mass;
+import org.unitsofmeasurement.quantity.Power;
 import org.unitsofmeasurement.quantity.Temperature;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.quantity.Velocity;
@@ -54,7 +56,7 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	/**
 	 * Returns the unique instance of this class.
 	 * 
-	 * @return the NonSI instance.
+	 * @return the USCustomary instance.
 	 */
 	public static SystemOfUnits getInstance() {
 		return INSTANCE;
@@ -104,6 +106,13 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	public static final Unit<Length> MILE = addUnit(METER.multiply(1609344)
 			.divide(1000));
 
+	/**
+	 * A unit of length equal to the distance that light travels in one year
+	 * through a vacuum (standard name <code>ly</code>).
+	 */
+	public static final Unit<Length> LIGHT_YEAR = addUnit(METRE
+			.multiply(9.460528405e15));
+	
 	/**
 	 * A unit of length equal to <code>1852.0 m</code> (standard name
 	 * <code>nmi</code>).
@@ -252,7 +261,7 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	 * A unit of area equal to <code>100 m²</code> (standard name <code>a</code>
 	 * ).
 	 */
-	public static final Unit<Area> ARE = NonSI.ARE;
+	public static final Unit<Area> ARE = addUnit(SQUARE_METRE.multiply(100));
 	
 	/**
 	 * A unit of area equal to <code>100 {@link #ARE}</code> (standard name
@@ -284,6 +293,18 @@ public final class USCustomary extends AbstractSystemOfUnits implements IName {
 	 */
 	public static final Unit<Energy> ELECTRON_VOLT = addUnit(JOULE
 			.multiply(1.602176462e-19));
+	
+	// //////////
+	// Power   //
+	// //////////
+	
+	/**
+	 * Horsepower (HP) is the name of several units of measurement of power.
+	 * The most common definitions equal between 735.5 and 750 watts.
+	 * Horsepower was originally defined to compare the output of steam engines with the power of draft horses. 
+	 * The unit was widely adopted to measure the output of piston engines, turbines, electric motors, and other machinery. The definition of the unit varied between geographical regions. Most countries now use the SI unit watt for measurement of power. With the implementation of the EU Directive 80/181/EEC on January 1, 2010, the use of horsepower in the EU is only permitted as supplementary unit.
+	 */
+	public static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
 
 	// //////////
 	// Volume //

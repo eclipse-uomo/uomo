@@ -80,7 +80,6 @@ public abstract class AbstractFormat extends UFormat implements UnitFormat {
      * @stable ICU 3.0
      */
     public static AbstractFormat getUnitFormat(ULocale locale) {
-//    	setLocale(locale,locale);
         return LocalUnitFormatImpl.getInstance(locale.toLocale());
     }
 

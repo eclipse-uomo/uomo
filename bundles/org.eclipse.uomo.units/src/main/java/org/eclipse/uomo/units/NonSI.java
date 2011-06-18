@@ -14,7 +14,6 @@ import static org.eclipse.uomo.units.SI.AMPERE;
 import static org.eclipse.uomo.units.SI.BECQUEREL;
 import static org.eclipse.uomo.units.SI.BIT;
 import static org.eclipse.uomo.units.SI.COULOMB;
-import static org.eclipse.uomo.units.SI.CUBIC_METRE;
 import static org.eclipse.uomo.units.SI.GRAM;
 import static org.eclipse.uomo.units.SI.GRAY;
 import static org.eclipse.uomo.units.SI.JOULE;
@@ -79,9 +78,9 @@ final class NonSI extends AbstractSystemOfUnits implements IName {
 	/**
 	 * Holds the avoirdupois pound: 0.45359237 kg exact
 	 */
-	private static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
+	static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
 
-	private static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
+	static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
 
 	/**
 	 * Holds the Avogadro constant.

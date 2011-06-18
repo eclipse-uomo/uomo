@@ -36,6 +36,7 @@ import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
+import org.unitsofmeasurement.unit.UnitFormat;
 
 import com.ibm.icu.util.MeasureUnit;
 
@@ -641,8 +642,9 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
 	@Override
 	public String toString() {
 		try {
-			return LocalUnitFormatImpl.getInstance()
-					.format(this, new StringBuilder()).toString();
+			UnitFormat format = LocalUnitFormatImpl.getInstance();
+			return String.valueOf(format
+					.format(this, new StringBuilder()));
 		} catch (IOException e) {
 			// TODO should this happen?
 			return ""; //$NON-NLS-1$

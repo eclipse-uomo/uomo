@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.SymbolMap;
 import org.eclipse.uomo.units.impl.MultiplyConverter;
 import org.eclipse.uomo.units.impl.RationalConverter;
-import org.eclipse.uomo.units.Messages;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 
@@ -47,14 +46,14 @@ import org.unitsofmeasurement.unit.UnitConverter;
  *     have only one label.</p>
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.7 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
 class SymbolMapImpl implements SymbolMap {
 
     private final Map<String, Unit<?>> symbolToUnit;
     private final Map<Unit<?>, String> unitToSymbol;
-    private final Map<String, Object> symbolToPrefix;
+    private final Map<String, ParsePrefix> symbolToPrefix;
     private final Map<Object, String> prefixToSymbol;
     private final Map<UnitConverter, ParsePrefix> converterToPrefix;
 
@@ -64,7 +63,7 @@ class SymbolMapImpl implements SymbolMap {
     public SymbolMapImpl () {
         symbolToUnit = new HashMap<String, Unit<?>>();
         unitToSymbol = new HashMap<Unit<?>, String>();
-        symbolToPrefix = new HashMap<String, Object>();
+        symbolToPrefix = new HashMap<String, ParsePrefix>();
         prefixToSymbol = new HashMap<Object, String>();
         converterToPrefix = new HashMap<UnitConverter, ParsePrefix>();
     }
@@ -130,7 +129,7 @@ class SymbolMapImpl implements SymbolMap {
 //    }
 
    public UnitConverter getConverter(String prefix) {
-        ParsePrefix prefixObject = (ParsePrefix) symbolToPrefix.get(prefix);
+        ParsePrefix prefixObject = symbolToPrefix.get(prefix);
         if (prefixObject == null) return null;
         return prefixObject.getConverter();
     }
@@ -166,7 +165,7 @@ class SymbolMapImpl implements SymbolMap {
         for (Iterator<String> i = symbolToPrefix.keySet().iterator(); i.hasNext(); ) {
             String pfSymbol = i.next();
             if (symbol.startsWith(pfSymbol)) {
-                return (ParsePrefix)symbolToPrefix.get(pfSymbol);
+                return symbolToPrefix.get(pfSymbol);
             }
         }
         return null;

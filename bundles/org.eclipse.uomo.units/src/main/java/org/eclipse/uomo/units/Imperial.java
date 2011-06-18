@@ -10,6 +10,9 @@
  */
 package org.eclipse.uomo.units;
 
+import static org.eclipse.uomo.units.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
+import static org.eclipse.uomo.units.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
+
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
@@ -48,7 +51,7 @@ public final class Imperial extends AbstractSystemOfUnits implements IName {
 	/**
 	 * Returns the unique instance of this class.
 	 * 
-	 * @return the NonSI instance.
+	 * @return the Imperial instance.
 	 */
 	public static SystemOfUnits getInstance() {
 		return INSTANCE;
@@ -74,19 +77,14 @@ public final class Imperial extends AbstractSystemOfUnits implements IName {
 	 * A unit of mass equal to <code>453.59237 grams</code> (avoirdupois pound,
 	 * standard name <code>lb</code>).
 	 */
-	public static final Unit<Mass> POUND = NonSI.POUND;
+	static final Unit<Mass> POUND = addUnit(KILOGRAM.multiply(
+			AVOIRDUPOIS_POUND_DIVIDEND).divide(AVOIRDUPOIS_POUND_DIVISOR));
 
 	/**
 	 * A unit of mass equal to <code>1 / 16 {@link #POUND}</code> (standard name
 	 * <code>oz</code>).
 	 */
 	public static final Unit<Mass> OUNCE = addUnit(POUND.divide(16));
-
-	/**
-	 * A unit of mass equal to <code>2000 {@link #POUND}</code> (short ton,
-	 * standard name <code>ton</code>).
-	 */
-	static final Unit<Mass> TON = addUnit(POUND.multiply(2000));
 	
 	/**
 	 * A unit of mass equal to <code>2240 {@link #POUND}</code> (long ton,
@@ -190,7 +188,7 @@ public final class Imperial extends AbstractSystemOfUnits implements IName {
 	 * A unit of volume equal to <code>4.546 09 {@link #LITRE}</code> (standard
 	 * name <code>gal_uk</code>).
 	 */
-	static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
+	public static final Unit<Volume> GALLON_UK = addUnit(LITRE.multiply(454609)
 			.divide(100000));
 
 	/**
