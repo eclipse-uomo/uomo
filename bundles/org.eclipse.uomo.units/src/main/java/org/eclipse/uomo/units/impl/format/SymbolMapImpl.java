@@ -47,14 +47,14 @@ import org.unitsofmeasurement.unit.UnitConverter;
  *
  * @author <a href="mailto:eric-r@northwestern.edu">Eric Russell</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.7 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.8 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
 class SymbolMapImpl implements SymbolMap {
-
+	// TODO fix issue with duplicate symbols (i.E. in different systems)
     private final Map<String, Unit<?>> symbolToUnit;
     private final Map<Unit<?>, String> unitToSymbol;
     private final Map<String, ParsePrefix> symbolToPrefix;
-    private final Map<Object, String> prefixToSymbol;
+    private final Map<ParsePrefix, String> prefixToSymbol;
     private final Map<UnitConverter, ParsePrefix> converterToPrefix;
 
     /**
@@ -64,7 +64,7 @@ class SymbolMapImpl implements SymbolMap {
         symbolToUnit = new HashMap<String, Unit<?>>();
         unitToSymbol = new HashMap<Unit<?>, String>();
         symbolToPrefix = new HashMap<String, ParsePrefix>();
-        prefixToSymbol = new HashMap<Object, String>();
+        prefixToSymbol = new HashMap<ParsePrefix, String>();
         converterToPrefix = new HashMap<UnitConverter, ParsePrefix>();
     }
 
