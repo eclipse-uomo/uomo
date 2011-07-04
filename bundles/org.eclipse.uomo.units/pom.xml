@@ -128,7 +128,7 @@
             <!-- ======================================================= -->
             <!-- Custom Javadoc plugin -->
             <!-- ======================================================= -->
-            <plugin>
+            <!-- plugin>
                 <groupId>org.javolution</groupId>
                 <artifactId>colapi</artifactId>
                 <version>1.0.0</version>
@@ -139,7 +139,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin -->
 
             <!-- ======================================================= -->
             <!-- Packaging -->
