@@ -14,7 +14,6 @@ import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
 import org.eclipse.uomo.core.IName;
-import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.quantity.Area;

@@ -164,7 +164,8 @@ public final class DimensionImpl implements Dimension, Serializable {
      * @return the mapping between the fundamental dimensions and their exponent.
      */
     public Map<Dimension, Integer> getProductDimensions() {
-        Map<? extends Unit<?>, Integer> pseudoUnits = (Map<? extends Unit<?>, Integer>) pseudoUnit.getProductUnits();
+        @SuppressWarnings("unchecked")
+		Map<? extends Unit<?>, Integer> pseudoUnits = (Map<? extends Unit<?>, Integer>) pseudoUnit.getProductUnits();
         if (pseudoUnit == null) return null;
         Map<Dimension, Integer> fundamentalDimensions = new HashMap<Dimension, Integer>();
         for (Entry<? extends Unit<?>, Integer> entry : pseudoUnits.entrySet()) {

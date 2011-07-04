@@ -158,8 +158,8 @@ Unit<?> addExpr() throws ParseException {
   }
 
     @SuppressWarnings("unused")
-	Unit exponentExpr() throws ParseException {
-        Unit result = AbstractUnit.ONE;
+	Unit<?> exponentExpr() throws ParseException {
+        Unit<?> result = AbstractUnit.ONE;
         Exponent exponent = null;
         Token token = null;
     if (jj_2_2(2147483647)) {
@@ -255,7 +255,7 @@ Unit<?> addExpr() throws ParseException {
 
   Unit<?> atomicExpr() throws ParseException {
         Unit<?> result = AbstractUnit.ONE;
-        Unit<?> temp = AbstractUnit.ONE;
+//        Unit<?> temp = AbstractUnit.ONE;
         Number n = null;
         Token token = null;
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {

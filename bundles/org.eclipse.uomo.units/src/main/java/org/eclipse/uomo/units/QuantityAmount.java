@@ -31,7 +31,8 @@ import com.ibm.icu.util.MeasureUnit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @param <Q> The type of the quantity.
  * @version 1.2 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
- * TODO rename to Amount or MeasureAmount?
+ * XXX rename to Amount or MeasureAmount?
+ * FIXME  Bug 338334 overwrite equals()
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements IMeasure<Q> {
 	/**
@@ -42,19 +43,19 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
     /**
      * Holds the exact value (when exact) stated in this measure unit.
      */
-    private long _exactValue;
+//    private long _exactValue;
 
     /**
      * Holds the minimum value stated in this measure unit.
      * For inexact measures: _minimum < _maximum 
      */
-    private double _minimum;
+//    private double _minimum;
 
     /**
      * Holds the maximum value stated in this measure unit.
      * For inexact measures: _maximum > _minimum 
      */
-    private double _maximum;
+//    private double _maximum;
     
 	protected QuantityAmount(Number number, MeasureUnit unit) {
 		super(number, unit);

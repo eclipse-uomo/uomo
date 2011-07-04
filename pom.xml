@@ -6,7 +6,12 @@
 <!-- $Id: pom.xml 306 2010-10-29 20:42:27Z werner.keil $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>eclipse-parent</artifactId>
+		<groupId>org.eclipse</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
     <properties>
         <sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,20 +46,22 @@
                 <role>Architect</role>
                 <role>Java Developer</role>
             </roles>
-        </developer>
-        <developer>
+        </developer>          
+    </developers>
+    <contributors>
+           <contributor>
             <name>Grahame Grieve</name>
-            <id>grahameg</id>
-            <email>grahame@kestral.com.au</email>
-            <organization>Kestral</organization>
-            <organizationUrl>http://www.kestral.com.au</organizationUrl>
+            <!--  id>grahameg</id -->
+            <email>grahame@healthintersections.com.au</email>
+            <organization>Health Intersections</organization>
+            <organizationUrl>http://www.healthintersections.com.au</organizationUrl>
             <roles>
                 <role>UCUM Lead</role>
                 <role>Architect</role>
-                <role>Java Developer</role>
+                <role>Java Developer (inactive)</role>
             </roles>
-        </developer>
-    </developers>
+        </contributor>       
+    </contributors>
     <scm>
         <url>http://git.eclipse.org/c/uomo/org.eclipse.uomo.git/</url>
     </scm>
@@ -84,4 +91,22 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    
+    <!-- ==================================================== -->
+    <!-- Repositories. This is where Maven looks for dependencies. The Maven 
+        repository is implicit and doesn't need to be specified. -->
+    <!-- ==================================================== -->
+    <repositories>
+        <repository>
+            <id>eclipse-public</id>
+            <name>Public Eclipse.org Nexus</name>
+            <url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+        </repository>
+        
+        <repository>
+            <id>eclipse-central</id>
+            <name>Central Eclipse.org Nexus</name>
+            <url>http://maven.eclipse.org/nexus/content/groups/central/</url>
+        </repository>             
+    </repositories>
 </project>

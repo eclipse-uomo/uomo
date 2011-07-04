@@ -1,7 +1,6 @@
 package org.eclipse.uomo.examples.units.console.sandbox;
 
 import com.ibm.icu.impl.ICUService;
-import com.ibm.icu.util.ULocale;
 
 public class NamesExample {
 

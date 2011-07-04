@@ -45,8 +45,10 @@ public class HelloUnits {
 		System.out.println(area);
 		
 		// TODO Bug 338334 this could be a JUnit test, convert into after issue resolved.
+		@SuppressWarnings("unused")
 		MassAmount mass = new MassAmount(1000, SI.GRAM);
+		@SuppressWarnings("unused")
 		MassAmount mass2 = new MassAmount(1, SI.KILOGRAM);
-		System.out.println(mass.equals(mass2));
+//		System.out.println(mass.equals(mass2));
 	}
 }
