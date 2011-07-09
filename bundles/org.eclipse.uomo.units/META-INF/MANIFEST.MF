@@ -15,5 +15,4 @@ Export-Package: org.eclipse.uomo.units,
  org.eclipse.uomo.units.impl,
  org.eclipse.uomo.units.impl.format,
  org.eclipse.uomo.units.impl.quantity
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6,
- OSGi/Minimum-1.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
