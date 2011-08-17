@@ -77,8 +77,9 @@ public final class DimensionImpl implements Dimension, Serializable {
 
     /**
      * Holds temperature dimension (Θ).
+     * TODO use Theta again, currently not working (Bug 351656)
      */
-    public static final Dimension TEMPERATURE = new DimensionImpl('Θ');
+    public static final Dimension TEMPERATURE = new DimensionImpl('Q');
 
     /**
      * Holds amount of substance dimension (N).

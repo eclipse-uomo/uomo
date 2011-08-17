@@ -14,6 +14,9 @@ import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 import static org.eclipse.uomo.units.USCustomary.*;
 
+import org.eclipse.uomo.units.IMeasure;
+import org.eclipse.uomo.units.impl.quantity.LengthAmount;
+import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.UnitConverter;
 
 public class ConverterExample {
@@ -33,6 +36,20 @@ public class ConverterExample {
 	    System.out.println(ELECTRON_VOLT.getDimension());
 	    System.out.println(KILOGRAM.equals(KILO(GRAM)));
 	    System.out.println(KILOGRAM.equals(KILO(OUNCE)));
+	    
+	    LengthAmount foot = new LengthAmount(1, FOOT); 
+	    LengthAmount inches = new LengthAmount(24, INCH);
+	    double ratio = INCH.getConverterTo(FOOT).convert(24);
+	    IMeasure<Length> lRatio = inches.to(FOOT);
+	    //long ratio = inches.longValue(FOOT);
+	    //double ratio = foot.doubleValue(INCH);
+	    System.out.println("Ratio: " + ratio);
+	    @SuppressWarnings("unchecked")
+		IMeasure<Length> iRatio = (IMeasure<Length>) foot.divide(inches);
+	    System.out.println("Ratio2: " + iRatio);
+	    System.out.println("Ratio3: " + lRatio);
+	    //BaseAmount<Length> qaRatio = (BaseAmount<Length>)lRatio;
+	    //System.out.println(qaRatio.getNumber());
 	}
 
 }

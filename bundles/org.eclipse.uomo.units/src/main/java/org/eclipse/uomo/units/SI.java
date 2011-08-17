@@ -10,6 +10,8 @@
  */
 package org.eclipse.uomo.units;
 
+import static org.eclipse.uomo.units.AbstractUnit.ONE;
+
 import java.math.BigInteger;
 import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.Messages;
@@ -17,6 +19,7 @@ import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.RationalConverter;
+import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.quantity.*;
@@ -372,6 +375,16 @@ public final class SI extends AbstractSystemOfUnits implements IName {
 	public static final Unit<Volume> CUBIC_METRE = addUnit(new ProductUnit<Volume>(
 			(AbstractUnit<?>) SQUARE_METRE.multiply(METRE)));
 
+    /////////////////////////////////////////////////////////////////
+	// Units outside the SI that are accepted for use with the SI. //
+	/////////////////////////////////////////////////////////////////
+
+	/**
+	* A dimensionless unit accepted for use with SI units (standard name <code>%</code>).
+	*/
+	public static final TransformedUnit<Dimensionless> PERCENT
+	= new TransformedUnit<Dimensionless>(ONE, new RationalConverter(1, 100));
+	
 	// //////////
 	// Others //
 	// //////////
