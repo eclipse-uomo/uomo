@@ -25,100 +25,97 @@ import java.util.Locale;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version $Revision: 206 $, $Date: 2010-02-25 02:40:17 +0100 (Do, 25 Feb 2010) $
+ * @version $Revision: 206 $, $Date: 2010-02-25 02:40:17 +0100 (Do, 25 Feb 2010)
+ *          $
  */
 public class UnitFormatTest {
-    private static final String COMPARISON_FOOT = "ft";
-    private static final String COMPARISON_KM = "km";
-    private static final Locale COMPARISON_LOCALE = Locale.UK;
+	private static final String COMPARISON_FOOT = "ft";
+	private static final String COMPARISON_KM = "km";
+	private static final Locale COMPARISON_LOCALE = Locale.UK;
+	private static final Locale MULTI_LOCALE = Locale.ENGLISH;
 
-    LocalUnitFormatImpl format;
-    Unit<Length> cm;
-    Unit<Length> mm;
-    Unit<Length> foot;
+	LocalUnitFormatImpl format;
+	Unit<Length> cm;
+	Unit<Length> mm;
+	Unit<Length> foot;
 
-    @Before
-    public void setUp() throws Exception {
-	// setName(UCUMFormatTest.class.getSimpleName());
+	@Before
+	public void setUp() throws Exception {
+		// setName(UCUMFormatTest.class.getSimpleName());
+		cm = CENTI(METRE);
+		mm = MILLI(METRE);
+		foot = FOOT;
+	}
 
-	cm = CENTI(METRE);
-	mm = MILLI(METRE);
-	foot = FOOT;
+	@After
+	public void tearDown() throws Exception {
+		// super.tearDown();
+	}
 
-	// print("Running " + getClass().getSimpleName() + "...");
-    }
+	@Test
+	public void testDefault() {
+		format = LocalUnitFormatImpl.getInstance();
+		// format.format(unit, appendable);
+		String formattedText = format.format(cm);
+		println(formattedText);
+		// System.out.println(unit2);
+		formattedText = format.format(mm);
+		println(formattedText);
+		formattedText = format.format(foot);
+		print(formattedText);
+	}
 
-    @After
-    public void tearDown() throws Exception {
-	// super.tearDown();
-    }
+	@Test
+	public void testGetInstanceLocale() {
+		format = LocalUnitFormatImpl.getInstance(COMPARISON_LOCALE);
+		String formattedText = format.format(cm);
+		print(formattedText);
+		// System.out.println(unit2);
+		formattedText = format.format(mm);
+		print(formattedText);
+		formattedText = format.format(foot);
+		print(formattedText);
+		assertEquals(COMPARISON_FOOT, formattedText);
+	}
 
-    @Test
-    @Ignore
-    public void testDefault() {
-	format = LocalUnitFormatImpl.getInstance();
-	// format.format(unit, appendable);
-	String formattedText = format.format(cm);
-	println(formattedText);
-	// System.out.println(unit2);
-	formattedText = format.format(mm);
-	println(formattedText);
-	formattedText = format.format(foot);
-	print(formattedText);
-    }
+	@Test
+	public void testUSVolt() {
+		print(ELECTRON_VOLT.getDimension().toString());
+		println(ELECTRON_VOLT.toString());
+	}
 
-    @Test
-    @Ignore
-    public void testGetInstanceLocale() {
-	format = LocalUnitFormatImpl.getInstance(COMPARISON_LOCALE);
-	String formattedText = format.format(cm);
-	print(formattedText);
-	// System.out.println(unit2);
-	formattedText = format.format(mm);
-	print(formattedText);
-	formattedText = format.format(foot);
-	print(formattedText);
-	assertEquals(COMPARISON_FOOT, formattedText);
-    }
+	@Test
+	public void testSubMultiples() {
+		Unit<Length> u = CENTI(METRE);
+		println(u.toString());
+	}
 
-    @Test
-    public void testUSVolt() {
-	print(ELECTRON_VOLT.getDimension().toString());
-	println(ELECTRON_VOLT.toString());
-    }
-
-    @Test
-    public void testSubMultiples() {
-	Unit<Length> u = CENTI(METRE);
-	println(u.toString());
-    }
-
-    /**
-     * Tests the {@link AbstractUnit#toString()} method, which is backed by
-     * {@link BaseFormat}.
-     * 
-     * @see http://kenai.com/jira/browse/JSR_275-43
-     */
-    @Test
-    public void testToString() {
-	assertEquals("m", METRE.toString());
-	// Multiples
-	assertEquals(COMPARISON_KM, KILO(METRE).toString());
-	assertEquals(COMPARISON_KM, METRE.multiply(1000).toString());
-	assertEquals(COMPARISON_KM, METRE.multiply(1000d).toString());
-	assertEquals("Tm", METRE.multiply(BigInteger.TEN.pow(12).longValue())
-		.toString());
-	// Submultiples
-	assertEquals("cm", METRE.divide(100d).toString());
-	assertEquals("mm", METRE.divide(1000d).toString());
-	assertEquals("fm", METRE.divide(BigInteger.TEN.pow(15).longValue())
-		.toString());
-    }
+	/**
+	 * Tests the {@link AbstractUnit#toString()} method, which is backed by
+	 * {@link BaseFormat}.
+	 * 
+	 * @see http://kenai.com/jira/browse/JSR_275-43
+	 */
+	@Test
+	public void testMultiples() {
+		format = LocalUnitFormatImpl.getInstance(MULTI_LOCALE);
+		assertEquals("m", format.format(METRE));
+		// Multiples
+		assertEquals(COMPARISON_KM, format.format(KILO(METRE)));
+		assertEquals(COMPARISON_KM, format.format(METRE.multiply(1000)));
+		assertEquals(COMPARISON_KM, format.format(METRE.multiply(1000d)));
+		assertEquals("Tm", METRE.multiply(BigInteger.TEN.pow(12).longValue())
+				.toString());
+		// Submultiples
+		assertEquals("cm", format.format(METRE.divide(100d)));
+		assertEquals("mm", format.format(METRE.divide(1000d)));
+		assertEquals("fm", format.format(METRE.divide(BigInteger.TEN.pow(15).
+				longValue())));
+	}
 }
