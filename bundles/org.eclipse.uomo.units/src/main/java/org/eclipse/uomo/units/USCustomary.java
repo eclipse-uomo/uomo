@@ -13,7 +13,6 @@ package org.eclipse.uomo.units;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
-import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.quantity.Area;
@@ -39,12 +38,12 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.14 ($Revision: 332 $), $Date: 2011-04-05 02:52:11 +0430 $
+ * @version 1.15 ($Revision: 332 $), $Date: 2011-09-11 14:52:11 +0200 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
  */
-public final class USCustomary extends AbstractSystemOfUnits implements IName {
+public final class USCustomary extends AbstractSystemOfUnits {
 
 	/**
 	 * Default constructor (prevents this class from being instantiated).

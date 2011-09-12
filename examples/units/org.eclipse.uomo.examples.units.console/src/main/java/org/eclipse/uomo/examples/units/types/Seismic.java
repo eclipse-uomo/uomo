@@ -10,7 +10,6 @@
  */
 package org.eclipse.uomo.examples.units.types;
 
-import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.eclipse.uomo.units.SI;
 import org.unitsofmeasurement.quantity.Energy;
@@ -19,9 +18,9 @@ import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.4
+ * @version 0.4.1
  */
-public class Seismic extends AbstractSystemOfUnits implements IName {
+public class Seismic extends AbstractSystemOfUnits {
 
 	// Richter scale.
 	public static final  Unit<Energy> RICHTER_MAGNITUDE = (SI.JOULE.multiply(1.5d)).add(4.4d);

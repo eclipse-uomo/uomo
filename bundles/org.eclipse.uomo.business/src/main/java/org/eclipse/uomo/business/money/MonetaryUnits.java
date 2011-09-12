@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2006, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,26 +10,16 @@
  */
 package org.eclipse.uomo.business.money;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.eclipse.uomo.business.types.IMoney;
-import org.eclipse.uomo.core.IName;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
+import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.4.1, $Date: 2010-10-13 16:45:05 +0200 (Mi, 13 Okt 2010) $
+ * @version 0.5, $Date: 2010-09-11 14:45:05 +0200 (So, 11 Sep 2011) $
  */
-public final class MonetaryUnits implements SystemOfUnits, IName {
-	
-    /**
-     * Holds collection of Monetary units.
-     */
-    private static HashSet<Unit<?>> UNITS = new HashSet<Unit<?>>();
+public final class MonetaryUnits extends AbstractSystemOfUnits {
 
 	// Use currency not defined as constant (Rupees).
 	public static final Unit<IMoney> INR = monetary(MoneyAmount.UNIT);
@@ -49,13 +39,6 @@ public final class MonetaryUnits implements SystemOfUnits, IName {
         return INSTANCE;
     }
     private static final MonetaryUnits INSTANCE = new MonetaryUnits();
-
-	/* (non-Javadoc)
-	 * @see javax.measure.unit.SystemOfUnits#getUnits()
-	 */
-	public Set<Unit<?>> getUnits() {
-		return UNITS;
-	}
 	
 	/**
      * Adds a new unit to the collection.
@@ -68,18 +51,8 @@ public final class MonetaryUnits implements SystemOfUnits, IName {
         return unit;
     }
 
+    @Override
 	public String getName() {
 		return getClass().getSimpleName();
-	}
-
-	public Set<Unit<?>> getUnits(Dimension dimension) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> arg0) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 }

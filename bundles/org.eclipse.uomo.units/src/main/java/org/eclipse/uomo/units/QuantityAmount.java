@@ -30,11 +30,34 @@ import com.ibm.icu.util.MeasureUnit;
  * @see MeasureUnit
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @param <Q> The type of the quantity.
- * @version 1.2 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.3 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12 Sep 2011) $
  * XXX rename to Amount or MeasureAmount?
  * FIXME  Bug 338334 overwrite equals()
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements IMeasure<Q> {
+	@Override
+	public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+		if (this.getClass() == obj.getClass()) {
+			return super.equals(obj);
+		} else {
+			if (obj instanceof Measure) {
+				Measure m = (Measure)obj;
+				if (m.getNumber().getClass() == this.getNumber().getClass() && 
+						m.getUnit().getClass() == this.getUnit().getClass()) {
+					return super.equals(obj);
+				} else {
+//					if (this.getQuantityUnit() instanceof AbstractUnit<?>) {
+//						if 
+//					}
+					return super.equals(obj);
+				}
+			}
+			return false;
+		}
+	}
+
 	/**
      * Indicates if this measure is exact.
      */

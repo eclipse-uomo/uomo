@@ -16,7 +16,6 @@ import static org.eclipse.uomo.units.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
-import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Area;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Mass;
@@ -35,12 +34,12 @@ import org.unitsofmeasurement.unit.Unit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.0 ($Revision: 332 $), $Date: 2011-06-18 01:12:11 +0430 $
+ * @version 1.1 ($Revision: 332 $), $Date: 2011-09-11 14:52:11 +0200 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>
  */
-public final class Imperial extends AbstractSystemOfUnits implements IName {
+public final class Imperial extends AbstractSystemOfUnits  {
 
 	/**
 	 * Default constructor (prevents this class from being instantiated).

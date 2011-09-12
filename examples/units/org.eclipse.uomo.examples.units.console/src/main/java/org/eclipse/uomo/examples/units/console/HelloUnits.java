@@ -10,6 +10,8 @@
  */
 package org.eclipse.uomo.examples.units.console;
 
+import static org.eclipse.uomo.units.SI.Prefix.KILO;
+
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.USCustomary;
 import org.eclipse.uomo.units.impl.quantity.AreaAmount;
@@ -45,10 +47,11 @@ public class HelloUnits {
 		System.out.println(area);
 		
 		// TODO Bug 338334 this could be a JUnit test, convert into after issue resolved.
-		@SuppressWarnings("unused")
 		MassAmount mass = new MassAmount(1000, SI.GRAM);
-		@SuppressWarnings("unused")
 		MassAmount mass2 = new MassAmount(1, SI.KILOGRAM);
-//		System.out.println(mass.equals(mass2));
+		MassAmount mass3 = new MassAmount(1, KILO(SI.GRAM));
+		System.out.println(mass.equals(mass2) + 
+				"; " + mass.equals(mass3) +
+				"; " + mass2.equals(mass3));
 	}
 }

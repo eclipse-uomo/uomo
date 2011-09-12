@@ -37,7 +37,6 @@ import static org.eclipse.uomo.units.SI.WEBER;
 import static org.eclipse.uomo.units.SI.Prefix.*;
 
 import java.math.BigInteger;
-import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.impl.LogConverter;
 import org.eclipse.uomo.units.impl.RationalConverter;
 import org.unitsofmeasurement.quantity.*;
@@ -62,11 +61,11 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.16 ($Revision: 231 $), $Date: 2011-04-05 02:57:59 +0200 (Mo, 06 Sep
+ * @version 1.17 ($Revision: 231 $), $Date: 2011-09-11 14:57:59 +0200 (So, 11 Sep
  *          2011) $
  *          TODO expose relevant units like ROENTGEN, etc. via other SOU?
  */
-final class NonSI extends AbstractSystemOfUnits implements IName {
+final class NonSI extends AbstractSystemOfUnits {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.

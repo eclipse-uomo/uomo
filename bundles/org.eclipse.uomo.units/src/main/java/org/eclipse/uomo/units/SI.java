@@ -13,7 +13,6 @@ package org.eclipse.uomo.units;
 import static org.eclipse.uomo.units.AbstractUnit.ONE;
 
 import java.math.BigInteger;
-import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.Messages;
 import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
@@ -41,12 +40,12 @@ import org.unitsofmeasurement.quantity.*;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.31 ($Revision: 232 $), $Date: 2011-04-05 02:50:08 +0430 $
+ * @version 1.32 ($Revision: 232 $), $Date: 2011-09-11 14:50:08 +0200 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>
  */
-public final class SI extends AbstractSystemOfUnits implements IName {
+public final class SI extends AbstractSystemOfUnits {
 
 	/**
 	 * The singleton instance of {@code SI}.

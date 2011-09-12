@@ -103,6 +103,11 @@ public class BaseUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> {
         				}
         			}
         		}
+        		if (that instanceof ProductUnit<?>) {
+        			ProductUnit<?> pu = (ProductUnit<?>) that;
+//        			System.out.println("Product Unit: " + pu.getProductUnits());
+        			return this.symbol.equals(pu.getSymbol());
+        		}
         		return false;
         	}
         }  else {        	

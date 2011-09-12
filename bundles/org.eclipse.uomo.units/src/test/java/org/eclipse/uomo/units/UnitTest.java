@@ -17,14 +17,18 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
+import org.eclipse.uomo.units.impl.BaseAmount;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.unitsofmeasurement.quantity.Dimensionless;
+import org.unitsofmeasurement.quantity.Power;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 
@@ -221,5 +225,12 @@ public class UnitTest {
     public void testPow() {
     	Unit<?> result = one.pow(10);
         assertEquals(result, one);
+    }
+    
+    @Test
+    public void testKiloIsAThousand() {
+    	BaseAmount<Power> w2000 = new BaseAmount<Power>(2000, WATT);
+    	BaseAmount<Power> kW2 = new BaseAmount<Power>(2, Prefix.KILO(WATT));
+    	assertThat(w2000, is(kW2));
     }
 }

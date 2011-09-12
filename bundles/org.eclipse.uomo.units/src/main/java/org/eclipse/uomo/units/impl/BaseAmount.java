@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import com.ibm.icu.util.MeasureUnit;
  * Represents a generic quantity amount.
  * 
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.2, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.3, ($Revision: 212 $), $Date: 2010-09-12 01:25:44 +0200 (Mo, 12 Sep 2011) $
  */
 public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> implements Comparable<BaseAmount<Q>>{
 	
@@ -104,9 +104,9 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
             BigInteger dividend = rCvtr.getDividend();
             BigInteger divisor = rCvtr.getDivisor();
             if (dividend.abs().compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
-                throw new ArithmeticException("Multiplier overflow");
+                throw new ArithmeticException("Multiplier overflow"); //$NON-NLS-1$
             if (divisor.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
-                throw new ArithmeticException("Divisor overflow");
+                throw new ArithmeticException("Divisor overflow"); //$NON-NLS-1$
             return (value.longValue() * dividend.longValue()) / (divisor.longValue());
         } else if (cvtr instanceof AbstractConverter.Compound && cvtr.isLinear()) { // Do it in two parts.
             AbstractConverter.Compound compound = (AbstractConverter.Compound) cvtr;
@@ -130,5 +130,84 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 	public int compareTo(BaseAmount<Q> o) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+        if (obj == null) return false;
+        if (obj == this) return true;
+		if (obj instanceof BaseAmount<?>) {				
+			BaseAmount<?> ba = (BaseAmount<?>)obj;
+			if (this.getQuantityUnit().getClass() == 
+			  ba.getQuantityUnit().getClass()) {
+				return super.equals(obj);
+			}
+			if (ba.getQuantityUnit() instanceof AlternateUnit<?>) {
+				AlternateUnit<?> baa = (AlternateUnit<?>) ba.getQuantityUnit();
+				if(this.getQuantityUnit() instanceof AlternateUnit<?>) {
+					return super.equals(obj);					
+				} else if(this.getQuantityUnit() instanceof AnnotatedUnit<?>) {
+					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.getQuantityUnit();
+					System.out.println("Ann: " + au);
+				} else if  (this.getQuantityUnit() instanceof BaseUnit<?>) {
+					BaseUnit<?> bu = (BaseUnit<?>) this.getQuantityUnit();
+					System.out.println("Bas: " + bu);		
+				} else if(this.getQuantityUnit() instanceof ProductUnit<?>) {
+					ProductUnit<?> pu = (ProductUnit<?>) this.getQuantityUnit();
+					System.out.println("Pro: " + pu);					
+				} else if(this.getQuantityUnit() instanceof TransformedUnit<?>) {
+					TransformedUnit<?> tu = (TransformedUnit<?>) this.getQuantityUnit();
+					System.out.println("Tran: " + tu);
+					if (tu.getParentUnit().equals(baa)) {
+						return true; // FIXME use number here, too
+					}
+				} else {
+					return super.equals(obj);
+				}
+			}
+			if (ba.getQuantityUnit() instanceof BaseUnit<?>) {
+				if(this.getQuantityUnit() instanceof AlternateUnit<?>) {
+					AlternateUnit<?> au = (AlternateUnit<?>) this.getQuantityUnit();
+					System.out.println("Alt: " + au);		
+				} else if(this.getQuantityUnit() instanceof AnnotatedUnit<?>) {
+					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.getQuantityUnit();
+					System.out.println("Ann: " + au);
+				} else if (this.getQuantityUnit() instanceof BaseUnit<?>) {
+					return super.equals(obj);
+				} else if(this.getQuantityUnit() instanceof ProductUnit<?>) {
+					ProductUnit<?> pu = (ProductUnit<?>) this.getQuantityUnit();
+					System.out.println("Pro: " + pu);
+				} else if(this.getQuantityUnit() instanceof TransformedUnit<?>) {
+					TransformedUnit<?> tu = (TransformedUnit<?>) this.getQuantityUnit();
+					System.out.println("Tran: " + tu);
+				} else {
+					return super.equals(obj);
+				}
+			}
+			if (ba.getQuantityUnit() instanceof TransformedUnit<?>) {
+				TransformedUnit<?> bat = (TransformedUnit<?>) ba.getQuantityUnit();
+				if(this.getQuantityUnit() instanceof AlternateUnit<?>) {	
+					AlternateUnit<?> au = (AlternateUnit<?>) this.getQuantityUnit();
+					System.out.println("Alt: " + au);
+					if (bat.getParentUnit().equals(au)) {
+						return true;
+					}
+				} else if(this.getQuantityUnit() instanceof AnnotatedUnit<?>) {
+					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.getQuantityUnit();
+					System.out.println("Ann: " + au);
+				} else if  (this.getQuantityUnit() instanceof BaseUnit<?>) {
+					BaseUnit<?> bu = (BaseUnit<?>) this.getQuantityUnit();
+					System.out.println("Bas: " + bu);	
+				} else if(this.getQuantityUnit() instanceof ProductUnit<?>) {
+					ProductUnit<?> pu = (ProductUnit<?>) this.getQuantityUnit();
+					System.out.println("Pro: " + pu);
+				} else if(this.getQuantityUnit() instanceof TransformedUnit<?>) {
+					return super.equals(obj);
+				} else {
+					return super.equals(obj);
+				}
+			}
+		}
+		return super.equals(obj);
 	}
 }
