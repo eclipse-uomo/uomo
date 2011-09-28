@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2008, 2008, Copyright (c) 2008, 2008 Kestral Computing.
+ * Crown Copyright (c) 2008, 2011, Copyright (c) 2008, 2008 Kestral Computing.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,12 +19,12 @@ import org.junit.runners.Suite;
 
 /**
  * @author dennisn
- *
+ * @author Werner Keil
  */
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	SystemTest.class	
+	SystemTest.class, UcumServiceTest.class	
 })
 public class UCUMTestSuite {
 

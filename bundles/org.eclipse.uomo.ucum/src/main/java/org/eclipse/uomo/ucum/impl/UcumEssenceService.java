@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2010, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import java.util.Set;
 
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.core.impl.Pair;
-import org.eclipse.uomo.ucum.Search;
 import org.eclipse.uomo.ucum.UcumService;
 import org.eclipse.uomo.ucum.UcumValidator;
 import org.eclipse.uomo.ucum.canonical.Canonical;
@@ -266,7 +265,7 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ohf.ucum.UcumServiceEx#getDefinedForms(java.lang.String)
+	 * @see org.eclipse.uomo.ucum.UcumServiceEx#getDefinedForms(java.lang.String)
 	 */
 	public List<DefinedUnit> getDefinedForms(String code)
 			throws UOMoRuntimeException {

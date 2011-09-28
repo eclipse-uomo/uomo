@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2010, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -123,7 +123,7 @@ public interface UcumService {
 	 * full names 
 	 * @param units the unit code
 	 * @return formal description
-	 * @throws UnitException 
+	 * @throws UOMoRuntimeException 
 	 */
 	public String analyse(String unit) throws UOMoRuntimeException;
 	
@@ -149,7 +149,7 @@ public interface UcumService {
 	 * given a set of units, return their canonical form
 	 * @param unit
 	 * @return the canonical form
-	 * @throws UnitException 
+	 * @throws UOMoRuntimeException 
 	 */
 	public abstract String getCanonicalUnits(String unit) throws UOMoRuntimeException;
 
@@ -159,7 +159,7 @@ public interface UcumService {
 	 * 
 	 * @param code
 	 * @return
-	 * @throws UnitException
+	 * @throws UOMoRuntimeException
 	 */
 	public abstract List<DefinedUnit> getDefinedForms(String code) throws UOMoRuntimeException;
 
@@ -169,7 +169,7 @@ public interface UcumService {
 	 * 1 mm -> 1e-3 m
 	 * @param value
 	 * @return
-	 * @throws UnitException 
+	 * @throws UOMoRuntimeException 
 	 */
 	public abstract Pair getCanonicalForm(Pair value) throws UOMoRuntimeException;
 
@@ -181,7 +181,7 @@ public interface UcumService {
 	 * @param sourceUnit
 	 * @param destUnit
 	 * @return the value if a conversion is possible
-	 * @throws OHFException
+	 * @throws UOMoRuntimeException
 	 */
 	public abstract BigDecimal convert(BigDecimal value, String sourceUnit, String destUnit) throws UOMoRuntimeException;
 
