@@ -77,7 +77,7 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
     long longValue(Unit<Q> unit) throws ArithmeticException;
     
     /**
-     * Get the unit (convenience to avoid cast).
+     * Get the unit (type-safe to avoid cast).
      * @draft UOMo 0.6
      * @provisional This API might change or be removed in a future release.
      */
