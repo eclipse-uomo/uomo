@@ -31,7 +31,7 @@ public class Prefix extends Concept {
 	/**
 	 * @return the index
 	 */
-	public BigDecimal getValue() {
+	public Number getValue() {
 		return value;
 	}
 

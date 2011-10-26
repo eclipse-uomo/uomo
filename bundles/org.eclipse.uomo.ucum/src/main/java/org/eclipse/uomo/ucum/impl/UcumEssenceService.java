@@ -11,6 +11,8 @@
 
 package org.eclipse.uomo.ucum.impl;
 
+import static org.eclipse.uomo.core.impl.OutputHelper.println;
+
 import java.io.File;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -101,7 +103,7 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ohf.ucum.UcumServiceEx#getModel()
+	 * @see org.eclipse.uomo.ucum.UcumServiceEx#getModel()
 	 */
 	public UcumModel getModel() {
 		return model;
@@ -111,7 +113,7 @@ public class UcumEssenceService implements UcumService {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.ohf.ucum.UcumServiceEx#search(org.eclipse.ohf.ucum.model.
+	 * org.eclipse.uomo.ucum.UcumServiceEx#search(org.eclipse.uomo.ucum.model.
 	 * ConceptKind, java.lang.String, boolean)
 	 */
 	public List<Concept> search(ConceptKind kind, String text, boolean isRegex) {
@@ -123,7 +125,7 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ohf.ucum.UcumServiceEx#validateUCUM()
+	 * @see org.eclipse.uomo.ucum.UcumService#validateUCUM()
 	 */
 	public List<String> validateUCUM() {
 		return new UcumValidator(model, handlers).validate();
@@ -132,7 +134,7 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ohf.ucum.UcumServiceEx#getProperties()
+	 * @see org.eclipse.uomo.ucum.UcumService#getProperties()
 	 */
 	public Set<String> getProperties() {
 		Set<String> result = new HashSet<String>();
@@ -312,10 +314,10 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.ohf.ucum.UcumServiceEx#convert(java.math.BigDecimal,
+	 * @see org.eclipse.uomo.ucum.UcumServiceEx#convert(java.math.BigDecimal,
 	 * java.lang.String, java.lang.String)
 	 */
-	public BigDecimal convert(BigDecimal value, String sourceUnit,
+	public Number convert(BigDecimal value, String sourceUnit,
 			String destUnit) throws UOMoRuntimeException {
 		assert value != null : paramError("convert", "value",
 				"must not be null");
@@ -339,9 +341,9 @@ public class UcumEssenceService implements UcumService {
 					+ " as they do not have matching canonical forms (" + s
 					+ " and " + d + " respectively)");
 		BigDecimal canValue = value.multiply(src.getValue());
-		// System.out.println(value.toPlainString()+sourceUnit+" =("+src.getValue().toPlainString()+")= "+
-		// canValue.toPlainString()+s+" =("+dst.getValue().toPlainString()+")= "+
-		// canValue.divide(dst.getValue())+destUnit);
+		println(value.toPlainString()+sourceUnit+" =("+src.getValue().toPlainString()+")= "+
+		 canValue.toPlainString()+s+" =("+dst.getValue().toPlainString()+")= "+
+		 canValue.divide(dst.getValue())+destUnit);
 		return canValue.divide(dst.getValue(), new MathContext(25));
 	}
 

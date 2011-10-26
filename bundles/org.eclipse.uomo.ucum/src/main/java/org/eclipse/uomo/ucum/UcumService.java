@@ -42,7 +42,7 @@ public interface UcumService {
 	 * 
 	 * @return the model
 	 */
-	public abstract UcumModel getModel();
+	public UcumModel getModel();
 
 	// TODO replace this with a more generic Module definition (->Jigsaw, OSGi or SDJ)
 	public class UcumVersionDetails {
@@ -75,7 +75,7 @@ public interface UcumService {
 	/**
 	 * return Ucum Identification details
 	 */
-	public abstract UcumVersionDetails ucumIdentification();
+	public UcumVersionDetails ucumIdentification();
 
 
 	/**
@@ -89,7 +89,7 @@ public interface UcumService {
 	 * @return a list of internal errors in the UCUM spec.
 	 * 
 	 */
-	public abstract List<String> validateUCUM();
+	public List<String> validateUCUM();
 
 	/**
 	 * Search through the UCUM concepts for any concept containing matching text.
@@ -101,14 +101,14 @@ public interface UcumService {
 	 * @param isRegex
 	 * @return
 	 */
-	public abstract List<Concept> search(ConceptKind kind, String text, boolean isRegex);
+	public List<Concept> search(ConceptKind kind, String text, boolean isRegex);
 
 	/**
 	 * return a list of the defined types of units in this UCUM version
 	 * 
 	 * @return
 	 */
-	public abstract Set<String> getProperties();
+	public Set<String> getProperties();
 
 	/**
 	 * validate whether a unit code are valid UCUM units
@@ -116,7 +116,7 @@ public interface UcumService {
 	 * @param units - the unit code to check
 	 * @return nil if valid, or an error message describing the problem
 	 */
-	public abstract String validate(String unit);
+	public String validate(String unit);
 
 	/**
 	 * given a unit, return a formal description of what the units stand for using
@@ -134,7 +134,7 @@ public interface UcumService {
 	 * @param units - the unit code to check
 	 * @return nil if valid, or an error message describing the problem
 	 */
-	public abstract String validateInProperty(String unit, String property);
+	public String validateInProperty(String unit, String property);
 
 	/**
 	 * validate whether a units are valid UCUM units and additionally require that the 
@@ -143,7 +143,7 @@ public interface UcumService {
 	 * @param units - the unit code to check
 	 * @return nil if valid, or an error message describing the problem
 	 */
-	public abstract String validateCanonicalUnits(String unit, String canonical);
+	public String validateCanonicalUnits(String unit, String canonical);
 
 	/**
 	 * given a set of units, return their canonical form
@@ -151,7 +151,7 @@ public interface UcumService {
 	 * @return the canonical form
 	 * @throws UOMoRuntimeException 
 	 */
-	public abstract String getCanonicalUnits(String unit) throws UOMoRuntimeException;
+	public String getCanonicalUnits(String unit) throws UOMoRuntimeException;
 
 	/**
 	 * for a given canonical unit, return all the defined units that have the 
@@ -161,7 +161,7 @@ public interface UcumService {
 	 * @return
 	 * @throws UOMoRuntimeException
 	 */
-	public abstract List<DefinedUnit> getDefinedForms(String code) throws UOMoRuntimeException;
+	public List<DefinedUnit> getDefinedForms(String code) throws UOMoRuntimeException;
 
 	/**
 	 * given a value/unit pair, return the canonical form as a value/unit pair
@@ -171,7 +171,7 @@ public interface UcumService {
 	 * @return
 	 * @throws UOMoRuntimeException 
 	 */
-	public abstract Pair getCanonicalForm(Pair value) throws UOMoRuntimeException;
+	public Pair getCanonicalForm(Pair value) throws UOMoRuntimeException;
 
 	/**
 	 * given a value and source unit, return the value in the given dest unit
@@ -183,7 +183,7 @@ public interface UcumService {
 	 * @return the value if a conversion is possible
 	 * @throws UOMoRuntimeException
 	 */
-	public abstract BigDecimal convert(BigDecimal value, String sourceUnit, String destUnit) throws UOMoRuntimeException;
+	public Number convert(BigDecimal value, String sourceUnit, String destUnit) throws UOMoRuntimeException;
 
 	/**
 	 * multiply two value/units pairs together and return the result in canonical units
@@ -193,6 +193,6 @@ public interface UcumService {
 	 * @param o2
 	 * @return
 	 */
-	public abstract Pair multiply(Pair o1, Pair o2);
+	public Pair multiply(Pair o1, Pair o2);
 
 }

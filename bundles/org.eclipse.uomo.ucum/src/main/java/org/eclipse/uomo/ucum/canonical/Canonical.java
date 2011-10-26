@@ -53,8 +53,8 @@ public class Canonical {
 		this.value = value;
 	}
 
-	public void multiplyValue(BigDecimal multiplicand) {
-		value = value.multiply(multiplicand);		
+	public void multiplyValue(Number number) {
+		value = value.multiply((BigDecimal) number);		
 	}
 
 	public void multiplyValue(int multiplicand) {

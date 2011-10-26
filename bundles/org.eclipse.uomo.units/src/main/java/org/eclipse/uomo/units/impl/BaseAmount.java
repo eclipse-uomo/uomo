@@ -69,7 +69,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public IMeasure<?> multiply(IMeasure<?> that) {
+	public IMeasure<Q> multiply(IMeasure<?> that) {
 		Unit<?> unit = getQuantityUnit().multiply(that.getQuantityUnit());
 		return (IMeasure<Q>)valueOf((getNumber().doubleValue() *
 				((Measure)that).getNumber().doubleValue()), unit);
@@ -77,7 +77,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public IMeasure<?> divide(IMeasure<?> that) {
+	public IMeasure<Q> divide(IMeasure<?> that) {
 		Unit<?> unit = getQuantityUnit().divide(that.getQuantityUnit());
 		return (IMeasure<Q>) valueOf((getNumber().doubleValue() /
 				((Measure)that).getNumber().doubleValue()), unit);
@@ -209,5 +209,10 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 			}
 		}
 		return super.equals(obj);
+	}
+
+	@Override
+	public Number getValue() {
+		return getNumber();
 	}
 }

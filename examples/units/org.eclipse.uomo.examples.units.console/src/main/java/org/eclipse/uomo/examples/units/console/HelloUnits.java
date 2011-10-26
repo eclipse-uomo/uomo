@@ -12,15 +12,19 @@ package org.eclipse.uomo.examples.units.console;
 
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 
+import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.USCustomary;
 import org.eclipse.uomo.units.impl.quantity.AreaAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
+import org.eclipse.uomo.units.impl.quantity.TimeAmount;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
+import org.unitsofmeasurement.quantity.Acceleration;
 import org.unitsofmeasurement.quantity.Area;
 import org.unitsofmeasurement.quantity.Length;
+import org.unitsofmeasurement.quantity.Time;
 
 public class HelloUnits {
 
@@ -53,5 +57,14 @@ public class HelloUnits {
 		System.out.println(mass.equals(mass2) + 
 				"; " + mass.equals(mass3) +
 				"; " + mass2.equals(mass3));
+		
+		// Equivalent to 
+		IMeasure<Length> meters = new LengthAmount(5, SI.METRE);
+		IMeasure<Time> secs = new TimeAmount(2, SI.SECOND);
+		@SuppressWarnings("unchecked")
+		IMeasure<Acceleration> speed = (IMeasure<Acceleration>) meters.divide(secs);
+		System.out.println(meters + 
+				"; " + secs +
+				"; " + speed);
 	}
 }

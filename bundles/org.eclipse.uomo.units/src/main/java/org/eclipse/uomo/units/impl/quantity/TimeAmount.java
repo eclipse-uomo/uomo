@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.RationalConverter;
-import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
@@ -33,9 +32,9 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * TODO add conversions with ICU4J TimeUnitAmount where necessary
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.5 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.6 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
+public class TimeAmount extends BaseAmount<Time> implements Time {
 
 	public TimeAmount(Number number, Unit<Time> unit) {
 		super(number, unit);
@@ -96,14 +95,12 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 		}
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public IMeasure<Time> add(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				+ ((BaseAmount<Time>) that).getNumber().doubleValue(),
 				that.getQuantityUnit());
 	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public IMeasure<Time> substract(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				- ((BaseAmount<Time>) that).getNumber().doubleValue(),
@@ -120,8 +117,8 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 //		return new TimeAmount(getNumber(), unit);
 //	}
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public IMeasure<?> multiply(IMeasure<?> that) {
+	@SuppressWarnings({ "unchecked" })
+	public IMeasure<Time> multiply(IMeasure<?> that) {
 		Unit<Time> unit = (Unit<Time>) getQuantityUnit().multiply(that.getQuantityUnit());
 		
 		// FIXME include number division
@@ -140,7 +137,6 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 	 *            the unit in which the value is stated.
 	 * @return the corresponding amount.
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static TimeAmount valueOf(Number value, Unit<Time> unit) {
 		TimeAmount amount = new TimeAmount(value, unit);
 		return amount;
@@ -150,7 +146,6 @@ public class TimeAmount<Q extends Quantity<Q>> extends BaseAmount<Time> {
 		return to(unit, MathContext.DECIMAL32);
 	}
 	
-    @SuppressWarnings("unchecked")
 	public IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
         if (this.getUnit().equals(unit))
             return this;

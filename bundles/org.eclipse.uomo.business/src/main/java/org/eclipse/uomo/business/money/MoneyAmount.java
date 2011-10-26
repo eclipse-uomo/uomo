@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,7 @@ import com.ibm.icu.util.CurrencyAmount;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.2 ($Revision: 206 $), $Date: 2010-09-11 23:59:41 +0200 (Sa, 11 Sep 2010) $
+ * @version 1.3 ($Revision: 206 $), $Date: 2010-09-11 23:59:41 +0200 (Sa, 11 Sep 2010) $
  */
 public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IMoney> {
     
@@ -305,5 +305,10 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	 */
 	public String serialize() {
 		return null;
+	}
+
+	@Override
+	public Number getValue() {
+		return getNumber();
 	}
 }

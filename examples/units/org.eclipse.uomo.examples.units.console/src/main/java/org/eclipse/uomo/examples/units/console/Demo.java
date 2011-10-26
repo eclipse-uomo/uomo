@@ -46,7 +46,7 @@ public class Demo {
 	}
 	
 	private static IMeasure<Time> getTime() {
-		return new TimeAmount<Time>(10, SECOND);
+		return new TimeAmount(10, SECOND);
 	}
 
     public static void main(String[] args) {

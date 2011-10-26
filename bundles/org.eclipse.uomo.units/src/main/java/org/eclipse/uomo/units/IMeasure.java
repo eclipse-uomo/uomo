@@ -44,9 +44,17 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 5.2, $Date: 2011-04-05 03:03:44 +0430 $
+ * @version 5.3, $Date: 2011-04-05 03:03:44 +0430 $
+ * @param <R>
  */
 public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
+	
+    /**
+     * Returns the numeric value of this measurement.
+     * 
+     * @return the numeric value.
+     */
+    Number getValue();
     
     /**
      * Returns the estimated value of this measurement stated 
