@@ -30,11 +30,15 @@ import com.ibm.icu.util.MeasureUnit;
  * @see MeasureUnit
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @param <Q> The type of the quantity.
- * @version 1.3 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12 Sep 2011) $
+ * @version 1.3.1 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12 Sep 2011) $
  * XXX rename to Amount or MeasureAmount?
  * FIXME  Bug 338334 overwrite equals()
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements IMeasure<Q> {
+	
+	/* (non-Javadoc)
+	 * @see com.ibm.icu.util.Measure#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
         if (obj == null) return false;
@@ -84,14 +88,10 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
 		super(number, unit);
 	}
 
-    /**
-     * Returns the value of this quantity as <code>double</code> stated
-     * in the specified unit. This method is recommended over <code>
-     * q.getUnit().getConverterTo(unit).convert(q.getNumber()).doubleValue()</code>
-     *
-     * @param unit the unit in which the returned value is stated.
-     * @return the value of this quantity when stated in the specified unit.
-     */
+	/* (non-Javadoc)
+	 * @see org.eclipse.uomo.units.IMeasure#doubleValue(org.unitsofmeasurement.unit.Unit)
+	 */
+	@Override
     public double doubleValue(Unit<Q> unit) {
     	Unit<Q> myUnit = unit();
     	try {
@@ -104,14 +104,10 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
 //		}
     }
     
-    /**
-     * Returns the value of this quantity as <code>long</code> stated
-     * in the specified unit. This method is recommended over <code>
-     * q.getUnit().getConverterTo(unit).convert(q.getNumber()).longValue()</code>
-     *
-     * @param unit the unit in which the returned value is stated.
-     * @return the value of this quantity when stated in the specified unit.
+    /* (non-Javadoc)
+     * @see org.eclipse.uomo.units.IMeasure#longValue(org.unitsofmeasurement.unit.Unit)
      */
+    @Override
     public long longValue(Unit<Q> unit) {
     	Unit<Q> myUnit = unit();
     	try {
@@ -124,14 +120,22 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
 		}
     }
     
-    /**
-     * Get the unit (convenience to avoid cast).
-     * @draft UOMo 0.6
-     * @provisional This API might change or be removed in a future release.
+
+    /* (non-Javadoc)
+     * @see org.unitsofmeasurement.quantity.Quantity#unit()
      */
+    @Override
     public Unit<Q> unit() {
     	return internalUnit();
     }
+    
+	/* (non-Javadoc)
+	 * @see org.unitsofmeasurement.quantity.Quantity#value()
+	 */
+	@Override
+	public Number value() {
+		return getNumber();
+	}
     
     /**
      * Indicates if this measure amount is exact. An exact amount is 

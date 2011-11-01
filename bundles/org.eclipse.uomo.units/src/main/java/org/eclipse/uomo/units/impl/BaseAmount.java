@@ -82,7 +82,8 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 				that.value().doubleValue()), unit);
 	}
 	
-    public IMeasure<Q> to(Unit<Q> unit) {
+    @Override
+	public IMeasure<Q> to(Unit<Q> unit) {
         return to(unit, MathContext.DECIMAL32);
     }
 
@@ -208,9 +209,5 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 			}
 		}
 		return super.equals(obj);
-	}
-
-	public Number value() {
-		return getNumber();
 	}
 }
