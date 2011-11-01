@@ -259,7 +259,7 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
                 if (!(obj instanceof QuantityAmount))
                     return false;
                 final QuantityAmount<Q> that = (QuantityAmount<Q>) obj;
-                if (!unit.isCompatible((AbstractUnit<?>) that.getUnit()))
+                if (!unit.isCompatible((AbstractUnit<?>) that.unit()))
                     return false;
                 return value.doubleValue() == (that).doubleValue(unit);
             } else if (name.equals("compareTo")) {

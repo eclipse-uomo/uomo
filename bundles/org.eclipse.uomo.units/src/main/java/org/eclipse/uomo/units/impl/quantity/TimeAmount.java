@@ -15,6 +15,7 @@ import java.math.BigInteger;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
+import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.RationalConverter;
@@ -46,9 +47,8 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 	 * @draft UOMo 0.5
 	 * @provisional This API might change or be removed in a future release.
 	 */
-	@SuppressWarnings("unchecked")
-	public Unit<Time> getQuantityUnit() {
-		return (Unit<Time>) getUnit();
+	public AbstractUnit<Time> unit() {
+		return (AbstractUnit<Time>) super.unit();
 	}
 
 	/**
@@ -61,7 +61,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 	 * @return the value of this quantity when stated in the specified unit.
 	 */
 	public double doubleValue(Unit<Time> unit) {
-		Unit<Time> myUnit = getQuantityUnit();
+		Unit<Time> myUnit = unit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return converter.convert(getNumber().doubleValue());
@@ -82,7 +82,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 	 * @return the value of this quantity when stated in the specified unit.
 	 */
 	public long longValue(Unit<Time> unit) {
-		Unit<Time> myUnit = getQuantityUnit();
+		Unit<Time> myUnit = unit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return (converter.convert(
@@ -98,18 +98,18 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 	public IMeasure<Time> add(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				+ ((BaseAmount<Time>) that).getNumber().doubleValue(),
-				that.getQuantityUnit());
+				that.unit());
 	}
 
 	public IMeasure<Time> substract(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				- ((BaseAmount<Time>) that).getNumber().doubleValue(),
-				that.getQuantityUnit());
+				that.unit());
 	}
 	
 //	public IMeasure<Time> divide(IMeasure<?> that) {
 //		@SuppressWarnings("unchecked")
-//		Unit<Time> unit = (Unit<Time>) getQuantityUnit().divide(that.getQuantityUnit());
+//		Unit<Time> unit = (Unit<Time>) unit().divide(that.unit());
 		
 		// FIXME include number division
 //		return new TimeAmount((BigDecimal) getNumber())
@@ -119,7 +119,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 
 	@SuppressWarnings({ "unchecked" })
 	public IMeasure<Time> multiply(IMeasure<?> that) {
-		Unit<Time> unit = (Unit<Time>) getQuantityUnit().multiply(that.getQuantityUnit());
+		Unit<Time> unit = (Unit<Time>) unit().multiply(that.unit());
 		
 		// FIXME include number division
 //		return new TimeAmount((BigDecimal) getNumber())
@@ -137,7 +137,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 	 *            the unit in which the value is stated.
 	 * @return the corresponding amount.
 	 */
-	public static TimeAmount valueOf(Number value, Unit<Time> unit) {
+	public static TimeAmount valueOf(Number value, AbstractUnit<Time> unit) {
 		TimeAmount amount = new TimeAmount(value, unit);
 		return amount;
 	}
@@ -146,10 +146,11 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		return to(unit, MathContext.DECIMAL32);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
-        if (this.getUnit().equals(unit))
+        if (this.unit().equals(unit))
             return this;
-        UnitConverter cvtr = this.getQuantityUnit().getConverterTo(unit);
+        UnitConverter cvtr = this.unit().getConverterTo(unit);
         if (cvtr == AbstractConverter.IDENTITY)
             return (IMeasure<Time>) valueOf(this.getNumber(), unit);
         return (IMeasure<Time>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);

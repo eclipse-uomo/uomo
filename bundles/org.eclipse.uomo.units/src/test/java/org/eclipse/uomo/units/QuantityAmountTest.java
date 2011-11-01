@@ -41,7 +41,7 @@ public class QuantityAmountTest {
 	// QuantityFactory.getInstance(Length.class);
 	final LengthAmount length = new LengthAmount(Double.valueOf(4.0), METRE);
 
-	assertSame("Wrong tuple element.", METRE, length.getUnit());
+	assertSame("Wrong tuple element.", METRE, length.unit());
 	assertEquals("Wrong tuple element.", Double.valueOf(4.0), length
 		.getNumber());
 	assertEquals("Wrong conversion.", 4.0, length.doubleValue(METRE), 0.0);
@@ -76,7 +76,7 @@ public class QuantityAmountTest {
 	final BigInteger value = BigInteger.valueOf(4);
 	final LengthAmount length = new LengthAmount(value, METRE);
 
-	assertSame("Wrong tuple element.", METRE, length.getUnit());
+	assertSame("Wrong tuple element.", METRE, length.unit());
 	assertEquals("Wrong tuple element.", BigInteger.valueOf(4), length
 		.getNumber());
 	assertEquals("Wrong conversion.", 4.0, length.doubleValue(METRE), 0.0);

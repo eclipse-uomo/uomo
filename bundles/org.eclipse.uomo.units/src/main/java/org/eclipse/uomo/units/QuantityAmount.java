@@ -45,7 +45,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
 			if (obj instanceof Measure) {
 				Measure m = (Measure)obj;
 				if (m.getNumber().getClass() == this.getNumber().getClass() && 
-						m.getUnit().getClass() == this.getUnit().getClass()) {
+						m.getUnit().getClass() == this.unit().getClass()) {
 					return super.equals(obj);
 				} else {
 //					if (this.getQuantityUnit() instanceof AbstractUnit<?>) {
@@ -93,15 +93,15 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
      * @return the value of this quantity when stated in the specified unit.
      */
     public double doubleValue(Unit<Q> unit) {
-    	Unit<Q> myUnit = getQuantityUnit();
+    	Unit<Q> myUnit = unit();
     	try {
 			UnitConverter converter = unit.getConverterTo(myUnit);
 			return converter.convert(getNumber().doubleValue());
 		} catch (UnconvertibleException e) {
 			throw e;
-		} catch (IncommensurableException e) {
-			throw new IllegalArgumentException(e.getMessage());
-		}
+		} //catch (IncommensurableException e) {
+//			throw new IllegalArgumentException(e.getMessage());
+//		}
     }
     
     /**
@@ -113,7 +113,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
      * @return the value of this quantity when stated in the specified unit.
      */
     public long longValue(Unit<Q> unit) {
-    	Unit<Q> myUnit = getQuantityUnit();
+    	Unit<Q> myUnit = unit();
     	try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return (converter.convert(BigDecimal.valueOf(getNumber().longValue()), MathContext.DECIMAL128)).longValue();
@@ -126,12 +126,11 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
     
     /**
      * Get the unit (convenience to avoid cast).
-     * @draft UOMo 0.5
+     * @draft UOMo 0.6
      * @provisional This API might change or be removed in a future release.
      */
-    @SuppressWarnings("unchecked")
-	public Unit<Q> getQuantityUnit() {
-    	return (Unit<Q>) getUnit();
+    public Unit<Q> unit() {
+    	return internalUnit();
     }
     
     /**
@@ -146,5 +145,13 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure impl
     public boolean isExact() {
         return isExact;
     }
-
+    
+    /**
+     * Get the unit (convenience to avoid cast).
+     * @provisional This API might change or be removed in a future release.
+     */
+    @SuppressWarnings("unchecked")
+	private final AbstractUnit<Q> internalUnit() {
+    	return (AbstractUnit<Q>) super.getUnit();
+    }
 }

@@ -20,7 +20,7 @@
         <dependency>
             <groupId>org.unitsofmeasurement</groupId>
             <artifactId>unit-api</artifactId>
-            <version>0.6.0</version>
+            <version>0.6-RC3</version>
         </dependency>
         <dependency>
             <groupId>com.ibm.icu</groupId>

@@ -44,45 +44,11 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 5.3, $Date: 2011-04-05 03:03:44 +0430 $
- * @param <R>
+ * @version 5.4, $Date: 2011-10-31 01:03:44 +0200 $
+ * @param <Q>
  */
-public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
-	
-    /**
-     * Returns the numeric value of this measurement.
-     * 
-     * @return the numeric value.
-     */
-    Number getValue();
-    
-    /**
-     * Returns the estimated value of this measurement stated 
-     * in the specified unit as a <code>double</code>.
-     * 
-     * @param unit the unit in which the measurement value is stated.
-     * @return the numeric value after conversion to type <code>double</code>.
-     */
-    double doubleValue(Unit<Q> unit);
-
-    /**
-     * Returns the estimated value of this measurement stated in the specified 
-     * unit as a <code>long</code>.
-     * 
-     * @param unit the unit in which the measurement value is stated.
-     * @return the numeric value after conversion to type <code>long</code>.
-     * @throws ArithmeticException if this quantity cannot be represented 
-     *         as a <code>long</code> number in the specified unit.
-     */
-    long longValue(Unit<Q> unit) throws ArithmeticException;
-    
-    /**
-     * Get the unit (type-safe to avoid cast).
-     * @draft UOMo 0.6
-     * @provisional This API might change or be removed in a future release.
-     */
-    Unit<Q> getQuantityUnit();
-    
+public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {    
+        
     /**
      * Returns the sum of this amount with the one specified.
      *
@@ -122,4 +88,24 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
      * @return the converted result.
      */
     IMeasure<Q> to(Unit<Q> unit);
+    
+    /**
+     * Returns the value of this quantity as <code>double</code> stated
+     * in the specified unit. This method is recommended over <code>
+     * q.getUnit().getConverterTo(unit).convert(q.getValue()).doubleValue()</code>
+     *
+     * @param unit the unit in which the returned value is stated.
+     * @return the value of this quantity when stated in the specified unit.
+     */
+    public double doubleValue(Unit<Q> unit);
+    
+    /**
+     * Returns the value of this quantity as <code>long</code> stated
+     * in the specified unit. This method is recommended over <code>
+     * q.getUnit().getConverterTo(unit).convert(q.getValue()).longValue()</code>
+     *
+     * @param unit the unit in which the returned value is stated.
+     * @return the value of this quantity when stated in the specified unit.
+     */
+    public long longValue(Unit<Q> unit);
 }

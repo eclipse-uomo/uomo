@@ -36,7 +36,7 @@ public class HelloUnits {
 //		LengthAmount length = new LengthAmount(10, SI.KILOGRAM); // this won't work ;-)
 		
 		System.out.println(length);
-		Unit<Length> lenUnit =  length.getQuantityUnit();
+		Unit<Length> lenUnit =  length.unit();
 		System.out.println(lenUnit);
 		
 		System.out.println(length.doubleValue(USCustomary.FOOT)); 
@@ -47,7 +47,7 @@ public class HelloUnits {
 		
 		@SuppressWarnings("unchecked")
 		AreaAmount area = new AreaAmount(length.getNumber().doubleValue() * length.getNumber().doubleValue(), 
-				(Unit<Area>) length.getQuantityUnit().multiply(SI.METRE));
+				(Unit<Area>) length.unit().multiply(SI.METRE));
 		System.out.println(area);
 		
 		// TODO Bug 338334 this could be a JUnit test, convert into after issue resolved.

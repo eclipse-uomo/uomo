@@ -21,7 +21,6 @@ import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 
-import com.ibm.icu.util.Measure;
 import com.ibm.icu.util.MeasureUnit;
 
 /**
@@ -55,32 +54,32 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
     @SuppressWarnings({ "rawtypes", "unchecked" })
 	public IMeasure<Q> add(IMeasure<Q> that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
-		return new BaseAmount(this.getNumber().doubleValue()
-				+ ((Measure)that).getNumber().doubleValue(), getQuantityUnit());
+		return new BaseAmount(this.value().doubleValue()
+				+ that.value().doubleValue(), unit());
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public IMeasure<Q> substract(IMeasure<Q> that) {
 		return new BaseAmount(this.getNumber().doubleValue()
-				- ((Measure)that).getNumber().doubleValue(), getQuantityUnit());
+				- that.value().doubleValue(), unit());
 
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public IMeasure<Q> multiply(IMeasure<?> that) {
-		Unit<?> unit = getQuantityUnit().multiply(that.getQuantityUnit());
-		return (IMeasure<Q>)valueOf((getNumber().doubleValue() *
-				((Measure)that).getNumber().doubleValue()), unit);
+		Unit<?> unit = unit().multiply(that.unit());
+		return (IMeasure<Q>)valueOf((value().doubleValue() *
+				that.value().doubleValue()), unit);
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	public IMeasure<Q> divide(IMeasure<?> that) {
-		Unit<?> unit = getQuantityUnit().divide(that.getQuantityUnit());
-		return (IMeasure<Q>) valueOf((getNumber().doubleValue() /
-				((Measure)that).getNumber().doubleValue()), unit);
+		Unit<?> unit = unit().divide(that.unit());
+		return (IMeasure<Q>) valueOf((value().doubleValue() /
+				that.value().doubleValue()), unit);
 	}
 	
     public IMeasure<Q> to(Unit<Q> unit) {
@@ -89,12 +88,12 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 
     @SuppressWarnings("unchecked")
 	public IMeasure<Q> to(Unit<Q> unit, MathContext ctx) {
-        if (this.getUnit().equals(unit))
+        if (this.unit().equals(unit))
             return this;
-        UnitConverter cvtr = this.getQuantityUnit().getConverterTo(unit);
+        UnitConverter cvtr = this.unit().getConverterTo(unit);
         if (cvtr == AbstractConverter.IDENTITY)
-            return (IMeasure<Q>) valueOf(this.getNumber(), unit);
-        return (IMeasure<Q>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
+            return (IMeasure<Q>) valueOf(this.value(), unit);
+        return (IMeasure<Q>) valueOf(convert(this.value(), cvtr, ctx), unit);
     }
 
     // Try to convert the specified value.
@@ -138,25 +137,25 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
         if (obj == this) return true;
 		if (obj instanceof BaseAmount<?>) {				
 			BaseAmount<?> ba = (BaseAmount<?>)obj;
-			if (this.getQuantityUnit().getClass() == 
-			  ba.getQuantityUnit().getClass()) {
+			if (this.unit().getClass() == 
+			  ba.unit().getClass()) {
 				return super.equals(obj);
 			}
-			if (ba.getQuantityUnit() instanceof AlternateUnit<?>) {
-				AlternateUnit<?> baa = (AlternateUnit<?>) ba.getQuantityUnit();
-				if(this.getQuantityUnit() instanceof AlternateUnit<?>) {
+			if (ba.unit() instanceof AlternateUnit<?>) {
+				AlternateUnit<?> baa = (AlternateUnit<?>) ba.unit();
+				if(this.unit() instanceof AlternateUnit<?>) {
 					return super.equals(obj);					
-				} else if(this.getQuantityUnit() instanceof AnnotatedUnit<?>) {
-					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof AnnotatedUnit<?>) {
+					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.unit();
 					System.out.println("Ann: " + au);
-				} else if  (this.getQuantityUnit() instanceof BaseUnit<?>) {
-					BaseUnit<?> bu = (BaseUnit<?>) this.getQuantityUnit();
+				} else if  (this.unit() instanceof BaseUnit<?>) {
+					BaseUnit<?> bu = (BaseUnit<?>) this.unit();
 					System.out.println("Bas: " + bu);		
-				} else if(this.getQuantityUnit() instanceof ProductUnit<?>) {
-					ProductUnit<?> pu = (ProductUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof ProductUnit<?>) {
+					ProductUnit<?> pu = (ProductUnit<?>) this.unit();
 					System.out.println("Pro: " + pu);					
-				} else if(this.getQuantityUnit() instanceof TransformedUnit<?>) {
-					TransformedUnit<?> tu = (TransformedUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof TransformedUnit<?>) {
+					TransformedUnit<?> tu = (TransformedUnit<?>) this.unit();
 					System.out.println("Tran: " + tu);
 					if (tu.getParentUnit().equals(baa)) {
 						return true; // FIXME use number here, too
@@ -165,43 +164,43 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 					return super.equals(obj);
 				}
 			}
-			if (ba.getQuantityUnit() instanceof BaseUnit<?>) {
-				if(this.getQuantityUnit() instanceof AlternateUnit<?>) {
-					AlternateUnit<?> au = (AlternateUnit<?>) this.getQuantityUnit();
+			if (ba.unit() instanceof BaseUnit<?>) {
+				if(this.unit() instanceof AlternateUnit<?>) {
+					AlternateUnit<?> au = (AlternateUnit<?>) this.unit();
 					System.out.println("Alt: " + au);		
-				} else if(this.getQuantityUnit() instanceof AnnotatedUnit<?>) {
-					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof AnnotatedUnit<?>) {
+					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.unit();
 					System.out.println("Ann: " + au);
-				} else if (this.getQuantityUnit() instanceof BaseUnit<?>) {
+				} else if (this.unit() instanceof BaseUnit<?>) {
 					return super.equals(obj);
-				} else if(this.getQuantityUnit() instanceof ProductUnit<?>) {
-					ProductUnit<?> pu = (ProductUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof ProductUnit<?>) {
+					ProductUnit<?> pu = (ProductUnit<?>) this.unit();
 					System.out.println("Pro: " + pu);
-				} else if(this.getQuantityUnit() instanceof TransformedUnit<?>) {
-					TransformedUnit<?> tu = (TransformedUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof TransformedUnit<?>) {
+					TransformedUnit<?> tu = (TransformedUnit<?>) this.unit();
 					System.out.println("Tran: " + tu);
 				} else {
 					return super.equals(obj);
 				}
 			}
-			if (ba.getQuantityUnit() instanceof TransformedUnit<?>) {
-				TransformedUnit<?> bat = (TransformedUnit<?>) ba.getQuantityUnit();
-				if(this.getQuantityUnit() instanceof AlternateUnit<?>) {	
-					AlternateUnit<?> au = (AlternateUnit<?>) this.getQuantityUnit();
+			if (ba.unit() instanceof TransformedUnit<?>) {
+				TransformedUnit<?> bat = (TransformedUnit<?>) ba.unit();
+				if(this.unit() instanceof AlternateUnit<?>) {	
+					AlternateUnit<?> au = (AlternateUnit<?>) this.unit();
 					System.out.println("Alt: " + au);
 					if (bat.getParentUnit().equals(au)) {
 						return true;
 					}
-				} else if(this.getQuantityUnit() instanceof AnnotatedUnit<?>) {
-					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof AnnotatedUnit<?>) {
+					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.unit();
 					System.out.println("Ann: " + au);
-				} else if  (this.getQuantityUnit() instanceof BaseUnit<?>) {
-					BaseUnit<?> bu = (BaseUnit<?>) this.getQuantityUnit();
+				} else if  (this.unit() instanceof BaseUnit<?>) {
+					BaseUnit<?> bu = (BaseUnit<?>) this.unit();
 					System.out.println("Bas: " + bu);	
-				} else if(this.getQuantityUnit() instanceof ProductUnit<?>) {
-					ProductUnit<?> pu = (ProductUnit<?>) this.getQuantityUnit();
+				} else if(this.unit() instanceof ProductUnit<?>) {
+					ProductUnit<?> pu = (ProductUnit<?>) this.unit();
 					System.out.println("Pro: " + pu);
-				} else if(this.getQuantityUnit() instanceof TransformedUnit<?>) {
+				} else if(this.unit() instanceof TransformedUnit<?>) {
 					return super.equals(obj);
 				} else {
 					return super.equals(obj);
@@ -211,8 +210,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 		return super.equals(obj);
 	}
 
-	@Override
-	public Number getValue() {
+	public Number value() {
 		return getNumber();
 	}
 }

@@ -120,7 +120,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	public static MoneyAmount valueOf(QuantityAmount<IMoney> amount) {
 		// MoneyAmount amountSI = amount.toSI();
 		return MoneyAmount.valueOf(BigDecimal.valueOf(amount.getNumber()
-				.doubleValue()), amount.getQuantityUnit().getSystemUnit());
+				.doubleValue()), amount.unit().getSystemUnit());
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 		StringBuffer tmp = new StringBuffer();
 		numberFormat.format(value, tmp, new FieldPosition(0));
 		tmp.append(' ');
-		tmp.append(this.getUnit().toString());
+		tmp.append(this.unit().toString());
 		return tmp.toString();
 	}
 
@@ -169,7 +169,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	protected MoneyAmount multiply(MoneyAmount that) {
-		Unit<?> unit = getQuantityUnit().multiply(that.getQuantityUnit());
+		Unit<?> unit = unit().multiply(that.unit());
 		return MoneyAmount.valueOf(((BigDecimal) getNumber())
 				.multiply((BigDecimal) that.getNumber()), unit);
 	}
@@ -177,12 +177,12 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	public MoneyAmount pow(int exp) {
 		return MoneyAmount.valueOf(
 				((BigDecimal) getNumber()).pow(BigDecimal.valueOf(exp)),
-				getQuantityUnit().pow(exp));
+				unit().pow(exp));
 	}
 
 //	 protected MoneyAmount inverse() {
 //	 return MoneyAmount.valueOf(((BigDecimal) getNumber()).inverse(),
-//	 getQuantityUnit().inverse());
+//	 unit().inverse());
 //	 }
 
 	public MoneyAmount divide(long n) {
@@ -191,7 +191,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	protected MoneyAmount divide(MoneyAmount that) {
-		Unit<?> unit = getQuantityUnit().divide(that.getQuantityUnit());
+		Unit<?> unit = unit().divide(that.unit());
 		return MoneyAmount.valueOf(((BigDecimal) getNumber())
 				.divide((BigDecimal) that.getNumber()), unit);
 	}
@@ -207,8 +207,8 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	 * @provisional This API might change or be removed in a future release.
 	 */
 	@SuppressWarnings("unchecked")
-	public Unit<IMoney> getQuantityUnit() {
-		return (Unit<IMoney>) getCurrency();
+	public CurrencyUnit<IMoney> unit() {
+		return (CurrencyUnit<IMoney>) getCurrency();
 	}
 
 	public int compareTo(IMoney o) {
@@ -217,7 +217,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public double doubleValue(Unit<IMoney> unit) {
-	   	Unit<IMoney> myUnit = getQuantityUnit();
+	   	Unit<IMoney> myUnit = unit();
     	try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return converter.convert(getNumber().doubleValue());
@@ -229,7 +229,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public long longValue(Unit<IMoney> unit) throws ArithmeticException {
-	   	Unit<IMoney> myUnit = getQuantityUnit();
+	   	Unit<IMoney> myUnit = unit();
     	try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return (converter.convert(BigDecimal.valueOf(super.getNumber().longValue())).longValue());
@@ -261,9 +261,9 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 	
     protected IMeasure<IMoney> to(Unit<IMoney> unit, MathContext ctx) {
-        if (this.getUnit().equals(unit))
+        if (this.unit().equals(unit))
             return this;
-        UnitConverter cvtr = this.getQuantityUnit().getConverterTo(unit);
+        UnitConverter cvtr = this.unit().getConverterTo(unit);
         if (cvtr == AbstractConverter.IDENTITY)
             return (IMeasure<IMoney>) valueOf(this.getNumber(), unit);
         return (IMeasure<IMoney>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
@@ -307,8 +307,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 		return null;
 	}
 
-	@Override
-	public Number getValue() {
+	public Number value() {
 		return getNumber();
 	}
 }
