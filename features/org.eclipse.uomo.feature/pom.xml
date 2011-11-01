@@ -9,7 +9,7 @@
   </parent>
   <groupId>org.eclipse.uomo</groupId>
   <artifactId>org.eclipse.uomo.feature</artifactId>
-  <version>${packageVersion}</version>
+  <version>0.6.0.RC4</version>
   <name>UOMo Feature</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

@@ -15,12 +15,11 @@
     <properties>
         <sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <packageVersion>0.6.0.RC4</packageVersion>
     </properties>
     
     <groupId>org.eclipse.uomo</groupId>
     <artifactId>org.eclipse.uomo</artifactId>
-    <version>${packageVersion}</version>
+    <version>0.6.0.RC4</version>
     <packaging>pom</packaging>
     <name>Eclipse UOMo</name>
     
