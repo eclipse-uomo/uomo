@@ -31,7 +31,7 @@ import org.unitsofmeasurement.unit.Unit;
  *     
  * <p> Although IMeasure instances are for the most part scalar quantities; 
  *     more complex implementations (e.g. vectors, data set) are allowed as 
- *     long as an agregate magnitude can be determined. For example:[code]
+ *     long as an aggregate magnitude can be determined. For example:[code]
  *     class Velocity3D implements IMeasure<Velocity> {
  *          private double x, y, z; // Meter per seconds.
  *          public double doubleValue(Unit<Velocity> unit) { ... } // Returns vector norm.
@@ -44,7 +44,7 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 5.4, $Date: 2011-10-31 01:03:44 +0200 $
+ * @version 5.4.1, $Date: 2011-11-03 01:03:44 +0200 $
  * @param <Q>
  */
 public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {    

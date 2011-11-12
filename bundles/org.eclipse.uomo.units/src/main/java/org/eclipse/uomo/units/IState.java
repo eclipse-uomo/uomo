@@ -11,6 +11,7 @@
 package org.eclipse.uomo.units;
 
 import org.eclipse.uomo.core.IName;
+import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.quantity.Time;
 
 /**
@@ -19,9 +20,9 @@ import org.unitsofmeasurement.quantity.Time;
  * A State object is immutable so that it may be easily shared.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2011-04-07 02:02:02 +0430 $
+ * @version 1.1, $Date: 2011-04-07 02:02:02 +0430 $
  */
-public interface IState extends IName {
-	IMeasure<Time> getTime();
-	Number getValue();
+public interface IState<Q extends Quantity<Q>> extends IName {
+	IMeasure<Time> time();
+	IMeasure<Q> value(); // TODO get* vs. getter-less, also avoid value().value()
 }
