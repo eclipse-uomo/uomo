@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
-package org.eclipse.uomo.units.impl;
+package org.eclipse.uomo.units.impl.converter;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;

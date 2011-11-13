@@ -12,7 +12,7 @@ package org.eclipse.uomo.units;
 
 import java.math.BigInteger;
 
-import org.eclipse.uomo.units.impl.RationalConverter;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -31,11 +31,7 @@ import org.unitsofmeasurement.unit.Unit;
  *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia:
  *      Indian numbering system</a>
  */
-public final class IndianPrefix {
-
-	private IndianPrefix() {
-		// Utility class no visible constructor.
-	}
+public abstract class IndianPrefix {
 
 	/**
 	 * <p>

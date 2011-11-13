@@ -18,7 +18,7 @@ import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
-import org.eclipse.uomo.units.impl.RationalConverter;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;

@@ -1,7 +1,7 @@
 package org.eclipse.uomo.examples.units.pluginsample.views;
 
 import static org.eclipse.uomo.units.SI.*;
-import static org.eclipse.uomo.units.USCustomary.LITER;
+import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.*;

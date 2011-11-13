@@ -12,7 +12,7 @@
 package org.eclipse.uomo.units.impl.format;
 
 import org.eclipse.uomo.units.AbstractUnit;
-import org.eclipse.uomo.units.impl.LogConverter;
+import org.eclipse.uomo.units.impl.converter.LogConverter;
 import org.unitsofmeasurement.unit.Unit;
 
 /** */

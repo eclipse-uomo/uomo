@@ -12,7 +12,7 @@ package org.eclipse.uomo.examples.units.console;
 
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
-import static org.eclipse.uomo.units.USCustomary.*;
+import static org.eclipse.uomo.units.impl.system.USCustomary.*;
 
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;

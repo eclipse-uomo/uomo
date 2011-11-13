@@ -13,7 +13,7 @@ package org.eclipse.uomo.units.impl.format;
 import java.math.BigInteger;
 
 import org.eclipse.uomo.units.AbstractConverter;
-import org.eclipse.uomo.units.impl.RationalConverter;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 
 
 /**

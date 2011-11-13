@@ -12,9 +12,9 @@ package org.eclipse.uomo.business.money;
 
 // Constants (Java 5 static import)
 import static org.eclipse.uomo.units.IndianPrefix.LAKH;
-import static org.eclipse.uomo.units.USCustomary.GALLON_LIQUID;
-import static org.eclipse.uomo.units.USCustomary.LITER;
-import static org.eclipse.uomo.units.USCustomary.MILE;
+import static org.eclipse.uomo.units.impl.system.USCustomary.GALLON_LIQUID;
+import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
+import static org.eclipse.uomo.units.impl.system.USCustomary.MILE;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 import static org.eclipse.uomo.units.SI.METRE;
 import static org.eclipse.uomo.business.money.CurrencyUnit.EUR;

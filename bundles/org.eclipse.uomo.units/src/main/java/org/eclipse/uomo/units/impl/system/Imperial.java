@@ -8,14 +8,15 @@
  * Contributors:
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
-package org.eclipse.uomo.units;
+package org.eclipse.uomo.units.impl.system;
 
-import static org.eclipse.uomo.units.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
-import static org.eclipse.uomo.units.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
+import static org.eclipse.uomo.units.impl.system.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
+import static org.eclipse.uomo.units.impl.system.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 
+import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.unitsofmeasurement.quantity.Area;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Mass;

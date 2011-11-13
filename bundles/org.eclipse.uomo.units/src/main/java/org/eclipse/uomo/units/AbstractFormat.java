@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.text.ParsePosition;
 
 import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
+import org.eclipse.uomo.units.impl.system.USCustomary;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitFormat;
 

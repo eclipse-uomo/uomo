@@ -30,8 +30,8 @@ import com.ibm.icu.util.MeasureUnit;
  * @see MeasureUnit
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @param <Q> The type of the quantity.
- * @version 1.3.1 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12 Sep 2011) $
- * XXX rename to Amount or MeasureAmount?
+ * @version 1.3.2 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12 Sep 2011) $
+ * XXX rename to Amount, AbstractAmount or MeasureAmount?
  * FIXME  Bug 338334 overwrite equals()
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure implements IMeasure<Q> {

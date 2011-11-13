@@ -13,8 +13,8 @@ package org.eclipse.uomo.units;
 import java.util.Hashtable;
 import java.util.Locale;
 
-import org.eclipse.uomo.units.impl.SystemOfUnitsServiceImpl;
 import org.eclipse.uomo.units.impl.format.UnitFormatServiceImpl;
+import org.eclipse.uomo.units.impl.system.SystemOfUnitsServiceImpl;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;

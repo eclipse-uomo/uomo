@@ -19,7 +19,7 @@ import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.QuantityAmount;
-import org.eclipse.uomo.units.impl.RationalConverter;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
 import org.unitsofmeasurement.unit.Unit;

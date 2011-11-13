@@ -15,12 +15,12 @@ import java.util.Map;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
-import org.eclipse.uomo.units.impl.AddConverter;
 import org.eclipse.uomo.units.impl.AlternateUnit;
-import org.eclipse.uomo.units.impl.MultiplyConverter;
 import org.eclipse.uomo.units.impl.ProductUnit;
-import org.eclipse.uomo.units.impl.RationalConverter;
 import org.eclipse.uomo.units.impl.TransformedUnit;
+import org.eclipse.uomo.units.impl.converter.AddConverter;
+import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;

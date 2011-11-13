@@ -17,6 +17,7 @@ import java.math.MathContext;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.QuantityAmount;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;

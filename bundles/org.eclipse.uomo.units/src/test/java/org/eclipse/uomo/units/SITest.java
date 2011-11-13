@@ -16,8 +16,8 @@ import static org.eclipse.uomo.units.SI.GRAM;
 import static org.eclipse.uomo.units.SI.KILOGRAM;
 import static org.eclipse.uomo.units.SI.METRE;
 import static org.eclipse.uomo.units.SI.Prefix.MILLI;
-import static org.eclipse.uomo.units.USCustomary.LITER;
-import static org.eclipse.uomo.units.USCustomary.METER;
+import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
+import static org.eclipse.uomo.units.impl.system.USCustomary.METER;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

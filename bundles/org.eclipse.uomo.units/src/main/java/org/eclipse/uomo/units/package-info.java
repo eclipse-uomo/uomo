@@ -15,13 +15,13 @@
  *      Standard units and prefixes are provided by the
  *      {@link org.eclipse.uomo.units.SI} class (Système International d'Unités) and
  *      about 50 non-standard units are available through the
- *      {@link org.eclipse.uomo.units.USCustomary} class.
+ *      {@link org.eclipse.uomo.units.impl.system.USCustomary} class.
  *
  * <h3>Usage examples:</h3>
  * [code]
  *
  * import static org.eclipse.uomo.units.SI.*;
- * import static org.eclipse.uomo.units.USCustomary.*;
+ * import static org.eclipse.uomo.units.impl.system.USCustomary.*;
 
  * public class Main {
  *     public void main(String[] args) {

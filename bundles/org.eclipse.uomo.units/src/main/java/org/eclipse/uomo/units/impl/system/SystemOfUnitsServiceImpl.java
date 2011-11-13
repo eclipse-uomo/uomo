@@ -8,13 +8,12 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.units.impl;
+package org.eclipse.uomo.units.impl.system;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.uomo.units.SI;
-import org.eclipse.uomo.units.USCustomary;
 import org.unitsofmeasurement.service.SystemOfUnitsService;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 

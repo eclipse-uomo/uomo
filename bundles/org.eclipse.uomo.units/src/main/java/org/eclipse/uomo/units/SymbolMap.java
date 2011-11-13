@@ -10,6 +10,7 @@
  */
 package org.eclipse.uomo.units;
 
+import org.eclipse.uomo.units.impl.system.USCustomary;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 

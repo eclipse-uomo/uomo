@@ -8,11 +8,15 @@
  * Contributors:
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
-package org.eclipse.uomo.units;
+package org.eclipse.uomo.units.impl.system;
 
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.MICRO;
 
+import org.eclipse.uomo.units.AbstractSystemOfUnits;
+import org.eclipse.uomo.units.AbstractUnit;
+import org.eclipse.uomo.units.Messages;
+import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.quantity.Area;

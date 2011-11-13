@@ -14,11 +14,11 @@ import static org.eclipse.uomo.units.SI.Prefix.KILO;
 
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.SI;
-import org.eclipse.uomo.units.USCustomary;
 import org.eclipse.uomo.units.impl.quantity.AreaAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
 import org.eclipse.uomo.units.impl.quantity.TimeAmount;
+import org.eclipse.uomo.units.impl.system.USCustomary;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 import org.unitsofmeasurement.quantity.Acceleration;

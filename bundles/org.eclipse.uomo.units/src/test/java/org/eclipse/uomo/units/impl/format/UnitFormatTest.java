@@ -15,8 +15,8 @@ import static org.eclipse.uomo.units.SI.METRE;
 import static org.eclipse.uomo.units.SI.Prefix.CENTI;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 import static org.eclipse.uomo.units.SI.Prefix.MILLI;
-import static org.eclipse.uomo.units.USCustomary.ELECTRON_VOLT;
-import static org.eclipse.uomo.units.USCustomary.FOOT;
+import static org.eclipse.uomo.units.impl.system.USCustomary.ELECTRON_VOLT;
+import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigInteger;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Jean-Marie Dautelle - initial API and implementation
  */
-package org.eclipse.uomo.units;
+package org.eclipse.uomo.units.impl.system;
 
 import static org.eclipse.uomo.units.SI.AMPERE;
 import static org.eclipse.uomo.units.SI.BECQUEREL;
@@ -37,8 +37,12 @@ import static org.eclipse.uomo.units.SI.WEBER;
 import static org.eclipse.uomo.units.SI.Prefix.*;
 
 import java.math.BigInteger;
-import org.eclipse.uomo.units.impl.LogConverter;
-import org.eclipse.uomo.units.impl.RationalConverter;
+
+import org.eclipse.uomo.units.AbstractSystemOfUnits;
+import org.eclipse.uomo.units.AbstractUnit;
+import org.eclipse.uomo.units.SI;
+import org.eclipse.uomo.units.impl.converter.LogConverter;
+import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.quantity.*;
 import org.unitsofmeasurement.unit.Unit;
 
