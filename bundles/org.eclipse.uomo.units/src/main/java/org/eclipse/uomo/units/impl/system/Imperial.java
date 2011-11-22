@@ -248,7 +248,6 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	public static final Unit<Volume> FLUID_DRACHM = addUnit(FLUID_SCRUPLE.multiply(3));
 
 
-	@Override
 	public String getName() {
 		return getClass().getSimpleName();
 	}

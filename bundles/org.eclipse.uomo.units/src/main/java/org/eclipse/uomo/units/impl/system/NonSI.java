@@ -597,7 +597,6 @@ final class NonSI extends AbstractSystemOfUnits {
 	 */
 	static final Unit<IonizingRadiation> ROENTGEN = SI.ROENTGEN;
 
-	@Override
 	public String getName() {
 		return getClass().getSimpleName();
 	}

@@ -8,8 +8,7 @@ Bundle-ClassPath: xmlpull_1_1_3_4b.jar,
  xpp3_xpath-1.1.3.4.O.jar,
  xpp3-1.1.3.4.O.jar
 Bundle-Localization: plugin
-Export-Package: javax.xml.namespace,
- org.xmlpull.mxp1,
+Export-Package: org.xmlpull.mxp1,
  org.xmlpull.mxp1_serializer,
  org.xmlpull.v1,
  org.xmlpull.v1.builder,
