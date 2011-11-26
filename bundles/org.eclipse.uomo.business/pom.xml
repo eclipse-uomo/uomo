@@ -34,10 +34,6 @@
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
-	<properties>
-		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
 	<build>
 		<plugins>
 			<!-- ======================================================= -->
