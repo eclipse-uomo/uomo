@@ -6,7 +6,6 @@
 		<version>0.6.0.SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo.ucum</artifactId>
 	<packaging>bundle</packaging>
 	<name>UOMo UCUM</name>
@@ -21,7 +20,7 @@
         <dependency>
             <groupId>org.unitsofmeasurement</groupId>
             <artifactId>unit-api</artifactId>
-            <version>0.6-RC2</version>
+            <version>0.6.1</version>
         </dependency>
 		<dependency>
             <groupId>org.eclipse.uomo</groupId>

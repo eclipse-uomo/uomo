@@ -8,7 +8,7 @@ import org.eclipse.uomo.util.Messages;
 
 /**
  * Double: a mantissa followed, optionally, by the character "E" or "e",
- * followed by an exponent. The exponent ·must· be an integer. The mantissa must
+ * followed by an exponent. The exponent must be an integer. The mantissa must
  * be a decimal number. The representations for exponent and mantissa must
  * follow the lexical rules for integer and decimal. If the "E" or "e" and the
  * following exponent are omitted, an exponent value of 0 is assumed.

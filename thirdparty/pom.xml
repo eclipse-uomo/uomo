@@ -4,7 +4,7 @@
     <artifactId>org.eclipse.uomo.thirdparty</artifactId>
     <packaging>pom</packaging>
     <name>Eclipse UOMo Third Party Bundles</name>
-    <version>0.1.0</version>
+    <version>0.6.0.SNAPSHOT</version>
     <modules>
     	<module>org.xmlpull.v1</module>
     </modules>

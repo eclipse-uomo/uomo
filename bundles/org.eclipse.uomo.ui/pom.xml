@@ -9,5 +9,4 @@
   <artifactId>org.eclipse.uomo.ui</artifactId>
   <packaging>pom</packaging>
   <name>Eclipse UOMo Feature UI</name>
-  <version>0.6.0.SNAPSHOT</version>
 </project>
