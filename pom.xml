@@ -16,6 +16,7 @@
         <sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.javaVersion>1.6</project.build.javaVersion>
+        <maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
     </properties>
     
     <groupId>org.eclipse.uomo</groupId>
