@@ -14,6 +14,7 @@ package org.eclipse.uomo.util.test;
 import junit.framework.TestCase;
 
 import org.eclipse.uomo.util.Iso8601Date;
+import org.junit.Test;
 
 public class Iso8601DateUtilityTests extends TestCase {
    
@@ -25,6 +26,7 @@ public class Iso8601DateUtilityTests extends TestCase {
 		du = new Iso8601Date();
 	}
 	
+	@Test
 	public void testFullDate() {
 		String st;
 		st = du.parse("20071017111114.789", Iso8601Date.ISO_DATE_VALIDATION_FULL, Iso8601Date.OPTIONAL);

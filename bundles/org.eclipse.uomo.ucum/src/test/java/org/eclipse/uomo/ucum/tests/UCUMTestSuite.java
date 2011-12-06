@@ -24,7 +24,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-	SystemTest.class, UcumServiceTest.class	
+	SystemTest.class, UcumServiceTest.class, UCUMTest.class
 })
 public class UCUMTestSuite {
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,14 +7,18 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - Cleaning, unification with other UOMo parts
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.model;
 
 import java.math.BigDecimal;
 
-public class Value {
+import org.eclipse.uomo.core.IDescription;
+import org.eclipse.uomo.core.IValue;
 
+public class Value implements IValue, IDescription {
+	// TODO should use Quantity
 	// TODO make this a "real" unit, should be at least UcumUnit
 	private String unit;
 	
@@ -52,6 +56,7 @@ public class Value {
 
 	/**
 	 * @return the unitUC
+	 * @deprecated currently not used
 	 */
 	public String getUnitUC() {
 		return unitUC;
@@ -59,6 +64,7 @@ public class Value {
 
 	/**
 	 * @param unitUC the unitUC to set
+	 * @deprecated currently not used
 	 */
 	public void setUnitUC(String unitUC) {
 		this.unitUC = unitUC;

@@ -117,8 +117,5 @@ public class DefinedUnit extends UcumUnit{
 	public String getDescription() {
 		return super.getDescription()+" = "+value.getDescription();
 	}
-
-
-		
 	
 }

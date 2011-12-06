@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 1996, 2010, Werner Keil, Creative Arts & Technologies.
+ * Copyright (c) 2011, Werner Keil, Creative Arts & Technologies.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,11 @@
 package org.eclipse.uomo.core;
 
 /**
- * Denote entity that has a description.
- *
- * @version $Id: IIDescription.java 63 2010-07-19 10:35:31Z werner.keil $
- * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * Denote entity that has a visible name.
+ * 
+ * @version $Id: IName.java 152 2010-08-22 20:48:31Z werner.keil $
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
-public interface IDescription {
-	String getDescription();
+public interface IVisibleName {
+	String visibleName();
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,15 +7,15 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - modularization, integration with other UOMo parts
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.special;
 
-import java.math.BigDecimal;
-
 import org.eclipse.uomo.core.ICode;
+import org.eclipse.uomo.core.IValue;
 
-public abstract class SpecialUnitHandler implements ICode {
+public abstract class SpecialUnitHandler implements ICode, IValue {
 
 	/**
 	 * Used to connect this handler with the case sensitive unit
@@ -35,6 +35,6 @@ public abstract class SpecialUnitHandler implements ICode {
 	 * 
 	 * @return
 	 */
-	public abstract BigDecimal getValue();
+	public abstract Number getValue();
 	
 }

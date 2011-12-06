@@ -7,7 +7,7 @@ package org.eclipse.uomo.util.test;
  * 
  */
 
-interface UOMoTestConfiguration {
+public interface UOMoTestConfiguration {
 
     /**
      * The starting location, often the path to the test suite/test file that is

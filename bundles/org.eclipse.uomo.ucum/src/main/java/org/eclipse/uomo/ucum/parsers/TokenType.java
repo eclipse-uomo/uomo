@@ -19,5 +19,4 @@ public enum TokenType {
 	PERIOD,
 	OPEN,
 	CLOSE;
-
 }

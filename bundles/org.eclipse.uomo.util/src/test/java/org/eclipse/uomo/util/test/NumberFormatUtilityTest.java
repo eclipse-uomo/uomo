@@ -77,8 +77,8 @@ public class NumberFormatUtilityTest {
 		assertParseInt("210", 210);
 	}
 
-//	@Test
-//	@Ignore
+	@Test
+	@Ignore
 	public void _estReal() {
 		checkParse("0", new BigDecimal("0"));
 		checkParseInvalid("e", TEXT_FORMAT);

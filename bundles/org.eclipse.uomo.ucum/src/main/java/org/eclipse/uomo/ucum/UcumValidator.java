@@ -32,9 +32,9 @@ import org.eclipse.uomo.ucum.special.Registry;
  */
 public class UcumValidator implements IValidator {
 
-	private UcumModel model;
+	private final UcumModel model;
+	private final Registry handlers;
 	private List<String> result;
-	private Registry handlers;
 
 	public UcumValidator(UcumModel model, Registry handlers) {
 		super();

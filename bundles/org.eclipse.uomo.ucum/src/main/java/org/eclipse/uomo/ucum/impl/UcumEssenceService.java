@@ -307,7 +307,7 @@ public class UcumEssenceService implements UcumService {
 		if (value.getValue() == null)
 			return new Pair(null, new ExpressionComposer().compose(c.getUnit()));
 		else
-			return new Pair(value.getValue().multiply(c.getValue()),
+			return new Pair(((BigDecimal)value.getValue()).multiply((BigDecimal)c.getValue()),
 					new ExpressionComposer().compose(c.getUnit()));
 	}
 

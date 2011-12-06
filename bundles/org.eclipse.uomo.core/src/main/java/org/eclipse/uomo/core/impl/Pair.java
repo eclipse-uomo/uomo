@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2010, Copyright (c) 2006, 2007 Jiva Medical.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2007 Jiva Medical.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,9 @@ package org.eclipse.uomo.core.impl;
 import java.math.BigDecimal;
 
 import org.eclipse.uomo.core.ICode;
+import org.eclipse.uomo.core.IValue;
 
-public class Pair implements ICode {
+public class Pair implements ICode, IValue {
 
 	private BigDecimal value;
 	private String code;
@@ -31,7 +32,7 @@ public class Pair implements ICode {
 	/**
 	 * @return the value
 	 */
-	public BigDecimal getValue() {
+	public Number getValue() {
 		return value;
 	}
 	/**

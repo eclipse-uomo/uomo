@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,9 +7,13 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - added static imports
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.parsers;
+
+import static org.eclipse.uomo.ucum.model.ConceptKind.*;
+import static org.xmlpull.v1.XmlPullParser.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +40,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
  * Parses the file ucum-essense.xml
  * 
  * @author Grahame Grieve
- *
+ * @author Werner Keil
  */
 
 public class DefinitionParser {
@@ -54,7 +58,7 @@ public class DefinitionParser {
 		xpp.setInput(stream, null);
 		
         int eventType = xpp.next();
-        if (eventType != XmlPullParser.START_TAG)
+        if (eventType != START_TAG)
         	throw new XmlPullParserException("Unable to process XML document");
         if (!xpp.getName().equals("root")) 
         	throw new XmlPullParserException("Unable to process XML document: expected 'root' but found '"+xpp.getName()+"'");
@@ -62,17 +66,17 @@ public class DefinitionParser {
         Date date = fmt.parse(xpp.getAttributeValue(null, "revision-date").substring(7, 32));        
 		UcumModel root = new UcumModel(xpp.getAttributeValue(null, "version"), xpp.getAttributeValue(null, "revision"), date);
         xpp.next();
-		while (xpp.getEventType() != XmlPullParser.END_TAG) {
-			if (xpp.getEventType() == XmlPullParser.TEXT) {
+		while (xpp.getEventType() != END_TAG) {
+			if (xpp.getEventType() == TEXT) {
 				if (StringUtils.isWhitespace(xpp.getText()))
 					xpp.next();
 				else
 					throw new XmlPullParserException("Unexpected text "+xpp.getText());
-			} else if (xpp.getName().equals("prefix")) 
+			} else if (xpp.getName().equals(PREFIX.visibleName())) 
 				root.getPrefixes().add(parsePrefix(xpp));
-			else if (xpp.getName().equals("base-unit")) 
+			else if (xpp.getName().equals(BASEUNIT.visibleName())) 
 				root.getBaseUnits().add(parseBaseUnit(xpp));
-			else if (xpp.getName().equals("unit")) 
+			else if (xpp.getName().equals(UNIT.visibleName())) 
 				root.getDefinedUnits().add(parseUnit(xpp));
 			else 
 				throw new XmlPullParserException("unknown element name "+xpp.getName());
@@ -87,11 +91,11 @@ public class DefinitionParser {
 		unit.setClass_(xpp.getAttributeValue(null, "class"));
 		xpp.next();
 		skipWhitespace(xpp);
-		while (xpp.getEventType() == XmlPullParser.START_TAG && "name".equals(xpp.getName()))
-			unit.getNames().add(readElement(xpp, "name", "unit "+unit.getCode(), false));
-		if (xpp.getEventType() == XmlPullParser.START_TAG && "printSymbol".equals(xpp.getName()))
-			unit.setPrintSymbol(readElement(xpp, "printSymbol", "unit "+unit.getCode(), true));
-		unit.setProperty(readElement(xpp, "property", "unit "+unit.getCode(), false));
+		while (xpp.getEventType() == START_TAG && "name".equals(xpp.getName()))
+			unit.getNames().add(readElement(xpp, "name", UNIT.visibleName()+" "+unit.getCode(), false));
+		if (xpp.getEventType() == START_TAG && "printSymbol".equals(xpp.getName()))
+			unit.setPrintSymbol(readElement(xpp, "printSymbol", UNIT.visibleName()+" "+unit.getCode(), true));
+		unit.setProperty(readElement(xpp, "property", UNIT.visibleName()+" "+unit.getCode(), false));
 		unit.setValue(parseValue(xpp, "unit "+unit.getCode()));
 		xpp.next();
 		skipWhitespace(xpp);
@@ -117,9 +121,9 @@ public class DefinitionParser {
 		base.setDim(xpp.getAttributeValue(null, "dim").charAt(0));
 		xpp.next();
 		skipWhitespace(xpp);
-		base.getNames().add(readElement(xpp, "name", "base-unit "+base.getCode(), false));
-		base.setPrintSymbol(readElement(xpp, "printSymbol", "base-unit "+base.getCode(), false));
-		base.setProperty(readElement(xpp, "property", "base-unit "+base.getCode(), false));
+		base.getNames().add(readElement(xpp, "name", BASEUNIT.visibleName()+" "+base.getCode(), false));
+		base.setPrintSymbol(readElement(xpp, "printSymbol", BASEUNIT.visibleName()+" "+base.getCode(), false));
+		base.setProperty(readElement(xpp, "property", BASEUNIT.visibleName()+" "+base.getCode(), false));
 		xpp.next();
 		skipWhitespace(xpp);
 		return base;
@@ -129,11 +133,11 @@ public class DefinitionParser {
 		Prefix prefix = new Prefix(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE"));
 		xpp.next();
 		skipWhitespace(xpp);
-		prefix.getNames().add(readElement(xpp, "name", "prefix "+prefix.getCode(), false));
-		prefix.setPrintSymbol(readElement(xpp, "printSymbol", "prefix "+prefix.getCode(), false));
-		checkAtElement(xpp, "value", "prefix "+prefix.getCode());
+		prefix.getNames().add(readElement(xpp, "name", PREFIX.visibleName()+" "+prefix.getCode(), false));
+		prefix.setPrintSymbol(readElement(xpp, "printSymbol", PREFIX.visibleName()+" "+prefix.getCode(), false));
+		checkAtElement(xpp, "value", PREFIX.visibleName()+" "+prefix.getCode());
 		prefix.setValue(new BigDecimal(xpp.getAttributeValue(null, "value")));
-		readElement(xpp, "value", "prefix "+prefix.getCode(), true);
+		readElement(xpp, "value", PREFIX.visibleName()+" "+prefix.getCode(), true);
 		xpp.next();
 		skipWhitespace(xpp);
 		return prefix;
@@ -146,12 +150,12 @@ public class DefinitionParser {
 		String val = null;
 		if (complex) {
 			val = readText(xpp);
-		} else if (xpp.getEventType() == XmlPullParser.TEXT) {
+		} else if (xpp.getEventType() == TEXT) {
 			val = xpp.getText();
 			xpp.next();
 			skipWhitespace(xpp);
 		}
-		if (xpp.getEventType() != XmlPullParser.END_TAG) {
+		if (xpp.getEventType() != END_TAG) {
 			throw new XmlPullParserException("Unexpected content reading "+context);
 		}
 		xpp.next();
@@ -161,8 +165,8 @@ public class DefinitionParser {
 
 	private String readText(XmlPullParser xpp) throws XmlPullParserException, IOException {
 		StringBuilder bldr = new StringBuilder();
-		while (xpp.getEventType() != XmlPullParser.END_TAG) {
-			if (xpp.getEventType() == XmlPullParser.TEXT) {
+		while (xpp.getEventType() != END_TAG) {
+			if (xpp.getEventType() == TEXT) {
 				bldr.append(xpp.getText());
 				xpp.next();
 			} else {
@@ -176,12 +180,12 @@ public class DefinitionParser {
 	}
 
 	private void skipWhitespace(XmlPullParser xpp) throws XmlPullParserException, IOException {
-		while (xpp.getEventType() == XmlPullParser.TEXT && StringUtils.isWhitespace(xpp.getText())) 
+		while (xpp.getEventType() == TEXT && StringUtils.isWhitespace(xpp.getText())) 
 			xpp.next();		
 	}
 
 	private void checkAtElement(XmlPullParser xpp, String name, String context) throws XmlPullParserException {
-		if (xpp.getEventType() != XmlPullParser.START_TAG)
+		if (xpp.getEventType() != START_TAG)
 			throw new XmlPullParserException("Unexpected state looking for "+name+": at "+Integer.toString(xpp.getEventType())+"  reading "+context);
 		if (!xpp.getName().equals(name))
 			throw new XmlPullParserException("Unexpected element looking for "+name+": found "+xpp.getName()+"  reading "+context);		
