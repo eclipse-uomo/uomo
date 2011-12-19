@@ -8,7 +8,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.eclipse.uomo.ucum</artifactId>
 	<name>UOMo UCUM</name>
-	<version>0.2.0.SNAPSHOT</version>
+	<version>0.2.0</version>
 	
     <!-- =========================================================== -->
     <!-- Dependency Management -->
@@ -23,6 +23,11 @@
 		<dependency>
             <groupId>org.eclipse.uomo</groupId>
             <artifactId>org.eclipse.uomo.core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.uomo</groupId>
+            <artifactId>org.eclipse.uomo.units</artifactId>          
             <scope>compile</scope>
         </dependency>
 		<dependency>
@@ -62,6 +67,19 @@
 			<artifactId>xpp3_xpath</artifactId>
 			<version>1.1.3.4</version>
 		</dependency>
+	
+		<dependency>
+			<groupId>org.eclipse.ohf.h3et</groupId>
+			<artifactId>org.eclipse.ohf.h3et.core</artifactId>
+			<version>1.0.0.201112040129</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.ohf.h3et.mif</groupId>
+			<artifactId>org.eclipse.ohf.h3et.mif.core</artifactId>
+			<version>1.0.0.201112040128</version>
+		</dependency>
+		 
 		<dependency> <!-- Validation tests -->
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -80,10 +98,10 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
+				<version>${maven.compilerPlugin.version}</version>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+                    <source>${project.build.javaVersion}</source>
+                    <target>${project.build.javaVersion}</target>
 					<encoding>${project.build.sourceEncoding}</encoding>
 				</configuration>
 			</plugin>

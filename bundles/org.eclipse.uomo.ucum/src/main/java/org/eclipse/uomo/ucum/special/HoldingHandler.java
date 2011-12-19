@@ -13,19 +13,25 @@ package org.eclipse.uomo.ucum.special;
 
 import java.math.BigDecimal;
 
+import org.eclipse.uomo.units.AbstractUnit;
+import org.unitsofmeasurement.quantity.Quantity;
+import org.unitsofmeasurement.unit.Unit;
+
 /**
  * If you want to actually use one of these units, then you'll
  * have to figure out how to implement them
  * 
  * @author Grahame Grieve
+ * @param <Q>
  *
  */
-public class HoldingHandler extends SpecialUnitHandler {
+public class HoldingHandler<Q extends Quantity<Q>> extends SpecialUnitHandler<Q> {
 
-	private String code;
-	private String units;
-	private BigDecimal value = new BigDecimal(1);
-	
+	private final String code;
+	private final String units;
+	private BigDecimal value = BigDecimal.ONE;
+	@SuppressWarnings("unchecked")
+	private Unit<Q> unit = (Unit<Q>) AbstractUnit.ONE;
 	
 	/**
 	 * @param code
@@ -43,6 +49,14 @@ public class HoldingHandler extends SpecialUnitHandler {
 		this.units = units;
 		this.value = value;
 	}
+	
+	public HoldingHandler(String code, Unit<Q> unit, BigDecimal value) {
+		super();
+		this.code = code;
+		this.unit = unit;
+		this.units = unit.getSymbol();
+		this.value = value;
+	}
 
 	@Override
 	public String getCode() {
@@ -58,8 +72,12 @@ public class HoldingHandler extends SpecialUnitHandler {
 	 * @see org.eclipse.ohf.ucum.special.SpecialUnitHandler#getValue()
 	 */
 	@Override
-	public BigDecimal getValue() {		
+	public BigDecimal value() {		
 		return value;
 	}
 
+	@Override
+	public Unit<Q> unit() {
+		return unit;
+	}
 }

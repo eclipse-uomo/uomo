@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,6 @@ import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.model.UcumUnit;
 import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
-import org.eclipse.uomo.ucum.special.Registry;
 
 /**
  * @author Grahame Grieve
@@ -106,7 +105,5 @@ public class UcumValidator implements IValidator {
 			} catch (UOMoException e) {
 				result.add(e.getMessage());
 			}
-
 	}
-
 }

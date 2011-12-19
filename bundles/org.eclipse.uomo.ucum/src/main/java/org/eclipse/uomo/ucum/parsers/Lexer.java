@@ -25,7 +25,7 @@ public class Lexer {
 
 	/**
 	 * @param source
-	 * @throws OHFException
+	 * @throws UOMoRuntimeException
 	 */
 	public Lexer(String source) throws UOMoRuntimeException {
 		super();

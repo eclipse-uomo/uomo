@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - adjusted to Unit-API
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.special;
@@ -14,7 +15,11 @@ package org.eclipse.uomo.ucum.special;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class FahrenheitHandler extends SpecialUnitHandler {
+import org.eclipse.uomo.units.SI;
+import org.unitsofmeasurement.quantity.Temperature;
+import org.unitsofmeasurement.unit.Unit;
+
+public class FahrenheitHandler extends SpecialUnitHandler<Temperature> {
 
 	@Override
 	public String getCode() {
@@ -25,13 +30,20 @@ public class FahrenheitHandler extends SpecialUnitHandler {
 	public String getUnits() {
 		return "K";
 	}
-
+	
 	/* (non-Javadoc)
-	 * @see org.eclipse.ohf.ucum.special.SpecialUnitHandler#getValue()
+	 * @see org.unitsofmeasurement.quantity.Quantity#unit()
 	 */
 	@Override
-	public BigDecimal getValue() {		
-		return new BigDecimal(5).divide(new BigDecimal(9), new MathContext(20));
+	public Unit<Temperature> unit() {
+		return SI.KELVIN;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.unitsofmeasurement.quantity.Quantity#value()
+	 */
+	@Override
+	public BigDecimal value() {		
+		return new BigDecimal(5).divide(new BigDecimal(9), new MathContext(20));
+	}
 }

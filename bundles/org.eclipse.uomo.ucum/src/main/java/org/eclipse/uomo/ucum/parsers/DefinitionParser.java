@@ -20,9 +20,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
@@ -34,6 +32,9 @@ import org.eclipse.uomo.ucum.model.Value;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
+
+import com.ibm.icu.text.DateFormat;
+import com.ibm.icu.text.SimpleDateFormat;
 
 
 /**
@@ -62,7 +63,7 @@ public class DefinitionParser {
         	throw new XmlPullParserException("Unable to process XML document");
         if (!xpp.getName().equals("root")) 
         	throw new XmlPullParserException("Unable to process XML document: expected 'root' but found '"+xpp.getName()+"'");
-        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss' 'Z");
+        final DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss' 'Z");
         Date date = fmt.parse(xpp.getAttributeValue(null, "revision-date").substring(7, 32));        
 		UcumModel root = new UcumModel(xpp.getAttributeValue(null, "version"), xpp.getAttributeValue(null, "revision"), date);
         xpp.next();
@@ -102,7 +103,7 @@ public class DefinitionParser {
 		return unit;
 	}
 
-	private Value parseValue(XmlPullParser xpp, String context) throws XmlPullParserException, IOException {
+	private Value<?> parseValue(XmlPullParser xpp, String context) throws XmlPullParserException, IOException {
 		checkAtElement(xpp, "value", context);
 		BigDecimal val = null;
 		if (xpp.getAttributeValue(null, "value") != null) 
@@ -111,7 +112,7 @@ public class DefinitionParser {
 		} catch (NumberFormatException e) {
 			throw new XmlPullParserException("Error reading "+context+": "+e.getMessage());
 		}
-		Value value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val);
+		Value<?> value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val);
 		value.setText(readElement(xpp, "value", context, true));
 		return value;
 	}

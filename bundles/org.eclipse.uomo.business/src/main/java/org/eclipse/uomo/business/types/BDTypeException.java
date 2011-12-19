@@ -16,6 +16,7 @@ import org.eclipse.uomo.core.UOMoRuntimeException;
 /**
  * Basic Data Type Exception class
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @deprecated Try using UOMoRuntimeException directly
  */
 public class BDTypeException extends UOMoRuntimeException  {
 	final static long serialVersionUID = 362498820763181265L;

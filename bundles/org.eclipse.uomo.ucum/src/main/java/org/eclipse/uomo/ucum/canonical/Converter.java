@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.uomo.ucum.canonical;
 
 import static org.eclipse.uomo.core.impl.OutputHelper.isConsoleOutput;
 import static org.eclipse.uomo.core.impl.OutputHelper.println;
+import static org.eclipse.uomo.ucum.model.ConceptKind.*;
+import static org.eclipse.uomo.ucum.expression.Operator.*;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -21,17 +23,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.uomo.core.UOMoRuntimeException;
+import org.eclipse.uomo.ucum.Registry;
 import org.eclipse.uomo.ucum.expression.Component;
 import org.eclipse.uomo.ucum.expression.Factor;
-import org.eclipse.uomo.ucum.expression.Operator;
 import org.eclipse.uomo.ucum.expression.Symbol;
 import org.eclipse.uomo.ucum.expression.Term;
-import org.eclipse.uomo.ucum.model.ConceptKind;
 import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
-import org.eclipse.uomo.ucum.special.Registry;
+import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
+import org.eclipse.uomo.units.AbstractConverter;
 import org.unitsofmeasurement.unit.UnitConverter;
 
 /**
@@ -41,11 +43,16 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * @author Grahame Grieve
  * @author Werner Keil
  */
-public class Converter implements UnitConverter {
+public class Converter extends AbstractConverter {
 
-	private UcumModel model;
-	private Registry handlers;
-
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -895607408258138526L;
+	private final UcumModel model;
+	private final Registry<SpecialUnitHandler> handlers;
+	private final UnitConverter compound;
+	
 	private Factor one = new Factor(1);
 
 	/**
@@ -55,6 +62,8 @@ public class Converter implements UnitConverter {
 		super();
 		this.model = model;
 		this.handlers = handlers;
+		List<UnitConverter> compounds = getCompoundConverters();
+		compound = compounds.get(0);
 	}
 
 	public Canonical convert(Term term) throws UOMoRuntimeException {
@@ -62,7 +71,7 @@ public class Converter implements UnitConverter {
 	}
 
 	private Canonical convertTerm(Term term) throws UOMoRuntimeException {
-		Canonical res = new Canonical(new BigDecimal(1), new Term());
+		Canonical res = new Canonical(BigDecimal.ONE, new Term());
 		if (term.hasComp())
 			res.getUnit().setComp(convertComp(res, term.getComp()));
 		if (term.hasOp())
@@ -78,8 +87,8 @@ public class Converter implements UnitConverter {
 
 		// normalise
 		debug("normalise", res.getUnit()); //$NON-NLS-1$
-		if (res.getUnit().hasOp() && res.getUnit().getOp() == Operator.DIVISION) {
-			res.getUnit().setOp(Operator.MULTIPLICATION);
+		if (res.getUnit().hasOp() && res.getUnit().getOp() == DIVISION) {
+			res.getUnit().setOp(MULTIPLICATION);
 			flipExponents(res.getUnit().getTerm());
 			debug("flipped", res.getUnit()); //$NON-NLS-1$
 		}
@@ -99,7 +108,7 @@ public class Converter implements UnitConverter {
 				&& res.getUnit().getComp() instanceof Term) {
 			Term end = getEndTerm((Term) res.getUnit().getComp());
 			assert end.getOp() == null;
-			end.setOp(Operator.MULTIPLICATION);
+			end.setOp(MULTIPLICATION);
 			end.setTermCheckOp(res.getUnit().getTerm());
 			res.setUnit((Term) res.getUnit().getComp());
 			debug("reorged", res.getUnit()); //$NON-NLS-1$
@@ -198,10 +207,12 @@ public class Converter implements UnitConverter {
 	private Component convertSymbol(Canonical ctxt, Symbol comp)
 			throws UOMoRuntimeException {
 		if (comp.hasPrefix()) {
-			ctxt.multiplyValue(comp.getPrefix().getValue());
+//			ctxt.multiplyValue(comp.getPrefix().getValue());
+			ctxt.multiplyValue(((BigDecimal)comp.getPrefix().getValue()).pow(
+					comp.getExponent(),	MathContext.DECIMAL128));
 		}
 
-		if (comp.getUnit().getKind() == ConceptKind.BASEUNIT) {
+		if (comp.getUnit().getKind() == BASEUNIT) {
 			Symbol res = new Symbol();
 			res.setUnit(comp.getUnit());
 			res.setExponent(comp.getExponent());
@@ -214,10 +225,10 @@ public class Converter implements UnitConverter {
 					throw new UOMoRuntimeException("Not handled yet (special unit)"); //$NON-NLS-1$
 				else {
 					u = handlers.get(unit.getCode()).getUnits();
-					ctxt.multiplyValue(handlers.get(unit.getCode()).getValue());
+					ctxt.multiplyValue(handlers.get(unit.getCode()).value());
 				}
 			} else
-				ctxt.multiplyValue(unit.getValue().getValue());
+				ctxt.multiplyValue(unit.getValue().value());
 			Term canonical = new ExpressionParser(model).parse(u);
 			if (canonical.hasComp() && !canonical.hasOp()
 					&& !canonical.hasTerm()) {
@@ -279,16 +290,16 @@ public class Converter implements UnitConverter {
 	}
 
 	public UnitConverter concatenate(UnitConverter converter) {
-		return this;
+		return compound.concatenate(converter);
 	}
 
 	public double convert(double value) {
-		return 0;
+		return compound.convert(value);
 	}
 
 	public BigDecimal convert(BigDecimal value, MathContext ctx)
 			throws ArithmeticException {
-		return value;
+		return compound.convert(value, ctx);
 	}
 
 	public List<UnitConverter> getCompoundConverters() {
@@ -298,7 +309,7 @@ public class Converter implements UnitConverter {
 	}
 
 	public UnitConverter inverse() {
-		return this;
+		return compound.inverse();
 	}
 
 	public boolean isIdentity() {
@@ -310,6 +321,6 @@ public class Converter implements UnitConverter {
 	}
 
 	public Number convert(Number value) {
-		return value;
+		return compound.convert(value);
 	}
 }

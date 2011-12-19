@@ -39,7 +39,7 @@ import org.eclipse.uomo.ucum.parsers.DefinitionParser;
 import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.parsers.FormalStructureComposer;
-import org.eclipse.uomo.ucum.special.Registry;
+import org.eclipse.uomo.ucum.special.SpecialUnitRegistry;
 
 /**
  * implements UCUM services. Applications must provide a copy of
@@ -55,10 +55,13 @@ import org.eclipse.uomo.ucum.special.Registry;
  */
 public class UcumEssenceService implements UcumService {
 
+	/**
+	 * UCUM ID
+	 */
 	public static final String UCUM_OID = "2.16.840.1.113883.6.8";
 
-	private UcumModel model;
-	private Registry handlers = new Registry();
+	private final UcumModel model;
+	private SpecialUnitRegistry handlers = new SpecialUnitRegistry();
 
 	/**
 	 * Create an instance of Ucum services. Stream must point to a valid
@@ -236,7 +239,7 @@ public class UcumEssenceService implements UcumService {
 	 * @param units
 	 *            the unit code
 	 * @return formal description
-	 * @throws OHFException
+	 * @throws UOMoRuntimeException
 	 */
 	public String analyse(String unit) throws UOMoRuntimeException {
 		assert checkStringParam(unit) : paramError("analyse", "unit",
@@ -307,7 +310,7 @@ public class UcumEssenceService implements UcumService {
 		if (value.getValue() == null)
 			return new Pair(null, new ExpressionComposer().compose(c.getUnit()));
 		else
-			return new Pair(((BigDecimal)value.getValue()).multiply((BigDecimal)c.getValue()),
+			return new Pair(((BigDecimal)value.getValue()).multiply(c.getValue()),
 					new ExpressionComposer().compose(c.getUnit()));
 	}
 
@@ -317,7 +320,7 @@ public class UcumEssenceService implements UcumService {
 	 * @see org.eclipse.uomo.ucum.UcumServiceEx#convert(java.math.BigDecimal,
 	 * java.lang.String, java.lang.String)
 	 */
-	public Number convert(BigDecimal value, String sourceUnit,
+	public Number convert(final Number value, String sourceUnit,
 			String destUnit) throws UOMoRuntimeException {
 		assert value != null : paramError("convert", "value",
 				"must not be null");
@@ -340,8 +343,9 @@ public class UcumEssenceService implements UcumService {
 					+ sourceUnit + " and " + destUnit
 					+ " as they do not have matching canonical forms (" + s
 					+ " and " + d + " respectively)");
-		BigDecimal canValue = value.multiply(src.getValue());
-		println(value.toPlainString()+sourceUnit+" =("+src.getValue().toPlainString()+")= "+
+		final BigDecimal decValue = (BigDecimal)value;
+		BigDecimal canValue = decValue.multiply(src.getValue());
+		println(decValue.toPlainString()+sourceUnit+" =("+src.getValue().toPlainString()+")= "+
 		 canValue.toPlainString()+s+" =("+dst.getValue().toPlainString()+")= "+
 		 canValue.divide(dst.getValue())+destUnit);
 		return canValue.divide(dst.getValue(), new MathContext(25));

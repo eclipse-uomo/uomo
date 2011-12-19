@@ -53,11 +53,11 @@ public class Canonical {
 		this.value = value;
 	}
 
-	public void multiplyValue(Number number) {
+	void multiplyValue(Number number) {
 		value = value.multiply((BigDecimal) number);		
 	}
 
-	public void multiplyValue(int multiplicand) {
+	void multiplyValue(int multiplicand) {
 		value = value.multiply(new BigDecimal(multiplicand));		
 	}
 
@@ -72,10 +72,8 @@ public class Canonical {
 		this.unit = unit;
 	}
 
-	public void divideValue(BigDecimal divisor) {
+	void divideValue(BigDecimal divisor) {
 		value = value.divide(divisor, new MathContext(20));		
 	}
-	
-	
-	
+
 }

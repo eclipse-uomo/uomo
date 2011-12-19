@@ -1,14 +1,16 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl;
+
+import java.io.Serializable;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
@@ -28,11 +30,11 @@ import org.unitsofmeasurement.unit.UnitConverter;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.9 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.10 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * @see <a href="http://en.wikipedia.org/wiki/SI_base_unit">
  *       Wikipedia: SI base unit</a>
  */
-public class BaseUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> {
+public class BaseUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> implements Serializable {
     
     /**
      * Holds the symbol.

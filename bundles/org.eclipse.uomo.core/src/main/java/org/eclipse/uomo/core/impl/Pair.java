@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IValue;
 
+// TODO make this really generic, like Pair<F,S>
 public class Pair implements ICode, IValue {
 
 	private BigDecimal value;
@@ -40,6 +41,5 @@ public class Pair implements ICode, IValue {
 	 */
 	public String getCode() {
 		return code;
-	}
-	
+	}	
 }

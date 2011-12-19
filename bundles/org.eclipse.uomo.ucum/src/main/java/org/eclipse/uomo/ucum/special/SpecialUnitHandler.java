@@ -13,9 +13,9 @@
 package org.eclipse.uomo.ucum.special;
 
 import org.eclipse.uomo.core.ICode;
-import org.eclipse.uomo.core.IValue;
+import org.unitsofmeasurement.quantity.Quantity;
 
-public abstract class SpecialUnitHandler implements ICode, IValue {
+public abstract class SpecialUnitHandler<Q extends Quantity<Q>> implements Quantity<Q>, ICode {
 
 	/**
 	 * Used to connect this handler with the case sensitive unit
@@ -29,12 +29,4 @@ public abstract class SpecialUnitHandler implements ICode, IValue {
 	 * @return
 	 */
 	public abstract String getUnits();
-
-	/**
-	 * get the conversion value
-	 * 
-	 * @return
-	 */
-	public abstract Number getValue();
-	
 }

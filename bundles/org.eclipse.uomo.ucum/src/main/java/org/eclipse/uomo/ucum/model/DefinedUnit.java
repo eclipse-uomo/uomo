@@ -33,9 +33,6 @@ public class DefinedUnit extends UcumUnit{
 	 * Value details
 	 */
 	private Value value;
-	
-	
-
 
 	/**
 	 * @param code

@@ -12,6 +12,7 @@
 package org.eclipse.uomo.ucum.parsers;
 
 import org.eclipse.uomo.core.UOMoRuntimeException;
+import org.eclipse.uomo.ucum.Parser;
 import org.eclipse.uomo.ucum.expression.Component;
 import org.eclipse.uomo.ucum.expression.Factor;
 import org.eclipse.uomo.ucum.expression.Operator;
@@ -23,7 +24,7 @@ import org.eclipse.uomo.ucum.model.Prefix;
 import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.model.UcumUnit;
 
-public class ExpressionParser {
+public class ExpressionParser implements Parser<UcumModel, Term>{
 
 	private final UcumModel model;
 	

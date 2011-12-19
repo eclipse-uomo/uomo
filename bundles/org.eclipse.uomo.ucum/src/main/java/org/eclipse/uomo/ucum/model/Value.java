@@ -7,7 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
- *    Werner Keil - Cleaning, unification with other UOMo parts
+ *    Werner Keil - Cleaning, unification with other UOMo parts and Unit-API
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.model;
@@ -15,13 +15,15 @@ package org.eclipse.uomo.ucum.model;
 import java.math.BigDecimal;
 
 import org.eclipse.uomo.core.IDescription;
-import org.eclipse.uomo.core.IValue;
+import org.eclipse.uomo.core.IText;
+import org.unitsofmeasurement.quantity.Quantity;
+import org.unitsofmeasurement.unit.Unit;
 
-public class Value implements IValue, IDescription {
+public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, IText {
 	// TODO should use Quantity
 	// TODO make this a "real" unit, should be at least UcumUnit
 	private String unit;
-	
+	private Unit<Q> realUnit;
 	private String unitUC;
 	
 	private BigDecimal value;
@@ -72,6 +74,7 @@ public class Value implements IValue, IDescription {
 
 	/**
 	 * @return the value
+	 * @deprecated use value() instead
 	 */
 	public BigDecimal getValue() {
 		return value;
@@ -103,6 +106,12 @@ public class Value implements IValue, IDescription {
 			return unit;
 		return value.toEngineeringString()+unit;
 	}
-	
-	
+
+	public Number value() {
+		return value;
+	}
+
+	public Unit<Q> unit() {
+		return realUnit;
+	}		
 }

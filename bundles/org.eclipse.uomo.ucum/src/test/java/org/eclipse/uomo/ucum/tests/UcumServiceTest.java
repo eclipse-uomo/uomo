@@ -6,22 +6,22 @@ import java.math.BigDecimal;
 
 import org.eclipse.uomo.ucum.UcumService;
 import org.eclipse.uomo.ucum.impl.UcumEssenceService;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import com.ibm.icu.text.DecimalFormat;
+import com.ibm.icu.text.NumberFormat;
 
 
 public class UcumServiceTest {
 
 	@Test
-	@Ignore
 	public void testConversion() {
 		UcumService ucumService = new UcumEssenceService(getClass().getClassLoader().getResourceAsStream("ucum-essence.xml"));
 
-		Number mult = ucumService.convert(new BigDecimal(1000.0), "l", "m3");
-		assertNotNull(mult);
-		assertEquals(BigDecimal.ONE, mult);
-//		Expected result: 1.0
-//		Received result: 100.0
+		Number mult = ucumService.convert(new BigDecimal(1000d), "l", "m3");
+		assertNotNull(mult);		
+		NumberFormat fmt = new DecimalFormat("#,##0.000");
+		assertEquals(fmt.format(BigDecimal.ONE), fmt.format(mult));
 	}
 	
 }

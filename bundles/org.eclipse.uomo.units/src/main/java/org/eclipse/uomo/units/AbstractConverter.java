@@ -69,8 +69,8 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
      * @return <code>true</code> if the specified object is a converter
      *         considered equals to this converter;<code>false</code> otherwise.
      */
-    @Override
-    public abstract boolean equals(Object cvtr);
+//    @Override
+//    public abstract boolean equals(Object cvtr);
 
     /**
      * Returns a hash code value for this converter. Equals object have equal
@@ -79,8 +79,8 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
      * @return this converter hash code value.
      * @see    #equals
      */
-    @Override
-    public abstract int hashCode();
+    //@Override
+    //public abstract int hashCode();
 
     /**
      * Concatenates this converter with another converter. The resulting

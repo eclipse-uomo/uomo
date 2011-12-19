@@ -1,10 +1,8 @@
 package org.eclipse.uomo.ucum.impl;
 
 import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import org.eclipse.ohf.h3et.core.H3ETException;
 import org.eclipse.ohf.h3et.mif.core.MIFDocument;
 import org.eclipse.ohf.h3et.mif.core.MIFDocumentKind;
 import org.eclipse.ohf.h3et.mif.core.base.MIFBaseObject;
@@ -23,15 +21,24 @@ import org.eclipse.ohf.h3et.mif.core.model.MIFDocumentation;
 import org.eclipse.ohf.h3et.mif.core.model.MIFGlobalVocabularyModel;
 import org.eclipse.ohf.h3et.mif.core.model.MIFPrintName;
 import org.eclipse.ohf.h3et.mif.core.model.MIFSupportedConceptProperty;
+import org.eclipse.uomo.core.UOMoException;
+import org.eclipse.uomo.ucum.Generator;
 import org.eclipse.uomo.ucum.model.BaseUnit;
 import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.Prefix;
 import org.eclipse.uomo.ucum.model.UcumModel;
 
+import com.ibm.icu.text.DateFormat;
+import com.ibm.icu.text.SimpleDateFormat;
 
-public class MIFGenerator {
 
-	public MIFDocument generate(UcumModel model) throws H3ETException {
+/**
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ *
+ */
+public class MIFGeneratorImpl implements Generator<UcumModel, MIFDocument> {
+	private static final DateFormat MIF_DATE_SHORT = new SimpleDateFormat("yyyy-MM-dd");
+	public MIFDocument generate(UcumModel model) throws UOMoException {
 		MIFDocument mif = new MIFDocument();
 		mif.setKind(MIFDocumentKind.VOCABULARY_MODEL);
 		MIFGlobalVocabularyModel vocab = mif.getVocabularyModel();
@@ -40,9 +47,9 @@ public class MIFGenerator {
 		MIFCodeSystemVersion ver = new MIFCodeSystemVersion(sys);
 		sys.getReleasedVersionList().add(ver);
 		
-		sys.setName("UCUM");
+		sys.setName(model.getName());
 		sys.setCodeSystemId(UcumEssenceService.UCUM_OID);
-		ver.setReleaseDate(new SimpleDateFormat("yyyy-MM-dd").format(model.getRevisionDate()));
+		ver.setReleaseDate(MIF_DATE_SHORT.format(model.getRevisionDate()));
 		ver.setPublisherVersionId(model.getVersion());  
 		addSupportedProperty(ver, ver.getSupportedConceptPropertyList(), "kind", "whether this is a prefix, a base unit, or a unit", MIFConceptPropertyTypeKind.ENUMERATION);
 		addSupportedProperty(ver, ver.getSupportedConceptPropertyList(), "value", "for a prefix or unit, the value. (for units, there is also a unit for the value)", MIFConceptPropertyTypeKind.REAL);
@@ -177,8 +184,8 @@ public class MIFGenerator {
 			addProperty(c, c.getConceptPropertyList(), "kind", "unit");
 			addProperty(c, c.getConceptPropertyList(), "property", unit.getProperty());
 			if (unit.getValue() != null) {
-				if (unit.getValue().getValue() != null)
-					addProperty(c, c.getConceptPropertyList(), "value", unit.getValue().getValue().toEngineeringString());
+				if (unit.getValue().value() != null)
+					addProperty(c, c.getConceptPropertyList(), "value", ((BigDecimal)unit.getValue().value()).toEngineeringString());
 				addProperty(c, c.getConceptPropertyList(), "unit", unit.getValue().getUnit());
 			}
 		}

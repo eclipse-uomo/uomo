@@ -11,7 +11,6 @@
 
 package org.eclipse.uomo.ucum;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -183,7 +182,7 @@ public interface UcumService {
 	 * @return the value if a conversion is possible
 	 * @throws UOMoRuntimeException
 	 */
-	public Number convert(BigDecimal value, String sourceUnit, String destUnit) throws UOMoRuntimeException;
+	public Number convert(Number value, String sourceUnit, String destUnit) throws UOMoRuntimeException;
 
 	/**
 	 * multiply two value/units pairs together and return the result in canonical units

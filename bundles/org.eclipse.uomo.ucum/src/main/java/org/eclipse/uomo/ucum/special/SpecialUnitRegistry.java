@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,11 +15,14 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Registry {
+import org.eclipse.uomo.ucum.Registry;
+import org.unitsofmeasurement.quantity.InformationRate;
 
-	Map<String, SpecialUnitHandler> handlers = new HashMap<String, SpecialUnitHandler>();
+@SuppressWarnings("rawtypes")
+public class SpecialUnitRegistry implements Registry<SpecialUnitHandler> {
+	final Map<String, SpecialUnitHandler> handlers = new HashMap<String, SpecialUnitHandler>();
 
-	public Registry() {
+	public SpecialUnitRegistry() {
 		super();
 		init();
 	}
@@ -44,7 +47,7 @@ public class Registry {
 		register(new HoldingHandler("B[uV]", "uV"));		
 		register(new HoldingHandler("B[W]", "W"));		
 		register(new HoldingHandler("B[kW]", "kW"));		
-		register(new HoldingHandler("bit_s", "1"));		
+		register(new HoldingHandler<InformationRate>("bit_s", "1"));		
 	}
 
 	public boolean exists(String code) {
@@ -54,6 +57,5 @@ public class Registry {
 	public SpecialUnitHandler get(String code) {
 		return handlers.get(code);
 	}
-
 
 }
