@@ -25,7 +25,7 @@ import org.eclipse.uomo.units.AbstractConverter;
  * <p> Instances of this class are immutable.</p>
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4 ($Revision: 132 $), $Date: 2010-08-10 07:04:41 +0100 (Di, 10 Aug 2010) $
  */
 public final class LogConverter extends AbstractConverter {

@@ -24,7 +24,7 @@ import static org.eclipse.uomo.units.impl.format.TokenMgrError.addEscapes;
  * mechanisms so long as you retain the public fields.
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.0.1 ($Revision: 105 $), $Date: 2010-08-05 21:44:23 +0100 (Do, 05 Aug 2010) $
  */
 class ParseException extends RuntimeException {

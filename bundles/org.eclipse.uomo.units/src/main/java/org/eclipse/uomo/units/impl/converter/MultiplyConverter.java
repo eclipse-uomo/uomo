@@ -23,7 +23,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * <p> Instances of this class are immutable.</p>
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.5.1 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
 public final class MultiplyConverter extends AbstractConverter {

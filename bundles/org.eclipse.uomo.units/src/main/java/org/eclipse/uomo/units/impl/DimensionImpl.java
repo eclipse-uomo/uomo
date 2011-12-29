@@ -32,7 +32,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * <p> Instances of this class are immutable.</p>
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  *
  * @version 1.0.4 ($Revision: 232 $), $Date: 2010-10-13 17:13:18 +0200 (Mi, 13 Okt 2010) $
  * @see <a href="http://www.bipm.org/en/si/si_brochure/chapter1/1-3.html">

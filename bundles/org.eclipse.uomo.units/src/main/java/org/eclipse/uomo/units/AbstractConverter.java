@@ -30,7 +30,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  *     should be returned.</p>
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4 ($Revision: 231 $), $Date: 2010-10-13 16:53:37 +0200 (Mi, 13 Okt 2010) $
  */
 public abstract class AbstractConverter implements UnitConverter, Serializable {

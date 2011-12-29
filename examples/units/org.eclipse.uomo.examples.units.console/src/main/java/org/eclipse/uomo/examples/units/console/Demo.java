@@ -25,11 +25,11 @@ import org.unitsofmeasurement.quantity.Time;
 /**
  * @author <a href="mailto:desruisseaux@users.sourceforge.net">Martin Desruisseaux</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.6 ($Revision: 210 $), $Date: 2010-02-25 23:34:46 +0100 (Do, 25 Feb 2010) $
+ * @version 0.7 ($Revision: 210 $), $Date: 2011-12-29 23:34:46 +0100 (Do, 29 Dec 2011) $
  */
 public class Demo {
 
-	private static Length getSomeLength() {
+	private static IMeasure<Length> getSomeLength() {
         return new LengthAmount(20, METRE);
     }
 	
@@ -37,7 +37,7 @@ public class Demo {
         return new LengthAmount(20, METRE);
     }
 	
-	private static Mass getSomeMass() {
+	private static IMeasure<Mass> getSomeMass() {
         return new MassAmount(30, KILOGRAM);
     }
 	
@@ -50,13 +50,13 @@ public class Demo {
 	}
 
     public static void main(String[] args) {
-        Length someLength = getSomeLength();
+    	IMeasure<Length> someLength = getSomeLength();
         System.out.println("toString = " + someLength);
         IMeasure<Length> moreLength = getMoreLength();
         System.out.println("toString2 = " + moreLength);
         System.out.println();
 
-        Mass someMass = getSomeMass();
+        IMeasure<Mass> someMass = getSomeMass();
         System.out.println("toString = " + someMass);        
         IMeasure<Mass> moreMass = getMoreMass();
         System.out.println("toString2 = " + moreMass);

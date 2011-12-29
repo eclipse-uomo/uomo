@@ -35,7 +35,7 @@ import com.ibm.icu.util.TimeUnitAmount;
  * @param <Q> The type of the quantity.
  *
  * @author  <a href="mailto:desruisseaux@users.sourceforge.net">Martin Desruisseaux</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @version 1.0.8 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */

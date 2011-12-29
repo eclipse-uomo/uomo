@@ -46,7 +46,7 @@
  * <p> This package holds only the quantities required by the metric system.</p>
  *
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 2.2, $Date: 2011-01-09 19:56:23 +0100 (So, 09 Jan 2011) $
  */
 package org.eclipse.uomo.units.impl.quantity;

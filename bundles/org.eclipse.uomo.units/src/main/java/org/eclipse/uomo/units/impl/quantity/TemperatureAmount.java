@@ -19,7 +19,7 @@ import org.unitsofmeasurement.unit.Unit;
  * The metric system unit for this quantity is "K" (Kelvin).
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @author  <a href="mailto:jcp@catmedia.us">Werner Keil</a>
+ * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
 public class TemperatureAmount extends BaseAmount<Temperature> {
