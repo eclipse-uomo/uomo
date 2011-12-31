@@ -11,21 +11,22 @@
 
 package org.eclipse.uomo.core.impl;
 
-import java.math.BigDecimal;
-
-import org.eclipse.uomo.core.ICode;
-import org.eclipse.uomo.core.IValue;
-
 // TODO make this really generic, like Pair<F,S>
-public class Pair implements ICode, IValue {
+/**
+ * @author Werner Keil
+ *
+ * @param <V>
+ * @param <C>
+ */
+public class Pair<V, C> {
 
-	private BigDecimal value;
-	private String code;
+	private V value;
+	private C code;
 	/**
 	 * @param value
 	 * @param code
 	 */
-	public Pair(BigDecimal value, String code) {
+	public Pair(V value, C code) {
 		super();
 		this.value = value;
 		this.code = code;
@@ -33,13 +34,13 @@ public class Pair implements ICode, IValue {
 	/**
 	 * @return the value
 	 */
-	public Number getValue() {
+	public V getValue() {
 		return value;
 	}
 	/**
 	 * @return the code
 	 */
-	public String getCode() {
+	public C getCode() {
 		return code;
 	}	
 }

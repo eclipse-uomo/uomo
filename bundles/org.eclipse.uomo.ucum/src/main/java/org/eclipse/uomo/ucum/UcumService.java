@@ -170,7 +170,7 @@ public interface UcumService {
 	 * @return
 	 * @throws UOMoRuntimeException 
 	 */
-	public Pair getCanonicalForm(Pair value) throws UOMoRuntimeException;
+	public Pair<Number, String> getCanonicalForm(Pair<Number, String> value) throws UOMoRuntimeException;
 
 	/**
 	 * given a value and source unit, return the value in the given dest unit
@@ -192,6 +192,6 @@ public interface UcumService {
 	 * @param o2
 	 * @return
 	 */
-	public Pair multiply(Pair o1, Pair o2);
+	public Pair<Number, String> multiply(Pair<Number, String> o1, Pair<Number, String> o2);
 
 }

@@ -299,7 +299,7 @@ public class UcumEssenceService implements UcumService {
 	 * org.eclipse.ohf.ucum.UcumServiceEx#getCanonicalForm(org.eclipse.ohf.ucum
 	 * .UcumEssenceService.Pair)
 	 */
-	public Pair getCanonicalForm(Pair value) throws UOMoRuntimeException {
+	public Pair<Number, String> getCanonicalForm(Pair<Number, String> value) throws UOMoRuntimeException {
 		assert value != null : paramError("getCanonicalForm", "value",
 				"must not be null");
 		assert checkStringParam(value.getCode()) : paramError(
@@ -308,9 +308,9 @@ public class UcumEssenceService implements UcumService {
 		Term term = new ExpressionParser(model).parse(value.getCode());
 		Canonical c = new Converter(model, handlers).convert(term);
 		if (value.getValue() == null)
-			return new Pair(null, new ExpressionComposer().compose(c.getUnit()));
+			return new Pair<Number, String>(null, new ExpressionComposer().compose(c.getUnit()));
 		else
-			return new Pair(((BigDecimal)value.getValue()).multiply(c.getValue()),
+			return new Pair<Number, String>(((BigDecimal)value.getValue()).multiply(c.getValue()),
 					new ExpressionComposer().compose(c.getUnit()));
 	}
 
@@ -351,9 +351,12 @@ public class UcumEssenceService implements UcumService {
 		return canValue.divide(dst.getValue(), new MathContext(25));
 	}
 
-	public Pair multiply(Pair o1, Pair o2) {
-		// TODO Auto-generated method stub
-		return null;
+	public Pair<Number, String> multiply(Pair<Number, String> o1, Pair<Number, String> o2) {
+		//Term term = new ExpressionParser(model).parse(o1.getCode());
+		//Canonical c = new Converter(model, handlers).convert(term);
+		return new Pair<Number, String>(((BigDecimal)o1.getValue()).multiply((BigDecimal)o2.getValue()), 
+						//new ExpressionComposer().compose(c.getUnit()));
+						o1.getCode()+"."+o2.getCode());
 	}
 
 }
