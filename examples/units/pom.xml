@@ -1,6 +1,5 @@
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>org.eclipse.uomo.examples</artifactId>
@@ -13,7 +12,8 @@
 	<modules>
 	   <module>org.eclipse.uomo.examples.units.console</module>
 	   <!--  >module>org.eclipse.uomo.examples.units.pluginsample</module -->
-	</modules>
+    <module>org.eclipse.uomo.examples.units.android</module>
+  </modules>
 	<!-- ==================================================== -->
     <!-- Repositories. This is where Maven looks for dependencies. 
          The Maven repository is implicit and doesn't need 
