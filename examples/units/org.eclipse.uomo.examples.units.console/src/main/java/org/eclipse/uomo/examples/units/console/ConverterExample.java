@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil and others.
+ * Copyright (c) 2005, 2012, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,10 @@ public class ConverterExample {
 	    System.out.println("Ratio3: " + lRatio);
 	    //BaseAmount<Length> qaRatio = (BaseAmount<Length>)lRatio;
 	    //System.out.println(qaRatio.getNumber());
+	    
+	    IMeasure<Length> l1 = new LengthAmount(1, MILE);
+	    IMeasure<Length> l2 = l1.to(FOOT);
+	    System.out.println(l1 + " = " + l2);
 	}
 
 }
