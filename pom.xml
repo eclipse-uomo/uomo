@@ -4,6 +4,7 @@
 	======================================================================= -->
 
 <!-- $Id: pom.xml 306 2010-10-29 20:42:27Z werner.keil $ -->
+<!-- This is a test commit by Chris Senior -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
