@@ -4,75 +4,9 @@
 	<parent>
 		<artifactId>org.eclipse.uomo.bundles</artifactId>
 		<groupId>org.eclipse.uomo</groupId>
-		<version>0.6.0.SNAPSHOT</version>
+		<version>0.6.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.uomo.core</artifactId>
 	<name>UOMo Core</name>
-	<version>0.3.0.SNAPSHOT</version>
-
-    <dependencies>
-           <dependency>
-            <groupId>org.eclipse.osgi</groupId>
-            <artifactId>services</artifactId>
-        </dependency>
-    </dependencies>
-
-    <!-- ======================================================= -->
-    <!-- Build Settings -->
-    <!-- ======================================================= -->
-    <build>
-        <plugins>
-            <!-- ======================================================= -->
-            <!-- Compilation -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-					<source>${project.build.javaVersion}</source>
-					<target>${project.build.javaVersion}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            
-            <!-- ======================================================= -->
-            <!-- Packaging -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Implementation-Title>${project.name}</Implementation-Title>
-                            <Implementation-Version>${project.version}
-                            </Implementation-Version>
-                            <!-- mode>development</mode> TODO call it stage? <SCM-Revision>${buildNumber}</SCM-Revision -->
-                            <SCM-Revision>$Revision: 313 $</SCM-Revision>
-                        </manifestEntries>
-                        <manifestFile>META-INF/MANIFEST.MF</manifestFile>
-                    </archive>
-                </configuration>
-            </plugin>
-            
-            <!-- ======================================================= -->
-            <!-- Packaging (OSGi bundle) -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <version>2.2.0</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <instructions>
-                        <Export-Package>org.eclipse.uomo.util.*</Export-Package>
-                        <Private-Package>!*</Private-Package>
-                    </instructions>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
- 
+	<packaging>eclipse-plugin</packaging>
 </project>

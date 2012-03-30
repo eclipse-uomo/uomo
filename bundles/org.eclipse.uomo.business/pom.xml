@@ -3,77 +3,10 @@
 	<parent>
 		<artifactId>org.eclipse.uomo.bundles</artifactId>
 		<groupId>org.eclipse.uomo</groupId>
-		<version>0.6.0.SNAPSHOT</version>
+		<version>0.6.0-SNAPSHOT</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.eclipse.uomo.business</artifactId>
 	<name>UOMo Business</name>
-	<version>0.2.0.SNAPSHOT</version>
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.uomo</groupId>
-			<artifactId>org.eclipse.uomo.units</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uomo</groupId>
-			<artifactId>org.eclipse.uomo.core</artifactId>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.unitsofmeasurement</groupId>
-			<artifactId>unit-api</artifactId>
-		</dependency>
-	</dependencies>
-
-	<!-- ======================================================= -->
-	<!-- Build Settings -->
-	<!-- ======================================================= -->
-	<build>
-		<plugins>
-			<!-- ======================================================= -->
-			<!-- Compilation -->
-			<!-- ======================================================= -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${project.build.javaVersion}</source>
-					<target>${project.build.javaVersion}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-
-			<!-- ======================================================= -->
-			<!-- Packaging (OSGi bundle) -->
-			<!-- ======================================================= -->
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.2.0</version>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Export-Package>org.eclipse.uomo.util.*</Export-Package>
-						<Private-Package>!*</Private-Package>
-					</instructions>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-	
-	<!-- ==================================================== -->
-    <!-- Repositories. This is where Maven looks for dependencies. The Maven 
-        repository is implicit and doesn't need to be specified. -->
-    <!-- ==================================================== -->
-    <repositories>
-        <repository>
-            <id>maven-geotoolkit.org</id>
-            <name>GeoToolkit Repository for Maven</name>
-            <url>http://maven.geotoolkit.org/</url>
-        </repository>
-    </repositories>
+	<packaging>eclipse-plugin</packaging>
 </project>

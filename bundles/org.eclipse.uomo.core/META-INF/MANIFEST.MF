@@ -1,6 +1,9 @@
 Manifest-Version: 1.0
-Export-Package: org.eclipse.uomo.core,org.eclipse.uomo.core.impl;uses:
- ="org.eclipse.uomo.core"
+Export-Package: org.eclipse.uomo.core,
+ org.eclipse.uomo.core.impl,
+ org.unitsofmeasurement.quantity,
+ org.unitsofmeasurement.service,
+ org.unitsofmeasurement.unit
 Private-Package: org.eclipse.uomo.core;version=0.2.0.SNAPSHOT,org.ecli
  pse.uomo.core.impl;version=0.2.0.SNAPSHOT
 Bundle-ActivationPolicy: lazy
@@ -11,7 +14,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.osgi;bundle-version="3.6.0";visibility:=reexport,
  org.eclipse.osgi.services;bundle-version="3.2.100";visibility:=reexport
 Bundle-Vendor: Eclipse.org
-Bundle-Version: 0.3.0.SNAPSHOT
+Bundle-Version: 0.6.0.qualifier
 Bnd-LastModified: 1288905964975
 Bundle-Activator: org.eclipse.uomo.core.Activator
 Bundle-ManifestVersion: 2
@@ -24,4 +27,6 @@ Bundle-SymbolicName: org.eclipse.uomo.core
 Bundle-DocURL: http://www.eclipse.org
 Include-Resource: src/main/resources
 Originally-Created-By: 1.6.0_23-ea (Sun Microsystems Inc.)
+Bundle-ClassPath: libs/unit-api-0.6.1.jar,
+ .
 

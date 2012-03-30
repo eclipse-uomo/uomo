@@ -1,0 +1,23 @@
+ucumExpr   :  DIVIDE expr
+           |  expr 
+           ;
+multiply   :  TIMES term
+           |  DIVIDE term
+           ;
+expr       :  term (multiply)*  
+           ;
+term       :  element (exponent)? (ANN)*
+           ;
+element    :  simpleUnit
+           |  LPAREN expr RPAREN
+           |  ANN
+           ;
+exponent   :  (SIGN)? DIGITS	// allow zero exponent?
+           ;
+simpleUnit :  prefix metricAtom // prefix is token from lexer
+           |  metricAtom  
+           |  nonMetricAtom	// token from lexer
+           |  DIGITS	// allow zero?
+           ;
+metricAtom :  baseUnit // token from lexer
+           |  derivedMetricAtom // token from lexer

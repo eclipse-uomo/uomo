@@ -10,6 +10,7 @@
  */
 package org.eclipse.uomo.units;
 
+import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Locale;
 
@@ -42,17 +43,14 @@ public class Activator implements BundleActivator, ServiceListener {
 	 */
 	public void start(BundleContext context) throws Exception {
 		fContext = context;
-//		dictService = new DictionaryServiceImpl();
 		
-		@SuppressWarnings("rawtypes")
-		Hashtable<?, ?> props = new Hashtable();
 		// register the services
-		startFormat(context, props);
-		startSOU(context, props);
+		startFormat(context, null);
+		startSOU(context, null);
 //		startDictionary(context, props);
 	}
 	
-	private void startFormat(BundleContext context, Hashtable<?, ?> props) throws Exception {
+	private void startFormat(BundleContext context, Dictionary<String, ?> props) throws Exception {
 		formatService = new UnitFormatServiceImpl();
 		
 		// register the service
@@ -72,7 +70,7 @@ public class Activator implements BundleActivator, ServiceListener {
 //		formatService.registerDictionary(new DictionaryImpl());
 	}
 	
-	private void startSOU(BundleContext context, Hashtable<?, ?> props) throws Exception {
+	private void startSOU(BundleContext context, Dictionary<String, ?> props) throws Exception {
 		souService = new SystemOfUnitsServiceImpl();
 		
 		// register the service

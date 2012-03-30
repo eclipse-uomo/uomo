@@ -3,21 +3,23 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>org.eclipse.uomo.examples.units</artifactId>
-		<groupId>org.eclipse.uomo.examples</groupId>
-		<version>0.1.0.SNAPSHOT</version>
+		<groupId>org.eclipse.uomo</groupId>
+		<version>0.6.0-SNAPSHOT</version>
 	</parent>
 	<groupId>org.eclipse.uomo.examples.units</groupId>
 	<artifactId>org.eclipse.uomo.examples.units.console</artifactId>
 	<name>UOMo Units Console Examples</name>
-	<version>0.2.0.SNAPSHOT</version>
 	<dependencies>
 		<dependency>
-			<groupId>org.eclipse.uomo</groupId>
-			<artifactId>org.eclipse.uomo.units</artifactId>
-			<version>0.6.0.SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
+            <groupId>org.unitsofmeasurement</groupId>
+            <artifactId>unit-api</artifactId>
+            <version>0.6.1</version>
+		</dependency>	
+        <dependency>
+        	<groupId>org.eclipse.uomo</groupId>
+        	<artifactId>org.eclipse.uomo.units</artifactId>
+        	<version>0.6.0-SNAPSHOT</version>
+        </dependency>	
 		<dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -30,6 +32,21 @@
             <version>1.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+        	<groupId>org.eclipse.uomo</groupId>
+        	<artifactId>org.eclipse.uomo.core</artifactId>
+        	<version>0.6.0-SNAPSHOT</version>       	
+        </dependency>
+        <dependency>
+        	<groupId>com.ibm.icu</groupId>
+        	<artifactId>icu4j</artifactId>
+        	<version>4.8.1.1</version>
+        </dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>osgi</artifactId>
+			<version>3.5.0.v20090520</version>
+		</dependency>
 	</dependencies>
 
 	<!-- ======================================================= -->
@@ -52,4 +69,21 @@
 			</plugin>
 		</plugins>
 	</build>
+	
+	 <!-- ==================================================== -->
+    <!-- Repositories. This is where Maven looks for dependencies. The Maven 
+        repository is implicit and doesn't need to be specified. -->
+    <!-- ==================================================== -->
+    <repositories>
+        <repository>
+            <id>maven-geotoolkit.org</id>
+            <name>GeoToolkit Repository for Maven</name>
+            <url>http://maven.geotoolkit.org/</url>
+        </repository>
+        <repository>
+			<id>eclipse-central</id>
+			<name>Central Eclipse.org Nexus</name>
+			<url>http://maven.eclipse.org/nexus/content/groups/central/</url>
+		</repository>               
+    </repositories>
 </project>

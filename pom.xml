@@ -4,7 +4,6 @@
 	======================================================================= -->
 
 <!-- $Id: pom.xml 306 2010-10-29 20:42:27Z werner.keil $ -->
-<!-- This is a test commit by Chris Senior -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
@@ -18,11 +17,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.javaVersion>1.6</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
+		<tycho-version>0.14.1</tycho-version>
 	</properties>
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
-	<version>0.6.0.RC4</version>
+	<version>0.6.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo</name>
 
@@ -86,22 +86,54 @@
 		<module>bundles</module>
 		<module>features</module>
 		<module>examples</module>
-		<module>thirdparty</module>
+		
+		<module>org.eclipse.uomo.target</module>
 	</modules>
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>osgi</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<!-- This sets up the target platform in PDE terms
+				The version of Eclipse that the source will be built against -->
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.uomo</groupId>
+							<artifactId>org.eclipse.uomo.target</artifactId>
+							<version>0.6.0-SNAPSHOT</version>
+							<classifier>indigo</classifier>
+						</artifact>
+					</target>
+					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+	
 
 	<!-- ==================================================== -->
 	<!-- Repositories. This is where Maven looks for dependencies. The Maven 
@@ -132,94 +164,4 @@
 <!-- 			<url>http://repository.jboss.org/maven2</url> -->
 <!-- 		</repository> -->
 	</repositories>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.eclipse</groupId>
-				<artifactId>osgi</artifactId>
-				<version>3.5.0.v20090520</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.osgi</groupId>
-				<artifactId>services</artifactId>
-				<version>3.1.200-v20070605</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.core</groupId>
-				<artifactId>org.eclipse.core.runtime</artifactId>
-				<version>3.5.0.v20090525</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uomo</groupId>
-				<artifactId>org.eclipse.uomo.core</artifactId>
-				<version>0.3.0.SNAPSHOT</version>
-				<type>jar</type>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uomo</groupId>
-				<artifactId>org.eclipse.uomo.units</artifactId>
-				<version>0.6.0.SNAPSHOT</version>
-				<type>jar</type>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.unitsofmeasurement</groupId>
-				<artifactId>unit-api</artifactId>
-				<version>0.6.1</version>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uomo</groupId>
-				<artifactId>org.eclipse.uomo.util</artifactId>
-				<version>0.3.0.SNAPSHOT</version>
-				<type>jar</type>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uomo</groupId>
-				<artifactId>org.eclipse.uomo.util</artifactId>
-				<version>0.3.0.SNAPSHOT</version>
-				<type>test-jar</type>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.eclipse.uomo</groupId>
-				<artifactId>org.eclipse.uomo.xml</artifactId>
-				<version>0.3.0.SNAPSHOT</version>
-				<type>jar</type>
-				<scope>compile</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.ibm.icu</groupId>
-				<artifactId>icu4j</artifactId>
-				<version>4.4.1.1</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-lang</groupId>
-				<artifactId>commons-lang</artifactId>
-				<version>2.3</version>
-			</dependency>
-			<dependency>
-				<groupId>xerces</groupId>
-				<artifactId>xercesImpl</artifactId>
-				<version>2.9.1</version>
-			</dependency>
-			<dependency>
-				<groupId>xmlpull</groupId>
-				<artifactId>xmlpull</artifactId>
-				<version>1.1.3.4</version>
-			</dependency>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>4.8.1</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.hamcrest</groupId>
-				<artifactId>hamcrest-all</artifactId>
-				<version>1.1</version>
-				<scope>test</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 </project>

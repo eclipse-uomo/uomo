@@ -10,15 +10,8 @@
  */
 package org.eclipse.uomo.core;
 
-import java.util.Hashtable;
-
-import org.eclipse.uomo.core.impl.LogServiceImpl;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.osgi.framework.ServiceEvent;
-import org.osgi.framework.ServiceListener;
-import org.osgi.service.log.LogService;
-import org.osgi.util.tracker.ServiceTracker;
 
 /**
  * OSGi part of implementation.
@@ -26,10 +19,9 @@ import org.osgi.util.tracker.ServiceTracker;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 0.2 ($Revision$), $Date$
  */
-public class Activator implements BundleActivator, ServiceListener {
-	private ServiceTracker logServiceTracker;
+public class Activator implements BundleActivator {
 	private BundleContext fContext;
-	private LogService logService;
+	
 
 	/*
 	 * (non-Javadoc)
@@ -40,37 +32,9 @@ public class Activator implements BundleActivator, ServiceListener {
 	 */
 	public void start(BundleContext context) throws Exception {
 		fContext = context;
-
-		@SuppressWarnings("rawtypes")
-		Hashtable<?, ?> props = new Hashtable();
-		// register the services
-		startLog(context, props);
 	}
 
-	private void startLog(BundleContext context, Hashtable<?, ?> props)
-			throws Exception {
-		logService = new LogServiceImpl();
-
-		// register the service
-		context.registerService(LogService.class.getName(), logService,
-				props);
-
-		// create a tracker and track the service
-		logServiceTracker = new ServiceTracker(context,
-				LogService.class.getName(), null);
-		logServiceTracker.open();
-
-		// have a service listener to implement the whiteboard pattern
-		fContext.addServiceListener(this,
-				"(objectclass=" + LogService.class.getName() + ")");
-
-		// grab the service
-		logService = (LogService) logServiceTracker.getService();
-
-		// register the dictionary
-//		logService.registerDictionary(new DictionaryImpl());
-	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -83,30 +47,4 @@ public class Activator implements BundleActivator, ServiceListener {
 		fContext = null;
 	}
 
-	// @Deprecated
-	// private void stopDictionary() throws Exception {
-	// logServiceTracker.close();
-	// logServiceTracker = null;
-	//
-	// logService = null;
-	// }
-
-	public void serviceChanged(ServiceEvent ev) {
-//		ServiceReference sr = ev.getServiceReference();
-		if (ev != null) {
-			switch (ev.getType()) {
-			// case ServiceEvent.REGISTERED: {
-			// Dictionary dictionary = (Dictionary) fContext.getService(sr);
-			// logService.registerDictionary(dictionary);
-			// }
-			// break;
-			// case ServiceEvent.UNREGISTERING: {
-			// Dictionary dictionary = (Dictionary) fContext.getService(sr);
-			// logService.unregisterDictionary(dictionary);
-			// }
-			default:
-				break;
-			}
-		}
-	}
 }
