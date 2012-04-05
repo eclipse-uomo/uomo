@@ -12,7 +12,7 @@
 	<!-- for plugin, currently fails, run manually with ADT 
 	 <packaging>apk</packaging -->
 	<packaging>pom</packaging>
-	<name>player</name>
+	<name>UOMo Units Android Example Player</name>
 
 	<dependencies>
 		<dependency>

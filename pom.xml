@@ -40,12 +40,22 @@
 		<developer>
 			<name>Werner Keil</name>
 			<id>wkeil</id>
-			<organization>emergn</organization>
-			<organizationUrl>http://www.emergn.com</organizationUrl>
+			<organization>Creative Arts &amp; Technologies</organization>
+			<organizationUrl>http://www.catmedia.us</organizationUrl>
 			<email>werner.keil@gmx.net</email>
 			<timezone>0</timezone>
 			<roles>
 				<role>Project Lead</role>
+				<role>Architect</role>
+				<role>Java Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<name>Chris Senior</name>
+			<id>csenior</id>
+			<email>christopher.senior@gmail.com</email>
+			<organization>Private Individual</organization>
+			<roles>
 				<role>Architect</role>
 				<role>Java Developer</role>
 			</roles>
@@ -64,16 +74,7 @@
 				<role>Java Developer (inactive)</role>
 			</roles>
 		</contributor>
-		<contributor>
-			<name>Chris Senior</name>
-			<!-- id>csenior</id -->
-			<email>christopher.senior@gmail.com</email>
-			<organization>Private Individual</organization>
-			<roles>
-				<role>Architect</role>
-				<role>Java Developer</role>
-			</roles>
-		</contributor>
+	
 	</contributors>
 	<scm>
 		<url>http://git.eclipse.org/c/uomo/org.eclipse.uomo.git/</url>

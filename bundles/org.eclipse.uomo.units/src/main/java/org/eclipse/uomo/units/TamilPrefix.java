@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2012, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,13 +20,13 @@ import org.unitsofmeasurement.unit.Unit;
 /**
  * Utility class holding prefixes used today in parts of India and Sri Lanka;
  * based on grouping by two decimal places, rather than the
- * three decimal places common in most parts of the world. [code] import static
+ * three decimal places common in most parts of the world.</br><code> import static
  * org.eclipse.uomo.units.TamilPrefix.*; // Static import. ... Unit<Pressure>
  * ONDRU_PASCAL = ONDRU(PASCAL); 
- * Unit<Length> PATHU_METER = PATHU(METER); [/code]
+ * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.1 ($Revision$), $Date: 2010-11-28 $
+ * @version 1.2 ($Revision$), $Date: 2012-04-02 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
  *      Tamil units of measurement - Whole numbers</a>
