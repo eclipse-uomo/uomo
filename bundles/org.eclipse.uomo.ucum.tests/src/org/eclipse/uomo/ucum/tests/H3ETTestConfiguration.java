@@ -11,7 +11,7 @@
 
 package org.eclipse.uomo.ucum.tests;
 
-import org.eclipse.uomo.util.test.UOMoTestConfiguration;
+//import org.eclipse.uomo.util.test.UOMoTestConfiguration;
 
 
 
@@ -28,7 +28,7 @@ import org.eclipse.uomo.util.test.UOMoTestConfiguration;
  *     Better ideas are welcome
  */
 
-public interface H3ETTestConfiguration extends UOMoTestConfiguration {
+public interface H3ETTestConfiguration   {
 	
 	/**
 	 * The test workspace, which should contains the test project

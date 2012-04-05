@@ -53,8 +53,9 @@ public class MoneyDemo {
 				MILE.divide(GALLON_LIQUID)); // 20 mi/gal.
 		IMeasure<?> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
 		// // 1.2 EUR/L
-//		LengthAmount tripDistance = new LengthAmount(400, KILO(METRE)); // 400 km
-		LengthAmount tripDistance = new LengthAmount(4, (Unit<Length>) LAKH(METRE)); // 400 km 
+		LengthAmount tripDistance = new LengthAmount(400, KILO(METRE)); // 400 km
+//		IMeasure<Length> tripDistance2 = new LengthAmount(400, KILO(METRE));
+//		LengthAmount tripDistance = new LengthAmount(4, (Unit<Length>) LAKH(METRE)); // 400 km 
 		
 		
 		// km

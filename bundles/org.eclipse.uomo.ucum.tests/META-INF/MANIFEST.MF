@@ -7,4 +7,6 @@ Bundle-Vendor: Eclipse Org
 Fragment-Host: org.eclipse.uomo.ucum;bundle-version="0.6.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.uomo.ucum.tests
-Require-Bundle: org.junit;bundle-version="4.8.2"
+Require-Bundle: org.junit;bundle-version="4.8.2",
+ org.eclipse.uomo.util;bundle-version="0.6.0"
+

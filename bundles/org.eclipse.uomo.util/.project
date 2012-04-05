@@ -3,7 +3,6 @@
 	<name>org.eclipse.uomo.util</name>
 	<comment>UOMo adds Units of Measurement support for IT Systems and Services both to Language and Data. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
 	<projects>
-		<project>org.eclipse.uomo.core</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

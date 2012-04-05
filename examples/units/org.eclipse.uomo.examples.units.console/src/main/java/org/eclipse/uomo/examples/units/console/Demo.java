@@ -74,7 +74,9 @@ public class Demo {
         System.out.println();
         someLength = new LengthAmount(1, MILLI(METRE));
         System.out.println("len1 = " + someLength);
+        IMeasure<Length> someMoreLength = new LengthAmount(400, KILO(METRE));
         someMass = new MassAmount(50, MILLI(GRAM));
         System.out.println("mass1 = " + someMass);
+        System.out.println("len2 = " + someMoreLength);
     }
 }

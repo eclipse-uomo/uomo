@@ -51,7 +51,6 @@ public final class MonetaryUnits extends AbstractSystemOfUnits {
         return unit;
     }
 
-    @Override
 	public String getName() {
 		return getClass().getSimpleName();
 	}
