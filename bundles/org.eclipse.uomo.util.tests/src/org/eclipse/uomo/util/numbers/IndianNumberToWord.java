@@ -10,61 +10,61 @@ public class IndianNumberToWord implements INumberToWord {
 	String d[] = { "twenty", "thirty", "fourty", "fifty", "sixty", "seventy",
 			"eighty", "ninty" };
 
-	public String convertNumber(int count) {
+	public String convertNumber(int numToConvert) {
 		int in = 1;
 		int num;
 		string = "";
-		while (count != 0) {
+		while (numToConvert != 0) {
 			switch (in) {
 			case 1:
-				num = count % 100;
+				num = numToConvert % 100;
 				passString(num);
-				if (count > 100 && count % 100 != 0) {
+				if (numToConvert > 100 && numToConvert % 100 != 0) {
 					displayOutput("and ");
 				}
-				count /= 100;
+				numToConvert /= 100;
 				break;
 			case 2:
-				num = count % 10;
+				num = numToConvert % 10;
 				if (num != 0) {
 					displayOutput(" ");
 					displayOutput(b[0]);
 					displayOutput(" ");
 					passString(num);
 				}
-				count /= 10;
+				numToConvert /= 10;
 				break;
 
 			case 3:
-				num = count % 100;
+				num = numToConvert % 100;
 				if (num != 0) {
 					displayOutput(" ");
 					displayOutput(b[1]);
 					displayOutput(" ");
 					passString(num);
 				}
-				count /= 100;
+				numToConvert /= 100;
 				break;
 			case 4:
-				num = count % 100;
+				num = numToConvert % 100;
 				if (num != 0) {
 					displayOutput(" ");
 					displayOutput(b[2]);
 					displayOutput(" ");
 					passString(num);
 				}
-				count /= 100;
+				numToConvert /= 100;
 				break;
 
 			case 5:
-				num = count % 100;
+				num = numToConvert % 100;
 				if (num != 0) {
 					displayOutput(" ");
 					displayOutput(b[3]);
 					displayOutput(" ");
 					passString(num);
 				}
-				count /= 100;
+				numToConvert /= 100;
 				break;
 
 			}

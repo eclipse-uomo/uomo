@@ -2,7 +2,7 @@ package org.eclipse.uomo.util.numbers;
 
 class DecimalFormatOptions {
 
-	public static final int ANY_DIGITS = -1;
+	protected static final int ANY_DIGITS = -1;
 	/**
 	 * If totalDigits is specified, the number of digits must be less than or equal to totalDigits.
 	 */
