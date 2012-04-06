@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2012, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,8 @@
  *    Werner Keil, Ikayzo and others - initial API and implementation
  */
 package org.eclipse.uomo.units.impl;
+
+import static org.eclipse.uomo.core.impl.OutputHelper.println;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -149,16 +151,16 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 					return super.equals(obj);					
 				} else if(this.unit() instanceof AnnotatedUnit<?>) {
 					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.unit();
-					System.out.println("Ann: " + au);
+					println("Ann: " + au); //$NON-NLS-1$
 				} else if  (this.unit() instanceof BaseUnit<?>) {
 					BaseUnit<?> bu = (BaseUnit<?>) this.unit();
-					System.out.println("Bas: " + bu);		
+					println("Bas: " + bu);		 //$NON-NLS-1$
 				} else if(this.unit() instanceof ProductUnit<?>) {
 					ProductUnit<?> pu = (ProductUnit<?>) this.unit();
-					System.out.println("Pro: " + pu);					
+					println("Pro: " + pu);					 //$NON-NLS-1$
 				} else if(this.unit() instanceof TransformedUnit<?>) {
 					TransformedUnit<?> tu = (TransformedUnit<?>) this.unit();
-					System.out.println("Tran: " + tu);
+					println("Tran: " + tu); //$NON-NLS-1$
 					if (tu.getParentUnit().equals(baa)) {
 						return true; // FIXME use number here, too
 					}
@@ -169,18 +171,18 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 			if (ba.unit() instanceof BaseUnit<?>) {
 				if(this.unit() instanceof AlternateUnit<?>) {
 					AlternateUnit<?> au = (AlternateUnit<?>) this.unit();
-					System.out.println("Alt: " + au);		
+					println("Alt: " + au);		 //$NON-NLS-1$
 				} else if(this.unit() instanceof AnnotatedUnit<?>) {
 					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.unit();
-					System.out.println("Ann: " + au);
+					println("Ann: " + au); //$NON-NLS-1$
 				} else if (this.unit() instanceof BaseUnit<?>) {
 					return super.equals(obj);
 				} else if(this.unit() instanceof ProductUnit<?>) {
 					ProductUnit<?> pu = (ProductUnit<?>) this.unit();
-					System.out.println("Pro: " + pu);
+					println("Pro: " + pu); //$NON-NLS-1$
 				} else if(this.unit() instanceof TransformedUnit<?>) {
 					TransformedUnit<?> tu = (TransformedUnit<?>) this.unit();
-					System.out.println("Tran: " + tu);
+					println("Tran: " + tu); //$NON-NLS-1$
 				} else {
 					return super.equals(obj);
 				}
@@ -189,19 +191,19 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q> impleme
 				TransformedUnit<?> bat = (TransformedUnit<?>) ba.unit();
 				if(this.unit() instanceof AlternateUnit<?>) {	
 					AlternateUnit<?> au = (AlternateUnit<?>) this.unit();
-					System.out.println("Alt: " + au);
+					println("Alt: " + au); //$NON-NLS-1$
 					if (bat.getParentUnit().equals(au)) {
 						return true;
 					}
 				} else if(this.unit() instanceof AnnotatedUnit<?>) {
 					AnnotatedUnit<?> au = (AnnotatedUnit<?>) this.unit();
-					System.out.println("Ann: " + au);
+					System.out.println("Ann: " + au); //$NON-NLS-1$
 				} else if  (this.unit() instanceof BaseUnit<?>) {
 					BaseUnit<?> bu = (BaseUnit<?>) this.unit();
-					System.out.println("Bas: " + bu);	
+					println("Bas: " + bu);	 //$NON-NLS-1$
 				} else if(this.unit() instanceof ProductUnit<?>) {
 					ProductUnit<?> pu = (ProductUnit<?>) this.unit();
-					System.out.println("Pro: " + pu);
+					println("Pro: " + pu); //$NON-NLS-1$
 				} else if(this.unit() instanceof TransformedUnit<?>) {
 					return super.equals(obj);
 				} else {
