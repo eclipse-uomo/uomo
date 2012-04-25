@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,9 +35,9 @@ public class UcumModel implements IName {
 	 */
 	private final Date revisionDate;
 	
-	private List<Prefix> prefixes = new ArrayList<Prefix>();
-	private List<BaseUnit> baseUnits = new ArrayList<BaseUnit>();
-	private List<DefinedUnit> definedUnits = new ArrayList<DefinedUnit>();
+	private final List<Prefix> prefixes = new ArrayList<Prefix>();
+	private final List<BaseUnit> baseUnits = new ArrayList<BaseUnit>();
+	private final List<DefinedUnit> definedUnits = new ArrayList<DefinedUnit>();
 
 	
 	/**

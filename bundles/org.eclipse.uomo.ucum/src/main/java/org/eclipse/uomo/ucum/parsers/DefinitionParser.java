@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -112,6 +112,7 @@ public class DefinitionParser {
 		} catch (NumberFormatException e) {
 			throw new XmlPullParserException("Error reading "+context+": "+e.getMessage());
 		}
+		@SuppressWarnings("rawtypes")
 		Value<?> value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val);
 		value.setText(readElement(xpp, "value", context, true));
 		return value;

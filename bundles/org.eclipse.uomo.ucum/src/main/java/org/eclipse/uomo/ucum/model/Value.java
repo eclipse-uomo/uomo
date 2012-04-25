@@ -73,17 +73,10 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	}
 
 	/**
-	 * @return the value
-	 * @deprecated use value() instead
-	 */
-	public BigDecimal getValue() {
-		return value;
-	}
-
-	/**
 	 * @param value the value to set
+	 * @deprecated
 	 */
-	public void setValue(BigDecimal value) {
+	void setValue(BigDecimal value) {
 		this.value = value;
 	}
 

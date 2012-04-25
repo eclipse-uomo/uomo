@@ -20,7 +20,7 @@ import org.eclipse.uomo.core.INames;
 
 public class Concept implements ICode, IDescription, INames {
 
-	private ConceptKind kind;
+	private final ConceptKind kind;
 	/**
 	 * case sensitive code for this concept
 	 */
