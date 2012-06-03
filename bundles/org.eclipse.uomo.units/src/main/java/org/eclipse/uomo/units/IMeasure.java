@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2012, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -80,6 +80,8 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
      * @return <code>this / that</code>.
      */
     IMeasure<?> divide(IMeasure<?> that);
+    
+    IMeasure<? extends IMeasure<Q>> inverse();
     
     /**
      * Returns this measurement converted into another unit.
