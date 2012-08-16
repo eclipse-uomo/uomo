@@ -68,10 +68,18 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
     /**
      * Returns the product of this amount with the one specified.
      *
-     * @param  that the number multiplier.
+     * @param  that the amount multiplier.
      * @return <code>this · that</code>.
      */
     IMeasure<?> multiply(IMeasure<?> that);
+    
+    /**
+     * Returns the product of this amount with the number specified.
+     *
+     * @param  that the number multiplier.
+     * @return <code>this · that</code>.
+     */
+    IMeasure<?> multiply(Number that);
     
     /**
      * Returns this amount divided by the one specified.

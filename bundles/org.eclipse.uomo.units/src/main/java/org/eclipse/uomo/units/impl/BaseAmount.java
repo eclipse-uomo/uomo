@@ -32,8 +32,8 @@ import com.ibm.icu.util.MeasureUnit;
  * Represents a generic quantity amount.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.3, ($Revision: 212 $), $Date: 2010-09-12 01:25:44 +0200 (Mo, 12
- *          Sep 2011) $
+ * @version 1.3.1, ($Revision: 212 $), $Date: 2012-08-16 23:35:44 +0200 (Do, 16
+ *          Aug 2012) $
  */
 public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 		implements Comparable<BaseAmount<Q>> {
@@ -89,6 +89,12 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 		Unit<?> unit = unit().multiply(that.unit());
 		return (IMeasure<Q>) valueOf((value().doubleValue() * that.value()
 				.doubleValue()), unit);
+	}
+	
+	@Override
+	public IMeasure<?> multiply(Number that) {
+		return (IMeasure<Q>) valueOf((value().doubleValue() * that
+				.doubleValue()), unit());	
 	}
 
 	@SuppressWarnings("unchecked")
@@ -275,5 +281,4 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 		}
 		return super.equals(obj);
 	}
-
 }

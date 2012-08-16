@@ -35,14 +35,17 @@ import com.ibm.icu.util.CurrencyAmount;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.3 ($Revision: 206 $), $Date: 2010-09-11 23:59:41 +0200 (Sa, 11 Sep 2010) $
+ * @version 1.4 ($Revision: 206 $), $Date: 2012-08-16 23:29:41 +0200 (Do, 16 Aug
+ *          2012) $
  */
-public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IMoney> {
-    
-    /**
-     * Holds the base unit for money quantities (symbol "$").
-     */
-    public final static CurrencyUnit<IMoney> UNIT = new CurrencyUnit<IMoney>("$");
+public class MoneyAmount extends CurrencyAmount implements IMoney,
+		Comparable<IMoney> {
+
+	/**
+	 * Holds the base unit for money quantities (symbol "$").
+	 */
+	public final static CurrencyUnit<IMoney> UNIT = new CurrencyUnit<IMoney>(
+			"$");
 
 	/**
 	 * Creates a money amount always on the heap independently from the current
@@ -124,15 +127,15 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	/**
-	 * Overrides the default {@link #toString()} to
-	 * show only the currency {@link Currency#getFractionDigits() fraction
-	 * digits} of the associated currency (e.g. rounding to closest cents).
+	 * Overrides the default {@link #toString()} to show only the currency
+	 * {@link Currency#getFractionDigits() fraction digits} of the associated
+	 * currency (e.g. rounding to closest cents).
 	 * 
 	 * @return the string representation of this money amount.
 	 */
 	public String toStringLocale() {
 		BigDecimal value = (BigDecimal) this.getNumber();
-//		int digits = ((Currency) this.getUnit()).getDefaultFractionDigits();
+		// int digits = ((Currency) this.getUnit()).getDefaultFractionDigits();
 		// int exponent = value.getExponent();
 		// LargeInteger significand = value.getSignificand();
 		// int scale = exponent + digits;
@@ -163,6 +166,12 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 				- that.getNumber().doubleValue(), getCurrency());
 	}
 
+	@Override
+	public IMeasure<?> multiply(Number that) {
+		return MoneyAmount.valueOfCurrency(
+				getNumber().doubleValue() * that.doubleValue(), getCurrency());
+	}
+
 	public MoneyAmount multiply(long n) {
 		return MoneyAmount.valueOfCurrency(getNumber().longValue() * n,
 				getCurrency());
@@ -175,15 +184,14 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public MoneyAmount pow(int exp) {
-		return MoneyAmount.valueOf(
-				((BigDecimal) getNumber()).pow(BigDecimal.valueOf(exp)),
-				unit().pow(exp));
+		return MoneyAmount.valueOf(((BigDecimal) getNumber()).pow(BigDecimal
+				.valueOf(exp)), unit().pow(exp));
 	}
 
-//	 protected MoneyAmount inverse() {
-//	 return MoneyAmount.valueOf(((BigDecimal) getNumber()).inverse(),
-//	 unit().inverse());
-//	 }
+	// protected MoneyAmount inverse() {
+	// return MoneyAmount.valueOf(((BigDecimal) getNumber()).inverse(),
+	// unit().inverse());
+	// }
 
 	public MoneyAmount divide(long n) {
 		return MoneyAmount.valueOfCurrency(getNumber().longValue() / n,
@@ -217,8 +225,8 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public double doubleValue(Unit<IMoney> unit) {
-	   	Unit<IMoney> myUnit = unit();
-    	try {
+		Unit<IMoney> myUnit = unit();
+		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return converter.convert(getNumber().doubleValue());
 		} catch (UnconvertibleException e) {
@@ -229,10 +237,11 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public long longValue(Unit<IMoney> unit) throws ArithmeticException {
-	   	Unit<IMoney> myUnit = unit();
-    	try {
+		Unit<IMoney> myUnit = unit();
+		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return (converter.convert(BigDecimal.valueOf(super.getNumber().longValue())).longValue());
+			return (converter.convert(BigDecimal.valueOf(super.getNumber()
+					.longValue())).longValue());
 		} catch (UnconvertibleException e) {
 			throw e;
 		} catch (IncommensurableException e) {
@@ -241,64 +250,71 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public IMeasure<IMoney> add(IMeasure<IMoney> that) {
-		return plus((MoneyAmount)that);
+		return plus((MoneyAmount) that);
 	}
 
 	public IMeasure<IMoney> substract(IMeasure<IMoney> that) {
-		return minus((MoneyAmount)that);
+		return minus((MoneyAmount) that);
 	}
 
 	public IMeasure<IMoney> divide(IMeasure<?> that) {
-		return divide((MoneyAmount)that);
+		return divide((MoneyAmount) that);
 	}
 
 	public IMeasure<IMoney> multiply(IMeasure<?> that) {
-		return multiply((MoneyAmount)that);
+		return multiply((MoneyAmount) that);
 	}
-	
+
 	public IMeasure<IMoney> to(Unit<IMoney> unit) {
 		return to(unit, MathContext.DECIMAL32);
 	}
-	
-    protected IMeasure<IMoney> to(Unit<IMoney> unit, MathContext ctx) {
-        if (this.unit().equals(unit))
-            return this;
-        UnitConverter cvtr = this.unit().getConverterTo(unit);
-        if (cvtr == AbstractConverter.IDENTITY)
-            return (IMeasure<IMoney>) valueOf(this.getNumber(), unit);
-        return (IMeasure<IMoney>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
-    }
 
-    // Try to convert the specified value.
-    private static Number convert(Number value, UnitConverter cvtr, MathContext ctx) {
-        if (cvtr instanceof RationalConverter) { // Try converting through Field methods.
-            RationalConverter rCvtr = (RationalConverter) cvtr;
-            BigInteger dividend = rCvtr.getDividend();
-            BigInteger divisor = rCvtr.getDivisor();
-            if (dividend.abs().compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
-                throw new ArithmeticException("Multiplier overflow");
-            if (divisor.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
-                throw new ArithmeticException("Divisor overflow");
-            return (value.longValue() * dividend.longValue()) / (divisor.longValue());
-        } else if (cvtr instanceof AbstractConverter.Compound && cvtr.isLinear()) { // Do it in two parts.
-            AbstractConverter.Compound compound = (AbstractConverter.Compound) cvtr;
-            Number firstConversion = convert(value, compound.getRight(), ctx);
-            Number secondConversion = convert(firstConversion, compound.getLeft(), ctx);
-            return secondConversion;
-        } else { // Try using BigDecimal as intermediate.
-            BigDecimal decimalValue = BigDecimal.valueOf(value.doubleValue());
-            Number newValue = cvtr.convert(decimalValue.toBigDecimal(), ctx);
-            return newValue;
-//            if (((FieldNumber)value) instanceof Decimal)
-//                return (N)((FieldNumber)Decimal.valueOf(newValue));
-//            if (((FieldNumber)value) instanceof Float64)
-//                return (N)((FieldNumber)Float64.valueOf(newValue.doubleValue()));
-//            throw new ArithmeticException(
-//                    "Generic amount conversion not implemented for amount of type " + value.getClass());
-        }
-    }
+	protected IMeasure<IMoney> to(Unit<IMoney> unit, MathContext ctx) {
+		if (this.unit().equals(unit))
+			return this;
+		UnitConverter cvtr = this.unit().getConverterTo(unit);
+		if (cvtr == AbstractConverter.IDENTITY)
+			return (IMeasure<IMoney>) valueOf(this.getNumber(), unit);
+		return (IMeasure<IMoney>) valueOf(convert(this.getNumber(), cvtr, ctx),
+				unit);
+	}
 
-    /**
+	// Try to convert the specified value.
+	private static Number convert(Number value, UnitConverter cvtr,
+			MathContext ctx) {
+		if (cvtr instanceof RationalConverter) { // Try converting through Field
+													// methods.
+			RationalConverter rCvtr = (RationalConverter) cvtr;
+			BigInteger dividend = rCvtr.getDividend();
+			BigInteger divisor = rCvtr.getDivisor();
+			if (dividend.abs().compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
+				throw new ArithmeticException("Multiplier overflow");
+			if (divisor.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
+				throw new ArithmeticException("Divisor overflow");
+			return (value.longValue() * dividend.longValue())
+					/ (divisor.longValue());
+		} else if (cvtr instanceof AbstractConverter.Compound
+				&& cvtr.isLinear()) { // Do it in two parts.
+			AbstractConverter.Compound compound = (AbstractConverter.Compound) cvtr;
+			Number firstConversion = convert(value, compound.getRight(), ctx);
+			Number secondConversion = convert(firstConversion,
+					compound.getLeft(), ctx);
+			return secondConversion;
+		} else { // Try using BigDecimal as intermediate.
+			BigDecimal decimalValue = BigDecimal.valueOf(value.doubleValue());
+			Number newValue = cvtr.convert(decimalValue.toBigDecimal(), ctx);
+			return newValue;
+			// if (((FieldNumber)value) instanceof Decimal)
+			// return (N)((FieldNumber)Decimal.valueOf(newValue));
+			// if (((FieldNumber)value) instanceof Float64)
+			// return (N)((FieldNumber)Float64.valueOf(newValue.doubleValue()));
+			// throw new ArithmeticException(
+			// "Generic amount conversion not implemented for amount of type " +
+			// value.getClass());
+		}
+	}
+
+	/**
 	 * Generate a 'preference neutral' string from Money value.
 	 * 
 	 * @return java.lang.String
@@ -312,8 +328,8 @@ public class MoneyAmount extends CurrencyAmount implements IMoney, Comparable<IM
 	}
 
 	public IMeasure<? extends IMeasure<IMoney>> inverse() {
-		final IMeasure<? extends IMeasure<IMoney>> m = valueOf(value(),
-				unit().inverse());
+		final IMeasure<? extends IMeasure<IMoney>> m = valueOf(value(), unit()
+				.inverse());
 		return m;
 	}
 }
