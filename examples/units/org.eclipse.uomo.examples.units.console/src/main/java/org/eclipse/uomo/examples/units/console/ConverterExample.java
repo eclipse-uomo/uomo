@@ -14,7 +14,11 @@ import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 import static org.eclipse.uomo.units.impl.system.USCustomary.*;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 import org.eclipse.uomo.units.IMeasure;
+import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.UnitConverter;
@@ -54,6 +58,13 @@ public class ConverterExample {
 	    IMeasure<Length> l1 = new LengthAmount(1, MILE);
 	    IMeasure<Length> l2 = l1.to(FOOT);
 	    System.out.println(l1 + " = " + l2);
+	    
+	    LengthAmount x = new LengthAmount(BigDecimal.valueOf(1.0001d), SI.Prefix.KILO(SI.METRE));
+	    IMeasure<Length> xi = x.to(SI.METRE);
+	    IMeasure<Length> xj = x.to(SI.METRE, MathContext.UNLIMITED);
+	    System.out.println("x="+x+" xi="+xi+"+xj="+xj);
+	    // Results in: x=1.0001 km xi=1000.0 m
+
 	}
 
 }

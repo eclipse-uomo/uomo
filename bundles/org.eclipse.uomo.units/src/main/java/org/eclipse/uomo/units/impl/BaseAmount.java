@@ -32,7 +32,7 @@ import com.ibm.icu.util.MeasureUnit;
  * Represents a generic quantity amount.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.3.1, ($Revision: 212 $), $Date: 2012-08-16 23:35:44 +0200 (Do, 16
+ * @version 1.3.2, ($Revision: 213 $), $Date: 2012-08-18 21:22:23 +0200 (Sa, 18
  *          Aug 2012) $
  */
 public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
@@ -107,7 +107,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 
 	@Override
 	public IMeasure<Q> to(Unit<Q> unit) {
-		return to(unit, MathContext.DECIMAL32);
+		return to(unit, MathContext.DECIMAL128);
 	}
 
 	public IMeasure<Q> to(Unit<Q> unit, MathContext ctx) {
@@ -131,8 +131,14 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 				throw new ArithmeticException("Multiplier overflow"); //$NON-NLS-1$
 			if (divisor.compareTo(BigInteger.valueOf(Long.MAX_VALUE)) > 0)
 				throw new ArithmeticException("Divisor overflow"); //$NON-NLS-1$
-			return (value.longValue() * dividend.longValue())
+			if (value instanceof BigInteger || value instanceof Long || value instanceof Integer) {
+				return (value.longValue() * dividend.longValue())
 					/ (divisor.longValue());
+			} else {
+				return (value.doubleValue() * dividend.doubleValue())
+					/ (divisor.doubleValue());
+				// TODO use actual BigDecimal methods for BigDecimal
+			}
 		} else if (cvtr instanceof AbstractConverter.Compound
 				&& cvtr.isLinear()) { // Do it in two parts.
 			AbstractConverter.Compound compound = (AbstractConverter.Compound) cvtr;
