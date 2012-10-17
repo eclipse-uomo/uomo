@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil and others.
+ * Copyright (c) 2005, 2012, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,10 @@
  */
 package org.eclipse.uomo.examples.units.console;
 
-import static org.eclipse.uomo.units.SI.Prefix.KILO;
-
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.quantity.AreaAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
-import org.eclipse.uomo.units.impl.quantity.MassAmount;
 import org.eclipse.uomo.units.impl.quantity.TimeAmount;
 import org.eclipse.uomo.units.impl.system.USCustomary;
 import org.unitsofmeasurement.unit.Unit;
@@ -49,14 +46,6 @@ public class HelloUnits {
 		AreaAmount area = new AreaAmount(length.getNumber().doubleValue() * length.getNumber().doubleValue(), 
 				(Unit<Area>) length.unit().multiply(SI.METRE));
 		System.out.println(area);
-		
-		// TODO Bug 338334 this could be a JUnit test, convert into after issue resolved.
-		MassAmount mass = new MassAmount(1000, SI.GRAM);
-		MassAmount mass2 = new MassAmount(1, SI.KILOGRAM);
-		MassAmount mass3 = new MassAmount(1, KILO(SI.GRAM));
-		System.out.println(mass.equals(mass2) + 
-				"; " + mass.equals(mass3) +
-				"; " + mass2.equals(mass3));
 		
 		// Equivalent to 
 		IMeasure<Length> meters = new LengthAmount(5, SI.METRE);

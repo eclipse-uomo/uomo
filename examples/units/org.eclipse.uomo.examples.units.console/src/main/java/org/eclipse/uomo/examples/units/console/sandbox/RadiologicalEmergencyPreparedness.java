@@ -16,7 +16,6 @@ import static org.eclipse.uomo.units.SI.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.uomo.examples.units.Messages;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.quantity.IonizingRadiationAmount;
 import org.unitsofmeasurement.quantity.IonizingRadiation;
@@ -38,11 +37,11 @@ public class RadiologicalEmergencyPreparedness {
 		IonizingRadiationAmount ira = new IonizingRadiationAmount(100, MILLI(ROENTGEN));
 		// TODO fix formatting for mR
 		
-		repMap.put(ira, Messages.REP_100mR);
+		repMap.put(ira, SandboxMessages.REP_100mR);
 		ira = new IonizingRadiationAmount(1, ROENTGEN);
-		repMap.put(ira, Messages.REP_1R);
+		repMap.put(ira, SandboxMessages.REP_1R);
 		ira = new IonizingRadiationAmount(2.5, ROENTGEN);
-		repMap.put(ira, Messages.REP_2dot5R);
+		repMap.put(ira, SandboxMessages.REP_2dot5R);
 		
 		for (IMeasure<IonizingRadiation> dosimeterLimit : repMap.keySet()) {			
 			System.out.println(dosimeterLimit + " :: " + repMap.get(dosimeterLimit));

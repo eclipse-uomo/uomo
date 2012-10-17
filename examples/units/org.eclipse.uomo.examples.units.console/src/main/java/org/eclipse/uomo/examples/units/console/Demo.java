@@ -13,6 +13,7 @@ package org.eclipse.uomo.examples.units.console;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.*;
 import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
+import static org.eclipse.uomo.examples.units.types.ObsoletePolish.*;
 
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
@@ -51,9 +52,9 @@ public class Demo {
 
     public static void main(String[] args) {
     	IMeasure<Length> someLength = getSomeLength();
-        System.out.println("toString = " + someLength);
+        System.out.println("l = " + someLength);
         IMeasure<Length> moreLength = getMoreLength();
-        System.out.println("toString2 = " + moreLength);
+        System.out.println("l2 = " + moreLength);
         System.out.println();
 
         IMeasure<Mass> someMass = getSomeMass();
@@ -70,6 +71,10 @@ public class Demo {
         
         IMeasure<Length> convertedLength = moreLength.to(FOOT);
         System.out.println("converted = " + convertedLength);
+        
+       IMeasure<Length> convertedLengthPL = moreLength.to(ELL);
+       System.out.println("converted (PL) = " + convertedLengthPL);
+        
         
         System.out.println();
         someLength = new LengthAmount(1, MILLI(METRE));
