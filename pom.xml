@@ -87,8 +87,7 @@
 		<module>bundles</module>
 		<module>features</module>
 		<module>examples</module>
-		
-		<module>org.eclipse.uomo.target</module>
+		<module>releng</module>
 	</modules>
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
