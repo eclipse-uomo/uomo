@@ -166,7 +166,6 @@ public class MoneyAmount extends CurrencyAmount implements IMoney,
 				- that.getNumber().doubleValue(), getCurrency());
 	}
 
-	@Override
 	public IMeasure<?> multiply(Number that) {
 		return MoneyAmount.valueOfCurrency(
 				getNumber().doubleValue() * that.doubleValue(), getCurrency());
