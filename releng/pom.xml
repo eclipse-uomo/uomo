@@ -112,7 +112,7 @@
     </profile>
   </profiles>
   <modules>
-  	<module>org.eclipse.uomo.releng.client</module>
+  	<!--  module>org.eclipse.uomo.site</module -->
   	<module>org.eclipse.uomo.target</module>
   </modules>
   <url>http://www.eclipse.org/uomo</url>
