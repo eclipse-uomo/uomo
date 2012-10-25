@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uomo"
       label="Eclipse UOMo"
-      version="0.6.0.RC3"
+      version="0.6.0.SNAPSHOT"
       provider-name="Eclipse.org"
       plugin="org.eclipse.uomo.ui">
 
@@ -144,11 +144,11 @@ This Agreement is governed by the laws of the State of New York and the intellec
    <requires>
       <import plugin="com.ibm.icu" version="4.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.core" version="0.1.0" match="greaterOrEqual"/>
-      <import plugin="org.unitsofmeasurement.unit-api" version="0.6.0" match="greaterOrEqual"/>
+      <!-- import plugin="org.unitsofmeasurement.unit-api" version="0.6.0" match="greaterOrEqual"/ -->
       <import plugin="org.eclipse.osgi"/>
       <import plugin="org.eclipse.uomo.core" version="0.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="greaterOrEqual"/>
-      <import plugin="org.xmlpull.v1" version="1.1.3" match="greaterOrEqual"/>
+      <!-- import plugin="org.xmlpull.v1" version="1.1.3" match="greaterOrEqual"/ -->
       <import plugin="org.eclipse.uomo.util" version="0.2.6" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.xml" version="0.2.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.units" version="0.5.0" match="greaterOrEqual"/>
@@ -191,7 +191,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
+   <!--plugin
          id="org.xmlpull.v1"
          download-size="0"
          install-size="0"
@@ -210,7 +210,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
          download-size="0"
          install-size="0"
          version="0.0.0"
-         unpack="false"/>
+         unpack="false"/-->
 
    <plugin
          id="org.apache.commons.lang"

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>org.eclipse.uomo.releng</artifactId>
+    <groupId>org.eclipse.uomo</groupId>
+    <version>0.6.0-SNAPSHOT</version>
+  </parent>
+  <groupId>org.eclipse.uomo</groupId>
+  <artifactId>org.eclipse.uomo.releng.client</artifactId>
+  <packaging>pom</packaging>
+  <description>Release engineering for UOMo.</description>
+
+	<modules>
+	<!-- 
+		<module>../../bundles/org.eclipse.uomo.core	</module>
+	 	<module>../../bundles/org.eclipse.uomo.core</module>
+		<module>../../bundles/org.eclipse.uomo.core.tests</module>
+		<module>../../bundles/org.eclipse.uomo.units</module>
+		<module>../../bundles/org.eclipse.uomo.units.tests</module>
+		<module>../../bundles/org.eclipse.uomo.xml</module>
+		<module>../../bundles/org.eclipse.uomo.util</module>
+		<module>../../bundles/org.eclipse.uomo.util.tests</module>
+		<module>../../bundles/org.eclipse.uomo.ucum</module>
+		<module>../../bundles/org.eclipse.uomo.ucum.tests</module>
+		<module>../../bundles/org.eclipse.uomo.business</module>
+		<module>../../bundles/org.eclipse.uomo.ui</module>
+		<module>../../bundles/org.eclipse.uomo.business.tests</module>
+		 -->
+		<!--  module>../../features/org.eclipse.uomo.feature</module -->
+		<module>../org.eclipse.uomo.releng.feature</module>
+	</modules>
+
+	<url>http://www.eclipse.org/uomo</url>
+
+	<distributionManagement>
+		<repository>
+
+		</repository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+                    <includePackedArtifacts>true</includePackedArtifacts>
+					<pomDependencies>consider</pomDependencies>
+					<target>
+						<artifact>
+							<groupId>${project.groupId}</groupId>
+							<artifactId>${project.artifactId}</artifactId>
+							<version>${project.version}</version>
+							<classifier>../org.eclipse.uomo.target/indigo</classifier>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+</project>
