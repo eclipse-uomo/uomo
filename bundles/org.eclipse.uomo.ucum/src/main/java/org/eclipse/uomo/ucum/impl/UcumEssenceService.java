@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - fixes and improvements
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.impl;
@@ -25,7 +26,6 @@ import java.util.Set;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.core.impl.Pair;
 import org.eclipse.uomo.ucum.UcumService;
-import org.eclipse.uomo.ucum.UcumValidator;
 import org.eclipse.uomo.ucum.canonical.Canonical;
 import org.eclipse.uomo.ucum.canonical.Converter;
 import org.eclipse.uomo.ucum.expression.Symbol;
@@ -142,6 +142,9 @@ public class UcumEssenceService implements UcumService {
 	public Set<String> getProperties() {
 		Set<String> result = new HashSet<String>();
 		for (DefinedUnit unit : model.getDefinedUnits()) {
+			result.add(unit.getProperty());
+		}
+		for (BaseUnit unit : model.getBaseUnits()) {
 			result.add(unit.getProperty());
 		}
 		return result;
@@ -270,7 +273,8 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.uomo.ucum.UcumServiceEx#getDefinedForms(java.lang.String)
+	 * @see
+	 * org.eclipse.uomo.ucum.UcumServiceEx#getDefinedForms(java.lang.String)
 	 */
 	public List<DefinedUnit> getDefinedForms(String code)
 			throws UOMoRuntimeException {
@@ -299,7 +303,8 @@ public class UcumEssenceService implements UcumService {
 	 * org.eclipse.ohf.ucum.UcumServiceEx#getCanonicalForm(org.eclipse.ohf.ucum
 	 * .UcumEssenceService.Pair)
 	 */
-	public Pair<Number, String> getCanonicalForm(Pair<Number, String> value) throws UOMoRuntimeException {
+	public Pair<Number, String> getCanonicalForm(Pair<Number, String> value)
+			throws UOMoRuntimeException {
 		assert value != null : paramError("getCanonicalForm", "value",
 				"must not be null");
 		assert checkStringParam(value.getCode()) : paramError(
@@ -308,9 +313,11 @@ public class UcumEssenceService implements UcumService {
 		Term term = new ExpressionParser(model).parse(value.getCode());
 		Canonical c = new Converter(model, handlers).convert(term);
 		if (value.getValue() == null)
-			return new Pair<Number, String>(null, new ExpressionComposer().compose(c.getUnit()));
+			return new Pair<Number, String>(null,
+					new ExpressionComposer().compose(c.getUnit()));
 		else
-			return new Pair<Number, String>(((BigDecimal)value.getValue()).multiply(c.getValue()),
+			return new Pair<Number, String>(
+					((BigDecimal) value.getValue()).multiply(c.getValue()),
 					new ExpressionComposer().compose(c.getUnit()));
 	}
 
@@ -320,8 +327,8 @@ public class UcumEssenceService implements UcumService {
 	 * @see org.eclipse.uomo.ucum.UcumServiceEx#convert(java.math.BigDecimal,
 	 * java.lang.String, java.lang.String)
 	 */
-	public Number convert(final Number value, String sourceUnit,
-			String destUnit) throws UOMoRuntimeException {
+	public Number convert(final Number value, String sourceUnit, String destUnit)
+			throws UOMoRuntimeException {
 		assert value != null : paramError("convert", "value",
 				"must not be null");
 		assert checkStringParam(sourceUnit) : paramError("convert",
@@ -343,20 +350,25 @@ public class UcumEssenceService implements UcumService {
 					+ sourceUnit + " and " + destUnit
 					+ " as they do not have matching canonical forms (" + s
 					+ " and " + d + " respectively)");
-		final BigDecimal decValue = (BigDecimal)value;
+		final BigDecimal decValue = (BigDecimal) value;
 		BigDecimal canValue = decValue.multiply(src.getValue());
-		println(decValue.toPlainString()+sourceUnit+" =("+src.getValue().toPlainString()+")= "+
-		 canValue.toPlainString()+s+" =("+dst.getValue().toPlainString()+")= "+
-		 canValue.divide(dst.getValue())+destUnit);
+		println(decValue.toPlainString() + sourceUnit + " =("
+				+ src.getValue().toPlainString() + ")= "
+				+ canValue.toPlainString() + s + " =("
+				+ dst.getValue().toPlainString() + ")= "
+				+ canValue.divide(dst.getValue()) + destUnit);
 		return canValue.divide(dst.getValue(), new MathContext(25));
 	}
 
-	public Pair<Number, String> multiply(Pair<Number, String> o1, Pair<Number, String> o2) {
-		//Term term = new ExpressionParser(model).parse(o1.getCode());
-		//Canonical c = new Converter(model, handlers).convert(term);
-		return new Pair<Number, String>(((BigDecimal)o1.getValue()).multiply((BigDecimal)o2.getValue()), 
-						//new ExpressionComposer().compose(c.getUnit()));
-						o1.getCode()+"."+o2.getCode());
+	public Pair<Number, String> multiply(Pair<Number, String> o1,
+			Pair<Number, String> o2) {
+		// Term term = new ExpressionParser(model).parse(o1.getCode());
+		// Canonical c = new Converter(model, handlers).convert(term);
+		return new Pair<Number, String>(
+				((BigDecimal) o1.getValue()).multiply((BigDecimal) o2
+						.getValue()),
+				// new ExpressionComposer().compose(c.getUnit()));
+				o1.getCode() + "." + o2.getCode());
 	}
 
 }

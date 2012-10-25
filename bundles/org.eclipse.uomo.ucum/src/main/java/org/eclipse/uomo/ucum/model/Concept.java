@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - updates and consolidation with core
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.model;
@@ -17,8 +18,9 @@ import java.util.List;
 import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IDescription;
 import org.eclipse.uomo.core.INames;
+import org.eclipse.uomo.core.ISymbol;
 
-public class Concept implements ICode, IDescription, INames {
+public class Concept implements ICode, IDescription, ISymbol, INames {
 
 	private final ConceptKind kind;
 	/**
@@ -93,6 +95,11 @@ public class Concept implements ICode, IDescription, INames {
 	 */
 	public void setPrintSymbol(String printSymbol) {
 		this.printSymbol = printSymbol;
+	}
+	
+	@Override
+	public String getSymbol() {
+		return getPrintSymbol();
 	}
 
 	/**

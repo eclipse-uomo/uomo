@@ -523,7 +523,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 	}
 
 	/**
-	 * Formats the given converter to the given StringBuffer and returns the
+	 * Formats the given converter to the given StringBuilder and returns the
 	 * operator precedence of the converter's mathematical operation. This is
 	 * the default implementation, which supports all built-in UnitConverter
 	 * implementations. Note that it recursively calls itself in the case of a

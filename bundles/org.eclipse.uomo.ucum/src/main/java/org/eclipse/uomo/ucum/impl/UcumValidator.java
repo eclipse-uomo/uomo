@@ -9,7 +9,7 @@
  *    Kestral Computing P/L - initial implementation
  *******************************************************************************/
 
-package org.eclipse.uomo.ucum;
+package org.eclipse.uomo.ucum.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.uomo.core.IValidator;
 import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.core.UOMoRuntimeException;
+import org.eclipse.uomo.ucum.Registry;
 import org.eclipse.uomo.ucum.canonical.Converter;
 import org.eclipse.uomo.ucum.expression.Term;
 import org.eclipse.uomo.ucum.model.DefinedUnit;

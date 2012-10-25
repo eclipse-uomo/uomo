@@ -68,7 +68,7 @@ public class MoneyDemo {
 
 		// Display cost.
 		System.out.print(DemoMessages.MoneyDemo_Gas_price);
-		System.out.println(gazPrice);
+		System.out.println(gazPrice); // FIXME format for CurrencyConverter
 		// UFormat format = MeasureFormat.getCurrencyFormat();
 		// System.out.println(format.format(gazPrice));
 		// MoneyAmount mo = MoneyAmount.valueOf(100, EUR);
