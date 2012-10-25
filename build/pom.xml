@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    	 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.eclipse.uomo.build</groupId>
+  <artifactId>org.eclipse.uomo.build.tycho</artifactId>
+  <version>0.6.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>Eclipse UOMo Tycho Build</name>
+  <description>Provide common OSGi tycho build directives.</description>
+
+  <modules>
+    <module>./pom-test.xml</module>
+    <module>../bundles/org.eclipse.uomo.core</module>
+    <module>../bundles/org.eclipse.uomo.business</module>
+    <module>../bundles/org.eclipse.ecr.platform.audit.api</module>
+    <!--module>../plugins/org.eclipse.ecr.testlib</module-->
+    <!--module>../plugins/org.eclipse.ecr.core.storage.sql.testlib</module-->
+
+    <!--module>../tests/org.eclipse.ecr.convert.test</module>
+    <module>../tests/org.eclipse.ecr.core.api.test</module>
+    <module>../tests/org.eclipse.ecr.core.event.test</module>
+    <module>../tests/org.eclipse.ecr.core.io.test</module>
+    <module>../tests/org.eclipse.ecr.core.query.test</module>
+    <module>../tests/org.eclipse.ecr.core.schema.test</module>
+    <module>../tests/org.eclipse.ecr.core.storage.sql.test</module>
+    <module>../tests/org.eclipse.ecr.core.test</module>
+    <module>../tests/org.eclipse.ecr.runtime.test</module-->
+
+    <!--module>../features/org.eclipse.ecr.test</module-->
+
+    <module>repository</module>
+  </modules>
+
+  <scm>
+    <connection>scm:hg:http://hg.nuxeo.org/sandbox/nuxeo-osgi</connection>
+    <developerConnection>scm:hg:https://hg.nuxeo.org/sandbox/nuxeo-osgi</developerConnection>
+    <url>http://hg.nuxeo.org/nuxeo/</url>
+  </scm>
+
+  <properties>
+    <tycho-version>0.14.0</tycho-version>
+    <orbit-version>current</orbit-version>
+    <eclipse-version>current</eclipse-version>
+  </properties>
+
+  <profiles>
+    <profile>
+      <id>tycho-offline</id>
+      <properties>
+	<nuxeo-osgi-url>http://localhost/p2</nuxeo-osgi-url>
+      </properties>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>equinox-site</id>
+      <layout>p2</layout>
+      <url>${equinox-site}</url>
+    </repository>
+    <repository>
+      <id>libs-site</id>
+      <layout>p2</layout>
+      <url>${libs-site}</url>
+    </repository>
+    
+    		<repository>
+			<id>eclipse-public</id>
+			<name>Public Eclipse.org Nexus</name>
+			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+		</repository>
+
+		<repository>
+			<id>eclipse-central</id>
+			<name>Central Eclipse.org Nexus</name>
+			<url>http://maven.eclipse.org/nexus/content/groups/central/</url>
+		</repository>
+		
+		<repository>
+			<id>maven-geotoolkit.org</id>
+			<name>GeoToolkit Repository for Maven</name>
+			<url>http://maven.geotoolkit.org/</url>
+		</repository>
+    
+  <!--   <repository>
+      <id>public</id>
+      <url>http://maven.nuxeo.org/nexus/content/groups/public</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>public-snapshot</id>
+      <url>http://maven.nuxeo.org/nexus/content/groups/public-snapshot</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <updatePolicy>always</updatePolicy>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository> -->
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-maven-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<extensions>true</extensions>
+      </plugin>
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>target-platform-configuration</artifactId>
+	<version>${tycho-version}</version>
+	<configuration>
+	  <resolver>p2</resolver>
+<!--
+          <environments>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>linux</os>
+              <ws>gtk</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86_64</arch>
+            </environment>
+            <environment>
+              <os>win32</os>
+              <ws>win32</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>carbon</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86</arch>
+            </environment>
+            <environment>
+              <os>macosx</os>
+              <ws>cocoa</ws>
+              <arch>x86_64</arch>
+            </environment>
+	  </environments>
+ -->
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-packaging-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<configuration>
+	  <archiveSite>true</archiveSite>
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-source-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<executions>
+	  <execution>
+	    <id>plugin-source</id>
+	    <goals>
+	      <goal>plugin-source</goal>
+	    </goals>
+	  </execution>
+	</executions>
+      </plugin>
+      <plugin>
+	<inherited>true</inherited>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-p2-publisher-plugin</artifactId>
+	<version>${tycho-version}</version>
+	<configuration>
+	  <publishArtifacts>true</publishArtifacts>
+	</configuration>
+      </plugin>
+      <plugin>
+	<groupId>org.eclipse.tycho</groupId>
+	<artifactId>tycho-p2-director-plugin</artifactId>
+	<version>${tycho-version}</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencyManagement>
+    <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.7</version>
+    </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+</project>
