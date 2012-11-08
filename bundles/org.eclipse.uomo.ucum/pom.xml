@@ -9,5 +9,5 @@
 	<artifactId>org.eclipse.uomo.ucum</artifactId>
 	<name>UOMo UCUM</name>
 	<packaging>eclipse-plugin</packaging>
-    
+
 </project>
