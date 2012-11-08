@@ -1,5 +1,6 @@
-target
-eclipse_config
-.settings
-thirdparty
+target/
+eclipse_config/
+.settings/
+thirdparty/
+bin/
 *.class
