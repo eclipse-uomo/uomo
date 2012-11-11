@@ -12,7 +12,9 @@ package org.eclipse.uomo.examples.units;
 
 import org.eclipse.osgi.util.NLS;
 
+@Deprecated
 public class Messages extends NLS {
+	
 	private static final String BUNDLE_NAME = Messages.class.getPackage().getName() + ".messages"; //$NON-NLS-1$
 	public static String Planet_Radius;
 	public static String Planet_SurfaceGravity;
