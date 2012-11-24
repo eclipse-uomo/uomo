@@ -22,7 +22,7 @@
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
-	<version>0.6.4</version>
+	<version>0.6.0.RC4</version>
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo</name>
 
@@ -106,7 +106,7 @@
 						<artifact>
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
-							<version>0.6.4</version>
+							<version>0.6.0.RC4</version>
 							<classifier>indigo</classifier>
 						</artifact>
 					</target>
