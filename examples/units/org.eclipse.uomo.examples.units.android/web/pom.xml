@@ -12,7 +12,7 @@
 	<packaging>war</packaging>
 	<name>UOMo Units Android Example Webapp</name>
 	<build>
-		<finalName>web</finalName>
+		<finalName>android-web</finalName>
 	</build>
 	<dependencies>
 		<dependency>

@@ -26,8 +26,6 @@ import java.util.Set;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.core.impl.Pair;
 import org.eclipse.uomo.ucum.UcumService;
-import org.eclipse.uomo.ucum.canonical.Canonical;
-import org.eclipse.uomo.ucum.canonical.Converter;
 import org.eclipse.uomo.ucum.expression.Symbol;
 import org.eclipse.uomo.ucum.expression.Term;
 import org.eclipse.uomo.ucum.model.BaseUnit;
@@ -179,7 +177,7 @@ public class UcumEssenceService implements UcumService {
 				"property", "must not be null or empty");
 		try {
 			Term term = new ExpressionParser(model).parse(unit);
-			Canonical can = new Converter(model, handlers).convert(term);
+			Canonical can = new UcumConverter(model, handlers).convert(term);
 			term = can.getUnit();
 			String cu = new ExpressionComposer().compose(term);
 			if (term.hasComp() && !term.hasOp()
@@ -223,7 +221,7 @@ public class UcumEssenceService implements UcumService {
 				"must not be null or empty");
 		try {
 			Term term = new ExpressionParser(model).parse(unit);
-			Canonical can = new Converter(model, handlers).convert(term);
+			Canonical can = new UcumConverter(model, handlers).convert(term);
 			term = can.getUnit();
 			String cu = new ExpressionComposer().compose(term);
 			if (!canonical.equals(cu))
@@ -262,7 +260,7 @@ public class UcumEssenceService implements UcumService {
 				"must not be null or empty");
 		try {
 			Term term = new ExpressionParser(model).parse(unit);
-			term = new Converter(model, handlers).convert(term).getUnit();
+			term = new UcumConverter(model, handlers).convert(term).getUnit();
 			return new ExpressionComposer().compose(term);
 		} catch (RuntimeException e) {
 			throw new UOMoRuntimeException("Error processing " + unit + ": "
@@ -311,7 +309,7 @@ public class UcumEssenceService implements UcumService {
 				"getCanonicalForm", "value.code", "must not be null or empty");
 
 		Term term = new ExpressionParser(model).parse(value.getCode());
-		Canonical c = new Converter(model, handlers).convert(term);
+		Canonical c = new UcumConverter(model, handlers).convert(term);
 		if (value.getValue() == null)
 			return new Pair<Number, String>(null,
 					new ExpressionComposer().compose(c.getUnit()));
@@ -339,9 +337,9 @@ public class UcumEssenceService implements UcumService {
 		if (sourceUnit.equals(destUnit))
 			return value;
 
-		Canonical src = new Converter(model, handlers)
+		Canonical src = new UcumConverter(model, handlers)
 				.convert(new ExpressionParser(model).parse(sourceUnit));
-		Canonical dst = new Converter(model, handlers)
+		Canonical dst = new UcumConverter(model, handlers)
 				.convert(new ExpressionParser(model).parse(destUnit));
 		String s = new ExpressionComposer().compose(src.getUnit());
 		String d = new ExpressionComposer().compose(dst.getUnit());

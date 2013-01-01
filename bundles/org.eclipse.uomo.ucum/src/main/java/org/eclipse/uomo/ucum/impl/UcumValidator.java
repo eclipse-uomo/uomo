@@ -18,7 +18,6 @@ import org.eclipse.uomo.core.IValidator;
 import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.ucum.Registry;
-import org.eclipse.uomo.ucum.canonical.Converter;
 import org.eclipse.uomo.ucum.expression.Term;
 import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.UcumModel;
@@ -73,7 +72,7 @@ public class UcumValidator implements IValidator {
 			String c = new ExpressionComposer().compose(term);
 			if (!c.equals(code))
 				result.add("Round trip failed: " + code + " -> " + c);
-			term = new Converter(model, handlers).convert(term).getUnit();
+			term = new UcumConverter(model, handlers).convert(term).getUnit();
 		} catch (UOMoRuntimeException e) {
 			result.add(code + ": " + e.getMessage());
 		}

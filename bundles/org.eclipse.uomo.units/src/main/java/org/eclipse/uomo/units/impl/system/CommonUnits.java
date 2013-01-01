@@ -4,10 +4,17 @@ import static org.eclipse.uomo.units.SI.METRES_PER_SECOND;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.unitsofmeasurement.quantity.Velocity;
+import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
 public class CommonUnits extends AbstractSystemOfUnits {
 
+	private CommonUnits() {
+		
+	}
+	
+	private static final CommonUnits INSTANCE = new CommonUnits();
+	
 	public String getName() {
 		return "Common Units";
 	}
@@ -19,6 +26,13 @@ public class CommonUnits extends AbstractSystemOfUnits {
 	public static final Unit<Velocity> KILOMETRES_PER_HOUR = addUnit(
 			METRES_PER_SECOND.multiply(0.277778d)).asType(Velocity.class);
 	
-	
+	/**
+	 * Returns the unique instance of this class.
+	 * 
+	 * @return the Imperial instance.
+	 */
+	public static SystemOfUnits getInstance() {
+		return INSTANCE;
+	}
 	
 }

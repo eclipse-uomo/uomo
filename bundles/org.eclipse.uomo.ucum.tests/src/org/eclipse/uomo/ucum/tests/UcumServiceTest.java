@@ -1,7 +1,7 @@
 package org.eclipse.uomo.ucum.tests;
 
 import static org.junit.Assert.*;
-
+import static org.eclipse.uomo.core.impl.OutputHelper.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -26,7 +26,6 @@ public class UcumServiceTest {
 	
 	@Test
 	public void testConversion() {
-		//UcumService 
 		Number mult = ucumService.convert(new BigDecimal(1000d), "l", "m3");
 		assertNotNull(mult);		
 		NumberFormat fmt = new DecimalFormat("#,##0.000");
@@ -35,11 +34,12 @@ public class UcumServiceTest {
 
 	@Test
 	public void testProperties() {
-		//UcumService 
 		Set<String> props = ucumService.getProperties();
-//		for (String prop : props) {
-//			System.out.println(prop);
-//		}
+		if (isConsoleOutput()) {
+			for (String prop : props) {
+				println(prop);
+			}
+		}
 		assertTrue(props.size() == 92);
 	}
 	
