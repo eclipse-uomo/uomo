@@ -95,13 +95,13 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		}
 	}
 
-	public IMeasure<Time> add(IMeasure<Time> that) {
+	public TimeAmount add(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				+ ((BaseAmount<Time>) that).getNumber().doubleValue(),
 				that.unit());
 	}
 
-	public IMeasure<Time> substract(IMeasure<Time> that) {
+	public TimeAmount substract(IMeasure<Time> that) {
 		return new TimeAmount(super.getNumber().doubleValue()
 				- ((BaseAmount<Time>) that).getNumber().doubleValue(),
 				that.unit());
@@ -118,7 +118,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 //	}
 
 	@SuppressWarnings({ "unchecked" })
-	public IMeasure<Time> multiply(IMeasure<?> that) {
+	public TimeAmount multiply(IMeasure<?> that) {
 		Unit<Time> unit = (Unit<Time>) unit().multiply(that.unit());
 		
 		// FIXME include number division
@@ -142,18 +142,18 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		return amount;
 	}
 	
-	public IMeasure<Time> to(Unit<Time> unit) {
+	public TimeAmount to(Unit<Time> unit) {
 		return to(unit, MathContext.DECIMAL32);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public IMeasure<Time> to(Unit<Time> unit, MathContext ctx) {
+	public TimeAmount to(Unit<Time> unit, MathContext ctx) {
         if (this.unit().equals(unit))
             return this;
         UnitConverter cvtr = this.unit().getConverterTo(unit);
         if (cvtr == AbstractConverter.IDENTITY)
-            return (IMeasure<Time>) valueOf(this.getNumber(), unit);
-        return (IMeasure<Time>) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
+            return (TimeAmount) valueOf(this.getNumber(), unit);
+        return (TimeAmount) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
     }
 
     // Try to convert the specified value.

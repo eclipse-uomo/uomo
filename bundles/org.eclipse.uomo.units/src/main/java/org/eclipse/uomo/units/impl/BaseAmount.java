@@ -68,7 +68,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 			BigDecimal.ONE, AbstractUnit.ONE);
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	public IMeasure<Q> add(IMeasure<Q> that) {
+	public BaseAmount<Q> add(IMeasure<Q> that) {
 		final IMeasure<Q> thatToUnit = that.to(unit());
 		return new BaseAmount(this.value().doubleValue()
 				+ thatToUnit.value().doubleValue(), unit());
@@ -76,7 +76,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public IMeasure<Q> substract(IMeasure<Q> that) {
+	public BaseAmount<Q> substract(IMeasure<Q> that) {
 		final IMeasure<Q> thatToUnit = that.to(unit());
 		return new BaseAmount(this.getNumber().doubleValue()
 				- thatToUnit.value().doubleValue(), unit());
@@ -85,38 +85,38 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public IMeasure<Q> multiply(IMeasure<?> that) {
+	public BaseAmount<Q> multiply(IMeasure<?> that) {
 		Unit<?> unit = unit().multiply(that.unit());
-		return (IMeasure<Q>) valueOf((value().doubleValue() * that.value()
+		return (BaseAmount<Q>) valueOf((value().doubleValue() * that.value()
 				.doubleValue()), unit);
 	}
 	
 	@Override
-	public IMeasure<?> multiply(Number that) {
-		return (IMeasure<Q>) valueOf((value().doubleValue() * that
+	public BaseAmount<?> multiply(Number that) {
+		return (BaseAmount<Q>) valueOf((value().doubleValue() * that
 				.doubleValue()), unit());	
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public IMeasure<Q> divide(IMeasure<?> that) {
+	public BaseAmount<Q> divide(IMeasure<?> that) {
 		Unit<?> unit = unit().divide(that.unit());
-		return (IMeasure<Q>) valueOf((value().doubleValue() / that.value()
+		return (BaseAmount<Q>) valueOf((value().doubleValue() / that.value()
 				.doubleValue()), unit);
 	}
 
 	@Override
-	public IMeasure<Q> to(Unit<Q> unit) {
+	public BaseAmount<Q> to(Unit<Q> unit) {
 		return to(unit, MathContext.DECIMAL128);
 	}
 
-	public IMeasure<Q> to(Unit<Q> unit, MathContext ctx) {
+	public BaseAmount<Q> to(Unit<Q> unit, MathContext ctx) {
 		if (this.unit().equals(unit))
 			return this;
 		UnitConverter cvtr = this.unit().getConverterTo(unit);
 		if (cvtr == AbstractConverter.IDENTITY)
-			return (IMeasure<Q>) valueOf(this.value(), unit);
-		return (IMeasure<Q>) valueOf(convert(this.value(), cvtr, ctx), unit);
+			return (BaseAmount<Q>) valueOf(this.value(), unit);
+		return (BaseAmount<Q>) valueOf(convert(this.value(), cvtr, ctx), unit);
 	}
 
 	// Try to convert the specified value.
