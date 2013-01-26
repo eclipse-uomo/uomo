@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,13 +22,13 @@ import com.ibm.icu.math.BigDecimal;
 
 /**
  * This class describes Percent amounts
- * 
+ * @version 1.1
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public class PercentAmount extends BaseAmount<Percent> implements IBasicType {
 	final static long serialVersionUID = 362498820763181265L;
 
-	int m_precision = 15; // will be held, but not set
+	final static int m_precision = 15; // will be held, but not set
 
 	PercentAmount(char[] c, Unit<Percent> unit) {
 		super(new BigDecimal(c), unit);
