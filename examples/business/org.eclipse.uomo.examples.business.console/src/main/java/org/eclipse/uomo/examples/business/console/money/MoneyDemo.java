@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2013, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.business.money;
+package org.eclipse.uomo.examples.business.console.money;
 
 // Constants (Java 5 static import)
 import static org.eclipse.uomo.units.IndianPrefix.LAKH;
@@ -17,9 +17,9 @@ import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
 import static org.eclipse.uomo.units.impl.system.USCustomary.MILE;
 import static org.eclipse.uomo.units.SI.Prefix.KILO;
 import static org.eclipse.uomo.units.SI.METRE;
-import static org.eclipse.uomo.business.money.CurrencyUnit.EUR;
-import static org.eclipse.uomo.business.money.CurrencyUnit.GBP;
-import static org.eclipse.uomo.business.money.CurrencyUnit.USD;
+import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
+import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
+import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 
 import org.eclipse.uomo.business.money.CurrencyConverter;
 import org.eclipse.uomo.business.types.IMoney;
@@ -31,7 +31,7 @@ import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author Werner Keil
- * @version 0.9.6, $Date: 2010-09-11 23:59:41 +0200 (Sa, 11 Sep 2010) $
+ * @version 0.9.7, $Date: 2013-03-08 19:29:41 +0200 $
  */
 public class MoneyDemo {
 
@@ -59,7 +59,7 @@ public class MoneyDemo {
 		
 		
 		// km
-		IMeasure<IMoney> tripCost = (IMeasure<IMoney>) tripDistance.divide(
+		IMeasure<?> tripCost =  tripDistance.divide(
 				carMileage).multiply(gazPrice); // .to(USD);
 
 		// Display trip.

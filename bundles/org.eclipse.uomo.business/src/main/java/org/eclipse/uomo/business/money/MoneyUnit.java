@@ -38,9 +38,9 @@ import com.ibm.icu.util.ULocale;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 0.2.3, $Date: 2013-03-08
  * @param <Q>
- * @deprecated use JSR 354
+ * TODO use JSR 354
  */
-public class CurrencyUnit<Q extends IMoney> extends Currency implements
+public class MoneyUnit<Q extends IMoney> extends Currency implements
 		Unit<IMoney>, IName {
 
 	/**
@@ -48,51 +48,51 @@ public class CurrencyUnit<Q extends IMoney> extends Currency implements
      */
 	private static final long serialVersionUID = 8524573975644908457L;
 
-	protected CurrencyUnit(String theISOCode) {
+	protected MoneyUnit(String theISOCode) {
 		super(theISOCode);
 	}
 
 	/**
 	 * The Australian Dollar currency unit.
 	 */
-	public static final CurrencyUnit<IMoney> AUD = new CurrencyUnit<IMoney>("AUD"); //$NON-NLS-1$
+	public static final MoneyUnit<IMoney> AUD = new MoneyUnit<IMoney>("AUD"); //$NON-NLS-1$
 
 	/**
 	 * The Canadian Dollar currency unit.
 	 */
-	public static final CurrencyUnit<IMoney> CAD = new CurrencyUnit<IMoney>("CAD"); //$NON-NLS-1$
+	public static final MoneyUnit<IMoney> CAD = new MoneyUnit<IMoney>("CAD"); //$NON-NLS-1$
 
 	/**
 	 * The China Yan currency.
 	 */
-	public static final CurrencyUnit<IMoney> CNY = new CurrencyUnit<IMoney>("CNY"); //$NON-NLS-1$
+	public static final MoneyUnit<IMoney> CNY = new MoneyUnit<IMoney>("CNY"); //$NON-NLS-1$
 
 	/**
 	 * The Euro currency.
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final CurrencyUnit EUR = new CurrencyUnit<IMoney>("EUR"); //$NON-NLS-1$
+	public static final MoneyUnit EUR = new MoneyUnit<IMoney>("EUR"); //$NON-NLS-1$
 
 	/**
 	 * The British Pound currency.
 	 */
-	public static final CurrencyUnit<IMoney> GBP = new CurrencyUnit<IMoney>("GBP"); //$NON-NLS-1$
+	public static final MoneyUnit<IMoney> GBP = new MoneyUnit<IMoney>("GBP"); //$NON-NLS-1$
 
 	/**
 	 * The Japanese Yen currency.
 	 */
-	public static final CurrencyUnit<IMoney> JPY = new CurrencyUnit<IMoney>("JPY"); //$NON-NLS-1$
+	public static final MoneyUnit<IMoney> JPY = new MoneyUnit<IMoney>("JPY"); //$NON-NLS-1$
 
 	/**
 	 * The Korean Republic Won currency.
 	 */
-	public static final CurrencyUnit<IMoney> KRW = new CurrencyUnit<IMoney>("KRW"); //$NON-NLS-1$
+	public static final MoneyUnit<IMoney> KRW = new MoneyUnit<IMoney>("KRW"); //$NON-NLS-1$
 
 	/**
 	 * The Taiwanese dollar currency.
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final CurrencyUnit TWD = new CurrencyUnit<IMoney>("TWD"); //$NON-NLS-1$
+	public static final MoneyUnit TWD = new MoneyUnit<IMoney>("TWD"); //$NON-NLS-1$
 
 	/**
 	 * Holds the dimensionless unit <code>ONE</code>.
@@ -103,7 +103,7 @@ public class CurrencyUnit<Q extends IMoney> extends Currency implements
 	 * The United State dollar currency.
 	 */
 	@SuppressWarnings("rawtypes")
-	public static final CurrencyUnit USD = new CurrencyUnit<IMoney>("USD"); //$NON-NLS-1$
+	public static final MoneyUnit USD = new MoneyUnit<IMoney>("USD"); //$NON-NLS-1$
 
 	/**
 	 * Returns the result of adding an offset to this unit. The returned unit is
@@ -277,7 +277,7 @@ public class CurrencyUnit<Q extends IMoney> extends Currency implements
 			return this;
 		if (this.isRationalFactor())
 			return that.transform(this.getConverterTo(ONE));
-		if (((CurrencyUnit<?>) that).isRationalFactor())
+		if (((MoneyUnit<?>) that).isRationalFactor())
 			return this.transform(that.getConverterTo((Unit) ONE));
 		return ProductUnit.getProductInstance(this, (AbstractUnit<?>) that);
 	}

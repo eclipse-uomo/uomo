@@ -10,6 +10,8 @@
  */
 package org.eclipse.uomo.business.money;
 
+import static org.eclipse.uomo.core.impl.OutputHelper.println;
+
 /**
  * @author Werner Keil
  *
@@ -20,8 +22,7 @@ public class Calculations {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println();
-
+		println("Test");
 	}
 
 }

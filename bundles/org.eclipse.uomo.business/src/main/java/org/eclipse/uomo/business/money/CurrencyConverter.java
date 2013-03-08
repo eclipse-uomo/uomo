@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,8 @@ import com.ibm.icu.util.ULocale;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 5.2.2 ($Revision: 214 $), $Date: 2010-09-13 23:54:08 +0200 (Mo, 13 Sep 2010) $
+ * @version 5.2.3 ($Revision: 214 $), $Date: 2010-09-13 23:54:08 +0200 (Mo, 13 Sep 2010) $
+ * @deprecated use JSR 354
  */
 public class CurrencyConverter extends AbstractConverter implements Formattable {
 
@@ -98,10 +99,10 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 	 * @return the corresponding converter.
 	 */
 	@SuppressWarnings("unchecked")
-	public CurrencyConverter(CurrencyUnit<?> source, Unit<IMoney> target,
+	public CurrencyConverter(MoneyUnit<?> source, Unit<IMoney> target,
 			Number factor) {
-		if (target instanceof CurrencyUnit<?>) {
-			rate = new ExchangeRate(source, (CurrencyUnit<IMoney>) target,
+		if (target instanceof MoneyUnit<?>) {
+			rate = new ExchangeRate(source, (MoneyUnit<IMoney>) target,
 					factor);
 		} else {
 			Currency defCurrency = Currency.getInstance(ULocale.getDefault());

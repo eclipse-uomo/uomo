@@ -71,7 +71,7 @@ public class ExchangeRate {
 
 	@SuppressWarnings("unchecked")
 	public Currency getSourceUnit() {
-		return (CurrencyUnit<IMoney>) source;
+		return (MoneyUnit<IMoney>) source;
 	}
 
 	public Currency getTarget() {
@@ -80,7 +80,7 @@ public class ExchangeRate {
 
 	@SuppressWarnings("unchecked")
 	public Currency getTargetUnit() {
-		return (CurrencyUnit<IMoney>) target;
+		return (MoneyUnit<IMoney>) target;
 	}
 
 	public Number getFactor() {

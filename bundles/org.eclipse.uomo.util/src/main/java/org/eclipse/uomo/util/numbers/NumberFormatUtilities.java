@@ -4,13 +4,14 @@ import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import org.eclipse.uomo.core.UOMoNumberFormatException;
 
 /**
- * This provides services directly targeted at supporting HL7. The formats are
+ * This provides services directly targeted at supporting messages like HL7. The formats are
  * not localized
  * 
  * @author Grahame Grieve
+ * @author Werner Keil
+ * @version 1.1
  * 
  */
 public abstract class NumberFormatUtilities {
@@ -41,7 +42,7 @@ public abstract class NumberFormatUtilities {
 	 * 
 	 * @param source
 	 * @return
-	 * @throws OHFException
+	 * @throws UOMoNumberFormatException
 	 */
 	public static BigDecimal parseReal(String source, RealFormatOptions options)
 			throws UOMoNumberFormatException {

@@ -1,9 +1,8 @@
 package org.eclipse.uomo.util.numbers;
 
-import static org.eclipse.uomo.core.UOMoNumberFormatException.Kind.*;
+import static org.eclipse.uomo.util.numbers.UOMoNumberFormatException.Kind.*;
 
 import java.math.BigDecimal;
-import org.eclipse.uomo.core.UOMoNumberFormatException;
 import org.eclipse.uomo.util.Messages;
 
 /**

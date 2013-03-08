@@ -1,14 +1,14 @@
 package org.eclipse.uomo.util.test;
 
-import static org.eclipse.uomo.core.UOMoNumberFormatException.Kind.*;
+import static org.eclipse.uomo.util.numbers.UOMoNumberFormatException.Kind.*;
 import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.util.Locale;
 
-import org.eclipse.uomo.core.UOMoNumberFormatException;
-import org.eclipse.uomo.core.UOMoNumberFormatException.Kind;
 import org.eclipse.uomo.util.numbers.NumberFormatUtilities;
+import org.eclipse.uomo.util.numbers.UOMoNumberFormatException;
+import org.eclipse.uomo.util.numbers.UOMoNumberFormatException.Kind;
 import org.junit.Ignore;
 import org.junit.Test;
 

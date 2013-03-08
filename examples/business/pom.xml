@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>org.eclipse.uomo.examples</artifactId>
+		<groupId>org.eclipse.uomo</groupId>
+		<version>0.6.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.eclipse.uomo.examples.business</artifactId>
+	<packaging>pom</packaging>
+	<name>Eclipse UOMo Business Examples</name>
+	<modules>
+    <module>org.eclipse.uomo.examples.business.console</module>
+	</modules>
+	<!-- ==================================================== -->
+    <!-- Repositories. This is where Maven looks for dependencies. 
+         The Maven repository is implicit and doesn't need 
+         to be specified. -->
+    <!-- ==================================================== -->
+    <repositories>
+        <repository>
+            <id>maven-geotoolkit.org</id>
+            <name>GeoToolkit Repository for Maven</name>
+            <url>http://maven.geotoolkit.org/</url>
+        </repository>
+        
+        <repository>
+            <id>OpenL10n</id>
+            <name>Openl10.net</name>
+            <url>http://nexus.openl10n.net/content/groups/public/</url>
+        </repository>
+    </repositories>
+	
+</project>

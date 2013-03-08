@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, Copyright (c) 2010 Creative Arts & Technologies.
+ * Copyright (c) 2010, 2013 Creative Arts & Technologies.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,7 +9,9 @@
  *    Werner Keil, Creative Arts & Technologies - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.uomo.core;
+package org.eclipse.uomo.util.numbers;
+
+import org.eclipse.uomo.core.Messages;
 
 /**
  * @author Werner Keil
@@ -19,7 +21,7 @@ public class UOMoNumberFormatException extends NumberFormatException {
 
 	private static final long serialVersionUID = 5056915330109108078L;
 
-	public enum Kind {
+	public static enum Kind {
 		TEXT_FORMAT, NaN, PINF, NINF, SIZE, RULE, INTERNAL
 		// shouldn't ever happen
 	}

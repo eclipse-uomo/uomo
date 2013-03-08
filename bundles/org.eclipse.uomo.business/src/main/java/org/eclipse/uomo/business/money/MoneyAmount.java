@@ -44,7 +44,7 @@ public class MoneyAmount extends CurrencyAmount implements IMoney,
 	/**
 	 * Holds the base unit for money quantities (symbol "$").
 	 */
-	public final static CurrencyUnit<IMoney> UNIT = new CurrencyUnit<IMoney>(
+	public final static MoneyUnit<IMoney> UNIT = new MoneyUnit<IMoney>(
 			"$");
 
 	/**
@@ -214,8 +214,8 @@ public class MoneyAmount extends CurrencyAmount implements IMoney,
 	 * @provisional This API might change or be removed in a future release.
 	 */
 	@SuppressWarnings("unchecked")
-	public CurrencyUnit<IMoney> unit() {
-		return (CurrencyUnit<IMoney>) getCurrency();
+	public MoneyUnit<IMoney> unit() {
+		return (MoneyUnit<IMoney>) getCurrency();
 	}
 
 	public int compareTo(IMoney o) {

@@ -1,4 +1,4 @@
-package org.eclipse.uomo.business.money;
+package org.eclipse.uomo.examples.business.console.money;
 
 import org.eclipse.osgi.util.NLS;
 
