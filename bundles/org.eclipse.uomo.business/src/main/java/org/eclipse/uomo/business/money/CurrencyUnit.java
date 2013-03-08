@@ -35,9 +35,10 @@ import com.ibm.icu.util.ULocale;
 
 
 /**
- * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.2.2, $Date: 2010-09-13 23:54:08 +0200 (Mo, 13 Sep 2010) $
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 0.2.3, $Date: 2013-03-08
  * @param <Q>
+ * @deprecated use JSR 354
  */
 public class CurrencyUnit<Q extends IMoney> extends Currency implements
 		Unit<IMoney>, IName {

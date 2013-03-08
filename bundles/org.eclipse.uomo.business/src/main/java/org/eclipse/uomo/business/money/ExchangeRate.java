@@ -20,6 +20,7 @@ import com.ibm.icu.util.DateInterval;
 /**
  * @author Werner Keil
  * @version 0.2.1
+ * @deprecated use JSR 354
  */
 public class ExchangeRate {
 

@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - generic improvements
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.impl;
@@ -14,7 +15,7 @@ package org.eclipse.uomo.ucum.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.uomo.core.IValidator;
+import org.eclipse.uomo.core.IListValidator;
 import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.ucum.Registry;
@@ -27,15 +28,16 @@ import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 
 /**
  * @author Grahame Grieve
- * @version 1.0 ($Revision: 305 $), $Date: 2010-10-29 21:33:08 +0100 (Fr, 29 Okt 2010) $
+ * @author Werner Keil
+ * @version 1.1 ($Revision: 306 $), $Date: 2013-03-08 $
  */
-public class UcumValidator implements IValidator {
+public class UcumValidator implements IListValidator<String> {
 
 	private final UcumModel model;
-	private final Registry handlers;
+	private final Registry<?> handlers;
 	private List<String> result;
 
-	public UcumValidator(UcumModel model, Registry handlers) {
+	public UcumValidator(UcumModel model, Registry<?> handlers) {
 		super();
 		this.model = model;
 		this.handlers = handlers;
