@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,11 @@ import com.ibm.icu.util.ULocale;
 
 
 /**
- * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2.3, $Date: 2013-03-08
- * @param <Q>
  * TODO use JSR 354
+ * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
+ * @version 0.2.4, $Date: 2013-03-08
+ * @param <Q> the monetary quantity
+ * 
  */
 public class MoneyUnit<Q extends IMoney> extends Currency implements
 		Unit<IMoney>, IName {
