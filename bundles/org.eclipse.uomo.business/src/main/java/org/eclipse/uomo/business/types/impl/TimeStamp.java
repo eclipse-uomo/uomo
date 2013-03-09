@@ -8,9 +8,9 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.core.impl;
+package org.eclipse.uomo.business.types.impl;
 
-import static org.eclipse.uomo.core.impl.DataHelper.BDT_DELIM;
+import static org.eclipse.uomo.business.types.impl.DataHelper.BDT_DELIM;
 
 import java.text.SimpleDateFormat;
 import java.text.ParsePosition;
@@ -19,7 +19,7 @@ import java.util.GregorianCalendar;
 import java.util.TimeZone;
 import java.sql.Timestamp;
 
-import org.eclipse.uomo.core.IBasicType;
+import org.eclipse.uomo.business.types.IBasicType;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 
 /**

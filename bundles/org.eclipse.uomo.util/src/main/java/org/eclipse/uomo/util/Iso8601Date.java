@@ -18,6 +18,7 @@ import java.util.TimeZone;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uomo.core.UOMoException;
+import org.eclipse.uomo.util.internal.Messages;
 
 /**
  * ISO 8601 Dates

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, Werner Keil, emergn and others.
+ * Copyright (c) 2010, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, emergn and others - initial API and implementation
  */
-package org.eclipse.uomo.core;
+package org.eclipse.uomo.core.internal;
 
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
@@ -22,7 +22,7 @@ public final class Messages {
 	private Messages() {
 	}
 
-	public static String getString(String key) {
+	static String getString(String key) {
 		try {
 			return RESOURCE_BUNDLE.getString(key);
 		} catch (MissingResourceException e) {

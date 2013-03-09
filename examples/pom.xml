@@ -28,6 +28,7 @@
         </plugins>
 	</build>
 	<modules>
+	   <module>business</module>
 	   <module>units</module>
 	</modules>
 <!-- modules> <module>org.eclipse.uomo.test</module> </modules -->

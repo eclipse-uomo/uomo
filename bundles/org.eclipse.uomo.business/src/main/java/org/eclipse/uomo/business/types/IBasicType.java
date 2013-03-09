@@ -1,4 +1,4 @@
-package org.eclipse.uomo.core;
+package org.eclipse.uomo.business.types;
 
 /**
  * This interface indicates that a class is a Basic Data Type

@@ -3,14 +3,14 @@
  */
 package org.eclipse.uomo.util.numbers;
 
-class RealFormatOptions extends DecimalFormatOptions {
+final class RealFormatOptions extends DecimalFormatOptions {
 	
 	/**
 	 * null - exponent form is allowed
 	 * false - exponent form is not allowed
 	 * true - exponent form is required
 	 * 
-	 * TODO are these 3 options required, or is null and false the same?
+	 * FIXME change this to a more descriptive enum
 	 */
 	private Boolean exponent;
 	private boolean allowSpecial;

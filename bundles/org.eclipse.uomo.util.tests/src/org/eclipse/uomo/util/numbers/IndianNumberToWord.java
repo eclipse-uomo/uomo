@@ -1,6 +1,7 @@
 package org.eclipse.uomo.util.numbers;
 
-public class IndianNumberToWord implements INumberToWord {
+
+public class IndianNumberToWord implements ISpeller {
 	String string;
 	String a[] = { "", "one", "two", "three", "four", "five", "six", "seven",
 			"eight", "nine", };
@@ -10,9 +11,13 @@ public class IndianNumberToWord implements INumberToWord {
 	String d[] = { "twenty", "thirty", "fourty", "fifty", "sixty", "seventy",
 			"eighty", "ninty" };
 
-	public String convertNumber(int numToConvert) {
+	public String spell(final long number) throws SpellException {
+		if (number < Integer.MIN_VALUE || number < -Integer.MAX_VALUE || number > Integer.MAX_VALUE) {
+			throw new SpellException(number + " exceeds allowed value for this algorithm.");
+		}
+		int numToConvert = (int)number;
 		int in = 1;
-		int num;
+		int num = -1;
 		string = "";
 		while (numToConvert != 0) {
 			switch (in) {
@@ -107,14 +112,15 @@ public class IndianNumberToWord implements INumberToWord {
 //		Reader buff = new BufferedReader(new InputStreamReader(
 //				System.in));
 		System.out.println("Display massage number to Text!");
-		INumberToWord num = new IndianNumberToWord();
-		System.out.println("Number to word: " + num.convertNumber(10) + ".");
-		System.out.println("Number to word: " + num.convertNumber(15) + ".");
-		System.out.println("Number to word: " + num.convertNumber(50) + ".");
-		System.out.println("Number to word: " + num.convertNumber(99) + ".");
-		System.out.println("Number to word: " + num.convertNumber(150) + ".");
-		System.out.println("Number to word: " + num.convertNumber(234) + ".");
-		System.out.println("Number to word: " + num.convertNumber(250) + ".");
-		System.out.println("Number to word: " + num.convertNumber(250000) + ".");
+		ISpeller num = new IndianNumberToWord();
+		System.out.println("Spelling: " + num.spell(10) + ".");
+		System.out.println("Spelling: " + num.spell(15) + ".");
+		System.out.println("Spelling: " + num.spell(50) + ".");
+		System.out.println("Spelling: " + num.spell(99) + ".");
+		System.out.println("Spelling: " + num.spell(150) + ".");
+		System.out.println("Spelling: " + num.spell(234) + ".");
+		System.out.println("Spelling: " + num.spell(250) + ".");
+		System.out.println("Spelling: " + num.spell(250000) + ".");
+//		System.out.println("Spelling: " + num.spell(Integer.MAX_VALUE + 1) + ".");
 	}
 }

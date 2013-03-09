@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.core;
+package org.eclipse.uomo.core.internal;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -17,7 +17,7 @@ import org.osgi.framework.BundleContext;
  * OSGi part of implementation.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2 ($Revision$), $Date$
+ * @version 0.3 ($Revision$), $Date$
  */
 public class Activator implements BundleActivator {
 	private BundleContext fContext;

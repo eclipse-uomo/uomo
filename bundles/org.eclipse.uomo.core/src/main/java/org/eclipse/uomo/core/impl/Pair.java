@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2007 Jiva Medical.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2007 Jiva Medical.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,6 @@
 
 package org.eclipse.uomo.core.impl;
 
-// TODO make this really generic, like Pair<F,S>
 /**
  * @author Werner Keil
  *

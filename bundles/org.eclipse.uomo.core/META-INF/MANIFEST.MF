@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.osgi;bundle-version="3.6.0";visibility:=reexport,
 Bundle-Vendor: Eclipse.org
 Bundle-Version: 0.6.0.qualifier
 Bnd-LastModified: 1288905964975
-Bundle-Activator: org.eclipse.uomo.core.Activator
+Bundle-Activator: org.eclipse.uomo.core.internal.Activator
 Bundle-ManifestVersion: 2
 Bundle-Description: UOMo adds Units of Measurement support for IT Syst
  ems and Services both to Language and Data.

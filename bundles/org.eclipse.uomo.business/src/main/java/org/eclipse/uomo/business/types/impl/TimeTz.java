@@ -1,8 +1,8 @@
-package org.eclipse.uomo.core.impl;
+package org.eclipse.uomo.business.types.impl;
 
 import java.util.TimeZone;
 
-import org.eclipse.uomo.core.IBasicType;
+import org.eclipse.uomo.business.types.IBasicType;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 
 /**
@@ -29,7 +29,7 @@ class TimeTz implements IBasicType {
 	 *            com.jpmorrsn.jbdtypes.Date
 	 * @throws BDTypeException
 	 */
-	TimeStamp buildTimeStamp(Date d) throws UOMoRuntimeException {
+	TimeStamp buildTimeStamp(BDate d) throws UOMoRuntimeException {
 
 		return new TimeStamp(d.serialize() + 'T' + m_ttz);
 

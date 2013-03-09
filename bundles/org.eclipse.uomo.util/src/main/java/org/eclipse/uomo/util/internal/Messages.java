@@ -1,9 +1,13 @@
-package org.eclipse.uomo.util;
+package org.eclipse.uomo.util.internal;
+
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
 
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.eclipse.uomo.util.messages"; //$NON-NLS-1$
+	private static ResourceBundle RESOURCE_BUNDLE;
 	public static String Iso8601Date_58;
 	public static String Iso8601Date_59;
 	public static String Iso8601Date_60;
@@ -132,8 +136,18 @@ public class Messages extends NLS {
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
+		RESOURCE_BUNDLE = ResourceBundle
+				.getBundle(BUNDLE_NAME);
 	}
 
+	public static String getString(String key) {
+		try {
+			return RESOURCE_BUNDLE.getString(key);
+		} catch (MissingResourceException e) {
+			return '!' + key + '!';
+		}
+	}
+	
 	private Messages() {
 	}
 }

@@ -1,4 +1,4 @@
-package org.eclipse.uomo.util.test;
+package org.eclipse.uomo.util.test.internal;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;

@@ -13,8 +13,8 @@ package org.eclipse.uomo.business.types.impl;
 import static org.eclipse.uomo.business.types.BDTHelper.Operation.*;
 
 import org.eclipse.uomo.business.types.BDTHelper;
+import org.eclipse.uomo.business.types.IBasicType;
 import org.eclipse.uomo.business.types.Percent;
-import org.eclipse.uomo.core.IBasicType;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.unitsofmeasurement.unit.Unit;
 

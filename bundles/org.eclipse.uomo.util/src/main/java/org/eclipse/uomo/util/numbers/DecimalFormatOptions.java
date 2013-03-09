@@ -1,6 +1,6 @@
 package org.eclipse.uomo.util.numbers;
 
-class DecimalFormatOptions {
+abstract class DecimalFormatOptions {
 
 	protected static final int ANY_DIGITS = -1;
 	/**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.core.impl;
+package org.eclipse.uomo.business.types.impl;
 
 import java.util.*;
 

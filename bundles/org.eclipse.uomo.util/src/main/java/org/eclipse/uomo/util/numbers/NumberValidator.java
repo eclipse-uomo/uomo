@@ -1,9 +1,13 @@
+/**
+ * 
+ */
 package org.eclipse.uomo.util.numbers;
 
 import static org.eclipse.uomo.util.numbers.UOMoNumberFormatException.Kind.*;
 
 import java.math.BigDecimal;
-import org.eclipse.uomo.util.Messages;
+
+import org.eclipse.uomo.util.internal.Messages;
 
 /**
  * Double: a mantissa followed, optionally, by the character "E" or "e",

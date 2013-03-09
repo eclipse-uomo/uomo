@@ -11,7 +11,7 @@
 
 package org.eclipse.uomo.util.numbers;
 
-import org.eclipse.uomo.core.Messages;
+import org.eclipse.uomo.util.internal.Messages;
 
 /**
  * @author Werner Keil

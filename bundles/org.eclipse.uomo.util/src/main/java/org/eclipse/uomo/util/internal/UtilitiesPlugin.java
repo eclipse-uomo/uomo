@@ -9,7 +9,7 @@
  *    Jiva Medical - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.uomo.util;
+package org.eclipse.uomo.util.internal;
 
 import org.eclipse.core.runtime.Plugin;
 import org.osgi.framework.BundleContext;
