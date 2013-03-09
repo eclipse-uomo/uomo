@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.uomo.ucum.Registry;
+import org.eclipse.uomo.util.Registry;
 import org.unitsofmeasurement.quantity.InformationRate;
 
 @SuppressWarnings("rawtypes")

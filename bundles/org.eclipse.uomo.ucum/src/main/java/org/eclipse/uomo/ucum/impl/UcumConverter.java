@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.uomo.core.UOMoRuntimeException;
-import org.eclipse.uomo.ucum.Registry;
 import org.eclipse.uomo.ucum.expression.Component;
 import org.eclipse.uomo.ucum.expression.Factor;
 import org.eclipse.uomo.ucum.expression.Symbol;
@@ -34,6 +33,7 @@ import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
 import org.eclipse.uomo.units.AbstractConverter;
+import org.eclipse.uomo.util.Registry;
 import org.unitsofmeasurement.unit.UnitConverter;
 
 /**

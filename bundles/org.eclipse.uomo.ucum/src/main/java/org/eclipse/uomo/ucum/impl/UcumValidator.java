@@ -18,13 +18,13 @@ import java.util.List;
 import org.eclipse.uomo.core.IListValidator;
 import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.core.UOMoRuntimeException;
-import org.eclipse.uomo.ucum.Registry;
 import org.eclipse.uomo.ucum.expression.Term;
 import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.model.UcumUnit;
 import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
+import org.eclipse.uomo.util.Registry;
 
 /**
  * @author Grahame Grieve

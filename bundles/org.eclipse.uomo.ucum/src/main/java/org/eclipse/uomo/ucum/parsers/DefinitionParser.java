@@ -24,11 +24,13 @@ import java.text.ParseException;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.ucum.model.BaseUnit;
 import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.Prefix;
 import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.model.Value;
+import org.eclipse.uomo.util.Parser;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -44,10 +46,18 @@ import com.ibm.icu.text.SimpleDateFormat;
  * @author Werner Keil
  */
 
-public class DefinitionParser {
+public class DefinitionParser implements Parser<String, UcumModel> {
 
-	public UcumModel parse(String filename) throws XmlPullParserException, IOException, ParseException {
-		return parse(new FileInputStream(new File(filename)));
+	public UcumModel parse(String filename) throws UOMoException {
+		try {
+			return parse(new FileInputStream(new File(filename)));
+		} catch (XmlPullParserException x) {
+			throw new UOMoException(x);
+		}  catch (ParseException p) {
+			throw new UOMoException(p);
+		}  catch (IOException i) {
+			throw new UOMoException(i);
+		}
 	}
 	
 	public UcumModel parse(InputStream stream) throws XmlPullParserException, IOException, ParseException {
