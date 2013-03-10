@@ -11,7 +11,6 @@
 package org.eclipse.uomo.examples.business.console.money;
 
 // Constants (Java 5 static import)
-import static org.eclipse.uomo.units.IndianPrefix.LAKH;
 import static org.eclipse.uomo.units.impl.system.USCustomary.GALLON_LIQUID;
 import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
 import static org.eclipse.uomo.units.impl.system.USCustomary.MILE;
@@ -20,6 +19,7 @@ import static org.eclipse.uomo.units.SI.METRE;
 import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
 import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
+import static org.eclipse.uomo.units.IndianPrefix.LAKH;
 
 import org.eclipse.uomo.business.money.MoneyAmount;
 import org.eclipse.uomo.business.money.MoneyConverter;
@@ -81,7 +81,7 @@ public class MoneyDemo {
 //		System.out.println(gazPrice.doubleValue(USD));
 //		System.out.println(TestMessages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(USD)); //$NON-NLS-1$
-		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
+		//System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
 //		System.out.println(Messages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(EUR)); //$NON-NLS-1$
 		// System.out.println("Trip cost = " + tripCost + " (" +
