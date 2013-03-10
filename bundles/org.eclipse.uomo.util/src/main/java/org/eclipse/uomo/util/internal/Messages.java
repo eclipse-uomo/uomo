@@ -129,6 +129,20 @@ public class Messages extends NLS {
 	public static String NumberValidator_Value_Infinity;
 	public static String NumberValidator_Value_negative_Infinity;
 	public static String NumberValidator_Value_not_a_number;
+	public static String RomanNumberSpeller_0;
+	public static String RomanNumberSpeller_10;
+	public static String RomanNumberSpeller_11;
+	public static String RomanNumberSpeller_12;
+	public static String RomanNumberSpeller_13;
+	public static String RomanNumberSpeller_14;
+	public static String RomanNumberSpeller_2;
+	public static String RomanNumberSpeller_3;
+	public static String RomanNumberSpeller_4;
+	public static String RomanNumberSpeller_5;
+	public static String RomanNumberSpeller_6;
+	public static String RomanNumberSpeller_7;
+	public static String RomanNumberSpeller_8;
+	public static String RomanNumberSpeller_9;
 	public static String Speller_0;
 	public static String Speller_100;
 	public static String Speller_102;
@@ -235,6 +249,9 @@ public class Messages extends NLS {
 	public static String Speller_96;
 	public static String Speller_97;
 	public static String Speller_98;
+	public static String Speller_Crore;
+	public static String Speller_Lakh;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

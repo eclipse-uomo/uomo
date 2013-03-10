@@ -29,7 +29,7 @@ import org.eclipse.uomo.util.internal.Messages;
  * Because of the ubiquity of HL7 interfaces, and the general utility of this
  * time format representation, it's encountered fairly often in healthcare
  * 
- * This Date class repreesents the notion of a date time that may have years,
+ * This Date class represents the notion of a date time that may have years,
  * months, days, hours, minutes, seconds, milliseconds and timezones specified.
  * 
  * There is three ways to interact with this date - read and write the component
@@ -53,7 +53,6 @@ import org.eclipse.uomo.util.internal.Messages;
  * Finally, there is a static routine that takes the same parameters and returns
  * a date or throws an exception
  * 
- * @deprecated TODO this should be merged with Date/Time aspect of Units
  */
 public class Iso8601Date {
 
@@ -1031,7 +1030,9 @@ public class Iso8601Date {
 		else {
 			second = Integer.parseInt(value);
 			if (second < 0 || second > 59)
-				return NLS.bind(Messages.Iso8601Date_SECOND_VALUE_MUST_BE_0_AND_59, value);
+				return NLS.bind(
+						Messages.Iso8601Date_SECOND_VALUE_MUST_BE_0_AND_59,
+						value);
 			else
 				return null;
 		}

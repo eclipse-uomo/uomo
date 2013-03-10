@@ -14,32 +14,22 @@ package org.eclipse.uomo.util.test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.security.DigestException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Calendar;
 import java.util.UUID;
 
 import org.junit.Test;
 
-
 /**
- * Generates a (mostly) ASN.1 complaint UUID.
- * <br>Under Windows the MAC address of the machine is used, under Linux
- * and other OS's a randomly generated construct using the SHA-1 message
- * digest is used. It is thus possible that UUIDs will not be completely unique
- * under non Windows platforms, but given the number of bits of random data  used 
- * to generate the fake MAC addresses for non Windows machines, it is very unlikely
- * any collosions will every occur in practice. 
- *   
+ * Generates a (mostly) ASN.1 complaint UUID. <br>
+ * Under Windows the MAC address of the machine is used, under Linux and other
+ * OS's a randomly generated construct using the SHA-1 message digest is used.
+ * It is thus possible that UUIDs will not be completely unique under non
+ * Windows platforms, but given the number of bits of random data used to
+ * generate the fake MAC addresses for non Windows machines, it is very unlikely
+ * any collosions will every occur in practice.
+ * 
  * @author Glenn Deen
  * @since IHII Phase 1
  * 
- * @deprecated use java.util.UUID
  */
 public class UUIDTest {
 
@@ -54,15 +44,15 @@ public class UUIDTest {
 	private static String MAC = null;
 
 	/**
-	 * Generates and returns a formatted UUID holding a 
-	 * 128 bit UUID in the form:  AABBCCDDEEFF-GGHH-IIJJ-KKLLMMNNOOPP
+	 * Generates and returns a formatted UUID holding a 128 bit UUID in the
+	 * form: AABBCCDDEEFF-GGHH-IIJJ-KKLLMMNNOOPP
 	 * 
 	 * @return the generated uuid
 	 */
 	static String generate() {
-	    UUID uuid = UUID.randomUUID();
-	    lastTimeCalled = System.currentTimeMillis();
-	    return uuid.toString();
+		UUID uuid = UUID.randomUUID();
+		lastTimeCalled = System.currentTimeMillis();
+		return uuid.toString();
 	}
 
 	/**
@@ -74,14 +64,14 @@ public class UUIDTest {
 
 	@Test
 	public void testUUID() {
-	    String uuid = generate();
-	    assertNotNull(uuid);
-	    assertTrue(uuid.contains("-"));
+		String uuid = generate();
+		assertNotNull(uuid);
+		assertTrue(uuid.contains("-"));
 	}
-	
+
 	/**
-	 * Runs a simple test of the UUID class, generating a set of 
-	 * UUIDs
+	 * Runs a simple test of the UUID class, generating a set of UUIDs
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
@@ -91,7 +81,9 @@ public class UUIDTest {
 		for (int i = 0; i < count; i++)
 			System.out.println(UUID.randomUUID());
 		long end = System.currentTimeMillis();
-		System.out.println("Generated " + count + " URN's at rate of " + Math.round((double) count / (double) (end - start) * 1000) + " per second");
+		System.out.println("Generated " + count + " URN's at rate of "
+				+ Math.round((double) count / (double) (end - start) * 1000)
+				+ " per second");
 	}
 
 }
