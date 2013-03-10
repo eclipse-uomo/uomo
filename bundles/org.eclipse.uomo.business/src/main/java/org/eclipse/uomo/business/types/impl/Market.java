@@ -13,7 +13,7 @@ package org.eclipse.uomo.business.types.impl;
 import java.util.*;
 
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.uomo.business.Messages;
+import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IMarket;

@@ -10,12 +10,15 @@
  */
 package org.eclipse.uomo.util.numbers;
 
+import org.eclipse.uomo.util.Parser;
 
 /**
+ * A tool for number spelling, text parsing and encoding.
+ * 
  * @author Werner Keil
- *
+ * @version 1.0
  */
-public interface ISpeller {
+public interface ISpeller extends Parser<String, Number> {
 	/**
 	 * Spells a number; converts a number to its equivalent read-out text
 	 * string.
@@ -27,8 +30,25 @@ public interface ISpeller {
 	 *         punctuated.
 	 * 
 	 * @throws SpellException
-	 *             If this method throws an exception.
-	 *             Please report it.
+	 *             If this method throws an exception. Please report it.
 	 */
 	public String spell(long number) throws SpellException;
+
+	/**
+	 * For public use: parses a human-readable spelling text of a number, and
+	 * converts it to the corresponding numeric value.
+	 * 
+	 * @param text
+	 *            the human-readable spelling text of a number.
+	 * @return the numeric value corresponding to the human-readable number
+	 *         text.
+	 * @throws SpellException
+	 *             if the text contains intolerable, misplaced or unknown word.
+	 * 
+	 * @see {@link #parseInternal(String)} which does a similar operation with
+	 *      text not possibly started with word ''minus''. Actually, it does the
+	 *      main operation.
+	 */
+	@Override
+	public Number parse(String text) throws SpellException;
 }

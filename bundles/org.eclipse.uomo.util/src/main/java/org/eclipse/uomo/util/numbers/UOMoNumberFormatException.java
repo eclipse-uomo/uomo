@@ -11,7 +11,7 @@
 
 package org.eclipse.uomo.util.numbers;
 
-import org.eclipse.uomo.util.internal.Messages;
+import org.eclipse.uomo.util.internal.ErrorMessages;
 
 /**
  * @author Werner Keil
@@ -41,7 +41,7 @@ public class UOMoNumberFormatException extends NumberFormatException {
 	}
 
 	public static String getMessageForKind(Kind kind) {
-		return Messages.getString("UOMoNumberFormatException." + kind.name()); //$NON-NLS-1$		}
+		return ErrorMessages.getString("UOMoNumberFormatException." + kind.name()); //$NON-NLS-1$		}
 	}
 
 	/**

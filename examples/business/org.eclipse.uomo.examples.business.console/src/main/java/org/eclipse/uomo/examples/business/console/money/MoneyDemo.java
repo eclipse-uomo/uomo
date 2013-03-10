@@ -21,7 +21,7 @@ import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
 import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 
-import org.eclipse.uomo.business.money.CurrencyConverter;
+import org.eclipse.uomo.business.money.MoneyConverter;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
@@ -46,7 +46,7 @@ public class MoneyDemo {
 		// /////////////////////////////////////////////////////////////////////
 
 		@SuppressWarnings("unused")
-		CurrencyConverter converter = new CurrencyConverter(USD, EUR, 1.4);
+		MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
 
 		// Calculates trip cost.
 		BaseAmount carMileage = new BaseAmount(20,

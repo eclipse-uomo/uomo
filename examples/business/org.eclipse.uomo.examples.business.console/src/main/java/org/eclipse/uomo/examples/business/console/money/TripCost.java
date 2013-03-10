@@ -33,6 +33,7 @@ import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
 /**
  * @author Werner Keil
  * @version 0.9.1, 2013-03-08
+ * @deprecated integrate with MoneyDemo
  */
 public class TripCost {
   

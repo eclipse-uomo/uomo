@@ -19,5 +19,5 @@ import org.eclipse.uomo.core.UOMoException;
  * @param <O> the output
  */
 public interface Parser<I, O> {
-	public O parse(String s) throws UOMoException;
+	public O parse(I input) throws UOMoException;
 }

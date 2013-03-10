@@ -1,5 +1,12 @@
 /**
- * 
+ * Copyright (c) 2009, 2013, Werner Keil and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.util.numbers.impl;
 
@@ -12,11 +19,13 @@ package org.eclipse.uomo.util.numbers.impl;
 * 
 */
 
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.uomo.core.IValidator;
+import org.eclipse.uomo.util.internal.Messages;
+import org.eclipse.uomo.util.numbers.ISpellCode;
 import org.eclipse.uomo.util.numbers.ISpeller;
 import org.eclipse.uomo.util.numbers.SpellException;
 
@@ -49,7 +58,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	/**
 	 * @return the default instance
 	 */
-	public static SpellContext getInstance() {
+	public static SpellContext getDefault() {
 		if (INSTANCE == null) {
 			INSTANCE = new SpellContext();
 		}
@@ -78,7 +87,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// first check if it is a negative value and adjust the text properly.
 		if (number < 0L) { // if it is negative :
 			// invoke level-one spell and prefix the result with the word: Minus
-			text = "Minus " + spell(-number, 1);
+			text = Messages.Speller_0 + spell(-number, 1);
 		} else { // otherwise,
 			// simply, invoke level-one spell.
 			text = spell(number, 1);
@@ -114,8 +123,8 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// The following code before the return statement implements this logic:
 		int index_amp, index_perc;
 
-		index_amp = text.lastIndexOf("$");
-		index_perc = text.lastIndexOf("%");
+		index_amp = text.lastIndexOf("$"); //$NON-NLS-1$
+		index_perc = text.lastIndexOf("%"); //$NON-NLS-1$
 
 		if (index_amp >= 0) {
 			if (index_perc < 0 || index_amp > index_perc) {
@@ -124,12 +133,12 @@ public class SpellContext implements ISpeller, IValidator<String> {
 				String textAfterAmp = text.substring(index_amp + 1, text
 						.length());
 
-				text = textBeforeAmp + " and " + textAfterAmp;
+				text = textBeforeAmp + Messages.Speller_3 + textAfterAmp;
 			}
 		}
 
-		text = text.replaceAll("\\$", ", ");
-		text = text.replaceAll("%", " and ");
+		text = text.replaceAll(Messages.Speller_4, Messages.Speller_5);
+		text = text.replaceAll("%", Messages.Speller_3); //$NON-NLS-1$
 
 		return text;
 	}
@@ -149,14 +158,14 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 */
 	public static String withSeparatorAlt(long number) {
 		if (number < 0) {
-			return "-" + withSeparator(-number);
+			return Messages.Speller_8 + withSeparator(-number);
 		}
 
 		if (number / 1000L > 0) {
-			return withSeparator(number / 1000L) + ","
-					+ String.format("%1$03d", number % 1000L);
+			return withSeparator(number / 1000L) + Messages.Speller_9
+					+ String.format("%1$03d", number % 1000L); //$NON-NLS-1$
 		} else {
-			return String.format("%1$d", number);
+			return String.format("%1$d", number); //$NON-NLS-1$
 		}
 	}
 
@@ -173,7 +182,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *         number.
 	 */
 	public static String withSeparator(long number) {
-		return String.format("%1$,d", number);
+		return String.format("%1$,d", number); //$NON-NLS-1$
 	}
 
 	/**
@@ -186,10 +195,10 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *      level) to check how this array is used.
 	 */
 	private static String mySuffixText[] = {
-			"", // Dummy! no level 0 (added for nicer indexing in code)
-			"", // Nothing for level 1
-			" Thousand", " Million", " Billion", " Trillion", " Quadrillion",
-			" Quintillion", };
+			"", // Dummy! no level 0 (added for nicer indexing in code) //$NON-NLS-1$
+			"", // Nothing for level 1 //$NON-NLS-1$
+			Messages.Speller_15, Messages.Speller_16, Messages.Speller_17, Messages.Speller_18, Messages.Speller_19,
+			Messages.Speller_20, };
 
 	/**
 	 * A teen is the word equivalent of numbers [0, 19].
@@ -197,10 +206,10 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 * @see {@link #SpellBelow1000(long)} implementation to check how this array
 	 *      is used.
 	 */
-	private static String myTeenText[] = { "Zero", "One", "Two", "Three",
-			"Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven",
-			"Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen",
-			"Seventeen", "Eighteen", "Nineteen", };
+	private static String myTeenText[] = { Messages.Speller_21, Messages.Speller_22, Messages.Speller_23, Messages.Speller_24,
+			Messages.Speller_25, Messages.Speller_26, Messages.Speller_27, Messages.Speller_28, Messages.Speller_29, Messages.Speller_30, Messages.Speller_31, Messages.Speller_32,
+			Messages.Speller_33, Messages.Speller_34, Messages.Speller_35, Messages.Speller_36, Messages.Speller_37,
+			Messages.Speller_38, Messages.Speller_39, Messages.Speller_40, };
 
 	/**
 	 * A cent has two meanings in this project: it is either any value below one
@@ -209,8 +218,8 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 * @see {@link #SpellBelow1000(long)} implementation to check how this array
 	 *      is used.
 	 */
-	private static String myCentText[] = { "Twenty", "Thirty", "Forty",
-			"Fifty", "Sixty", "Seventy", "Eighty", "Ninety" };
+	private static String myCentText[] = { Messages.Speller_41, Messages.Speller_42, Messages.Speller_43,
+			Messages.Speller_44, Messages.Speller_45, Messages.Speller_46, Messages.Speller_47, Messages.Speller_48 };
 
 	/**
 	 * Formal English requires to use hyphen between a cent and digit; for
@@ -228,7 +237,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 * @return hyphen or space based on the current global setting.
 	 */
 	private static String centHyphen() {
-		return usingCentHyphen ? "-" : " ";
+		return usingCentHyphen ? Messages.Speller_49 : " "; //$NON-NLS-2$
 	}
 
 	/**
@@ -244,7 +253,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	private static String SpellBelow1000(long number) throws SpellException {
 		// if number is negative or above 999, throw a SpellException.
 		if (number < 0 || number >= 1000)
-			throw new SpellException("Expecting a number between 0 and 999: "
+			throw new SpellException(Messages.Speller_51
 					+ number);
 
 		if (number < 20L) {
@@ -272,7 +281,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 			int rem = (int) number % 100;
 
 			// Prepare the mil prefix:
-			String milText = myTeenText[div] + " Hundred";
+			String milText = myTeenText[div] + Messages.Speller_52;
 
 			// decide whether to append the cent tail or not.
 			if (rem == 0) {
@@ -288,7 +297,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 				// another place-holder: '$' to properly set all the punctuation
 				// properly.
 				// For example, three Hundred%Sixty-Four:
-				return milText + "%" + SpellBelow1000(rem);
+				return milText + "%" + SpellBelow1000(rem); //$NON-NLS-1$
 			}
 		}
 	}
@@ -334,7 +343,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 			if (rem == 0) {
 				return spell(div, level + 1);
 			} else {
-				return spell(div, level + 1) + "$" + SpellBelow1000(rem)
+				return spell(div, level + 1) + "$" + SpellBelow1000(rem) //$NON-NLS-1$
 						+ mySuffixText[level];
 			}
 		}
@@ -355,7 +364,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		if (!myNameMap.containsKey(text))
 			return false;
 
-		long value = myNameMap.get(text).getValue();
+		long value = myNameMap.get(text).getValue().longValue();
 
 		return value >= 0L && value < 1000L;
 	}
@@ -388,14 +397,14 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// It has no use here. simple remove them. This algorithm is tolerant,
 		// we do not validate the text here.
 		// Then, split the text to words.
-		String[] words = text.replaceAll(" and ", " ").split("\\s+");
+		String[] words = text.replaceAll(Messages.Speller_55, " ").split("\\s+"); //$NON-NLS-2$ //$NON-NLS-3$
 
 		// Now, for each word in text:
 		for (String word : words) {
 			// check if the word is a mil word.
 			// throw exception if it is not.
 			if (!isBelowThousandWord(word)) {
-				throw new SpellException("Unknown or misplaced token : " + word);
+				throw new SpellException(Messages.Speller_58 + word);
 			}
 
 			// get the nominal value of the mil word.
@@ -431,7 +440,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	private static long getValueOf(String word) {
 
 		// simply look-up the word in dictionary: myNameMap.
-		return myNameMap.get(word).getValue();
+		return myNameMap.get(word).getValue().longValue();
 	}
 
 	/**
@@ -439,8 +448,8 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 * 
 	 * @see {@link #parseInternal(String)} to check how this array is used.
 	 */
-	private final static String[] mySuffixWords = { "quintillion",
-			"quadrillion", "trillion", "billion", "million", "thousand" };
+	private final static String[] mySuffixWords = { Messages.Speller_59,
+			Messages.Speller_60, Messages.Speller_61, Messages.Speller_62, Messages.Speller_63, Messages.Speller_64 };
 
 	/**
 	 * The equivalent numeric value of suffixes used in spelling (and parsing) a
@@ -468,23 +477,23 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *      text not possibly started with word ''minus''. Actually, it does the
 	 *      main operation.
 	 */
-	public static long parse(String text) throws SpellException {
+	public Long parse(String text) throws SpellException {
 
 		// remove all punctuation.
 		text = toFriendlyString(text);
 
 		// if the text starts with word: ''minus''.
-		if (text.startsWith("minus")) {
+		if (text.startsWith(Messages.Speller_65)) {
 			// extract substring after ''minus''
-			String subtext = text.substring("minus".length());
+			String subtext = text.substring(Messages.Speller_66.length());
 
 			// It must not be empty and must not be started with a none-white
 			// character
-			if (subtext.equals("")
+			if (subtext.equals("") //$NON-NLS-1$
 					|| !Character.isWhitespace(subtext.charAt(0))) {
 
 				// if it is, throw exception.
-				throw new SpellException("Invalid starting token for text : "
+				throw new SpellException(Messages.Speller_68
 						+ text);
 			}
 
@@ -547,12 +556,12 @@ public class SpellContext implements ISpeller, IValidator<String> {
 						index + mySuffixWords[n].length()).trim();
 
 				// if the substring before suffix is empty, assume 'one'.
-				if (textBeforeSuffix.equals(""))
-					textBeforeSuffix = "one";
+				if (textBeforeSuffix.equals("")) //$NON-NLS-1$
+					textBeforeSuffix = Messages.Speller_70;
 
 				// if the substring after suffix is empty, assume 'zero'.
-				if (textAfterSuffix.equals(""))
-					textAfterSuffix = "zero";
+				if (textAfterSuffix.equals("")) //$NON-NLS-1$
+					textAfterSuffix = Messages.Speller_72;
 
 				// parse both substrings properly, and evaluate the total value.
 				totalValue = parseBelow1000(textBeforeSuffix)
@@ -590,8 +599,8 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 * @return The text without punctuation.
 	 */
 	private static String toFriendlyString(String text) {
-		return text.toLowerCase().replaceAll("[\\-,]", " ").replaceAll(" and ",
-				" ").trim();
+		return text.toLowerCase().replaceAll("[\\-,]", " ").replaceAll(Messages.Speller_3, //$NON-NLS-1$ //$NON-NLS-2$
+				" ").trim(); //$NON-NLS-1$
 	}
 
 	/**
@@ -667,7 +676,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// The pattern to extract known tokens, It is either dash (-) or comma
 		// (,) (first group), an identifier (second group), or others (a string
 		// of one or more punctuation characters) (other)
-		Pattern pat = Pattern.compile("(?:[\\-,]|\\w+|\\S+)");
+		Pattern pat = Pattern.compile("(?:[\\-,]|\\w+|\\S+)"); //$NON-NLS-1$
 
 		// match the text against pattern.
 		Matcher m = pat.matcher(text);
@@ -693,7 +702,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 					sb.append('#');
 				else
 					// otherwise, the desired action is exception, throw it.
-					throw new SpellException("Unknonw token : " + token);
+					throw new SpellException(Messages.Speller_78 + token);
 			}
 		}
 
@@ -733,7 +742,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		for (char c : text.toCharArray()) {
 
 			// find the code in dictionary : myCodeMap.
-			SpellCode sc = myCodeMap.get(Character.toString(c));
+			ISpellCode sc = myCodeMap.get(Character.toString(c));
 			String token;
 
 			// if there is no code for this encoded character,
@@ -741,11 +750,11 @@ public class SpellContext implements ISpeller, IValidator<String> {
 				// depending on the current desired code error behavior,
 				if (codingErrorAction == CodingErrorBehavior.SPECIAL_TOKEN)
 					// either append a special token,
-					token = "(?)";
+					token = "(?)"; //$NON-NLS-1$
 				else
 					// or throw an exception.
 					throw new SpellException(
-							"Unknonw or invalid code character : " + c);
+							Messages.Speller_80 + c);
 			} else
 				// otherwise, if there is a code in dictionary, read its token
 				// word.
@@ -753,8 +762,8 @@ public class SpellContext implements ISpeller, IValidator<String> {
 
 			// If there is no last token, or the last token and this tokens are
 			// not hyphen, and also this token is not comma,
-			if (lastToken != null && !lastToken.equals("-")
-					&& !token.equals("-") && !token.equals(",")) {
+			if (lastToken != null && !lastToken.equals(Messages.Speller_81)
+					&& !token.equals(Messages.Speller_82) && !token.equals(Messages.Speller_83)) {
 
 				// append a space before token.
 				sb.append(' ');
@@ -782,7 +791,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *             numeric value.
 	 */
 	public static String encode(long number) throws SpellException {
-		return encode(getInstance().spell(number));
+		return encode(getDefault().spell(number));
 	}
 
 	/**
@@ -797,132 +806,132 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *             unknown token.
 	 */
 	public static long decodeToNumber(String text) throws SpellException {
-		return parse(decode(text));
+		return getDefault().parse(decode(text)).longValue();
 	}
 
 	/**
 	 * The array containing all single character codes dedicated to known spell
 	 * number word.
 	 */
-	private static SpellCode[] myCodes = {
+	private static ISpellCode[] myCodes = {
 	// First element
 
 			// Zero
-			new SpellCode("Zero", "0", 0L),
+			new SpellCode(Messages.Speller_84, "0", 0L), //$NON-NLS-2$
 
 			// One
-			new SpellCode("One", "1", 1L),
+			new SpellCode(Messages.Speller_86, "1", 1L), //$NON-NLS-2$
 
 			// Two
-			new SpellCode("Two", "2", 2L),
+			new SpellCode(Messages.Speller_88, "2", 2L), //$NON-NLS-2$
 
 			// Three
-			new SpellCode("Three", "3", 3L),
+			new SpellCode(Messages.Speller_90, "3", 3L), //$NON-NLS-2$
 
 			// Four
-			new SpellCode("Four", "4", 4L),
+			new SpellCode(Messages.Speller_92, "4", 4L), //$NON-NLS-2$
 
 			// Five
-			new SpellCode("Five", "5", 5L),
+			new SpellCode(Messages.Speller_94, "5", 5L), //$NON-NLS-2$
 
 			// Six
-			new SpellCode("Six", "6", 6L),
+			new SpellCode(Messages.Speller_96, Messages.Speller_97, 6L),
 
 			// Seven
-			new SpellCode("Seven", "7", 7L),
+			new SpellCode(Messages.Speller_98, "7", 7L), //$NON-NLS-2$
 
 			// Eight
-			new SpellCode("Eight", "8", 8L),
+			new SpellCode(Messages.Speller_100, "8", 8L), //$NON-NLS-2$
 
 			// Nine
-			new SpellCode("Nine", "9", 9L),
+			new SpellCode(Messages.Speller_102, "9", 9L), //$NON-NLS-2$
 
 			// Ten
-			new SpellCode("Ten", "R", 10L),
+			new SpellCode(Messages.Speller_104, "R", 10L), //$NON-NLS-2$
 
 			// Eleven
-			new SpellCode("Eleven", "P", 11L),
+			new SpellCode(Messages.Speller_106, "P", 11L), //$NON-NLS-2$
 
 			// Twelve
-			new SpellCode("Twelve", "Q", 12L),
+			new SpellCode(Messages.Speller_108, "Q", 12L), //$NON-NLS-2$
 
 			// Thirteen
-			new SpellCode("Thirteen", "K", 13L),
+			new SpellCode(Messages.Speller_110, "K", 13L), //$NON-NLS-2$
 
 			// Fourteen
-			new SpellCode("Fourteen", "U", 14L),
+			new SpellCode(Messages.Speller_112, "U", 14L), //$NON-NLS-2$
 
 			// Fifteen
-			new SpellCode("Fifteen", "Y", 15L),
+			new SpellCode(Messages.Speller_114, "Y", 15L), //$NON-NLS-2$
 
 			// Sixteen
-			new SpellCode("Sixteen", "A", 16L),
+			new SpellCode(Messages.Speller_116, "A", 16L), //$NON-NLS-2$
 
 			// Seventeen
-			new SpellCode("Seventeen", "B", 17L),
+			new SpellCode(Messages.Speller_118, "B", 17L), //$NON-NLS-2$
 
 			// Eighteen
-			new SpellCode("Eighteen", "C", 18L),
+			new SpellCode(Messages.Speller_120, "C", 18L), //$NON-NLS-2$
 
 			// Nineteen
-			new SpellCode("Nineteen", "D", 19L),
+			new SpellCode(Messages.Speller_122, "D", 19L), //$NON-NLS-2$
 
 			// Twenty
-			new SpellCode("Twenty", "H", 20L),
+			new SpellCode(Messages.Speller_124, "H", 20L), //$NON-NLS-2$
 
 			// Thirty
-			new SpellCode("Thirty", "S", 30L),
+			new SpellCode(Messages.Speller_126, "S", 30L), //$NON-NLS-2$
 
 			// Forty
-			new SpellCode("Forty", "F", 40L),
+			new SpellCode(Messages.Speller_128, "F", 40L), //$NON-NLS-2$
 
 			// Fifty
-			new SpellCode("Fifty", "E", 50L),
+			new SpellCode(Messages.Speller_130, "E", 50L), //$NON-NLS-2$
 
 			// Sixty
-			new SpellCode("Sixty", "X", 60L),
+			new SpellCode(Messages.Speller_132, "X", 60L), //$NON-NLS-2$
 
 			// Seventy
-			new SpellCode("Seventy", "V", 70L),
+			new SpellCode(Messages.Speller_134, "V", 70L), //$NON-NLS-2$
 
 			// Eighty
-			new SpellCode("Eighty", "G", 80L),
+			new SpellCode(Messages.Speller_136, "G", 80L), //$NON-NLS-2$
 
 			// Ninety
-			new SpellCode("Ninety", "N", 90L),
+			new SpellCode(Messages.Speller_138, "N", 90L), //$NON-NLS-2$
 
 			// Hundred
-			new SpellCode("Hundred", "I", 100L),
+			new SpellCode(Messages.Speller_140, "I", 100L), //$NON-NLS-2$
 
 			// Thousand
-			new SpellCode("Thousand", "T", 1000L),
+			new SpellCode(Messages.Speller_142, "T", 1000L), //$NON-NLS-2$
 
 			// Million
-			new SpellCode("Million", "M", 1000000L),
+			new SpellCode(Messages.Speller_144, "M", 1000000L), //$NON-NLS-2$
 
 			// Billion
-			new SpellCode("Billion", "J", 1000000000L),
+			new SpellCode(Messages.Speller_146, "J", 1000000000L), //$NON-NLS-2$
 
 			// Trillion
-			new SpellCode("Trillion", "L", 1000000000000L),
+			new SpellCode(Messages.Speller_148, "L", 1000000000000L), //$NON-NLS-2$
 
 			// Quadrillion
-			new SpellCode("Quadrillion", "W", 1000000000000000L),
+			new SpellCode(Messages.Speller_150, "W", 1000000000000000L), //$NON-NLS-2$
 
 			// Quintillion
-			new SpellCode("Quintillion", "Z", 1000000000000000000L),
+			new SpellCode(Messages.Speller_152, "Z", 1000000000000000000L), //$NON-NLS-2$
 
 			// and
-			new SpellCode("and", "&"),
+			new SpellCode(Messages.Speller_154, "&"), //$NON-NLS-2$
 
 			// Minus
-			new SpellCode("Minus", "-"),
+			new SpellCode(Messages.Speller_156, "-"), //$NON-NLS-2$
 
 			// Comma
-			new SpellCode(",", ","),
+			new SpellCode(Messages.Speller_158, ","), //$NON-NLS-2$
 
 			// dash
-			new SpellCode("-", "_"),
+			new SpellCode(Messages.Speller_160, "_"), //$NON-NLS-2$
 
 	// last element
 	}; // private static SpellCode[] myCodes
@@ -942,27 +951,27 @@ public class SpellContext implements ISpeller, IValidator<String> {
 			// SpellPattern begin
 
 			// pattern name
-			new PatternDefinition("zero", "0"),
-			new PatternDefinition("digit", "[1-9]"),
-			new PatternDefinition("odig", "[RPQKUYA-D]"),
-			new PatternDefinition("teen", "$(digit)|$(odig)"),
-			new PatternDefinition("oteen", "[HSFEXVGN](_?$(digit))?"),
-			new PatternDefinition("cent", "$(teen)|$(oteen)"),
-			new PatternDefinition("ocent", "$(digit)I(&?$(cent))?"),
-			new PatternDefinition("mil", "$(cent)|$(ocent)"),
-			new PatternDefinition("omil", "$(mil)T([,&]?$(mil))?"),
-			new PatternDefinition("e3", "$(mil)|$(omil)"),
-			new PatternDefinition("oe3", "$(mil)M([,&]?$(e3))?"),
-			new PatternDefinition("e6", "$(e3)|$(oe3)"),
-			new PatternDefinition("oe6", "$(mil)J([,&]?$(e6))?"),
-			new PatternDefinition("e9", "$(e6)|$(oe6)"),
-			new PatternDefinition("oe9", "$(mil)L([,&]?$(e9))?"),
-			new PatternDefinition("e12", "$(e9)|$(oe9)"),
-			new PatternDefinition("oe12", "$(mil)W([,&]?$(e12))?"),
-			new PatternDefinition("e15", "$(e12)|$(oe12)"),
-			new PatternDefinition("oe15", "$(mil)Z([,&]?$(e15))?"),
-			new PatternDefinition("e18", "$(e15)|$(oe15)"),
-			new PatternDefinition("num", "\\-?$(zero)|\\-?$(e18)"),
+			new PatternDefinition("zero", "0"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("digit", Messages.Speller_165), //$NON-NLS-1$
+			new PatternDefinition(Messages.Speller_166, "[RPQKUYA-D]"), //$NON-NLS-2$
+			new PatternDefinition("teen", "$(digit)|$(odig)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("oteen", "[HSFEXVGN](_?$(digit))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("cent", "$(teen)|$(oteen)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("ocent", "$(digit)I(&?$(cent))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("mil", "$(cent)|$(ocent)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("omil", "$(mil)T([,&]?$(mil))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("e3", "$(mil)|$(omil)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("oe3", "$(mil)M([,&]?$(e3))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("e6", "$(e3)|$(oe3)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("oe6", "$(mil)J([,&]?$(e6))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("e9", "$(e6)|$(oe6)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("oe9", "$(mil)L([,&]?$(e9))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("e12", "$(e9)|$(oe9)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("oe12", "$(mil)W([,&]?$(e12))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("e15", "$(e12)|$(oe12)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("oe15", "$(mil)Z([,&]?$(e15))?"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("e18", "$(e15)|$(oe15)"), //$NON-NLS-1$ //$NON-NLS-2$
+			new PatternDefinition("num", "\\-?$(zero)|\\-?$(e18)"), //$NON-NLS-1$ //$NON-NLS-2$
 
 	// SpellPattern end
 	};
@@ -971,19 +980,19 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 * Represents a dictionary mapping a known spell word to its coding
 	 * information.
 	 */
-	private static Hashtable<String, SpellCode> myNameMap;
+	private static HashMap<String, ISpellCode> myNameMap;
 
 	/**
 	 * Represents a dictionary mapping a known spell single-character code to
 	 * its coding information.
 	 */
-	private static Hashtable<String, SpellCode> myCodeMap;
+	private static HashMap<String, ISpellCode> myCodeMap;
 
 	/**
 	 * Represents a dictionary mapping a pattern variable name to its packed
 	 * format definition.
 	 */
-	private static Hashtable<String, PatternDefinition> mySpellPatternMap;
+	private static HashMap<String, PatternDefinition> mySpellPatternMap;
 
 	/**
 	 * Holds the ultimate regular expression pattern to validate all encoded
@@ -1000,12 +1009,12 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 */
 	private static boolean init() {
 		// Initialize dictionaries:
-		myNameMap = new Hashtable<String, SpellCode>();
-		myCodeMap = new Hashtable<String, SpellCode>();
-		mySpellPatternMap = new Hashtable<String, PatternDefinition>();
+		myNameMap = new HashMap<String, ISpellCode>();
+		myCodeMap = new HashMap<String, ISpellCode>();
+		mySpellPatternMap = new HashMap<String, PatternDefinition>();
 
 		// Load dictionary data : myNameMap and myCodeMap
-		for (SpellCode sc : myCodes) {
+		for (ISpellCode sc : myCodes) {
 			myNameMap.put(sc.getName().toLowerCase(), sc);
 			myCodeMap.put(sc.getCode(), sc);
 		}
@@ -1019,7 +1028,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// expand ultimate regular expression pattern to validate encoded
 		// spelled number texts.
 		try {
-			myNumberPattern = "^\\-?" + generatePattern("num") + "$";
+			myNumberPattern = "^\\-?" + generatePattern("num") + "$"; //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 		} catch (SpellException e) {
 			e.printStackTrace();
@@ -1047,7 +1056,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 
 		// If not matches, throw exception.
 		if (!mat.matches()) {
-			throw new SpellException("Invalid encoded text : " + encodedText);
+			throw new SpellException(Messages.Speller_207 + encodedText);
 		}
 	}
 
@@ -1067,7 +1076,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// first check if the name exists in dictionary.
 		if (!mySpellPatternMap.containsKey(name))
 			// if not exists, throw exception.
-			throw new SpellException("Undefined pattern variable name : "
+			throw new SpellException(Messages.Speller_208
 					+ name);
 
 		// get the pattern.
@@ -1076,7 +1085,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 		// get the nested definitions inside the definition:
 
 		// The reg-exp pattern to extract variable names in definition.
-		Pattern pat = Pattern.compile("\\$\\((\\w+)\\)");
+		Pattern pat = Pattern.compile("\\$\\((\\w+)\\)"); //$NON-NLS-1$
 
 		// match the packed format definition against the reg-exp for variable
 		// name.
@@ -1092,10 +1101,10 @@ public class SpellContext implements ISpeller, IValidator<String> {
 			String varName = mat.group(1);
 
 			// create the replacement text
-			String repText = String.format("\\$\\(%1$s\\)", varName);
+			String repText = String.format("\\$\\(%1$s\\)", varName); //$NON-NLS-1$
 
 			// Get the value corresponding the var name.
-			String value = String.format("(?:%1$s)", generatePattern(mat
+			String value = String.format("(?:%1$s)", generatePattern(mat //$NON-NLS-1$
 					.group(1)));
 
 			// replace the packed definition variable with its equivalent

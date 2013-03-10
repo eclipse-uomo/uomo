@@ -8,7 +8,7 @@
  * Contributors:
  *    Jiva Medical - initial API and implementation
  *******************************************************************************/
-package org.eclipse.uomo.util;
+package org.eclipse.uomo.util.impl;
 
 import java.util.Calendar;
 import java.util.Date;

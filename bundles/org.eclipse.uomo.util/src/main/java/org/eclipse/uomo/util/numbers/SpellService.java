@@ -6,30 +6,32 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil - initial API and implementation
+ *    Werner Keil - initial API
  */
 package org.eclipse.uomo.util.numbers;
 
 /**
-* SpellService is main engine for number spelling and text parsing, encoding
-* and validating.
-* 
- * @author Werner Keil
+ * SpellService is main engine for number spelling, text parsing and encoding
+ * and validating.
  * 
+ * @author Werner Keil
+ * @version 1.1
  */
 public interface SpellService {
-	
-    /**
-     * Register a speller
-     * 
-     * @param speller the speller to be added.
-     */
-    public void registerSpeller(ISpeller speller);
-    
-    /**
-     * Remove a speller
-     * 
-     * @param speller the speller to be removed.
-     */
-    public void unregisterSpeller(ISpeller dictionary);
+
+	/**
+	 * Register a speller
+	 * 
+	 * @param speller
+	 *            the speller to be added.
+	 */
+	public void registerSpeller(ISpeller speller);
+
+	/**
+	 * Remove a speller
+	 * 
+	 * @param speller
+	 *            the speller to be removed.
+	 */
+	public void unregisterSpeller(ISpeller dictionary);
 }

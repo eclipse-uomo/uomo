@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.business;
+package org.eclipse.uomo.business.internal;
 
 import org.eclipse.osgi.util.NLS;
 

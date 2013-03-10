@@ -19,7 +19,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import org.eclipse.osgi.util.NLS;
-import org.eclipse.uomo.business.Messages;
+import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.unitsofmeasurement.unit.Unit;
@@ -47,7 +47,7 @@ import com.ibm.icu.util.ULocale;
  * @version 5.2.3 ($Revision: 214 $), $Date: 2010-09-13 23:54:08 +0200 (Mo, 13 Sep 2010) $
  * @deprecated use JSR 354
  */
-public class CurrencyConverter extends AbstractConverter implements Formattable {
+public class MoneyConverter extends AbstractConverter implements Formattable {
 
 	/**
      * 
@@ -82,8 +82,8 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 	 *            the multiplier factor from source to target.
 	 * @return the corresponding converter.
 	 */
-	private CurrencyConverter(Currency source, Currency target, Number factor) {
-		rate = new ExchangeRate(source, target, factor);
+	private MoneyConverter(Currency source, Currency target, Number factor) {
+		rate = new MoneyExchangeRate(source, target, factor);
 	}
 
 	/**
@@ -99,14 +99,14 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 	 * @return the corresponding converter.
 	 */
 	@SuppressWarnings("unchecked")
-	public CurrencyConverter(MoneyUnit<?> source, Unit<IMoney> target,
+	public MoneyConverter(MoneyUnit<?> source, Unit<IMoney> target,
 			Number factor) {
 		if (target instanceof MoneyUnit<?>) {
-			rate = new ExchangeRate(source, (MoneyUnit<IMoney>) target,
+			rate = new MoneyExchangeRate(source, (MoneyUnit<IMoney>) target,
 					factor);
 		} else {
 			Currency defCurrency = Currency.getInstance(ULocale.getDefault());
-			rate = new ExchangeRate(defCurrency, defCurrency, factor);
+			rate = new MoneyExchangeRate(defCurrency, defCurrency, factor);
 		}
 	}
 
@@ -122,9 +122,9 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 	 *            the multiplier factor from source to target.
 	 * @return the corresponding converter.
 	 */
-	public CurrencyConverter(java.util.Currency source,
+	public MoneyConverter(java.util.Currency source,
 			java.util.Currency target, Number factor) {
-		rate = new ExchangeRate(fromJDK(source), fromJDK(target), factor);
+		rate = new MoneyExchangeRate(fromJDK(source), fromJDK(target), factor);
 	}
 
 	/**
@@ -145,13 +145,13 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 		return rate.getTarget();
 	}
 
-	public CurrencyConverter inverse() {
-		return new CurrencyConverter(rate.getTarget(), rate.getSource(),
+	public MoneyConverter inverse() {
+		return new MoneyConverter(rate.getTarget(), rate.getSource(),
 				rate.getFactor());
 	}
 
-	public CurrencyConverter negate() {
-		return new CurrencyConverter(rate.getSource(), rate.getTarget(), -rate
+	public MoneyConverter negate() {
+		return new MoneyConverter(rate.getSource(), rate.getTarget(), -rate
 				.getFactor().doubleValue());
 	}
 
@@ -188,9 +188,9 @@ public class CurrencyConverter extends AbstractConverter implements Formattable 
 
 	@Override
 	public boolean equals(Object cvtr) {
-		if (!(cvtr instanceof CurrencyConverter))
+		if (!(cvtr instanceof MoneyConverter))
 			return false;
-		CurrencyConverter that = (CurrencyConverter) cvtr;
+		MoneyConverter that = (MoneyConverter) cvtr;
 		return this.rate.getSource().equals(that.rate.getSource())
 				&& this.rate.getTarget().equals(that.rate.getTarget());
 	}

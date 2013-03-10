@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,32 +7,32 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - Refactoring and improvements
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.model;
 
-
-public class DefinedUnit extends UcumUnit{
+public class DefinedUnit extends UcumUnit {
 
 	/**
 	 * whether this is a metric unit or not
 	 */
 	private boolean metric;
-	
+
 	/**
 	 * special means?
 	 */
 	private boolean isSpecial;
-	
+
 	/**
 	 * The class of this unit
 	 */
 	private String class_;
-	
+
 	/**
 	 * Value details
 	 */
-	private Value value;
+	private Value<?> value;
 
 	/**
 	 * @param code
@@ -42,7 +42,6 @@ public class DefinedUnit extends UcumUnit{
 		super(ConceptKind.UNIT, code, codeUC);
 	}
 
-
 	/**
 	 * @return the metric
 	 */
@@ -50,14 +49,13 @@ public class DefinedUnit extends UcumUnit{
 		return metric;
 	}
 
-
 	/**
-	 * @param metric the metric to set
+	 * @param metric
+	 *            the metric to set
 	 */
 	public void setMetric(boolean metric) {
 		this.metric = metric;
 	}
-
 
 	/**
 	 * @return the isSpecial
@@ -66,14 +64,13 @@ public class DefinedUnit extends UcumUnit{
 		return isSpecial;
 	}
 
-
 	/**
-	 * @param isSpecial the isSpecial to set
+	 * @param isSpecial
+	 *            the isSpecial to set
 	 */
 	public void setSpecial(boolean isSpecial) {
 		this.isSpecial = isSpecial;
 	}
-
 
 	/**
 	 * @return the class_
@@ -82,37 +79,37 @@ public class DefinedUnit extends UcumUnit{
 		return class_;
 	}
 
-
 	/**
-	 * @param class_ the class_ to set
+	 * @param class_
+	 *            the class_ to set
 	 */
 	public void setClass_(String class_) {
 		this.class_ = class_;
 	}
 
-
 	/**
 	 * @return the value
 	 */
-	public Value getValue() {
+	public Value<?> getValue() {
 		return value;
 	}
 
-
 	/**
-	 * @param value the value to set
+	 * @param value
+	 *            the value to set
 	 */
-	public void setValue(Value value) {
+	public void setValue(Value<?> value) {
 		this.value = value;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.ohf.ucum.model.BaseUnit#getDescription()
 	 */
 	@Override
 	public String getDescription() {
-		return super.getDescription()+" = "+value.getDescription();
+		return super.getDescription() + " = " + value.getDescription();
 	}
-	
+
 }

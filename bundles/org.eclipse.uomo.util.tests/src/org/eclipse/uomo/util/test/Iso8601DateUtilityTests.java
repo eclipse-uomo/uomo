@@ -13,7 +13,7 @@ package org.eclipse.uomo.util.test;
 
 import junit.framework.TestCase;
 
-import org.eclipse.uomo.util.Iso8601Date;
+import org.eclipse.uomo.util.impl.Iso8601Date;
 import org.junit.Test;
 
 public class Iso8601DateUtilityTests extends TestCase {

@@ -1,97 +1,148 @@
-/**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- *
- * Contributors:
- *    Werner Keil - initial API and implementation
+/*
+ * Backport, stub for JavaMoney 
  */
 package org.eclipse.uomo.business.money;
 
-import java.util.Date;
-
-import org.eclipse.uomo.business.types.IMoney;
+import java.util.Enumeration;
 
 import com.ibm.icu.util.Currency;
-import com.ibm.icu.util.DateInterval;
+
+//import javax.money.MoneyUnit;
 
 /**
+ * This interface models a exchange rate between two currencies.
+ * 
  * @author Werner Keil
- * @version 0.2.1
- * @deprecated use JSR 354
+ * @author Anatole Tresch
+ * @version 0.2.2
+ * @deprecated stub
  */
-public class ExchangeRate {
+public interface ExchangeRate {
 
 	/**
-	 * Holds the source currency.
+	 * Access the type of exchange rate.
+	 * 
+	 * @return the type of this rate, never null.
 	 */
-	private final Currency source;
+	public ExchangeRateType getExchangeRateType();
 
 	/**
-	 * Holds the target currency.
+	 * Get the source currency.
+	 * 
+	 * @return the source currency.
 	 */
-	private final Currency target;
+	public Currency getSource();
 
 	/**
-	 * Holds the exchange factor.
+	 * Get the target currency.
+	 * 
+	 * @return the target currency.
 	 */
-	private final Number factor;
+	public Currency getTarget();
 
 	/**
-	 * Holds the effective (start) date.
+	 * Access the rate's factor.
+	 * 
+	 * @return the factor for this exchange rate.
 	 */
-	private final Date date;
+	public Number getFactor();
 
-	private final DateInterval interval;
-	
-	public ExchangeRate(Currency source, Currency target, Number factor,
-			Date fromDate, Date toDate) {
-		super();
-		this.source = source;
-		this.target = target;
-		this.factor = factor;
-		this.date = fromDate;
-		this.interval = new DateInterval(fromDate.getTime(), toDate.getTime());
-	}
-	
-	public ExchangeRate(Currency source, Currency target, Number factor,
-			Date date) {
-		this(source, target, factor, date, date);
-	}
+	/**
+	 * Returns the UTC timestamp defining from what date/time this rate is
+	 * valid.
+	 * 
+	 * @return The UTC timestamp of the rate, defining valid from, or
+	 *         {@code null}.
+	 */
+	public Long getValidFrom();
 
-	public ExchangeRate(Currency source, Currency target, Number factor) {
-		this(source, target, factor, new Date());
-	}
+	/**
+	 * Get the data validity timestamp of this rate in milliseconds. This can be
+	 * useful, when a rate in a system only should be used within some specified
+	 * time.
+	 * 
+	 * @return the duration of validity in milliseconds, or {@code null} if no
+	 *         validity constraints apply.
+	 */
+	public Long getValidUntil();
 
-	public Currency getSource() {
-		return source;
-	}
+	/**
+	 * Allows to check if a rate is still valid according to its data validity
+	 * timestamp.
+	 * 
+	 * @see #getValidUntil()
+	 * @return true, if the rate is valid for use.
+	 */
+	public boolean isValid();
 
-	@SuppressWarnings("unchecked")
-	public Currency getSourceUnit() {
-		return (MoneyUnit<IMoney>) source;
-	}
+	/**
+	 * Get the provider of this rate. The provider of a rate can have different
+	 * contexts in different usage scenarios, such as the service type or the
+	 * stock exchange.
+	 * 
+	 * @return the provider, or {code null}.
+	 */
+	public String getProvider();
 
-	public Currency getTarget() {
-		return target;
-	}
+	/**
+	 * Access the chain of exchange rates.
+	 * 
+	 * @return the chain of rates, in case of a derived rate, this may be
+	 *         several instances. For a direct exchange rate, this equals to
+	 *         <code>new ConversionRate[]{this}</code>.
+	 */
+	public ExchangeRate[] getExchangeRateChain();
 
-	@SuppressWarnings("unchecked")
-	public Currency getTargetUnit() {
-		return (MoneyUnit<IMoney>) target;
-	}
+	/**
+	 * Allows to evaluate if this exchange rate is a derived exchange rate.
+	 * Derived exchange rates are defined by an ordered list of subconversions
+	 * with intermediate steps, whereas a direct conversion is possible in one
+	 * steps.
+	 * 
+	 * @return true, if the exchange rate is derived.
+	 */
+	public boolean isDerived();
 
-	public Number getFactor() {
-		return factor;
-	}
+	/**
+	 * Checks if a conversion is an identity.
+	 * 
+	 * @param sourceCurrency
+	 *            The source currency
+	 * @param targetCurrency
+	 *            The target currency
+	 * @return true, if the conversion is linear.
+	 * @throws CurrencyConversionException
+	 *             if conversion failed, or the required data is not available.
+	 */
+	public boolean isIdentity();
 
-	public Date getDate() {
-		return date;
-	}
+	/**
+	 * Access additional attributes of this currency instance. This allows to
+	 * add additional codes or extended information by SPI providers. For
+	 * instance there are ISO currency codes existing that may represented by
+	 * different country specific currencies. The detailed country can be added
+	 * as an attribute here.
+	 * 
+	 * @param key
+	 *            The attribute's key, never null.
+	 * @return the according attribute value, or null.
+	 */
+	public <T> T getAttribute(String key, Class<T> type);
 
-	public DateInterval getInterval() {
-		return interval;
-	}
+	/**
+	 * Access the extended attributes defined.
+	 * 
+	 * @return the attribute key available, never null.
+	 */
+	public Enumeration<String> getAttributeKeys();
+
+	/**
+	 * Access the type of an attribute.
+	 * 
+	 * @param key
+	 *            The attribute key
+	 * @return the attribute's value class, or null.
+	 */
+	public Class<?> getAttributeType(String key);
+
 }

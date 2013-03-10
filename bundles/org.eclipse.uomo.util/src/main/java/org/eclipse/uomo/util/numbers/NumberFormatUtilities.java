@@ -1,13 +1,22 @@
+/**
+ * Copyright (c) 2005, 2013, Werner Keil and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Grahame Grieve - initial API and implementation
+ */
 package org.eclipse.uomo.util.numbers;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-
 /**
- * This provides services directly targeted at supporting messages like HL7. The formats are
- * not localized
+ * This provides services directly targeted at supporting messages like HL7. The
+ * formats are not localized
  * 
  * @author Grahame Grieve
  * @author Werner Keil

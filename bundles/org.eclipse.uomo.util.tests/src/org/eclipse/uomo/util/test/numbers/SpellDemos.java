@@ -1,4 +1,4 @@
-package org.eclipse.uomo.util.numbers;
+package org.eclipse.uomo.util.test.numbers;
 
 /**
  * Maximum value to handle : 9223372036854775807
@@ -13,6 +13,7 @@ package org.eclipse.uomo.util.numbers;
 import java.io.IOException;
 import java.util.Scanner;
 
+import org.eclipse.uomo.util.numbers.SpellException;
 import org.eclipse.uomo.util.numbers.impl.SpellContext;
 
 /**
@@ -316,7 +317,7 @@ public class SpellDemos {
 			System.out.printf("%1$d (Numeric)\n", value);
 			try {
 				// create the spelled text from the numeric value.
-				spellText = SpellContext.getInstance().spell(value);
+				spellText = SpellContext.getDefault().spell(value);
 				// There is no need for formal spelled text because the spelled
 				// text is generated from this program (not user), and it does
 				// not contain any spelling error.
@@ -334,7 +335,7 @@ public class SpellDemos {
 		try {
 			// If it is user spelled text, evaluate the corresponding value.
 			if (userSpelledText)
-				value = SpellContext.parse(spellText);
+				value = SpellContext.getDefault().parse(spellText);
 
 			// encode the spelled text
 			String encoded = SpellContext.encode(spellText);
@@ -346,7 +347,7 @@ public class SpellDemos {
 
 			try {
 				// validate the spelling.
-				SpellContext.getInstance().validate(encoded);
+				SpellContext.getDefault().validate(encoded);
 
 			} catch (SpellException e) {
 				// mark incorrect, if validation failed.
@@ -365,7 +366,7 @@ public class SpellDemos {
 			// Decide if it is a user spelled text and needs a formal spelled
 			// text to compare.
 			if (userSpelledText) {
-				String formalSpell = SpellContext.getInstance().spell(value);
+				String formalSpell = SpellContext.getDefault().spell(value);
 				String formalEncode = SpellContext.encode(formalSpell);
 
 				if (!formalEncode.equals(encoded)) {

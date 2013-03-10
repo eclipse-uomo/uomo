@@ -1,9 +1,24 @@
-package org.eclipse.uomo.util.numbers;
+/**
+ * Copyright (c) 2005, 2013, Werner Keil and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Werner Keil - initial API and implementation
+ */
+package org.eclipse.uomo.util.numbers.impl;
+
+import org.eclipse.uomo.util.internal.Messages;
+import org.eclipse.uomo.util.numbers.ISpeller;
+import org.eclipse.uomo.util.numbers.SpellException;
 
 
-public class IndianNumberToWord implements ISpeller {
+public class IndianNumberSpeller implements ISpeller {
 	String string;
-	String a[] = { "", "one", "two", "three", "four", "five", "six", "seven",
+	String a[] = { "", Messages.Speller_22, Messages.Speller_23,
+			Messages.Speller_24, Messages.Speller_25, "five", "six", "seven",
 			"eight", "nine", };
 	String b[] = { "hundred", "thousand", "lakh", "crore" };
 	String c[] = { "ten", "eleven", "twelve", "thirteen", "fourteen",
@@ -25,7 +40,7 @@ public class IndianNumberToWord implements ISpeller {
 				num = numToConvert % 100;
 				passString(num);
 				if (numToConvert > 100 && numToConvert % 100 != 0) {
-					displayOutput("and ");
+					displayOutput(Messages.Speller_7);
 				}
 				numToConvert /= 100;
 				break;
@@ -108,19 +123,8 @@ public class IndianNumberToWord implements ISpeller {
 		string = sb.toString();
 	}
 
-	public static void main(String args[]) throws Exception {
-//		Reader buff = new BufferedReader(new InputStreamReader(
-//				System.in));
-		System.out.println("Display massage number to Text!");
-		ISpeller num = new IndianNumberToWord();
-		System.out.println("Spelling: " + num.spell(10) + ".");
-		System.out.println("Spelling: " + num.spell(15) + ".");
-		System.out.println("Spelling: " + num.spell(50) + ".");
-		System.out.println("Spelling: " + num.spell(99) + ".");
-		System.out.println("Spelling: " + num.spell(150) + ".");
-		System.out.println("Spelling: " + num.spell(234) + ".");
-		System.out.println("Spelling: " + num.spell(250) + ".");
-		System.out.println("Spelling: " + num.spell(250000) + ".");
-//		System.out.println("Spelling: " + num.spell(Integer.MAX_VALUE + 1) + ".");
+	@Override
+	public Long parse(String text) throws SpellException {
+		return null;
 	}
 }

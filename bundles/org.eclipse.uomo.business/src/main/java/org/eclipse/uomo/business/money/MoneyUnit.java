@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,10 @@
 package org.eclipse.uomo.business.money;
 
 import java.math.BigInteger;
+import java.util.Enumeration;
 import java.util.Map;
+
+//import javax.money.CurrencyUnit;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
@@ -42,7 +45,9 @@ import com.ibm.icu.util.ULocale;
  * 
  */
 public class MoneyUnit<Q extends IMoney> extends Currency implements
-		Unit<IMoney>, IName {
+		Unit<IMoney>, IName 
+		//,CurrencyUnit 
+		{
 
 	/**
      * 
@@ -186,7 +191,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 
 	public UnitConverter getConverterTo(Unit<IMoney> that)
 			throws UnconvertibleException {
-		return new CurrencyConverter(this, that, 1);
+		return new MoneyConverter(this, that, 1);
 	}
 
 	public UnitConverter getConverterToAny(Unit<?> that)
@@ -373,5 +378,59 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	public Unit<IMoney> getSystemUnit() {
 		return toMetric();
 	}
+
+//	@Override
+//	public String getNamespace() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public int getNumericCode() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
+//
+//	@Override
+//	public boolean isLegalTender() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public boolean isVirtual() {
+//		// TODO Auto-generated method stub
+//		return false;
+//	}
+//
+//	@Override
+//	public Long getValidFrom() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public Long getValidUntil() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public <T> T getAttribute(String key, Class<T> type) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public Enumeration<String> getAttributeKeys() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public Class<?> getAttributeType(String key) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

@@ -12,7 +12,7 @@ package org.eclipse.uomo.business.types.impl;
 
 import static org.eclipse.uomo.business.types.impl.DataHelper.BDT_DELIM;
 
-import org.eclipse.uomo.business.Messages;
+import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IBDType;
