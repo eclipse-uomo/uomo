@@ -18,27 +18,26 @@ import com.ibm.icu.util.Currency;
 
 /**
  * @author Werner Keil
- *
+ * 
  */
 public class MoneyExchangeRate implements ExchangeRate {
 
 	public static enum Type implements ExchangeRateType {
 		DEFAULT;
 
-		@Override
 		public String getId() {
 			return name();
 		}
 	}
-	
+
 	private final Type type;
-	
+
 	private final Currency source;
-	
+
 	private final Currency target;
-	
+
 	private final Number factor;
-	
+
 	public MoneyExchangeRate(Currency source, Currency target, Number factor) {
 		this.source = source;
 		this.target = target;
@@ -46,35 +45,45 @@ public class MoneyExchangeRate implements ExchangeRate {
 		type = Type.DEFAULT;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getExchangeRateType()
 	 */
 	public ExchangeRateType getExchangeRateType() {
 		return type;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getSource()
 	 */
 	public Currency getSource() {
 		return source;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getTarget()
 	 */
 	public Currency getTarget() {
 		return target;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getFactor()
 	 */
 	public Number getFactor() {
 		return factor;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getValidFrom()
 	 */
 	public Long getValidFrom() {
@@ -82,7 +91,9 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getValidUntil()
 	 */
 	public Long getValidUntil() {
@@ -90,7 +101,9 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#isValid()
 	 */
 	public boolean isValid() {
@@ -98,7 +111,9 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getProvider()
 	 */
 	public String getProvider() {
@@ -106,7 +121,9 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getExchangeRateChain()
 	 */
 	public ExchangeRate[] getExchangeRateChain() {
@@ -114,7 +131,9 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#isDerived()
 	 */
 	public boolean isDerived() {
@@ -122,7 +141,9 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return false;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#isIdentity()
 	 */
 	public boolean isIdentity() {
@@ -130,15 +151,21 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return false;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.uomo.business.money.ExchangeRate#getAttribute(java.lang.String, java.lang.Class)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.uomo.business.money.ExchangeRate#getAttribute(java.lang.String
+	 * , java.lang.Class)
 	 */
 	public <T> T getAttribute(String key, Class<T> type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.eclipse.uomo.business.money.ExchangeRate#getAttributeKeys()
 	 */
 	public Enumeration<String> getAttributeKeys() {
@@ -146,8 +173,12 @@ public class MoneyExchangeRate implements ExchangeRate {
 		return null;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.uomo.business.money.ExchangeRate#getAttributeType(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.eclipse.uomo.business.money.ExchangeRate#getAttributeType(java.lang
+	 * .String)
 	 */
 	public Class<?> getAttributeType(String key) {
 		// TODO Auto-generated method stub
