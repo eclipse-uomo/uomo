@@ -21,8 +21,11 @@ import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
 import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 
+import org.eclipse.uomo.business.money.MoneyAmount;
 import org.eclipse.uomo.business.money.MoneyConverter;
+import org.eclipse.uomo.business.money.MoneyUnit;
 import org.eclipse.uomo.business.types.IMoney;
+import org.eclipse.uomo.examples.business.console.internal.DemoMessages;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
@@ -51,7 +54,7 @@ public class MoneyDemo {
 		// Calculates trip cost.
 		BaseAmount carMileage = new BaseAmount(20,
 				MILE.divide(GALLON_LIQUID)); // 20 mi/gal.
-		IMeasure<?> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
+		IMeasure<IMoney> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
 		// // 1.2 EUR/L
 		LengthAmount tripDistance = new LengthAmount(400, KILO(METRE)); // 400 km
 //		IMeasure<Length> tripDistance2 = new LengthAmount(400, KILO(METRE));
@@ -78,7 +81,7 @@ public class MoneyDemo {
 //		System.out.println(gazPrice.doubleValue(USD));
 //		System.out.println(TestMessages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(USD)); //$NON-NLS-1$
-		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(EUR));
+		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
 //		System.out.println(Messages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(EUR)); //$NON-NLS-1$
 		// System.out.println("Trip cost = " + tripCost + " (" +

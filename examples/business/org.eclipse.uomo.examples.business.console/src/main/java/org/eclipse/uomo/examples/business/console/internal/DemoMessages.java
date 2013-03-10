@@ -1,8 +1,8 @@
-package org.eclipse.uomo.examples.business.console.money;
+package org.eclipse.uomo.examples.business.console.internal;
 
 import org.eclipse.osgi.util.NLS;
 
-class DemoMessages extends NLS {
+public class DemoMessages extends NLS {
 	private static final String BUNDLE_NAME = DemoMessages.class.getPackage().getName() + ".demomessages"; //$NON-NLS-1$
 	public static String MoneyDemo_Car_mileage;
 	public static String MoneyDemo_Gas_price;

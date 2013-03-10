@@ -648,12 +648,14 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 				}
 			}
 				// return formatConverter(compound.getRight(), true,
-				// unitPrecedence, buffer);
+			// unitPrecedence, buffer);
 			
 		} else {
 			if (converter != null) {
-				throw new IllegalArgumentException(
-						"Unable to format the given UnitConverter: " + converter.getClass()); //$NON-NLS-1$
+//				throw new IllegalArgumentException(
+//						"Unable to format the given UnitConverter: " + converter.getClass()); //$NON-NLS-1$
+				buffer.replace(0, 1, converter.toString());
+				return NOOP_PRECEDENCE;
 			} else
 				throw new IllegalArgumentException(
 						"Unable to format, no UnitConverter given"); //$NON-NLS-1$

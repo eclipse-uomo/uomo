@@ -202,6 +202,9 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 
 	@Override
 	public final String toString() {
+		if (getSource().equals(getTarget())) {
+			return getSource().getSymbol();
+		}
 		return String.format(Messages.CurrencyConverter_toString, getSource()
 				.getSymbol(), getTarget().getSymbol());
 	}
