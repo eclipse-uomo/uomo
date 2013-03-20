@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2013, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Jean-Marie Dautelle - initial API and implementation
  */
-package org.eclipse.uomo.units.impl.system;
+package org.eclipse.uomo.units.internal;
 
 import static org.eclipse.uomo.units.SI.AMPERE;
 import static org.eclipse.uomo.units.SI.BECQUEREL;
@@ -67,9 +67,8 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 1.17 ($Revision: 231 $), $Date: 2011-09-11 14:57:59 +0200 (So, 11 Sep
  *          2011) $
- *          TODO expose relevant units like ROENTGEN, etc. via other SOU?
  */
-final class NonSI extends AbstractSystemOfUnits {
+public final class NonSI extends AbstractSystemOfUnits {
 
 	/**
 	 * Holds the standard gravity constant: 9.80665 m/sÂ² exact.
@@ -81,9 +80,9 @@ final class NonSI extends AbstractSystemOfUnits {
 	/**
 	 * Holds the avoirdupois pound: 0.45359237 kg exact
 	 */
-	static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
+	public static final int AVOIRDUPOIS_POUND_DIVIDEND = 45359237;
 
-	static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
+	public static final int AVOIRDUPOIS_POUND_DIVISOR = 100000000;
 
 	/**
 	 * Holds the Avogadro constant.

@@ -49,7 +49,7 @@ public class MoneyDemo {
 		// /////////////////////////////////////////////////////////////////////
 
 		@SuppressWarnings("unused")
-		MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
+		//MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
 
 		// Calculates trip cost.
 		BaseAmount carMileage = new BaseAmount(20,
