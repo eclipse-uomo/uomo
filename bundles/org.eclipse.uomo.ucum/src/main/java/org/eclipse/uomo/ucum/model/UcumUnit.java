@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,12 +7,19 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - Refactoring and improvements
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.model;
 
+import org.unitsofmeasurement.unit.Unit;
 
-public abstract class UcumUnit extends Concept {
+/**
+ * @author Werner Keil
+ * @version 1.1
+ */
+@SuppressWarnings("rawtypes")
+public abstract class UcumUnit extends Concept implements Unit {
 
 	/**
 	 * kind of thing this base unit represents

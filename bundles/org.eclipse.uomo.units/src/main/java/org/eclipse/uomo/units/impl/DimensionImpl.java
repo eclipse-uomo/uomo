@@ -246,6 +246,16 @@ public final class DimensionImpl implements Dimension, Serializable {
 	public static Model getModel() {
 		return DimensionImpl.model;
 	}
+	
+	/**
+	 * Creates a new dimension associated to the specified symbol.
+	 * 
+	 * @param symbol
+	 *            the associated symbol.
+	 */
+	public static Dimension valueOf(char symbol) {
+		return new DimensionImpl(symbol);
+	}
 
 	/**
 	 * This interface represents the mapping between {@linkplain BaseUnit base
