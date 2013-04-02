@@ -7,7 +7,6 @@ import java.util.Set;
 
 import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.ucum.UcumService;
-import org.eclipse.uomo.ucum.expression.Component;
 import org.eclipse.uomo.ucum.expression.Symbol;
 import org.eclipse.uomo.ucum.expression.Term;
 import org.eclipse.uomo.ucum.impl.UcumEssenceService;
