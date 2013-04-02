@@ -49,7 +49,7 @@ public class MoneyDemo {
 		// /////////////////////////////////////////////////////////////////////
 
 		@SuppressWarnings("unused")
-		//MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
+		MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
 
 		// Calculates trip cost.
 		BaseAmount carMileage = new BaseAmount(20,
@@ -78,9 +78,9 @@ public class MoneyDemo {
 		// System.out.println(currFormat.format(mo));
 		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost); // + " (" +
 
-//		System.out.println(gazPrice.doubleValue(USD));
-//		System.out.println(TestMessages.MoneyDemo_Trip_cost
-//				+ ((BaseAmount) tripCost).to(USD)); //$NON-NLS-1$
+		System.out.println(gazPrice.doubleValue(USD));
+		System.out.println("Trip Cost"
+				+ ((BaseAmount) tripCost).to(USD)); //$NON-NLS-1$
 		//System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
 //		System.out.println(Messages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(EUR)); //$NON-NLS-1$

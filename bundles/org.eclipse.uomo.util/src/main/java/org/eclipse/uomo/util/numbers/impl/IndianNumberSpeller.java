@@ -24,9 +24,9 @@ public class IndianNumberSpeller implements ISpeller {
 			Messages.Speller_108, Messages.Speller_110, Messages.Speller_112,
 			Messages.Speller_114, Messages.Speller_116, Messages.Speller_118,
 			Messages.Speller_120, Messages.Speller_122 };
-	private final String myCentText[] = { "twenty", "thirty", "fourty", "fifty",
-			"sixty", "seventy", "eighty", "ninty" };
-	private final String myCroreText[] = { Messages.Speller_140, "thousand",
+	private final String myCentText[] = { "Twenty", "Thirty", "Fourty", "Fifty",
+			"Sixty", "Seventy", "Eighty", "Ninty" };
+	private final String myCroreText[] = { Messages.Speller_140, "Thousand",
 			Messages.Speller_Lakh, Messages.Speller_Crore };
 
 	public String spell(final long number) throws SpellException {

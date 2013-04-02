@@ -27,7 +27,9 @@ public class IndianNumberDemos {
 		System.out.println("Spelling: " + num.spell(150) + ".");
 		System.out.println("Spelling: " + num.spell(234) + ".");
 		System.out.println("Spelling: " + num.spell(250) + ".");
-		System.out.println("Spelling: " + num.spell(250000) + ".");
+		System.out.println("Spelling: " + num.spell(2500) + ".");
+		System.out.println("Spelling: " + num.spell(3900) + ".");
+		System.out.println("Spelling: " + num.spell(250700) + ".");
 		// System.out.println("Spelling: " + num.spell(Integer.MAX_VALUE + 1) +
 		// ".");
 	}
