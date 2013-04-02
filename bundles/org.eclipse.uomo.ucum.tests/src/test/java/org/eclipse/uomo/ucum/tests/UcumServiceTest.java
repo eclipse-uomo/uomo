@@ -61,6 +61,5 @@ public class UcumServiceTest {
 			println(e.getLocalizedMessage());
 			fail(e.getLocalizedMessage());
 		}
-		//assertEquals(fmt.format(BigDecimal.ONE), fmt.format(mult));
 	}
 }
