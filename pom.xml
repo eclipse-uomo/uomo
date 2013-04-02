@@ -86,7 +86,7 @@
 	<modules>
 		<module>bundles</module>
 		<module>features</module>
-		<!--  module>examples</module-->
+		<module>examples</module>
 		<module>releng</module>
 	</modules>
 	<!-- ======================================================= -->
