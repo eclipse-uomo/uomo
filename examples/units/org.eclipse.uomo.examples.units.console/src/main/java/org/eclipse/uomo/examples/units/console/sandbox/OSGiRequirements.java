@@ -11,8 +11,9 @@ import org.unitsofmeasurement.unit.UnitConverter;
 /**
  * 
  * @author Werner Keil
+ * @version 1.1
  * <p>
- * Thanks to Barry for his inspiration
+ * Thanks to Barry for his input and inspiration.
  * </p>
  */
 public class OSGiRequirements {

@@ -14,6 +14,7 @@ package org.eclipse.uomo.ucum.model;
 
 import java.util.Map;
 
+import org.eclipse.uomo.units.impl.DimensionImpl;
 import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
@@ -140,11 +141,6 @@ public class DefinedUnit extends UcumUnit {
 	}
 
 	@Override
-	public Unit divide(double arg0) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
 	public Unit divide(Unit arg0) {
 		throw new UnsupportedOperationException();
 	}
@@ -165,8 +161,7 @@ public class DefinedUnit extends UcumUnit {
 
 	@Override
 	public Dimension getDimension() {
-		// TODO Auto-generated method stub
-		return null;
+		return DimensionImpl.NONE;
 	}
 
 	@Override
@@ -187,12 +182,6 @@ public class DefinedUnit extends UcumUnit {
 	}
 
 	@Override
-	public boolean isCompatible(Unit arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public Unit multiply(double arg0) {
 		// TODO Auto-generated method stub
 		return null;
@@ -200,18 +189,6 @@ public class DefinedUnit extends UcumUnit {
 
 	@Override
 	public Unit multiply(Unit arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Unit pow(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Unit root(int arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}

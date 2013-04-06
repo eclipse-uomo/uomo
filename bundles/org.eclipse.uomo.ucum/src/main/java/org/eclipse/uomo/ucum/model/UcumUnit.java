@@ -20,13 +20,18 @@ import org.unitsofmeasurement.unit.Unit;
  */
 @SuppressWarnings("rawtypes")
 public abstract class UcumUnit extends Concept implements Unit {
-
+	
+	/**
+	 * Holds the dimensionless unit <code>ONE</code>.
+	 */
+	public static final UcumUnit ONE = new DefinedUnit("", "");
+	
 	/**
 	 * kind of thing this base unit represents
 	 */
 	private String property;
 
-	public UcumUnit(ConceptKind kind, String code, String codeUC) {
+	protected UcumUnit(ConceptKind kind, String code, String codeUC) {
 		super(kind, code, codeUC);
 	}
 
@@ -52,5 +57,44 @@ public abstract class UcumUnit extends Concept implements Unit {
 		return super.getDescription()+" ("+property+")";
 	}
 	
+	@Override
+	public Unit<?> alternate(String a) {
+		return this;
+	}
 	
+	@Override
+	public Unit<?> divide(double divisor) {
+		if (divisor == 1)
+			return this;
+		return null;
+	}
+	
+	@Override
+	public boolean isCompatible(Unit u) {
+		return u.getDimension() != null && u.getDimension().equals(getDimension());
+	}
+	
+	/**
+	 * Returns a unit equals to this unit raised to an exponent.
+	 * 
+	 * @param n
+	 *            the exponent.
+	 * @return the result of raising this unit to the exponent.
+	 */
+	public final Unit<?> pow(int n) {
+		if (n > 0)
+			return this.multiply(this.pow(n - 1));
+		else if (n == 0)
+			return ONE;
+		else
+			// n < 0
+			return ONE.divide(this.pow(-n));
+	}
+
+	@Override
+	public Unit<?> root(int n) {
+		if (n == 0)
+			throw new ArithmeticException("Root's order of zero"); //$NON-NLS-1$
+		return null;
+	}
 }

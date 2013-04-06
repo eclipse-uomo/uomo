@@ -18,6 +18,7 @@ import org.unitsofmeasurement.quantity.Temperature;
 
 /**
  * @author Werner Keil
+ * @version 1.0
  *
  */
 public class TemperatureExample {

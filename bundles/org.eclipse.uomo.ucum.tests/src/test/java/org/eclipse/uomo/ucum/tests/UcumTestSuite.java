@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2008, 2011, Copyright (c) 2008, 2008 Kestral Computing.
+ * Crown Copyright (c) 2008, 2011, Kestral Computing, (c) 2012, 2013 Werner Keil.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing - initial API and implementation
+ *    Werner Keil - refactoring and improvements
  *******************************************************************************/
 package org.eclipse.uomo.ucum.tests;
 
@@ -26,13 +27,13 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 	SystemTest.class, UcumServiceTest.class
 })
-public class UCUMTestSuite {
+public class UcumTestSuite {
 
 	/**
 	 * For use with JUnit3 runner
 	 * @deprecated
 	 */
 	public static Test suite() {
-		return new JUnit4TestAdapter(UCUMTestSuite.class);
+		return new JUnit4TestAdapter(UcumTestSuite.class);
 	}
 }

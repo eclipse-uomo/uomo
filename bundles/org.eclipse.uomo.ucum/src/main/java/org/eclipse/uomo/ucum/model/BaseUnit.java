@@ -62,19 +62,7 @@ public class BaseUnit extends UcumUnit {
 	}
 
 	@Override
-	public Unit alternate(String arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Unit asType(Class arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Unit divide(double arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -122,11 +110,6 @@ public class BaseUnit extends UcumUnit {
 	}
 
 	@Override
-	public boolean isCompatible(Unit arg0) {
-		return arg0.getDimension() != null && arg0.getDimension().equals(getDimension());
-	}
-
-	@Override
 	public Unit multiply(double arg0) {
 		// TODO Auto-generated method stub
 		return null;
@@ -134,18 +117,6 @@ public class BaseUnit extends UcumUnit {
 
 	@Override
 	public Unit multiply(Unit arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Unit pow(int arg0) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Unit root(int arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
