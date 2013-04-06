@@ -25,6 +25,7 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.uomo.core.UOMoException;
+import org.eclipse.uomo.ucum.internal.Messages;
 import org.eclipse.uomo.ucum.model.BaseUnit;
 import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.Prefix;
@@ -70,19 +71,19 @@ public class DefinitionParser implements Parser<String, UcumModel> {
 		
         int eventType = xpp.next();
         if (eventType != START_TAG)
-        	throw new XmlPullParserException("Unable to process XML document");
-        if (!xpp.getName().equals("root")) 
-        	throw new XmlPullParserException("Unable to process XML document: expected 'root' but found '"+xpp.getName()+"'");
-        final DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss' 'Z");
-        Date date = fmt.parse(xpp.getAttributeValue(null, "revision-date").substring(7, 32));        
-		UcumModel root = new UcumModel(xpp.getAttributeValue(null, "version"), xpp.getAttributeValue(null, "revision"), date);
+        	throw new XmlPullParserException(Messages.DefinitionParser_0);
+        if (!xpp.getName().equals("root"))  //$NON-NLS-1$
+        	throw new XmlPullParserException(Messages.DefinitionParser_2+xpp.getName()+Messages.DefinitionParser_3);
+        final DateFormat fmt = new SimpleDateFormat(Messages.DefinitionParser_DateFormat);
+        Date date = fmt.parse(xpp.getAttributeValue(null, "revision-date").substring(7, 32));         //$NON-NLS-1$
+		UcumModel root = new UcumModel(xpp.getAttributeValue(null, "version"), xpp.getAttributeValue(null, "revision"), date); //$NON-NLS-1$ //$NON-NLS-2$
         xpp.next();
 		while (xpp.getEventType() != END_TAG) {
 			if (xpp.getEventType() == TEXT) {
 				if (StringUtils.isWhitespace(xpp.getText()))
 					xpp.next();
 				else
-					throw new XmlPullParserException("Unexpected text "+xpp.getText());
+					throw new XmlPullParserException(Messages.DefinitionParser_8+xpp.getText());
 			} else if (xpp.getName().equals(PREFIX.visibleName())) 
 				root.getPrefixes().add(parsePrefix(xpp));
 			else if (xpp.getName().equals(BASEUNIT.visibleName())) 
@@ -90,66 +91,66 @@ public class DefinitionParser implements Parser<String, UcumModel> {
 			else if (xpp.getName().equals(UNIT.visibleName())) 
 				root.getDefinedUnits().add(parseUnit(xpp));
 			else 
-				throw new XmlPullParserException("unknown element name "+xpp.getName());
+				throw new XmlPullParserException(Messages.DefinitionParser_9+xpp.getName());
 		}
 		return root;
 	}
 
 	private DefinedUnit parseUnit(XmlPullParser xpp) throws XmlPullParserException, IOException {
-		DefinedUnit unit = new DefinedUnit(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE"));
-		unit.setMetric("yes".equals(xpp.getAttributeValue(null, "isMetric")));
-		unit.setSpecial("yes".equals(xpp.getAttributeValue(null, "isSpecial")));
-		unit.setClass_(xpp.getAttributeValue(null, "class"));
+		DefinedUnit unit = new DefinedUnit(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE")); //$NON-NLS-1$ //$NON-NLS-2$
+		unit.setMetric("yes".equals(xpp.getAttributeValue(null, "isMetric"))); //$NON-NLS-1$ //$NON-NLS-2$
+		unit.setSpecial("yes".equals(xpp.getAttributeValue(null, "isSpecial"))); //$NON-NLS-1$ //$NON-NLS-2$
+		unit.setClass_(xpp.getAttributeValue(null, "class")); //$NON-NLS-1$
 		xpp.next();
 		skipWhitespace(xpp);
-		while (xpp.getEventType() == START_TAG && "name".equals(xpp.getName()))
-			unit.getNames().add(readElement(xpp, "name", UNIT.visibleName()+" "+unit.getCode(), false));
-		if (xpp.getEventType() == START_TAG && "printSymbol".equals(xpp.getName()))
-			unit.setPrintSymbol(readElement(xpp, "printSymbol", UNIT.visibleName()+" "+unit.getCode(), true));
-		unit.setProperty(readElement(xpp, "property", UNIT.visibleName()+" "+unit.getCode(), false));
-		unit.setValue(parseValue(xpp, "unit "+unit.getCode()));
+		while (xpp.getEventType() == START_TAG && "name".equals(xpp.getName())) //$NON-NLS-1$
+			unit.getNames().add(readElement(xpp, "name", UNIT.visibleName()+" "+unit.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
+		if (xpp.getEventType() == START_TAG && "printSymbol".equals(xpp.getName())) //$NON-NLS-1$
+			unit.setPrintSymbol(readElement(xpp, "printSymbol", UNIT.visibleName()+" "+unit.getCode(), true)); //$NON-NLS-1$ //$NON-NLS-2$
+		unit.setProperty(readElement(xpp, "property", UNIT.visibleName()+" "+unit.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
+		unit.setValue(parseValue(xpp, "unit "+unit.getCode())); //$NON-NLS-1$
 		xpp.next();
 		skipWhitespace(xpp);
 		return unit;
 	}
 
 	private Value<?> parseValue(XmlPullParser xpp, String context) throws XmlPullParserException, IOException {
-		checkAtElement(xpp, "value", context);
+		checkAtElement(xpp, "value", context); //$NON-NLS-1$
 		BigDecimal val = null;
-		if (xpp.getAttributeValue(null, "value") != null) 
+		if (xpp.getAttributeValue(null, "value") != null)  //$NON-NLS-1$
 		try {
-			val = new BigDecimal(xpp.getAttributeValue(null, "value"));
+			val = new BigDecimal(xpp.getAttributeValue(null, "value")); //$NON-NLS-1$
 		} catch (NumberFormatException e) {
-			throw new XmlPullParserException("Error reading "+context+": "+e.getMessage());
+			throw new XmlPullParserException(Messages.DefinitionParser_29+context+Messages.DefinitionParser_30+e.getMessage());
 		}
 		@SuppressWarnings("rawtypes")
-		Value<?> value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val);
-		value.setText(readElement(xpp, "value", context, true));
+		Value<?> value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val); //$NON-NLS-1$ //$NON-NLS-2$
+		value.setText(readElement(xpp, "value", context, true)); //$NON-NLS-1$
 		return value;
 	}
 
 	private BaseUnit parseBaseUnit(XmlPullParser xpp) throws XmlPullParserException, IOException {
-		BaseUnit base = new BaseUnit(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE"));
-		base.setDim(xpp.getAttributeValue(null, "dim").charAt(0));
+		BaseUnit base = new BaseUnit(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE")); //$NON-NLS-1$ //$NON-NLS-2$
+		base.setDim(xpp.getAttributeValue(null, "dim").charAt(0)); //$NON-NLS-1$
 		xpp.next();
 		skipWhitespace(xpp);
-		base.getNames().add(readElement(xpp, "name", BASEUNIT.visibleName()+" "+base.getCode(), false));
-		base.setPrintSymbol(readElement(xpp, "printSymbol", BASEUNIT.visibleName()+" "+base.getCode(), false));
-		base.setProperty(readElement(xpp, "property", BASEUNIT.visibleName()+" "+base.getCode(), false));
+		base.getNames().add(readElement(xpp, "name", BASEUNIT.visibleName()+" "+base.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
+		base.setPrintSymbol(readElement(xpp, "printSymbol", BASEUNIT.visibleName()+" "+base.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
+		base.setProperty(readElement(xpp, "property", BASEUNIT.visibleName()+" "+base.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
 		xpp.next();
 		skipWhitespace(xpp);
 		return base;
 	}
 
 	private Prefix parsePrefix(XmlPullParser xpp) throws XmlPullParserException, IOException {
-		Prefix prefix = new Prefix(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE"));
+		Prefix prefix = new Prefix(xpp.getAttributeValue(null, "Code"), xpp.getAttributeValue(null, "CODE")); //$NON-NLS-1$ //$NON-NLS-2$
 		xpp.next();
 		skipWhitespace(xpp);
-		prefix.getNames().add(readElement(xpp, "name", PREFIX.visibleName()+" "+prefix.getCode(), false));
-		prefix.setPrintSymbol(readElement(xpp, "printSymbol", PREFIX.visibleName()+" "+prefix.getCode(), false));
-		checkAtElement(xpp, "value", PREFIX.visibleName()+" "+prefix.getCode());
-		prefix.setValue(new BigDecimal(xpp.getAttributeValue(null, "value")));
-		readElement(xpp, "value", PREFIX.visibleName()+" "+prefix.getCode(), true);
+		prefix.getNames().add(readElement(xpp, "name", PREFIX.visibleName()+" "+prefix.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
+		prefix.setPrintSymbol(readElement(xpp, "printSymbol", PREFIX.visibleName()+" "+prefix.getCode(), false)); //$NON-NLS-1$ //$NON-NLS-2$
+		checkAtElement(xpp, "value", PREFIX.visibleName()+" "+prefix.getCode()); //$NON-NLS-1$ //$NON-NLS-2$
+		prefix.setValue(new BigDecimal(xpp.getAttributeValue(null, "value"))); //$NON-NLS-1$
+		readElement(xpp, "value", PREFIX.visibleName()+" "+prefix.getCode(), true); //$NON-NLS-1$ //$NON-NLS-2$
 		xpp.next();
 		skipWhitespace(xpp);
 		return prefix;
@@ -168,7 +169,7 @@ public class DefinitionParser implements Parser<String, UcumModel> {
 			skipWhitespace(xpp);
 		}
 		if (xpp.getEventType() != END_TAG) {
-			throw new XmlPullParserException("Unexpected content reading "+context);
+			throw new XmlPullParserException(Messages.DefinitionParser_54+context);
 		}
 		xpp.next();
 		skipWhitespace(xpp);
@@ -198,8 +199,8 @@ public class DefinitionParser implements Parser<String, UcumModel> {
 
 	private void checkAtElement(XmlPullParser xpp, String name, String context) throws XmlPullParserException {
 		if (xpp.getEventType() != START_TAG)
-			throw new XmlPullParserException("Unexpected state looking for "+name+": at "+Integer.toString(xpp.getEventType())+"  reading "+context);
+			throw new XmlPullParserException(Messages.DefinitionParser_55+name+Messages.DefinitionParser_56+Integer.toString(xpp.getEventType())+Messages.DefinitionParser_57+context);
 		if (!xpp.getName().equals(name))
-			throw new XmlPullParserException("Unexpected element looking for "+name+": found "+xpp.getName()+"  reading "+context);		
+			throw new XmlPullParserException(Messages.DefinitionParser_58+name+Messages.DefinitionParser_59+xpp.getName()+Messages.DefinitionParser_60+context);		
 	}
 }
