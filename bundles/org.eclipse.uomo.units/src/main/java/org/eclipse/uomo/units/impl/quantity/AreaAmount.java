@@ -24,7 +24,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4, $Date: 2013-04-28 $
  */
-public class AreaAmount extends BaseAmount<Area> {
+public final class AreaAmount extends BaseAmount<Area> {
 
 	public AreaAmount(Number number, Unit<Area> unit) {
 		super(number, unit);

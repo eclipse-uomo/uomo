@@ -20,9 +20,9 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.1, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.2, $Date: 2013-04-28 $
  */
-public class ElectricCapacitanceAmount extends BaseAmount<ElectricCapacitance> {
+public final class ElectricCapacitanceAmount extends BaseAmount<ElectricCapacitance> {
 
 	public ElectricCapacitanceAmount(Number number, Unit<ElectricCapacitance> unit) {
 		super(number, unit);
