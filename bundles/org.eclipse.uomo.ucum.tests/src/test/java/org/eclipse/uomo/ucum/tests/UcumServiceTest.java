@@ -32,7 +32,7 @@ import com.ibm.icu.text.NumberFormat;
 
 /**
  * @author Werner Keil
- * @version 1.1, 2013-04-06
+ * @version 1.2, 2013-04-28
  */
 public class UcumServiceTest {
 	private UcumService ucumService;
@@ -74,6 +74,43 @@ public class UcumServiceTest {
 			Symbol s = (Symbol)t.getComp();
 			Unit<?> u = s.getUnit();
 			assertEquals("m", u.getSymbol());
+		} catch (UOMoException e) {
+			println(e.getLocalizedMessage());
+			fail(e.getLocalizedMessage());
+		}
+	}
+	
+	@Test
+	public void testParseParseMult1() {
+		Parser<String, Term> p = new ExpressionParser(ucumService.getModel());
+		try {
+			Term t =  p.parse("m.s2");
+			assertNotNull(t);
+			assertEquals("MULTIPLICATION", t.getOp().toString());
+			Symbol s = (Symbol)t.getComp();
+			Unit<?> u = s.getUnit();
+			assertEquals("m", u.getSymbol());
+		} catch (UOMoException e) {
+			println(e.getLocalizedMessage());
+			fail(e.getLocalizedMessage());
+		}
+	}
+	
+	/**
+	 * @see <a
+     *  href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=371433">Bugzilla: 371433</a>
+	 */
+	@Test
+	public void testParseParseParenthes1() {
+		Parser<String, Term> p = new ExpressionParser(ucumService.getModel());
+		try {
+			Term t =  p.parse("kg/m/s");
+			assertNotNull(t);
+			assertEquals("DIVISION", t.getOp().toString());
+			Symbol s = (Symbol)t.getComp();
+			Unit<?> u = s.getUnit();
+			assertEquals("g", u.getSymbol());
+			assertEquals("k", s.getPrefix().getSymbol());
 		} catch (UOMoException e) {
 			println(e.getLocalizedMessage());
 			fail(e.getLocalizedMessage());

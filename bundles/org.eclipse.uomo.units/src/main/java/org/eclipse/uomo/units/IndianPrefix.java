@@ -28,8 +28,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * @see <a
- *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia:
- *      Indian numbering system</a>
+ *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia: Indian numbering system</a>
  */
 public abstract class IndianPrefix {
 
