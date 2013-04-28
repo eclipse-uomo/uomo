@@ -11,7 +11,6 @@
 package org.eclipse.uomo.business.money;
 
 import java.math.BigInteger;
-import java.util.Enumeration;
 import java.util.Map;
 
 //import javax.money.CurrencyUnit;
@@ -24,6 +23,7 @@ import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.AddConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
+import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
@@ -46,7 +46,7 @@ import com.ibm.icu.util.ULocale;
  */
 public class MoneyUnit<Q extends IMoney> extends Currency implements
 		Unit<IMoney>, IName 
-		//,CurrencyUnit 
+		,CurrencyUnit 
 		{
 
 	/**
@@ -379,55 +379,91 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 		return toMetric();
 	}
 
-//	@Override
+	 
+	public String getNamespace() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	 
+	public int getNumericCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	 
+	public boolean isLegalTender() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	 
+	public boolean isVirtual() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	 
+	public Long getValidFrom() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	 
+	public Long getValidUntil() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	 
 //	public String getNamespace() {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
-//	@Override
+//	 
 //	public int getNumericCode() {
 //		// TODO Auto-generated method stub
 //		return 0;
 //	}
 //
-//	@Override
+//	 
 //	public boolean isLegalTender() {
 //		// TODO Auto-generated method stub
 //		return false;
 //	}
 //
-//	@Override
+//	 
 //	public boolean isVirtual() {
 //		// TODO Auto-generated method stub
 //		return false;
 //	}
 //
-//	@Override
+//	 
 //	public Long getValidFrom() {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
-//	@Override
+//	 
 //	public Long getValidUntil() {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
-//	@Override
+//	 
 //	public <T> T getAttribute(String key, Class<T> type) {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
-//	@Override
+//	 
 //	public Enumeration<String> getAttributeKeys() {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 //
-//	@Override
+//	 
 //	public Class<?> getAttributeType(String key) {
 //		// TODO Auto-generated method stub
 //		return null;
