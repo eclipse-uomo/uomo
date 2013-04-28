@@ -30,7 +30,6 @@ import org.unitsofmeasurement.unit.UnitConverter;
 
 import com.ibm.icu.math.BigDecimal;
 import com.ibm.icu.util.Currency;
-import com.ibm.icu.util.CurrencyAmount;
 
 /**
  * This class represents an amount of money specified in a given
@@ -350,7 +349,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return m;
 	}
 
-	 
 	public int compareTo(MonetaryAmount o) {
 		// TODO Auto-generated method stub
 		return 0;
@@ -383,6 +381,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 
 	public MonetaryAmount divide(Number divisor) {
 		// TODO Auto-generated method stub
+		//return of((BigDecimal)value()).divide((BigDecimal)divisor));
 		return null;
 	}
 
@@ -605,20 +604,17 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 
 	 
 	public boolean isNotEqualTo(MonetaryAmount amount) {
-		// TODO Auto-generated method stub
-		return false;
+		return !getNumber().equals(amount);
 	}
 
-	 
 	public <T> T asType(Class<T> type) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	 
 	public Class<?> getNumberType() {
 		// TODO Auto-generated method stub
-		return null;
+		return getNumber().getClass();
 	}
 
 	 
@@ -626,10 +622,8 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	 
 	public CurrencyUnit getCurrency() {
-		// TODO Auto-generated method stub
-		return null;
+		return (CurrencyUnit)unit();
 	}
 }
