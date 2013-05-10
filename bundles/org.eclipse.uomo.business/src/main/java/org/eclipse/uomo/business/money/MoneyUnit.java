@@ -13,8 +13,6 @@ package org.eclipse.uomo.business.money;
 import java.math.BigInteger;
 import java.util.Map;
 
-//import javax.money.CurrencyUnit;
-
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.impl.AlternateUnit;
@@ -38,17 +36,14 @@ import com.ibm.icu.util.ULocale;
 
 
 /**
- * TODO use JSR 354
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2.4, $Date: 2013-03-08
+ * @version 0.2.5, $Date: 2013-05-11
  * @param <Q> the monetary quantity
  * 
  */
 public class MoneyUnit<Q extends IMoney> extends Currency implements
-		Unit<IMoney>, IName 
-		,CurrencyUnit 
-		{
-
+		Unit<IMoney>, IName, CurrencyUnit {
+// TODO use JSR 354
 	/**
      * 
      */

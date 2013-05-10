@@ -27,6 +27,7 @@ import org.eclipse.uomo.business.money.MoneyUnit;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.examples.business.console.internal.DemoMessages;
 import org.eclipse.uomo.units.IMeasure;
+import org.eclipse.uomo.units.QuantityAmount;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.unitsofmeasurement.quantity.Length;
@@ -80,7 +81,7 @@ public class MoneyDemo {
 
 		System.out.println("In USD: " + gazPrice.doubleValue(USD));
 		System.out.println("Trip Cost"
-				+ ((BaseAmount) tripCost).to(USD)); //$NON-NLS-1$
+				+ ((QuantityAmount) tripCost).to(USD)); //$NON-NLS-1$
 		//System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
 //		System.out.println(Messages.MoneyDemo_Trip_cost
 //				+ ((BaseAmount) tripCost).to(EUR)); //$NON-NLS-1$

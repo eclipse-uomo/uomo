@@ -12,11 +12,13 @@ package org.eclipse.uomo.business.money;
 
 import java.util.Enumeration;
 
+import org.eclipse.uomo.business.internal.ExchangeRate;
+import org.eclipse.uomo.business.internal.ExchangeRateType;
+
 import com.ibm.icu.util.Currency;
 
-//import javax.money.CurrencyUnit;
-
 /**
+ * @version 0.2
  * @author Werner Keil
  * 
  */

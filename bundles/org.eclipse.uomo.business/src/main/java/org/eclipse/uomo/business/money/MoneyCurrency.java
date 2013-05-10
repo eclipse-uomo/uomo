@@ -1,10 +1,12 @@
-/*
- * CREDIT SUISSE IS WILLING TO LICENSE THIS SPECIFICATION TO YOU ONLY UPON THE CONDITION THAT YOU ACCEPT ALL OF THE TERMS CONTAINED IN THIS AGREEMENT. PLEASE READ THE TERMS AND CONDITIONS OF THIS AGREEMENT CAREFULLY. BY DOWNLOADING THIS SPECIFICATION, YOU ACCEPT THE TERMS AND CONDITIONS OF THE AGREEMENT. IF YOU ARE NOT WILLING TO BE BOUND BY IT, SELECT THE "DECLINE" BUTTON AT THE BOTTOM OF THIS PAGE.
+/**
+ * Copyright (c) 2006, 2013, Werner Keil and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  *
- * Specification:  JSR-354  Money and Currency API ("Specification")
- *
- * Copyright (c) 2012-2013, Credit Suisse
- * All rights reserved.
+ * Contributors:
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.business.money;
 
@@ -21,10 +23,10 @@ import org.eclipse.uomo.business.internal.Localizable;
 import com.ibm.icu.util.ULocale;
 
 /**
- * Adapter that implements the new {@link CurrencyUnit} interface using the
- * JDK's {@link Currency}.
+ * Adapter that implements the  {@link CurrencyUnit} interface using the
+ * ICU4J {@link com.ibm.icu.util.Currency}.
  * 
- * @author Anatole Tresch
+ * @version 0.2
  * @author Werner Keil
  */
 public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Serializable,

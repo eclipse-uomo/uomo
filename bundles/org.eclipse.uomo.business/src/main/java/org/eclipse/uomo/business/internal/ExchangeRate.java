@@ -1,19 +1,16 @@
 /*
  * Backport, stub for JavaMoney 
  */
-package org.eclipse.uomo.business.money;
+package org.eclipse.uomo.business.internal;
 
 import java.util.Enumeration;
 
 import com.ibm.icu.util.Currency;
 
-//import javax.money.MoneyUnit;
-
 /**
  * This interface models a exchange rate between two currencies.
  * 
  * @author Werner Keil
- * @author Anatole Tresch
  * @version 0.2.2
  * @deprecated stub
  */

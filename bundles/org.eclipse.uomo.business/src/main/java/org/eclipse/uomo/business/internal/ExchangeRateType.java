@@ -1,7 +1,7 @@
 /*
  * Backport, stub for JavaMoney 
  */
-package org.eclipse.uomo.business.money;
+package org.eclipse.uomo.business.internal;
 
 
 /**
@@ -11,7 +11,7 @@ package org.eclipse.uomo.business.money;
  * credit card systems or debit/credit may differ. This class allows to
  * distinguish these rates.
  * 
- * @author Anatole Tresch
+ * @author Werner Keil
  * @deprecated stub
  */
 public interface ExchangeRateType {

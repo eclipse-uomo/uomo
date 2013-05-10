@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2012, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2013, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,8 +37,7 @@ import com.ibm.icu.util.Currency;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.4 ($Revision: 206 $), $Date: 2012-08-16 23:29:41 +0200 (Do, 16 Aug
- *          2012) $
+ * @version 1.5, $Date: 2013-05-11 $
  */
 public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, MonetaryAmount,
 		Comparable<MonetaryAmount> {
