@@ -25,21 +25,25 @@ import com.ibm.icu.math.BigDecimal;
  * @version 1.1
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
-public class PercentAmount extends BaseAmount<Percent> implements IBasicType {
+public class PercentAmount extends BaseAmount<Percent> implements IBasicType, Percent {
 	final static long serialVersionUID = 362498820763181265L;
 
-	final static int m_precision = 15; // will be held, but not set
+	final static int precision = 15; // will be held, but not set
 
+	final BigDecimal percentValue;
+	
 	PercentAmount(char[] c, Unit<Percent> unit) {
 		super(new BigDecimal(c), unit);
+		percentValue = calcPercent(String.valueOf(c));
 	}
 
 	public PercentAmount(BigDecimal bd, Unit<Percent> unit) {
 		super(bd, unit);
+		percentValue = calcPercent(bd);
 	}
 
 	public PercentAmount(String s, Unit<Percent> unit) {
-		this((CalcPercent(s)), unit);
+		this(new BigDecimal(s), unit);
 	}
 
 	/**
@@ -50,12 +54,21 @@ public class PercentAmount extends BaseAmount<Percent> implements IBasicType {
 	 * @param s
 	 *            java.lang.String
 	 */
-	static BigDecimal CalcPercent(String s) {
-
+	static BigDecimal calcPercent(BigDecimal b) {
 		BigDecimal temp = new BigDecimal("100"); //$NON-NLS-1$
-		BigDecimal temp2 = new BigDecimal(s);
-		return temp2.divide(temp, BDTHelper.MATH_CONTEXT); // we now have .03
-
+		return b.divide(temp, BDTHelper.MATH_CONTEXT); // we now have .03
+	}
+	
+	/**
+	 * Calculate a BigDecimal value for a Percent e.g. "3" (3 percent) will
+	 * generate an array containing .03
+	 * 
+	 * @return java.math.BigDecimal
+	 * @param s
+	 *            java.lang.String
+	 */
+	static BigDecimal calcPercent(String s) {
+		return calcPercent(new BigDecimal(s));
 	}
 
 	/**
