@@ -33,4 +33,5 @@
         </repository>
     </repositories>
 	
+    <groupId>org.eclipse.uomo.examples.units</groupId>
 </project>

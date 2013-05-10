@@ -31,4 +31,5 @@
         </repository>
     </repositories>
 	
+    <groupId>org.eclipse.uomo.examples.business</groupId>
 </project>

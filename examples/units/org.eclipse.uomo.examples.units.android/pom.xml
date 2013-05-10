@@ -3,10 +3,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
         <artifactId>org.eclipse.uomo.examples.units</artifactId>
-        <groupId>org.eclipse.uomo</groupId>
+        <groupId>org.eclipse.uomo.examples.units</groupId>
         <version>0.6.0-SNAPSHOT</version>
     </parent>
-	<groupId>org.eclipse.uomo.examples.units</groupId>
 	<artifactId>org.eclipse.uomo.examples.units.android</artifactId>
 	<packaging>pom</packaging>
 	<name>UOMo Units Android Examples</name>
