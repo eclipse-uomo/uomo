@@ -18,6 +18,10 @@
 		<project.build.javaVersion>1.7</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<tycho-version>0.16.0</tycho-version>
+	
+  <maven.compiler.source>1.7</maven.compiler.source>
+  <maven.compiler.target>1.7</maven.compiler.target>
+
 	</properties>
 
 	<groupId>org.eclipse.uomo</groupId>
