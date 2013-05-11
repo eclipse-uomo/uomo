@@ -5,4 +5,4 @@ Bundle-SymbolicName: org.eclipse.uomo.business.tests
 Bundle-Version: 0.6.0.qualifier
 Bundle-Vendor: Eclipse Org
 Fragment-Host: org.eclipse.uomo.business;bundle-version="0.6.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

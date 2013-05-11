@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.uomo.units.tests
 Bundle-Version: 0.6.0.qualifier
 Bundle-Vendor: Eclipse org
 Fragment-Host: org.eclipse.uomo.units;bundle-version="0.6.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.uomo.units,
  org.eclipse.uomo.units.impl,
  org.eclipse.uomo.units.impl.format,
