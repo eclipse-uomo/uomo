@@ -15,12 +15,12 @@
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.javaVersion>1.7</project.build.javaVersion>
+		<project.build.javaVersion>1.6</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<tycho-version>0.16.0</tycho-version>
-	
-  <maven.compiler.source>1.7</maven.compiler.source>
-  <maven.compiler.target>1.7</maven.compiler.target>
+
+		<maven.compiler.source>1.6</maven.compiler.source>
+		<maven.compiler.target>1.6</maven.compiler.target>
 
 	</properties>
 
@@ -78,7 +78,7 @@
 				<role>Java Developer (inactive)</role>
 			</roles>
 		</contributor>
-	
+
 	</contributors>
 	<scm>
 		<url>http://git.eclipse.org/c/uomo/org.eclipse.uomo.git/</url>
@@ -99,8 +99,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<!-- This sets up the target platform in PDE terms
-				The version of Eclipse that the source will be built against -->
+				<!-- This sets up the target platform in PDE terms The version of Eclipse 
+					that the source will be built against -->
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<version>${tycho-version}</version>
@@ -140,19 +140,12 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.4</version>
 			</plugin>
-	<!-- 		<plugin>
-				<groupId>org.sonatype.tycho</groupId>
-				<artifactId>maven-osgi-packaging-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<archive>
-						<addMavenDescriptor>false</addMavenDescriptor>
-					</archive>
-				</configuration>
-			</plugin> -->
+			<!-- <plugin> <groupId>org.sonatype.tycho</groupId> <artifactId>maven-osgi-packaging-plugin</artifactId> 
+				<version>${tycho-version}</version> <configuration> <archive> <addMavenDescriptor>false</addMavenDescriptor> 
+				</archive> </configuration> </plugin> -->
 		</plugins>
 	</build>
-	
+
 
 	<!-- ==================================================== -->
 	<!-- Repositories. This is where Maven looks for dependencies. The Maven 
@@ -170,7 +163,7 @@
 			<name>Central Eclipse.org Nexus</name>
 			<url>http://maven.eclipse.org/nexus/content/groups/central/</url>
 		</repository>
-		
+
 		<repository>
 			<id>maven-geotoolkit.org</id>
 			<name>GeoToolkit Repository for Maven</name>

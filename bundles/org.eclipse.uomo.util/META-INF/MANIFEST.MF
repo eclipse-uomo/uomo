@@ -14,4 +14,4 @@ Require-Bundle: org.eclipse.uomo.core;bundle-version="0.2.0",
  org.junit;bundle-version="4.8.2"
 Import-Package: org.eclipse.uomo.util
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
