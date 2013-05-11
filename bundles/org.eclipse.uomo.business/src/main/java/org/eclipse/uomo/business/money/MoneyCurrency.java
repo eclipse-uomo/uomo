@@ -27,7 +27,7 @@ import com.ibm.icu.util.ULocale;
  * Adapter that implements the  {@link CurrencyUnit} interface using the
  * ICU4J {@link com.ibm.icu.util.Currency}.
  * 
- * @version 0.2
+ * @version 0.2.1
  * @author Werner Keil
  */
 public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Serializable,
@@ -97,7 +97,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		}
 		this.namespace = ISO_NAMESPACE;
 		this.currencyCode = currency.getCurrencyCode();
-		this.numericCode = -1; //currency.g .getNumericCode();
+		this.numericCode = -1; //currency.g .getNumericCode(); FIXME where ICU 5 is available, use numericCode
 		this.defaultFractionDigits = currency.getDefaultFractionDigits();
 		this.validFrom = null;
 		this.validUntil = null; // TODO Adapt for hisotoric one, e.g. AFA
@@ -650,7 +650,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see javax.money.Localizable#getDisplayName(java.util.Locale)
+		 * @see Localizable#getDisplayName(java.util.Locale)
 		 */
 		public String getDisplayName(Locale locale) {
 			//return currency.getName(locale, nameStyle, isChoiceFormat) (locale);
