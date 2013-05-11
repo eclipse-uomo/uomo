@@ -11,7 +11,7 @@
 package org.eclipse.uomo.business.money;
 
 import java.io.Serializable;
-import java.util.Currency;
+//import java.util.Currency;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.Localizable;
 
+import com.ibm.icu.util.Currency;
 import com.ibm.icu.util.ULocale;
 
 /**
@@ -96,7 +97,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		}
 		this.namespace = ISO_NAMESPACE;
 		this.currencyCode = currency.getCurrencyCode();
-		this.numericCode = currency.getNumericCode();
+		this.numericCode = -1; //currency.g .getNumericCode();
 		this.defaultFractionDigits = currency.getDefaultFractionDigits();
 		this.validFrom = null;
 		this.validUntil = null; // TODO Adapt for hisotoric one, e.g. AFA
@@ -133,16 +134,16 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	 *            the currency unitm not null.
 	 * @return the new instance, never null.
 	 */
-	public static MoneyCurrency of(com.ibm.icu.util.Currency currency) {
-		String key = ISO_NAMESPACE + ':' + currency.getCurrencyCode();
-		MoneyCurrency cachedItem = CACHED.get(key);
-		if (cachedItem == null) {
-			cachedItem = new ICUCurrencyAdapter(currency);
-			CACHED.put(key, cachedItem);
-		}
-		return cachedItem;
-	}
-	
+//	public static MoneyCurrency of(com.ibm.icu.util.Currency currency) {
+//		String key = ISO_NAMESPACE + ':' + currency.getCurrencyCode();
+//		MoneyCurrency cachedItem = CACHED.get(key);
+//		if (cachedItem == null) {
+//			cachedItem = new ICUCurrencyAdapter(currency);
+//			CACHED.put(key, cachedItem);
+//		}
+//		return cachedItem;
+//	}
+//	
 	/**
 	 * Access a new instance based on the ISO currency code. The code must
 	 * return a {@link Currency} when passed to
@@ -652,7 +653,8 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		 * @see javax.money.Localizable#getDisplayName(java.util.Locale)
 		 */
 		public String getDisplayName(Locale locale) {
-			return currency.getDisplayName(locale);
+			//return currency.getName(locale, nameStyle, isChoiceFormat) (locale);
+			return currency.getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
 		}
 
 	}
