@@ -30,7 +30,7 @@ import org.eclipse.uomo.util.numbers.ISpeller;
 import org.eclipse.uomo.util.numbers.SpellException;
 
 /**
-* SpellContext is main engine for numbers spelling and text parsing, encoding
+* SpellContext is main speller for number spelling, text parsing, encoding
 * and validating.
 * 
 * It contains the following basic static service methods:
@@ -58,7 +58,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	/**
 	 * @return the default instance
 	 */
-	public static SpellContext getDefault() {
+	public static SpellContext of() {
 		if (INSTANCE == null) {
 			INSTANCE = new SpellContext();
 		}
@@ -791,7 +791,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *             numeric value.
 	 */
 	public static String encode(long number) throws SpellException {
-		return encode(getDefault().spell(number));
+		return encode(of().spell(number));
 	}
 
 	/**
@@ -806,7 +806,7 @@ public class SpellContext implements ISpeller, IValidator<String> {
 	 *             unknown token.
 	 */
 	public static long decodeToNumber(String text) throws SpellException {
-		return getDefault().parse(decode(text)).longValue();
+		return of().parse(decode(text)).longValue();
 	}
 
 	/**

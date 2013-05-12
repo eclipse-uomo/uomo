@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, Copyright (c) 2010 Creative Arts & Technologies.
+ * Copyright (c) 2010, 2013 Copyright (c) 2010-2013 Creative Arts & Technologies.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,8 @@ package org.eclipse.uomo.core;
 
 /**
  * @author  <a href="mailto:oumo@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2010-09-11 17:42:22 +0200 (Sa, 11 Sep 2010) $
+ * @version 1.1, $Date: 2013-05-12 $
+ * @deprecated this may not be used, consider removing it before 1.0
  */
 public class UOMoError extends Error {
 

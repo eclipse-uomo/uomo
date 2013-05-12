@@ -21,9 +21,9 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.2, $Date: 2013-05-11 $
+ * @version 1.2, $Date: 2013-05-12 $
  */
-public class ElectricCurrentAmount extends BaseAmount<ElectricCurrent> {
+public final class ElectricCurrentAmount extends BaseAmount<ElectricCurrent> {
 
 	public ElectricCurrentAmount(Number number, Unit<ElectricCurrent> unit) {
 		super(number, unit);

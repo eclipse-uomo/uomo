@@ -14,7 +14,13 @@ import org.eclipse.uomo.util.internal.Messages;
 import org.eclipse.uomo.util.numbers.ISpeller;
 import org.eclipse.uomo.util.numbers.SpellException;
 
+/**
+ * @version 1.1, 2013-05-12
+ * @author Werner Keil
+ *
+ */
 public class IndianNumberSpeller implements ISpeller {
+	private static IndianNumberSpeller INSTANCE;
 	private String string;
 	private final String mySingleText[] = { "", Messages.Speller_22,
 			Messages.Speller_23, Messages.Speller_24, Messages.Speller_25,
@@ -29,6 +35,19 @@ public class IndianNumberSpeller implements ISpeller {
 	private final String myCroreText[] = { Messages.Speller_140, "Thousand",
 			Messages.Speller_Lakh, Messages.Speller_Crore };
 
+	// singleton
+	private IndianNumberSpeller() {}
+	
+	/**
+	 * @return the default instance
+	 */
+	public static final IndianNumberSpeller of() {
+		if (INSTANCE == null) {
+			INSTANCE = new IndianNumberSpeller();
+		}
+		return INSTANCE;
+	}
+		
 	public String spell(final long number) throws SpellException {
 		if (number < Integer.MIN_VALUE || number < -Integer.MAX_VALUE
 				|| number > Integer.MAX_VALUE) {

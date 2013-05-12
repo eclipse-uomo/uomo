@@ -17,7 +17,7 @@ public class RomanNumberDemos {
 
 	public static void main(String args[]) throws Exception {
 		System.out.println("Display massage number to Text!");
-		ISpeller num = new RomanNumberSpeller();
+		final ISpeller num = RomanNumberSpeller.of();
 		System.out.println("Spelling: " + num.spell(10) + ".");
 		System.out.println("Spelling: " + num.spell(15) + ".");
 		System.out.println("Spelling: " + num.spell(50) + ".");

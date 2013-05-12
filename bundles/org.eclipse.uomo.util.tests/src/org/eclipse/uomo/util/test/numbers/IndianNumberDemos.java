@@ -19,7 +19,7 @@ public class IndianNumberDemos {
 		// Reader buff = new BufferedReader(new InputStreamReader(
 		// System.in));
 		System.out.println("Display massage number to Text!");
-		ISpeller num = new IndianNumberSpeller();
+		ISpeller num = IndianNumberSpeller.of();
 		System.out.println("Spelling: " + num.spell(10) + ".");
 		System.out.println("Spelling: " + num.spell(15) + ".");
 		System.out.println("Spelling: " + num.spell(50) + ".");

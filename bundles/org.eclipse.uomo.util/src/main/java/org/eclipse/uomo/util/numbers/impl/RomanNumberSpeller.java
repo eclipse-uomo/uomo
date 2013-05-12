@@ -16,7 +16,21 @@ import org.eclipse.uomo.util.numbers.SpellException;
 
 public class RomanNumberSpeller implements ISpeller {
 	private static final long MAX_ROMAN = 3999;
-
+	private static RomanNumberSpeller INSTANCE;
+	
+	// singleton
+	private RomanNumberSpeller() {}
+	
+	/**
+	 * @return the default instance
+	 */
+	public static final RomanNumberSpeller of() {
+		if (INSTANCE == null) {
+			INSTANCE = new RomanNumberSpeller();
+		}
+		return INSTANCE;
+	}
+	
     /**
      * Converts a decimal number into a Roman number
      * Valid input in the range 1-3999
