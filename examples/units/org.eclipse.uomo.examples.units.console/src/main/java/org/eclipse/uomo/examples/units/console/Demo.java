@@ -13,7 +13,7 @@ package org.eclipse.uomo.examples.units.console;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.*;
 import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
-import static org.eclipse.uomo.examples.units.types.ObsoletePolish.*;
+import static org.eclipse.uomo.examples.units.types.PolishObsolete.*;
 
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
