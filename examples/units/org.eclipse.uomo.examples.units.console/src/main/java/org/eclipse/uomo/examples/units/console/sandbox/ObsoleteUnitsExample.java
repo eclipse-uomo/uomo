@@ -15,7 +15,7 @@ import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
 import static org.eclipse.uomo.units.SI.*;
 
 import org.eclipse.uomo.units.IMeasure;
-import org.eclipse.uomo.units.impl.quantity.LengthAmount;
+import org.eclipse.uomo.units.impl.BaseAmount;
 import org.unitsofmeasurement.quantity.Length;
 
 /**
@@ -28,12 +28,14 @@ public class ObsoleteUnitsExample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		IMeasure<Length> l = new LengthAmount(10, METRE);
+		IMeasure<Length> l = BaseAmount.valueOf(10, METRE);
 		System.out.println(l);
 		System.out.println(l.to(FOOT));
 		System.out.println(l.to(FOOT_ZURICH));
 		System.out.println(l.to(STONE_FOOT));
 		System.out.println(l.to(FOOT_LAUSANNE));
+		System.out.println(l.to(ELL_NORTH));
+		System.out.println(l.to(ELL_PRUSSIA));
 	}
 
 }

@@ -19,6 +19,8 @@ import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
+import com.ibm.icu.math.BigDecimal;
+
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 0.0.1
@@ -31,12 +33,12 @@ public class GermanObsolete extends AbstractSystemOfUnits {
 	/** Distance between elbow and fingertip. 
 	 * In the North, often 2 feet, in the South variable, often 2½ feet. The smallest known German Elle is 402.8 mm, the longest 811 mm.
 	 * */
-	public static final  Unit<Length> ELL = FOOT.multiply(2);
+	public static final  Unit<Length> ELL_NORTH = FOOT.multiply(2);
 	
 	/** Distance between elbow and fingertip. 
 	 * In Prussia 17 / 8 feet, in the South variable, often 2½ feet. The smallest known German Elle is 402.8 mm, the longest 811 mm.
 	 * */
-	public static final  Unit<Length> ELL_PRUSSIA = FOOT.multiply(17/8);
+	public static final  Unit<Length> ELL_PRUSSIA = FOOT.multiply((new BigDecimal(17)).divide(BigDecimal.valueOf(8)).doubleValue());
 	
 	/** The Fuß or German foot varied widely from place to place in the German-speaking world, and also with time. 
 	 * In some places, more than one type of Fuß was in use.
