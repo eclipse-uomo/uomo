@@ -35,7 +35,7 @@ public class ObsoleteUnitsExample {
 		System.out.println(l.to(STONE_FOOT));
 		System.out.println(l.to(FOOT_LAUSANNE));
 		System.out.println(l.to(ELL_NORTH));
-		System.out.println(l.to(ELL_PRUSSIA));
+		System.out.println(l.to(ELL_SOUTH));
 	}
 
 }
