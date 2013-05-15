@@ -27,6 +27,7 @@ public class ObsoleteUnitsExample {
 	/**
 	 * @param args
 	 */
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
 		IMeasure<Length> l = BaseAmount.valueOf(10, METRE);
 		System.out.println(l);
