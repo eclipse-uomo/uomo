@@ -10,6 +10,8 @@
  */
 package org.eclipse.uomo.business.money;
 
+import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
+
 import java.math.BigInteger;
 import java.util.Map;
 
@@ -48,7 +50,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
      * 
      */
 	private static final long serialVersionUID = 8524573975644908457L;
-
+	
 	protected MoneyUnit(String theISOCode) {
 		super(theISOCode);
 	}
@@ -373,11 +375,9 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	public Unit<IMoney> getSystemUnit() {
 		return toMetric();
 	}
-
 	 
 	public String getNamespace() {
-		// TODO Auto-generated method stub
-		return null;
+		return ISO_NAMESPACE;
 	}
 
 	 

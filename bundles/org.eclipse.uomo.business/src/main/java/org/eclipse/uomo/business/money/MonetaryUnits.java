@@ -15,12 +15,19 @@ import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
+import com.ibm.icu.util.Currency;
+
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 0.5, $Date: 2010-09-11 14:45:05 +0200 (So, 11 Sep 2011) $
  */
 public final class MonetaryUnits extends AbstractSystemOfUnits {
-
+	/**
+	 * The predefined name space for ISO 4217 currencies, similar to
+	 * {@link Currency}.
+	 */
+	public static final String ISO_NAMESPACE = "ISO-4217";
+	
 	// Use currency not defined as constant (Rupees).
 	public static final Unit<IMoney> INR = monetary(MoneyAmount.UNIT);
 

@@ -10,6 +10,8 @@
  */
 package org.eclipse.uomo.business.money;
 
+import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
+
 import java.io.Serializable;
 //import java.util.Currency;
 import java.util.Locale;
@@ -27,17 +29,11 @@ import com.ibm.icu.util.ULocale;
  * Adapter that implements the  {@link CurrencyUnit} interface using the
  * ICU4J {@link com.ibm.icu.util.Currency}.
  * 
- * @version 0.2.1
+ * @version 0.2.2
  * @author Werner Keil
  */
-public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Serializable,
+public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable, Serializable,
 		Comparable<CurrencyUnit> {
-
-	/**
-	 * The predefined name space for ISO 4217 currencies, similar to
-	 * {@link Currency}.
-	 */
-	public static final String ISO_NAMESPACE = "ISO-4217";
 
 	/**
 	 * serialVersionUID.
@@ -97,7 +93,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		}
 		this.namespace = ISO_NAMESPACE;
 		this.currencyCode = currency.getCurrencyCode();
-		this.numericCode = -1; //currency.g .getNumericCode(); FIXME where ICU 5 is available, use numericCode
+		this.numericCode = currency.getNumericCode(); //use numericCode
 		this.defaultFractionDigits = currency.getDefaultFractionDigits();
 		this.validFrom = null;
 		this.validUntil = null; // TODO Adapt for hisotoric one, e.g. AFA
