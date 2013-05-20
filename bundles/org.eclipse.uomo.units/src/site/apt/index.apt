@@ -6,7 +6,7 @@
 ~~ See LICENSE.txt for details.
 ~~
                     -----------------------------------------------------
-                    Unit API home page
+                    UOMo home page
                     -----------------------------------------------------
                     Werner Keil, Martin Desruisseaux
                     -----------------------------------------------------
@@ -14,7 +14,7 @@
                     -----------------------------------------------------
 
 
-The Units of Measurement API for Java
+Eclipse UOMo
 
 +------------------------------------------+
 Unit-API contributors, JScience and others
