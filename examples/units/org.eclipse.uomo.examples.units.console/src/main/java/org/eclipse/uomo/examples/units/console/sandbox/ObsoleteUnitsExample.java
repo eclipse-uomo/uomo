@@ -14,6 +14,7 @@ import static org.eclipse.uomo.examples.units.types.GermanObsolete.*;
 import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
 import static org.eclipse.uomo.units.SI.*;
 
+import org.eclipse.uomo.examples.units.types.PolishObsolete;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.unitsofmeasurement.quantity.Length;
@@ -37,6 +38,7 @@ public class ObsoleteUnitsExample {
 		System.out.println(l.to(FOOT_LAUSANNE));
 		System.out.println(l.to(ELL_NORTH));
 		System.out.println(l.to(ELL_SOUTH));
+		System.out.println(l.to(PolishObsolete.ELL));
 	}
 
 }

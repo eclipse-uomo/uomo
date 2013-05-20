@@ -4,7 +4,7 @@ Bundle-Name: UOMo XML
 Bundle-SymbolicName: org.eclipse.uomo.xml
 Bundle-Version: 0.6.0.qualifier
 Require-Bundle: org.eclipse.uomo.core;bundle-version="0.6.0",
- org.apache.commons.lang;bundle-version="2.4.0",
+ org.apache.commons.lang;bundle-version="2.6.0",
  org.apache.xerces,
  org.junit;bundle-version="4.8.2"
 Bundle-Vendor: Eclipse.org
