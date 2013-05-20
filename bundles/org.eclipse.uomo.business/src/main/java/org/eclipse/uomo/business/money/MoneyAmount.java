@@ -59,7 +59,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @param currency
 	 *            the currency in which the value is stated.
 	 */
-	public MoneyAmount(Number value, MoneyCurrency unit) {
+	public MoneyAmount(Number value, MoneyUnit unit) {
 		super(value, unit);
 	}
 
@@ -73,8 +73,8 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 *            the currency in which the value is stated.
 	 * @return the corresponding amount.
 	 */
-	static MoneyAmount of(Number value, CurrencyUnit currency) {
-		MoneyAmount amount = new MoneyAmount(value, (MoneyCurrency)currency);
+	public static MoneyAmount of(Number value, CurrencyUnit currency) {
+		MoneyAmount amount = new MoneyAmount(value, (MoneyUnit)currency);
 		return amount;
 	}
 	
@@ -104,7 +104,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @return the corresponding amount.
 	 */
 	public static MoneyAmount of(Number value, Unit<?> currency) {
-		MoneyAmount amount = new MoneyAmount(value, (MoneyCurrency) currency);
+		MoneyAmount amount = new MoneyAmount(value, (MoneyUnit) currency);
 		return amount;
 	}
 
@@ -121,7 +121,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public static MoneyAmount of(long value, int cents, Currency currency) {
 		MoneyAmount amount = new MoneyAmount(BigDecimal.valueOf(value * 100
-				+ cents, -2), (MoneyCurrency) currency);
+				+ cents, -2), (MoneyUnit) currency);
 		return amount;
 	}
 
@@ -231,7 +231,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	@SuppressWarnings("unchecked")
 	public MoneyUnit<IMoney> unit() {
-		return (MoneyUnit<IMoney>) getCurrency();
+		return (MoneyUnit<IMoney>) getUnit();
 	}
 
 	public int compareTo(IMoney o) {

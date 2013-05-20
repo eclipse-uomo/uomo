@@ -31,6 +31,7 @@ import com.ibm.icu.util.ULocale;
  * 
  * @version 0.2.2
  * @author Werner Keil
+ * @deprecated merge into MoneyUnit
  */
 public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable, Serializable,
 		Comparable<CurrencyUnit> {
@@ -45,7 +46,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	/** currency code for this currency. */
 	private final String currencyCode;
 	/** numeric code, or -1. */
-	private final int numericCode;
+	//private final int numericCode;
 	/** fraction digits, or -1. */
 	private final int defaultFractionDigits;
 	/** valid from, or {@code null}. */
@@ -73,7 +74,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		super(code);
 		this.namespace = namespace;
 		this.currencyCode = code;
-		this.numericCode = numCode;
+		//this.numericCode = numCode;
 		this.defaultFractionDigits = fractionDigits;
 		this.validFrom = validFrom;
 		this.validUntil = validUntil;
@@ -93,7 +94,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		}
 		this.namespace = ISO_NAMESPACE;
 		this.currencyCode = currency.getCurrencyCode();
-		this.numericCode = currency.getNumericCode(); //use numericCode
+		//this.numericCode = currency.getNumericCode(); //use numericCode
 		this.defaultFractionDigits = currency.getDefaultFractionDigits();
 		this.validFrom = null;
 		this.validUntil = null; // TODO Adapt for hisotoric one, e.g. AFA
@@ -216,10 +217,6 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	 * 
 	 * @see javax.money.CurrencyUnit#getCurrencyCode()
 	 */
-	
-	public String getCurrencyCode() {
-		return currencyCode;
-	}
 
 	/*
 	 * (non-Javadoc)
@@ -227,9 +224,9 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	 * @see javax.money.CurrencyUnit#getNumericCode()
 	 */
 	
-	public int getNumericCode() {
-		return numericCode;
-	}
+//	public int getNumericCode() {
+//		return numericCode;
+//	}
 
 	/*
 	 * (non-Javadoc)
@@ -237,9 +234,9 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	 * @see javax.money.CurrencyUnit#getDefaultFractionDigits()
 	 */
 	
-	public int getDefaultFractionDigits() {
-		return defaultFractionDigits;
-	}
+//	public int getDefaultFractionDigits() {
+//		return defaultFractionDigits;
+//	}
 
 	/*
 	 * (non-Javadoc)

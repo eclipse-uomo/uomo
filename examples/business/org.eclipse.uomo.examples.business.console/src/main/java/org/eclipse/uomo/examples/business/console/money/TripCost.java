@@ -24,66 +24,72 @@ import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.UnitFormat;
 
+import org.eclipse.uomo.business.money.MoneyConverter;
 import org.eclipse.uomo.business.money.MoneyUnit;
 import org.eclipse.uomo.business.types.IMoney;
+import org.eclipse.uomo.examples.business.console.internal.DemoMessages;
+import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.QuantityAmount;
 import org.eclipse.uomo.units.impl.BaseAmount;
-import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
+import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 
 /**
  * @author Werner Keil
- * @version 0.9.1, 2013-03-08
- * @deprecated integrate with MoneyDemo
+ * @version 0.9.2, 2013-05-20
  */
 public class TripCost {
   
 	
 	/**
-	 * @param args The application arguments if required.
+	 * @param args
+	 *            The application arguments if required.
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) {
-        ///////////////////////////////////////////////////////////////////////
-        // Calculates the cost of a car trip in Europe for an American tourist.
-        ///////////////////////////////////////////////////////////////////////
-		
-        // Use currency symbols instead of ISO-4217 codes.
-//		LocalUnitFormatImpl.getInstance().label(USD, "$"); // Use "$" symbol instead of currency code ("USD")
-//		LocalUnitFormatImpl.getInstance().label(EUR, "€"); // Use "€" symbol instead of currency code ("EUR")
-//		LocalUnitFormatImpl.getInstance().label(GBP, "£"); // Use "£" symbol instead of currency code ("GBP")
-//		LocalUnitFormatImpl.getInstance().label(INR, "Rp"); // Use "Rp" instead of currency code ("IRP")
-        
-        // Sets exchange rates.
-//        Currency.setReferenceCurrency(USD);
-//        EUR.setExchangeRate(1.55); // 1.0 € = 1.4 $
-//        GBP.setExchangeRate(2); // 1.0 £ = 2.0 $
-        //INR.setExchangeRate(0.022); // 1.0Rp = ~0.022 $
-        
-        //java.util.Currency utilCurr = java.util.Currency.getInstance("USD");
-        
-        // Calculates trip cost.
-        /*
-        IMeasure<?> carMileage        = Measure.valueOf(20, MILE.divide(GALLON_LIQUID_US)); // 20 mi/gal.
-        IMeasure<?> gazPrice          = Measure.valueOf(1.2, EUR.divide(LITER)); // 1.2 €/L
-        IMeasure<Length> tripDistance = Measure.valueOf(400, KILO(SI.METER)); // 400 km
-        IMeasure<Money>  tripCost     = tripDistance.divide(carMileage).times(gazPrice).to(USD);
-		*/
-        
-        // Calculates trip cost.
-        QuantityAmount<?> carMileage        = BaseAmount.valueOf(20, MILE.divide(GALLON_LIQUID)); // 20 mi/gal.
-        QuantityAmount<?> gazPrice          = BaseAmount.valueOf(1.2, EUR.divide(LITER)); // 1.2 €/L
-        QuantityAmount<Length> tripDistance = BaseAmount.valueOf(400, KILO(METRE)); // 400 km
-//        QuantityAmount<IMoney>  tripCost    = tripDistance.divide(carMileage).multiply(gazPrice).to(USD);
+		// /////////////////////////////////////////////////////////////////////
+		// Calculates the cost of a car trip in Europe for an American tourist.
+		// /////////////////////////////////////////////////////////////////////
 
-        
-        // Display units.
-        System.out.println("Mileage: " + carMileage);
-        
-        // Displays cost.
-//        System.out.println("Trip cost = " + tripCost + " (" + tripCost.to(EUR) + ")");
-//        System.out.println("Trip cost = " + tripCost + " (" + tripCost.to(GBP) + ")");
-//        System.out.println("Trip cost = " + tripCost + " (" + tripCost.to(INR) + ")");
-        
-        //System.out.println(utilCurr.getSymbol());
+		@SuppressWarnings("unused")
+		MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
+
+		// Calculates trip cost.
+		BaseAmount carMileage = new BaseAmount(20,
+				MILE.divide(GALLON_LIQUID)); // 20 mi/gal.
+		IMeasure<IMoney> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
+		// // 1.2 EUR/L
+		LengthAmount tripDistance = new LengthAmount(400, KILO(METRE)); // 400 km
+//		IMeasure<Length> tripDistance2 = new LengthAmount(400, KILO(METRE));
+//		LengthAmount tripDistance = new LengthAmount(4, (Unit<Length>) LAKH(METRE)); // 400 km 
+		
+		
+		// km
+		IMeasure<?> tripCost =  tripDistance.divide(
+				carMileage).multiply(gazPrice); // .to(USD);
+
+		// Display trip.
+		System.out.println(DemoMessages.MoneyDemo_Car_mileage + carMileage);
+		System.out.println(DemoMessages.MoneyDemo_Trip_distance + tripDistance);
+
+		// Display cost.
+		System.out.print(DemoMessages.MoneyDemo_Gas_price);
+		System.out.println(gazPrice); // FIXME format for CurrencyConverter
+		// UFormat format = MeasureFormat.getCurrencyFormat();
+		// System.out.println(format.format(gazPrice));
+		// MoneyAmount mo = MoneyAmount.valueOf(100, EUR);
+		// System.out.println(currFormat.format(mo));
+		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost); // + " (" +
+
+		System.out.println("In USD: " + gazPrice.doubleValue(USD));
+		System.out.println("Trip Cost"
+				+ ((QuantityAmount) tripCost).to(USD)); //$NON-NLS-1$
+		//System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
+//		System.out.println(Messages.MoneyDemo_Trip_cost
+//				+ ((BaseAmount) tripCost).to(EUR)); //$NON-NLS-1$
+		// System.out.println("Trip cost = " + tripCost + " (" +
+		// tripCost.to(GBP) + ")");
+		// System.out.println("Trip cost = " + tripCost + " (" +
+		// tripCost.to(INR) + ")");
 	}
 
 	/*

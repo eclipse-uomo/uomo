@@ -379,22 +379,13 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	public String getNamespace() {
 		return ISO_NAMESPACE;
 	}
-
-	 
-	public int getNumericCode() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	 
 	public boolean isLegalTender() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	 
 	public boolean isVirtual() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -409,59 +400,17 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-//	 
-//	public String getNamespace() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	 
-//	public int getNumericCode() {
-//		// TODO Auto-generated method stub
-//		return 0;
-//	}
-//
-//	 
-//	public boolean isLegalTender() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
-//	 
-//	public boolean isVirtual() {
-//		// TODO Auto-generated method stub
-//		return false;
-//	}
-//
-//	 
-//	public Long getValidFrom() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	 
-//	public Long getValidUntil() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	 
-//	public <T> T getAttribute(String key, Class<T> type) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	 
-//	public Enumeration<String> getAttributeKeys() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//	 
-//	public Class<?> getAttributeType(String key) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-
+	
+	/**
+	 * Access a new instance based on the ISO currency code. The code must
+	 * return a {@link Currency} when passed to
+	 * {@link Currency#getInstance(String)}.
+	 * 
+	 * @param currencyCode
+	 *            the ISO currency code, not null.
+	 * @return the corresponding {@link MonetaryCurrency} instance.
+	 */
+	public static MoneyUnit of(String currencyCode) {
+		return new MoneyUnit(currencyCode);
+	}
 }

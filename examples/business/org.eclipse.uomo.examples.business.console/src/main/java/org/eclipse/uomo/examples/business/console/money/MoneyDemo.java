@@ -21,8 +21,11 @@ import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 import static org.eclipse.uomo.units.IndianPrefix.LAKH;
 
+import org.eclipse.uomo.business.internal.CurrencyUnit;
+import org.eclipse.uomo.business.internal.MonetaryAmount;
 import org.eclipse.uomo.business.money.MoneyAmount;
 import org.eclipse.uomo.business.money.MoneyConverter;
+import org.eclipse.uomo.business.money.MoneyCurrency;
 import org.eclipse.uomo.business.money.MoneyUnit;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.examples.business.console.internal.DemoMessages;
@@ -51,43 +54,10 @@ public class MoneyDemo {
 
 		@SuppressWarnings("unused")
 		MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
-
-		// Calculates trip cost.
-		BaseAmount carMileage = new BaseAmount(20,
-				MILE.divide(GALLON_LIQUID)); // 20 mi/gal.
-		IMeasure<IMoney> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
-		// // 1.2 EUR/L
-		LengthAmount tripDistance = new LengthAmount(400, KILO(METRE)); // 400 km
-//		IMeasure<Length> tripDistance2 = new LengthAmount(400, KILO(METRE));
-//		LengthAmount tripDistance = new LengthAmount(4, (Unit<Length>) LAKH(METRE)); // 400 km 
+		CurrencyUnit currency = MoneyUnit.of("CHF");
+		MonetaryAmount money = MoneyAmount.of(100, currency);
 		
-		
-		// km
-		IMeasure<?> tripCost =  tripDistance.divide(
-				carMileage).multiply(gazPrice); // .to(USD);
-
-		// Display trip.
-		System.out.println(DemoMessages.MoneyDemo_Car_mileage + carMileage);
-		System.out.println(DemoMessages.MoneyDemo_Trip_distance + tripDistance);
-
-		// Display cost.
-		System.out.print(DemoMessages.MoneyDemo_Gas_price);
-		System.out.println(gazPrice); // FIXME format for CurrencyConverter
-		// UFormat format = MeasureFormat.getCurrencyFormat();
-		// System.out.println(format.format(gazPrice));
-		// MoneyAmount mo = MoneyAmount.valueOf(100, EUR);
-		// System.out.println(currFormat.format(mo));
-		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost); // + " (" +
-
-		System.out.println("In USD: " + gazPrice.doubleValue(USD));
-		System.out.println("Trip Cost"
-				+ ((QuantityAmount) tripCost).to(USD)); //$NON-NLS-1$
-		//System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));
-//		System.out.println(Messages.MoneyDemo_Trip_cost
-//				+ ((BaseAmount) tripCost).to(EUR)); //$NON-NLS-1$
-		// System.out.println("Trip cost = " + tripCost + " (" +
-		// tripCost.to(GBP) + ")");
-		// System.out.println("Trip cost = " + tripCost + " (" +
-		// tripCost.to(INR) + ")");
+		System.out.println(money);
+		System.out.println(money.getCurrency());
 	}
 }
