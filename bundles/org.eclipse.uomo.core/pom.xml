@@ -9,4 +9,7 @@
 	<artifactId>org.eclipse.uomo.core</artifactId>
 	<name>UOMo Core</name>
 	<packaging>eclipse-plugin</packaging>
+	<properties>
+		<site.basedir>${project.parent.basedir}</site.basedir>
+	</properties>
 </project>

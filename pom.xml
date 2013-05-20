@@ -21,7 +21,7 @@
 
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
-
+		<site.basedir>${project.basedir}</site.basedir>
 	</properties>
 
 	<groupId>org.eclipse.uomo</groupId>
@@ -98,6 +98,31 @@
 	<!-- ======================================================= -->
 	<build>
 		<plugins>
+		 <plugin>
+    <artifactId>maven-resources-plugin</artifactId>
+    <version>2.5</version>
+    <executions>
+      <execution>
+        <id>copy-sitedescriptor</id>
+        <!-- fetch site.xml before creating site documentation -->
+        <phase>pre-site</phase>
+        <goals>
+          <goal>copy-resources</goal>
+        </goals>
+        <configuration>
+          <outputDirectory>${basedir}/src/site/</outputDirectory>
+          <resources>          
+            <resource>                  
+              <directory>${site.basedir}/src/site/</directory>
+              <includes>
+                <include>**/site.xml</include>
+              </includes>
+            </resource>
+          </resources>              
+        </configuration>            
+      </execution>
+    </executions>
+   </plugin>        
 			<plugin>
 				<!-- This sets up the target platform in PDE terms The version of Eclipse 
 					that the source will be built against -->
