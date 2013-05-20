@@ -1,0 +1,87 @@
+~~ $Id: index.apt 154 2011-11-01 11:21:06Z martdesruisseaux $
+~~ Unit-API - Units of Measurement API for Java (http://www.unitsofmeasurement.org)
+~~ Copyright (c) 2005-2010, Unit-API contributors, JScience and others
+~~ All rights reserved.
+~~
+~~ See LICENSE.txt for details.
+~~
+                    -----------------------------------------------------
+                    Unit API home page
+                    -----------------------------------------------------
+                    Werner Keil, Martin Desruisseaux
+                    -----------------------------------------------------
+                    $Date: 2011-11-01 12:21:06 +0100 (Di, 01 Nov 2011) $
+                    -----------------------------------------------------
+
+
+The Units of Measurement API for Java
+
++------------------------------------------+
+Unit-API contributors, JScience and others
++------------------------------------------+
+
+  Copyright (c) 2005-2010, Unit-API contributors, JScience and others
+  All rights reserved.
+
+  See LICENSE.txt for details.
+
+[./images/icon.png] Logo
+
+  The <Unit of Measurement> library provides a set of Java language programming interfaces for
+  handling units and quantities. The interfaces provide a layer which separates client code,
+  which would call the API, from library code, which implements the API. Various groups have
+  implemented the API, see the {{{./implementations.html}list of known implementations}} for details.
+
+* The project
+
+  The project is {{{http://unitsofmeasure.googlecode.com/}hosted on Google Code}}. It runs a public
+  {{{./mail-lists.html}mailing list}} for user and developer questions, other issues, and general
+  discussion.
+
+  The <Unit of Measurement> library is free software. It may be used, modified and redistributed by
+  anyone for any purpose requiring only maintaining the copyright and license terms on the source
+  code and derivative files. See the {{{./license.html}license}} page for details.
+
+
+* Links
+
+    * {{{./apidocs/index.html}Browse javadoc}}
+
+    * {{{http://hudson.geomatys.com/job/Unit-API/}Nightly builds}}
+
+    * {{{./mail-lists.html}Mailing lists}}
+
+    * {{{http://www.unitsofmeasure.org/}The Unified Code for Units of Measure (UCUM)}}
+
+    * {{{./legacy/JSR-275.odt}Legacy JSR-275 specification draft}} (LibreOffice/OpenOffice.org document)
+
+
+* UCUM
+
+** What is it?
+
+  The Unified Code for Units of Measure is a code system intended to include all units of measures
+  being contemporarily used in international science, engineering, and business. The purpose is to
+  facilitate unambiguous electronic communication of quantities together with their units. The focus
+  is on electronic communication, as opposed to communication between humans. A typical application
+  of The Unified Code for Units of Measure are electronic data interchange (EDI) protocols, but there
+  is nothing that prevents it from being used in other types of machine communication.
+
+** How does it relate?
+
+  The Unified Code for Units of Measure is inspired by and heavily based on ISO 2955-1983, ANSI X3.50-1986,
+  and HL7's extensions called "ISO+". The respective ISO and ANSI standards are both entitled Representation
+  of [...] units in systems with limited character sets where ISO 2955 refers to SI and other units provided
+  by ISO 1000-1981, while ANSI X3.50 extends ISO 2955 to include U.S. customary units. Because these standards
+  carry the restriction of "limited character sets" in their names they seem to be of less value today where
+  graphical user interface and laser printers are in wide-spread use, which is why the European standard
+  ENV 12435 in its clause 7.3 declares ISO 2955 obsolete.
+
+  ENV 12435 is dedicated exclusively to the communication of measurements between humans in display
+  and print, and does not provide codes that can be used in communication between systems. It does
+  not even provide a specification that would allow communication of units from one system to the
+  screen or printer of another system. The issue about displaying units in the common style defined
+  by the 9th <Conférence Générale des Poids et Mesures> (CGPM) in 1947 is not just the character set.
+  Although The Unicode Standard and its predecessor ISO/IEC 10646 is the richest character set ever
+  it is still not enough to specify the presentation of units because there are important typographical
+  details such as superscripts, subscripts, roman and italics.
