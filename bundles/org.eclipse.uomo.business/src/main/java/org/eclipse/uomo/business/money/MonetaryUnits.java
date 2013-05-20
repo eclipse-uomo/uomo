@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2006, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import com.ibm.icu.util.Currency;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.5, $Date: 2010-09-11 14:45:05 +0200 (So, 11 Sep 2011) $
+ * @version 0.6, $Date: 2013-05-20 $
  */
 public final class MonetaryUnits extends AbstractSystemOfUnits {
 	/**
@@ -28,8 +28,13 @@ public final class MonetaryUnits extends AbstractSystemOfUnits {
 	 */
 	public static final String ISO_NAMESPACE = "ISO-4217";
 	
+	/**
+	 * The Australian Dollar currency unit.
+	 */
+	public static final MoneyUnit<IMoney> AUD = monetary(new MoneyUnit<IMoney>("AUD")); //$NON-NLS-1$
+	
 	// Use currency not defined as constant (Rupees).
-	public static final Unit<IMoney> INR = monetary(MoneyAmount.UNIT);
+	public static final Unit<IMoney> INR = monetary(new MoneyUnit<IMoney>("INR")); //$NON-NLS-1$
 
     /**
      * Default constructor (prevents this class from being instantiated).
@@ -53,7 +58,7 @@ public final class MonetaryUnits extends AbstractSystemOfUnits {
      * @param  unit the unit being added.
      * @return <code>unit</code>.
      */
-    private static <U extends Unit<?>> U monetary(U unit) {
+    private final static <U extends Unit<?>> U monetary(U unit) {
         UNITS.add(unit);
         return unit;
     }

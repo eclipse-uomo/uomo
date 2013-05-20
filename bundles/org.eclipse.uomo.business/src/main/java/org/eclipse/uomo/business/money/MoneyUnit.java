@@ -24,6 +24,7 @@ import org.eclipse.uomo.units.impl.converter.AddConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.eclipse.uomo.business.internal.CurrencyUnit;
+import org.eclipse.uomo.business.internal.Localizable;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
@@ -39,26 +40,43 @@ import com.ibm.icu.util.ULocale;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2.5, $Date: 2013-05-11
+ * @version 0.2.6, $Date: 2013-05-20
  * @param <Q> the monetary quantity
  * 
  */
 public class MoneyUnit<Q extends IMoney> extends Currency implements
-		Unit<IMoney>, IName, CurrencyUnit {
+		Unit<IMoney>, IName, CurrencyUnit, Localizable, Comparable<CurrencyUnit> {
 // TODO use JSR 354
 	/**
      * 
      */
 	private static final long serialVersionUID = 8524573975644908457L;
 	
-	protected MoneyUnit(String theISOCode) {
-		super(theISOCode);
+	/** namespace for this currency. */
+	private final String namespace;
+	/** valid from, or {@code null}. */
+	private final Long validFrom;
+	/** valid until, or {@code null}. */
+	private final Long validUntil;
+	/** true, if legal tender. */
+	private final boolean legalTender;
+	/** true, if it is a virtual currency. */
+	private final boolean virtual;
+	
+	protected MoneyUnit(String theCode, String namespace, 
+			Long validFrom, Long validUntil,
+			boolean legalTender, boolean virtual) {
+		super(theCode);
+		this.namespace = namespace;
+		this.validFrom = validFrom;
+		this.validUntil = validUntil;
+		this.legalTender = legalTender;
+		this.virtual = virtual;
 	}
-
-	/**
-	 * The Australian Dollar currency unit.
-	 */
-	public static final MoneyUnit<IMoney> AUD = new MoneyUnit<IMoney>("AUD"); //$NON-NLS-1$
+	
+	protected MoneyUnit(String theISOCode) {
+		this(theISOCode, ISO_NAMESPACE, null, null, true, false);
+	}
 
 	/**
 	 * The Canadian Dollar currency unit.
@@ -376,29 +394,76 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 		return toMetric();
 	}
 	 
+	/**
+	 * Get the namepsace of this {@link CurrencyUnit}, returns 'ISO-4217'.
+	 */
+	
 	public String getNamespace() {
-		return ISO_NAMESPACE;
+		return namespace;
 	}
 	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see CurrencyUnit#isLegalTender()
+	 */
 	public boolean isLegalTender() {
-		// TODO Auto-generated method stub
-		return false;
+		return legalTender;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see CurrencyUnit#isVirtual()
+	 */
 	public boolean isVirtual() {
-		return false;
+		return virtual;
 	}
-
 	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see CurrencyUnit#getValidFrom()
+	 */
+	
 	public Long getValidFrom() {
-		// TODO Auto-generated method stub
-		return null;
+		return validFrom;
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see CurrencyUnit#getValidUntil()
+	 */
+	
 	public Long getValidUntil() {
-		// TODO Auto-generated method stub
-		return null;
+		return validUntil;
+	}
+
+	public int compareTo(CurrencyUnit currency) {
+		int compare = getNamespace().compareTo(currency.getNamespace());
+		if (compare == 0) {
+			compare = getCurrencyCode().compareTo(currency.getCurrencyCode());
+		}
+		if (compare == 0) {
+			if (validFrom == null && currency.getValidFrom() != null) {
+				compare = -1;
+			} else if (validFrom != null && currency.getValidFrom() == null) {
+				compare = 1;
+			} else if (validFrom != null) {
+				compare = validFrom.compareTo(currency.getValidFrom());
+			}
+		}
+		if (compare == 0) {
+			if (validUntil == null && currency.getValidUntil() != null) {
+				compare = -1;
+			} else if (validUntil != null && currency.getValidUntil() == null) {
+				compare = 1;
+			} else if (validUntil != null) {
+				compare = validUntil.compareTo(currency.getValidUntil());
+			}
+		}
+		return compare;
 	}
 	
 	/**

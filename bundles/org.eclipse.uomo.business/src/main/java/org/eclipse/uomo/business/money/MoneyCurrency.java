@@ -33,7 +33,7 @@ import com.ibm.icu.util.ULocale;
  * @author Werner Keil
  * @deprecated merge into MoneyUnit
  */
-public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable, Serializable,
+public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable,
 		Comparable<CurrencyUnit> {
 
 	/**
@@ -45,10 +45,6 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	private final String namespace;
 	/** currency code for this currency. */
 	private final String currencyCode;
-	/** numeric code, or -1. */
-	//private final int numericCode;
-	/** fraction digits, or -1. */
-	private final int defaultFractionDigits;
 	/** valid from, or {@code null}. */
 	private final Long validFrom;
 	/** valid until, or {@code null}. */
@@ -74,8 +70,6 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		super(code);
 		this.namespace = namespace;
 		this.currencyCode = code;
-		//this.numericCode = numCode;
-		this.defaultFractionDigits = fractionDigits;
 		this.validFrom = validFrom;
 		this.validUntil = validUntil;
 		this.legalTender = legal;
@@ -94,8 +88,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		}
 		this.namespace = ISO_NAMESPACE;
 		this.currencyCode = currency.getCurrencyCode();
-		//this.numericCode = currency.getNumericCode(); //use numericCode
-		this.defaultFractionDigits = currency.getDefaultFractionDigits();
+		currency.getDefaultFractionDigits();
 		this.validFrom = null;
 		this.validUntil = null; // TODO Adapt for hisotoric one, e.g. AFA
 		this.legalTender = !this.currencyCode.startsWith("X"); // TODO check for
