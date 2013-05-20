@@ -679,6 +679,7 @@ public class LocalUnitFormatImpl extends AbstractFormat {
 		Formatter fmt = new Formatter();
 		fmt.format(Messages.LocalFormat_Pattern, f);
 		buffer.replace(0, 1, fmt.toString());
+		fmt.close(); // XXX try Java 7 with res, but for now let's leave J6 compliant
 		return unitPrecedence;
 	}
 		

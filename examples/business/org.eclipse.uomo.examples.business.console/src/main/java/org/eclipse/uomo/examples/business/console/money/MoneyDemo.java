@@ -10,35 +10,19 @@
  */
 package org.eclipse.uomo.examples.business.console.money;
 
-// Constants (Java 5 static import)
-import static org.eclipse.uomo.units.impl.system.USCustomary.GALLON_LIQUID;
-import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
-import static org.eclipse.uomo.units.impl.system.USCustomary.MILE;
-import static org.eclipse.uomo.units.SI.Prefix.KILO;
-import static org.eclipse.uomo.units.SI.METRE;
+//Constants (Java 5 static import)
 import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
-import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
-import static org.eclipse.uomo.units.IndianPrefix.LAKH;
 
 import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.MonetaryAmount;
 import org.eclipse.uomo.business.money.MoneyAmount;
 import org.eclipse.uomo.business.money.MoneyConverter;
-import org.eclipse.uomo.business.money.MoneyCurrency;
 import org.eclipse.uomo.business.money.MoneyUnit;
-import org.eclipse.uomo.business.types.IMoney;
-import org.eclipse.uomo.examples.business.console.internal.DemoMessages;
-import org.eclipse.uomo.units.IMeasure;
-import org.eclipse.uomo.units.QuantityAmount;
-import org.eclipse.uomo.units.impl.BaseAmount;
-import org.eclipse.uomo.units.impl.quantity.LengthAmount;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.Unit;
 
 /**
  * @author Werner Keil
- * @version 0.9.7, $Date: 2013-03-08 19:29:41 +0200 $
+ * @version 0.9.8, $Date: 2013-05-20 $
  */
 public class MoneyDemo {
 
@@ -58,6 +42,7 @@ public class MoneyDemo {
 		MonetaryAmount money = MoneyAmount.of(100, currency);
 		
 		System.out.println(money);
-		System.out.println(money.getCurrency());
+//		System.out.println(money.getCurrency());
+		System.out.println(converter.convert(34.6d));
 	}
 }
