@@ -9,8 +9,16 @@
 	<artifactId>org.eclipse.uomo.units</artifactId>
 	<name>UOMo Units of Measurement</name>
 	<packaging>eclipse-plugin</packaging>
-	
+
 	<properties>
-    <site.basedir>${project.parent.basedir}</site.basedir>
-</properties>
+		<site.basedir>${project.parent.basedir}</site.basedir>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+			<version>50.1.1</version>
+		</dependency>
+	</dependencies>
 </project>
