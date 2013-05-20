@@ -5,6 +5,6 @@
 	<classpathentry exported="true" kind="lib" path="libs/unit-api-0.6.1.jar"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
-	<classpathentry kind="lib" path="C:/Users/Werner/.m2/repository/com/ibm/icu/icu4j/4.8.1.1/icu4j-4.8.1.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/com/ibm/icu/icu4j/50.1.1/icu4j-50.1.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
