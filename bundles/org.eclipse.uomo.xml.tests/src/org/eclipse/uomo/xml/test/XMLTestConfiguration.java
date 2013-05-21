@@ -61,9 +61,9 @@ interface XMLTestConfiguration {
 	    : (System.getProperty("os.name").toLowerCase().startsWith(
 		    "mac os x") ? "/temp/" : "C:/temp/");
 
-    public static final String PLUGIN_ID = "org.eclipse.uomo.util";
+    public static final String PLUGIN_ID = "org.eclipse.uomo.xml.tests";
     public static final String RESOURCE_PATH = STARTDIR + "../" + PLUGIN_ID
-	    + "/src/main/resources/";
+	    + "/src/";
 
     public static final String TEMP_FILENAME = TEMP_PATH + "/res_tmp";
 
