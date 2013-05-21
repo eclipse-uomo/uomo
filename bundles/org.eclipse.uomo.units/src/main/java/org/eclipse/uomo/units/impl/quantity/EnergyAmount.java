@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3, $Date: 2013-05-20 $
  */
-public final class EnergyAmount extends BaseAmount<Energy> {
+public final class EnergyAmount extends BaseAmount<Energy> implements Energy {
 
 	public EnergyAmount(Number number, Unit<Energy> unit) {
 		super(number, unit);

@@ -16,6 +16,7 @@
   	<module>org.eclipse.uomo.units</module>
   	<module>org.eclipse.uomo.units.tests</module>
   	<module>org.eclipse.uomo.xml</module>
+  	<module>org.eclipse.uomo.xml.tests</module>
   	<module>org.eclipse.uomo.util</module>
   	<module>org.eclipse.uomo.util.tests</module>
   	<module>org.eclipse.uomo.ucum</module>

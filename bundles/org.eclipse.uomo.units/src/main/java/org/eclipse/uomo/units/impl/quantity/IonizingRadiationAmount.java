@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,9 @@ import org.unitsofmeasurement.unit.Unit;
  * them. The system unit for this quantity is "C/kg ("coulomb per kilogram).
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.0, $Date: 2011-03-20 $
+ * @version 1.1, $Date: 2013-05-21 $
  */
-public class IonizingRadiationAmount extends BaseAmount<IonizingRadiation>
+public final class IonizingRadiationAmount extends BaseAmount<IonizingRadiation>
 		implements IonizingRadiation {
 
 	public IonizingRadiationAmount(Number number, Unit<IonizingRadiation> unit) {

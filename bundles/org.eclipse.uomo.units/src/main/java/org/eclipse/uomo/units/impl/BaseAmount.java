@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2005, 2012, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl;
 
@@ -32,8 +32,7 @@ import com.ibm.icu.util.MeasureUnit;
  * Represents a generic quantity amount.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.3.2, ($Revision: 213 $), $Date: 2012-08-18 21:22:23 +0200 (Sa, 18
- *          Aug 2012) $
+ * @version 1.3.3, $Date: 2013-05-21 $
  */
 public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 		implements Comparable<BaseAmount<Q>> {

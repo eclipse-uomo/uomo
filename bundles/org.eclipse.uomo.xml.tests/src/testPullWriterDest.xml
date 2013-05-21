@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<name1 xmlns="urn:test" attr1="value1" xmlns:ns0="urn:test2" ns0:attr2="value2">
+  <name2>
+    <p>This is some text with an <ns0:name3>extension</ns0:name3></p>
+    <p>this word is <b>bold</b>.</p>
+  </name2>
+</name1>
