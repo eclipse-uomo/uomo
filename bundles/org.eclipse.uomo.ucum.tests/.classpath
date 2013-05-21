@@ -4,5 +4,7 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="var" path="M2_REPO/com/ibm/icu/icu4j/50.1.1/icu4j-50.1.1.jar"/>
+	<classpathentry kind="lib" path="/org.eclipse.uomo.xml/libs/xmlpull_1_1_3_4b.jar"/>
+	<classpathentry kind="lib" path="/org.eclipse.uomo.xml/libs/xpp3_min-1.1.3.4.O.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
