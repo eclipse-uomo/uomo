@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.uomo.core.impl.Pair;
+import org.eclipse.uomo.core.IVersion;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.ucum.model.Concept;
 import org.eclipse.uomo.ucum.model.ConceptKind;
@@ -44,9 +45,9 @@ public interface UcumService {
 	public UcumModel getModel();
 
 	// TODO replace this with a more generic Module definition (->Jigsaw, OSGi or SDJ)
-	public class UcumVersionDetails {
-		private Date releaseDate;
-		private String version;
+	public class UcumVersionDetails implements IVersion {
+		private final Date releaseDate;
+		private final String version;
 		/**
 		 * @param releaseDate
 		 * @param version
