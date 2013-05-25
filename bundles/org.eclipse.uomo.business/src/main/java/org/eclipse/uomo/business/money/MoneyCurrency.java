@@ -701,4 +701,12 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 
 	}
 
+	public String getDisplayName(Locale locale) {
+		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+	}
+
+	public int getNumericCode() {
+		return -1;
+	}
+
 }
