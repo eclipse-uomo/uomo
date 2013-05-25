@@ -41,7 +41,7 @@ import com.ibm.icu.util.ULocale;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2.6, $Date: 2013-05-20
+ * @version 0.2.7, $Date: 2013-05-25
  * @param <Q> the monetary quantity
  * 
  */
@@ -479,11 +479,11 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 		return new MoneyUnit(currencyCode);
 	}
 
-	public String getDisplayName(Locale locale) {
-		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
-	}
-
-	public int getNumericCode() {
-		return -1;
-	}
+//	public String getDisplayName(Locale locale) {
+//		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+//	}
+//
+//	public int getNumericCode() {
+//		return -1;
+//	}
 }

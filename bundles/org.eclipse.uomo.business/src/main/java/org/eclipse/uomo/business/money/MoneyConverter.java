@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.Formatter;
 import java.util.List;
 
 import org.eclipse.osgi.util.NLS;
+import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.ExchangeRate;
 import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.IMoney;
@@ -45,7 +46,7 @@ import com.ibm.icu.util.ULocale;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 5.2.3 ($Revision: 214 $), $Date: 2010-09-13 23:54:08 +0200 (Mo, 13 Sep 2010) $
+ * @version 5.3, $Date: 2013-05-25 $
  * @deprecated use JSR 354
  */
 public class MoneyConverter extends AbstractConverter implements Formattable {
@@ -64,13 +65,35 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 		if (factor == null)
 			throw new UnsupportedOperationException(NLS.bind(
 					Messages.CurrencyConverter_exchangeRate_not_set,
-					rate.getSource(), rate.getTarget())); //$NON-NLS-1$
+					rate.getBase(), rate.getTerm())); //$NON-NLS-1$
 	}
 
-	private Currency fromJDK(java.util.Currency currency) {
-		return Currency.getInstance(currency.getCurrencyCode());
+	private CurrencyUnit fromJDK(java.util.Currency currency) {
+		// TODO use JDKAdapter
+		return fromICU(Currency.getInstance(currency.getCurrencyCode()));
+	}
+	
+	private CurrencyUnit fromICU(Currency currency) {
+		return MoneyCurrency.of(currency);
 	}
 
+	
+	/**
+	 * Creates the currency converter from the source currency to the target
+	 * currency.
+	 * 
+	 * @param source
+	 *            the source currency.
+	 * @param target
+	 *            the target currency.
+	 * @param factor
+	 *            the multiplier factor from source to target.
+	 * @return the corresponding converter.
+	 */
+	private MoneyConverter(CurrencyUnit source, CurrencyUnit target, Number factor) {
+		rate = new MoneyExchangeRate(source, target, factor);
+	}
+	
 	/**
 	 * Creates the currency converter from the source currency to the target
 	 * currency.
@@ -84,7 +107,7 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 	 * @return the corresponding converter.
 	 */
 	private MoneyConverter(Currency source, Currency target, Number factor) {
-		rate = new MoneyExchangeRate(source, target, factor);
+		rate = new MoneyExchangeRate(fromICU(source), fromICU(target), factor);
 	}
 
 	/**
@@ -100,15 +123,12 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 	 * @return the corresponding converter.
 	 */
 	@SuppressWarnings("unchecked")
-	public MoneyConverter(MoneyUnit<?> source, Unit<IMoney> target,
+	public MoneyConverter(Unit<?> source, Unit<IMoney> target,
 			Number factor) {
-		if (target instanceof MoneyUnit<?>) {
-			rate = new MoneyExchangeRate(source, (MoneyUnit<IMoney>) target,
-					factor);
-		} else {
-			Currency defCurrency = Currency.getInstance(ULocale.getDefault());
+		
+			CurrencyUnit defCurrency = MoneyCurrency.of(Currency.getInstance(ULocale.getDefault()));
 			rate = new MoneyExchangeRate(defCurrency, defCurrency, factor);
-		}
+		
 	}
 
 	/**
@@ -133,8 +153,8 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 	 * 
 	 * @return the source currency.
 	 */
-	public Currency getSource() {
-		return rate.getSource();
+	public CurrencyUnit getSource() {
+		return rate.getBase();
 	}
 
 	/**
@@ -142,17 +162,17 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 	 * 
 	 * @return the target currency.
 	 */
-	public Currency getTarget() {
-		return rate.getTarget();
+	public CurrencyUnit getTarget() {
+		return rate.getTerm();
 	}
 
 	public MoneyConverter inverse() {
-		return new MoneyConverter(rate.getTarget(), rate.getSource(),
+		return new MoneyConverter(getTarget(), getSource(),
 				rate.getFactor());
 	}
 
 	public MoneyConverter negate() {
-		return new MoneyConverter(rate.getSource(), rate.getTarget(), -rate
+		return new MoneyConverter(getSource(), getTarget(), -rate
 				.getFactor().doubleValue());
 	}
 
@@ -192,22 +212,22 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 		if (!(cvtr instanceof MoneyConverter))
 			return false;
 		MoneyConverter that = (MoneyConverter) cvtr;
-		return this.rate.getSource().equals(that.rate.getSource())
-				&& this.rate.getTarget().equals(that.rate.getTarget());
+		return this.getSource().equals(that.getSource())
+				&& this.getTarget().equals(that.getTarget());
 	}
 
 	@Override
 	public int hashCode() {
-		return rate.getSource().hashCode() + rate.getTarget().hashCode();
+		return getSource().hashCode() + getTarget().hashCode();
 	}
 
 	@Override
 	public final String toString() {
 		if (getSource().equals(getTarget())) {
-			return getSource().getSymbol();
+			return getSource().getCurrencyCode();
 		}
 		return String.format(Messages.CurrencyConverter_toString, getSource()
-				.getSymbol(), getTarget().getSymbol());
+				.getCurrencyCode(), getTarget().getCurrencyCode());
 	}
 
 	public boolean isLinear() {
@@ -237,7 +257,7 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 
 		// decide form of name
 		String name = getSource().toString();
-		String symbol = getSource().getSymbol();
+		String symbol = getSource().getCurrencyCode();
 		// if (fmt.locale().equals(Locale.FRANCE))
 		// name = frenchCompanyName;
 		// boolean alternate = (f & ALTERNATE) == ALTERNATE;
