@@ -42,9 +42,8 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
 	/**
 	 * Holds a dimensionless measure of one (exact).
 	 */
-	@SuppressWarnings("unchecked")
 	public static final Quantity<Dimensionless> ONE =
-			QuantityFactory.getInstance(QuantityAmount.class).create(
+			QuantityFactory.getInstance(Dimensionless.class).create(
 					BigDecimal.ONE, AbstractUnit.ONE);
 	
 	/*

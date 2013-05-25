@@ -13,6 +13,7 @@ package org.eclipse.uomo.business.money;
 import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
 
 import java.math.BigInteger;
+import java.util.Locale;
 import java.util.Map;
 
 import org.eclipse.uomo.units.AbstractConverter;
@@ -476,5 +477,13 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	 */
 	public static MoneyUnit of(String currencyCode) {
 		return new MoneyUnit(currencyCode);
+	}
+
+	public String getDisplayName(Locale locale) {
+		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+	}
+
+	public int getNumericCode() {
+		return -1;
 	}
 }

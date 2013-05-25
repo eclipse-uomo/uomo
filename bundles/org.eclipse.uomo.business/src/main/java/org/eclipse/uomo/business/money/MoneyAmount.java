@@ -19,6 +19,7 @@ import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.MonetaryAmount;
 import org.eclipse.uomo.business.internal.MonetaryOperator;
 import org.eclipse.uomo.business.types.IMoney;
+import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.QuantityAmount;
@@ -64,7 +65,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	/**
-	 * Returns the money amount corresponding to the specified BigDecimal value
+	 * Returns the money amount corresponding to the specified Number value
 	 * and currency.
 	 * 
 	 * @param value
@@ -74,12 +75,11 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @return the corresponding amount.
 	 */
 	public static MoneyAmount of(Number value, CurrencyUnit currency) {
-		MoneyAmount amount = new MoneyAmount(value, (MoneyUnit)currency);
-		return amount;
+		return new MoneyAmount(value, (MoneyUnit)currency);
 	}
 	
 	/**
-	 * Returns the money amount corresponding to the specified BigDecimal value
+	 * Returns the money amount corresponding to the specified Number value
 	 * and currency.
 	 * 
 	 * @param value
@@ -94,7 +94,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 //	}
 
 	/**
-	 * Returns the money amount corresponding to the specified BigDecimal value
+	 * Returns the money amount corresponding to the specified Number value
 	 * and currency.
 	 * 
 	 * @param value
@@ -104,8 +104,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @return the corresponding amount.
 	 */
 	public static MoneyAmount of(Number value, Unit<?> currency) {
-		MoneyAmount amount = new MoneyAmount(value, (MoneyUnit) currency);
-		return amount;
+		return new MoneyAmount(value, (MoneyUnit) currency);
 	}
 
 	/**
@@ -120,9 +119,8 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @return the corresponding amount.
 	 */
 	public static MoneyAmount of(long value, int cents, Currency currency) {
-		MoneyAmount amount = new MoneyAmount(BigDecimal.valueOf(value * 100
+		return new MoneyAmount(BigDecimal.valueOf(value * 100
 				+ cents, -2), (MoneyUnit) currency);
-		return amount;
 	}
 
 	/**
@@ -142,6 +140,21 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 				.doubleValue()), amount.unit().getSystemUnit());
 	}
 
+	
+	/**
+	 * Returns the money amount corresponding to the specified Number value
+	 * and currency code.
+	 * 
+	 * @param value
+	 *            the value stated in the specified currency.
+	 * @param currency
+	 *            the currency in which the value is stated.
+	 * @return the corresponding amount.
+	 */
+	public static MoneyAmount of(String code, Number value) {
+		return new MoneyAmount(value, MoneyUnit.of(code));
+	}
+	
 	/**
 	 * Overrides the default {@link #toString()} to show only the currency
 	 * {@link Currency#getFractionDigits() fraction digits} of the associated
@@ -170,6 +183,12 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	// return MoneyAmount.valueOf(_value.opposite(), getCurrency());
 	// }
 
+	protected MoneyAmount plus(IMoney that) {
+		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
+		return MoneyAmount.of(this.getNumber().doubleValue()
+				+ that.value().doubleValue(), getCurrency());
+	}
+	
 	protected MoneyAmount plus(MoneyAmount that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
 		return MoneyAmount.of(this.getNumber().doubleValue()
@@ -264,10 +283,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		}
 	}
 
-	public IMeasure<IMoney> add(IMeasure<IMoney> that) {
-		return plus((MoneyAmount) that);
-	}
-
 	public IMeasure<IMoney> substract(IMeasure<IMoney> that) {
 		return minus((MoneyAmount) that);
 	}
@@ -328,6 +343,15 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 			// value.getClass());
 		}
 	}
+	
+	private final BigDecimal bigNumber() {
+		if (getNumber() instanceof BigDecimal) {
+			return (BigDecimal)getNumber();
+		} else {
+			throw new UOMoRuntimeException(
+					new IllegalArgumentException("Cannot represent as BigDecimal"));
+		}
+	}
 
 	/**
 	 * Generate a 'preference neutral' string from Money value.
@@ -359,13 +383,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return null;
 	}
 
-	 
-	public MonetaryAmount add(MonetaryAmount augend) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	 
 	public MonetaryAmount add(Number augend) {
 		// TODO Auto-generated method stub
 		return null;
@@ -502,75 +519,137 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return null;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#getScale()
+	 */
 	public int getScale() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.bigNumber().scale();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#getPrecision()
+	 */
 	public int getPrecision() {
-		// TODO Auto-generated method stub
-		return 0;
+		//return bigNumber().precision(); // FIXME in ICU4J 50+
+		return -1;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#intValue()
+	 */
 	public int intValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getNumber().intValue();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#intValueExact()
+	 */
 	public int intValueExact() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bigNumber().intValueExact();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#longValue()
+	 */
 	public long longValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getNumber().longValue();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#longValueExact()
+	 */
 	public long longValueExact() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bigNumber().longValueExact();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#floatValue()
+	 */
 	public float floatValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getNumber().floatValue();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#doubleValue()
+	 */
 	public double doubleValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getNumber().doubleValue();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#byteValue()
+	 */
 	public byte byteValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.getNumber().byteValue();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#shortValue()
+	 */
 	public short shortValue() {
-		// TODO Auto-generated method stub
-		return 0;
+		return getNumber().shortValue();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#shortValueExact()
+	 */
 	public short shortValueExact() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bigNumber().shortValueExact();
 	}
 
-	 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#signum()
+	 */
+
 	public int signum() {
-		// TODO Auto-generated method stub
-		return 0;
+		return bigNumber().signum();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#toEngineeringString()
+	 */
+	public String toEngineeringString() {
+		return getCurrency().getCurrencyCode() + ' '
+				//+ bigNumber().toEngineeringString(); // FIXME in ICU4J 50+
+				+ bigNumber().toString();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see MonetaryAmount#toPlainString()
+	 */
+	public String toPlainString() {
+		return getCurrency().getCurrencyCode() + ' '
+				//+ bigNumber().toPlainString();  // FIXME in ICU4J 50+
+				+ bigNumber().toString();
+	}
 	 
 	public boolean isLessThan(MonetaryAmount amount) {
 		// TODO Auto-generated method stub
@@ -612,11 +691,9 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	public Class<?> getNumberType() {
-		// TODO Auto-generated method stub
 		return getNumber().getClass();
 	}
 
-	 
 	public MoneyAmount multiply(MonetaryAmount multiplicand) {
 		// TODO Auto-generated method stub
 		return null;
@@ -624,5 +701,15 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 
 	public CurrencyUnit getCurrency() {
 		return (CurrencyUnit)unit();
+	}
+
+	@Override
+	public IMoney add(IMeasure<IMoney> that) {
+		return plus((IMoney) that);
+	}
+
+	@Override
+	public MonetaryAmount add(MonetaryAmount augend) {
+		return plus((MoneyAmount) augend);
 	}
 }

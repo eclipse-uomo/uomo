@@ -12,7 +12,6 @@ package org.eclipse.uomo.business.money;
 
 import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
 
-import java.io.Serializable;
 //import java.util.Currency;
 import java.util.Locale;
 import java.util.Map;
@@ -29,7 +28,7 @@ import com.ibm.icu.util.ULocale;
  * Adapter that implements the  {@link CurrencyUnit} interface using the
  * ICU4J {@link com.ibm.icu.util.Currency}.
  * 
- * @version 0.2.2
+ * @version 0.2.3
  * @author Werner Keil
  * @deprecated merge into MoneyUnit
  */
@@ -111,7 +110,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		String key = ISO_NAMESPACE + ':' + currency.getCurrencyCode();
 		MoneyCurrency cachedItem = CACHED.get(key);
 		if (cachedItem == null) {
-			cachedItem = new JDKCurrencyAdapter(currency);
+			cachedItem = new ICUCurrencyAdapter(currency);
 			CACHED.put(key, cachedItem);
 		}
 		return cachedItem;
@@ -700,5 +699,13 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		}
 
 	}
+
+//	public String getDisplayName(Locale locale) {
+//		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+//	}
+//
+//	public int getNumericCode() {
+//		return -1;
+//	}
 
 }

@@ -18,21 +18,13 @@ import org.eclipse.uomo.business.internal.ExchangeRateType;
 import com.ibm.icu.util.Currency;
 
 /**
- * @version 0.2
+ * @version 0.3
  * @author Werner Keil
  * 
  */
 public class MoneyExchangeRate implements ExchangeRate {
 
-	public static enum Type implements ExchangeRateType {
-		DEFAULT;
-
-		public String getId() {
-			return name();
-		}
-	}
-
-	private final Type type;
+	private final ExchangeRateType type;
 
 	private final Currency source;
 
@@ -44,7 +36,7 @@ public class MoneyExchangeRate implements ExchangeRate {
 		this.source = source;
 		this.target = target;
 		this.factor = factor;
-		type = Type.DEFAULT;
+		type = ExchangeRateType.of("DEFAULT");
 	}
 
 	/*
