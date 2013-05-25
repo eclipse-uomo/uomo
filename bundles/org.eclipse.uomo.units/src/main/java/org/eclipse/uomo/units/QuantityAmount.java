@@ -1,18 +1,19 @@
 /**
- * Copyright (c) 2005, 2012, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+import org.unitsofmeasurement.quantity.Dimensionless;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
@@ -31,13 +32,21 @@ import com.ibm.icu.util.MeasureUnit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @param <Q>
  *            The type of the quantity.
- * @version 1.3.3 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12
+ * @version 1.3.4 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12
  *          Sep 2011) $ XXX rename to Amount, AbstractAmount or MeasureAmount?
  *          FIXME Bug 338334 overwrite equals()
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
 		implements IMeasure<Q> {
 
+	/**
+	 * Holds a dimensionless measure of one (exact).
+	 */
+	@SuppressWarnings("unchecked")
+	public static final Quantity<Dimensionless> ONE =
+			QuantityFactory.getInstance(QuantityAmount.class).create(
+					BigDecimal.ONE, AbstractUnit.ONE);
+	
 	/*
 	 * (non-Javadoc)
 	 * 
