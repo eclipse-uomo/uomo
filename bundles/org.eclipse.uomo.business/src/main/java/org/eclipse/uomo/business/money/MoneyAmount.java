@@ -38,7 +38,7 @@ import com.ibm.icu.util.Currency;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.5, $Date: 2013-05-11 $
+ * @version 1.6, $Date: 2013-05-11 $
  */
 public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, MonetaryAmount,
 		Comparable<MonetaryAmount> {
@@ -211,7 +211,12 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 				getCurrency());
 	}
 
-	protected MoneyAmount multiply(MoneyAmount that) {
+	public MoneyAmount multiply(MonetaryAmount that) {
+		MoneyAmount ma = (MoneyAmount)that;
+		return times(ma);
+	}
+	
+	protected MoneyAmount times(MoneyAmount that) {
 		Unit<?> unit = unit().multiply(that.unit());
 		return MoneyAmount.of(((BigDecimal) getNumber())
 				.multiply((BigDecimal) that.getNumber()), unit);
@@ -292,7 +297,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	public IMeasure<IMoney> multiply(IMeasure<?> that) {
-		return multiply((MoneyAmount) that);
+		return multiply((MonetaryAmount) that);
 	}
 
 	public IMeasure<IMoney> to(Unit<IMoney> unit) {
@@ -534,8 +539,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#getPrecision()
 	 */
 	public int getPrecision() {
-		//return bigNumber().precision(); // FIXME in ICU4J 50+
-		return -1;
+		return bigNumber().toBigDecimal().precision();
 	}
 
 	/*
@@ -636,8 +640,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public String toEngineeringString() {
 		return getCurrency().getCurrencyCode() + ' '
-				//+ bigNumber().toEngineeringString(); // FIXME in ICU4J 50+
-				+ bigNumber().toString();
+				+ bigNumber().toBigDecimal().toEngineeringString();
 	}
 
 	/*
@@ -647,8 +650,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public String toPlainString() {
 		return getCurrency().getCurrencyCode() + ' '
-				//+ bigNumber().toPlainString();  // FIXME in ICU4J 50+
-				+ bigNumber().toString();
+				+ bigNumber().toBigDecimal().toPlainString();
 	}
 	 
 	public boolean isLessThan(MonetaryAmount amount) {
@@ -694,11 +696,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return getNumber().getClass();
 	}
 
-	public MoneyAmount multiply(MonetaryAmount multiplicand) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	 
 	public CurrencyUnit getCurrency() {
 		return (CurrencyUnit)unit();
 	}
