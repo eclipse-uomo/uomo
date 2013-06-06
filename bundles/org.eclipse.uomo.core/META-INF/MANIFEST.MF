@@ -14,7 +14,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.osgi;bundle-version="3.6.0";visibility:=reexport,
  org.eclipse.osgi.services;bundle-version="3.2.100";visibility:=reexport
 Bundle-Vendor: Eclipse.org
-Bundle-Version: 0.6.0.qualifier
+Bundle-Version: 0.6.0
 Bnd-LastModified: 1288905964975
 Bundle-Activator: org.eclipse.uomo.core.internal.Activator
 Bundle-ManifestVersion: 2
