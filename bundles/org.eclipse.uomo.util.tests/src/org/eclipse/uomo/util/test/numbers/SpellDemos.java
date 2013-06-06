@@ -57,7 +57,7 @@ public class SpellDemos {
 		System.out.println("Spelling Number Test Console  0.6");
 		System.out
 				.println("A Java demo to spell numbers and to parse spelled number text.");
-		System.out.println("Version 0.6-SNAPSHOT");
+		System.out.println("Version 0.6");
 		System.out.println("Eclipse Foundation.");
 
 		// Run demos one after the other. Pause between them.
