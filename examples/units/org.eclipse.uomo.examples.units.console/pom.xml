@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>org.eclipse.uomo.examples.units</artifactId>
 		<groupId>org.eclipse.uomo.examples.units</groupId>
-		<version>0.6.0-SNAPSHOT</version>
+		<version>0.7.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.uomo.examples.units.console</artifactId>
 	<name>UOMo Units Console Examples</name>
@@ -17,7 +17,7 @@
         <dependency>
         	<groupId>org.eclipse.uomo</groupId>
         	<artifactId>org.eclipse.uomo.units</artifactId>
-        	<version>0.6.0-SNAPSHOT</version>
+        	<version>0.7.0-SNAPSHOT</version>
         </dependency>	
 		<dependency>
             <groupId>junit</groupId>
@@ -34,7 +34,7 @@
         <dependency>
         	<groupId>org.eclipse.uomo</groupId>
         	<artifactId>org.eclipse.uomo.core</artifactId>
-        	<version>0.6.0-SNAPSHOT</version>       	
+        	<version>0.7.0-SNAPSHOT</version>       	
         </dependency>
         <dependency>
         	<groupId>com.ibm.icu</groupId>
@@ -49,7 +49,7 @@
 		<dependency>
 			<groupId>org.eclipse.uomo</groupId>
 			<artifactId>org.eclipse.uomo.util</artifactId>
-			<version>0.6.0-SNAPSHOT</version>
+			<version>0.7.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 
