@@ -50,7 +50,7 @@ public abstract class AbstractSystemOfUnits implements SystemOfUnits, IName {
 	}
 
 	@Override
-	public <Q extends Quantity<Q>> Unit<Q> getUnit(Class<Q> quantityType) {
+	public <T extends Quantity<T>> Unit<T> getUnit(Class<T> quantityType) {
 		return QuantityFactory.getInstance(quantityType).getMetricUnit();
 	}
 	
