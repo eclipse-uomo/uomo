@@ -12,6 +12,7 @@ package org.eclipse.uomo.ucum.tests;
 
 import static org.junit.Assert.*;
 import static org.eclipse.uomo.core.impl.OutputHelper.*;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -23,6 +24,7 @@ import org.eclipse.uomo.ucum.impl.UcumEssenceService;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.util.Parser;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -34,6 +36,7 @@ import com.ibm.icu.text.NumberFormat;
  * @author Werner Keil
  * @version 1.2, 2013-04-28
  */
+@Ignore
 public class UcumServiceTest {
 	private UcumService ucumService;
 	
