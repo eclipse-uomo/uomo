@@ -24,6 +24,8 @@ public class Messages extends NLS {
 	public static String REP_1R;
 	public static String REP_2dot5R;
 	
+	public static String BEAT;
+	
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
