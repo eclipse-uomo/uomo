@@ -21,6 +21,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 0.1
  */
+@SuppressWarnings("deprecation")
 public class Health extends AbstractSystemOfUnits {
 
 	private static final Unit<Heartbeat> BEAT = addUnit(new BaseUnit<Heartbeat>(
