@@ -24,7 +24,6 @@ import org.eclipse.uomo.ucum.impl.UcumEssenceService;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.util.Parser;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.unitsofmeasurement.unit.Unit;
 

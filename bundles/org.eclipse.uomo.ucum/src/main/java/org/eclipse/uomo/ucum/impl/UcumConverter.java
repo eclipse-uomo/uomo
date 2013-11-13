@@ -50,6 +50,7 @@ class UcumConverter extends AbstractConverter {
 	 */
 	private static final long serialVersionUID = -895607408258138526L;
 	private final UcumModel model;
+	@SuppressWarnings("rawtypes")
 	private final Registry<SpecialUnitHandler> handlers;
 	private final UnitConverter compound;
 	

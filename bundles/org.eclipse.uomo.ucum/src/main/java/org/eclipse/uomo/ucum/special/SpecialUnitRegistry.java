@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - fixes and improvements
  *******************************************************************************/
 
 package org.eclipse.uomo.ucum.special;
@@ -21,7 +22,7 @@ import org.unitsofmeasurement.quantity.InformationRate;
 @SuppressWarnings("rawtypes")
 public class SpecialUnitRegistry implements Registry<SpecialUnitHandler> {
 	final Map<String, SpecialUnitHandler> handlers = new HashMap<String, SpecialUnitHandler>();
-
+// TODO consider replacing this with a Map (SpecialUnitMap extend AbstractMap or implement Map)
 	public SpecialUnitRegistry() {
 		super();
 		init();

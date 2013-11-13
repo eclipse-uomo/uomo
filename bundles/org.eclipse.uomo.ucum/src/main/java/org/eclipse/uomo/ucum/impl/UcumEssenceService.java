@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -37,7 +37,9 @@ import org.eclipse.uomo.ucum.parsers.DefinitionParser;
 import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.parsers.FormalStructureComposer;
+import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
 import org.eclipse.uomo.ucum.special.SpecialUnitRegistry;
+import org.eclipse.uomo.util.Registry;
 
 /**
  * implements UCUM services. Applications must provide a copy of
@@ -59,7 +61,8 @@ public class UcumEssenceService implements UcumService {
 	public static final String UCUM_OID = "2.16.840.1.113883.6.8";
 
 	private final UcumModel model;
-	private SpecialUnitRegistry handlers = new SpecialUnitRegistry();
+	@SuppressWarnings("rawtypes")
+	private final Registry<SpecialUnitHandler> handlers = new SpecialUnitRegistry();
 
 	/**
 	 * Create an instance of Ucum services. Stream must point to a valid

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,18 +17,19 @@ import java.util.Date;
 import java.util.List;
 
 import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.core.IVersion;
 
-public class UcumModel implements IName {
+public class UcumModel implements IName, IVersion {
 
 	/**
-	 * version="1.7" 
+	 * version="1.8" 
 	 */
 	private final String version;
 	
 	/**
 	 * revision="$Revision: 1.1 $"
 	 */
-	private final String revision;
+//	private final String revision;
 	
 	/**
 	 * date this revision was made public
@@ -47,7 +48,7 @@ public class UcumModel implements IName {
 	public UcumModel(String version, String revision, Date revisionDate) {
 		super();
 		this.version = version;
-		this.revision = revision;
+//		this.revision = revision;
 		this.revisionDate = revisionDate;
 	}
 	
@@ -75,9 +76,9 @@ public class UcumModel implements IName {
 	/**
 	 * @return the revision
 	 */
-	public String getRevision() {
-		return revision;
-	}
+//	public String getRevision() {
+//		return revision;
+//	}
 //	/**
 //	 * @param revision the revision to set
 //	 */
