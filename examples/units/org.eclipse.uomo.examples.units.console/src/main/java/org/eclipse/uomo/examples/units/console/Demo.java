@@ -13,6 +13,8 @@ package org.eclipse.uomo.examples.units.console;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.units.SI.Prefix.*;
 import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
+import static org.eclipse.uomo.units.impl.system.USCustomary.INCH;
+import static org.eclipse.uomo.units.impl.system.USCustomary.POUND;
 import static org.eclipse.uomo.examples.units.types.PolishObsolete.*;
 
 import org.eclipse.uomo.units.IMeasure;
@@ -26,7 +28,7 @@ import org.unitsofmeasurement.quantity.Time;
 /**
  * @author <a href="mailto:desruisseaux@users.sourceforge.net">Martin Desruisseaux</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.7 ($Revision: 210 $), $Date: 2011-12-29 23:34:46 +0100 (Do, 29 Dec 2011) $
+ * @version 0.8, $Date: 2013-11-19 $
  */
 public class Demo {
 
@@ -35,15 +37,15 @@ public class Demo {
     }
 	
 	private static IMeasure<Length> getMoreLength() {
-        return new LengthAmount(20, METRE);
+        return new LengthAmount(30, INCH);
     }
 	
 	private static IMeasure<Mass> getSomeMass() {
-        return new MassAmount(30, KILOGRAM);
+        return new MassAmount(40, KILOGRAM);
     }
 	
 	private static IMeasure<Mass> getMoreMass() {
-		return new MassAmount(30, KILOGRAM);
+		return new MassAmount(50, POUND);
 	}
 	
 	private static IMeasure<Time> getTime() {
@@ -52,36 +54,39 @@ public class Demo {
 
     public static void main(String[] args) {
     	IMeasure<Length> someLength = getSomeLength();
-        System.out.println("l = " + someLength);
+        System.out.println("len = " + someLength);
         IMeasure<Length> moreLength = getMoreLength();
-        System.out.println("l2 = " + moreLength);
+        System.out.println("len2 = " + moreLength);
         System.out.println();
 
         IMeasure<Mass> someMass = getSomeMass();
-        System.out.println("toString = " + someMass);        
+        System.out.println("mass = " + someMass);        
         IMeasure<Mass> moreMass = getMoreMass();
-        System.out.println("toString2 = " + moreMass);
+        System.out.println("mass2 = " + moreMass);
         System.out.println();
         
         IMeasure<Time> time = getTime();
-        System.out.println("toString = " + time);
+        System.out.println("time = " + time);
         
-        IMeasure<?> result = moreLength.divide(time);
-        System.out.println("toString3 = " + result);
+        IMeasure<?> result = someLength.divide(time);
+        System.out.println("speed = " + result);
+        result = moreLength.divide(time);
+        System.out.println("speed2 = " + result);
+        System.out.println();
         
         IMeasure<Length> convertedLength = moreLength.to(FOOT);
-        System.out.println("converted = " + convertedLength);
+        System.out.println("len2 converted = " + convertedLength);
         
-       IMeasure<Length> convertedLengthPL = moreLength.to(ELL);
-       System.out.println("converted (PL) = " + convertedLengthPL);
+        IMeasure<Length> convertedLengthPL = moreLength.to(ELL);
+        System.out.println("len2 converted (PL) = " + convertedLengthPL);
         
         
         System.out.println();
         someLength = new LengthAmount(1, MILLI(METRE));
-        System.out.println("len1 = " + someLength);
+        System.out.println("len3 = " + someLength);
         IMeasure<Length> someMoreLength = new LengthAmount(400, KILO(METRE));
-        someMass = new MassAmount(50, MILLI(GRAM));
-        System.out.println("mass1 = " + someMass);
-        System.out.println("len2 = " + someMoreLength);
+        someMass = new MassAmount(60, MILLI(GRAM));
+        System.out.println("mass3 = " + someMass);
+        System.out.println("len4 = " + someMoreLength);
     }
 }
