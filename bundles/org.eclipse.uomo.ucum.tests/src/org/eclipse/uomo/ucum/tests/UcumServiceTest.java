@@ -33,7 +33,7 @@ import com.ibm.icu.text.NumberFormat;
 
 /**
  * @author Werner Keil
- * @version 1.2, 2013-04-28
+ * @version 1.3, 2013-11-19
  */
 public class UcumServiceTest {
 	private UcumService ucumService;
@@ -61,7 +61,7 @@ public class UcumServiceTest {
 				println(prop);
 			}
 		}
-		assertTrue(props.size() == 92);
+		assertEquals(98, props.size());
 	}
 	
 	
