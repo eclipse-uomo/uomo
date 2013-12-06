@@ -19,11 +19,9 @@ import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.SystemOfUnits;
 import org.unitsofmeasurement.unit.Unit;
 
-import com.ibm.icu.math.BigDecimal;
-
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.0.1
+ * @version 0.1
  * @see <a
  *      href="http://en.wikipedia.org/wiki/German_obsolete_units_of_measurement">Wikipedia: German Obsolete Units of Measurement</a>
  * @deprecated
@@ -31,7 +29,7 @@ import com.ibm.icu.math.BigDecimal;
 public class GermanObsolete extends AbstractSystemOfUnits {
 
 	/**
-	 * Distance between elbow and fingertip. In the North, often 2 feet,
+	 * Distance between elbow and fingertip. In the <b>North</b>, often 2 feet,
 	 * In Prussia 17 / 8 feet, in the South variable, often 2½ feet.
 	 * The smallest known German Elle is 402.8 mm, the longest 811 mm.
 	 * */
@@ -39,7 +37,7 @@ public class GermanObsolete extends AbstractSystemOfUnits {
 	
 	/**
 	 * Distance between elbow and fingertip. In the North, often 2 feet,
-	 * In Prussia 17 / 8 feet, in the South variable, often 2½ feet.
+	 * In Prussia 17 / 8 feet, in the <b>South</b> variable, often 2½ feet.
 	 * The smallest known German Elle is 402.8 mm, the longest 811 mm.
 	 * */
 	public static final  Unit<Length> ELL_SOUTH = FOOT.multiply(2.5d);
