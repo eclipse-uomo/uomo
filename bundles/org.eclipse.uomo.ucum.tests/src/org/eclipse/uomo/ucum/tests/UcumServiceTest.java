@@ -69,7 +69,7 @@ public class UcumServiceTest {
 	public void testParse() {
 		Parser<String, Term> p = new ExpressionParser(ucumService.getModel());
 		try {
-			Term t =  p.parse("ms");
+			Term t =  p.parse("m/s2");
 			assertNotNull(t);
 			assertEquals("DIVISION", t.getOp().toString());
 			Symbol s = (Symbol)t.getComp();
