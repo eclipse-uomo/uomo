@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2012, Werner Keil and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,11 @@ import org.unitsofmeasurement.quantity.Area;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Time;
 
+/**
+ * A 'Hello World!' style example showing some basic units and operations.
+ * @author Werner Keil
+ * @version 0.7
+ */
 public class HelloUnits {
 
 	/**
@@ -34,7 +39,6 @@ public class HelloUnits {
 		
 		System.out.println(length);
 		Unit<Length> lenUnit =  length.unit();
-    	//System.out.println(lenUnit);
 		
 		System.out.print(length.doubleValue(USCustomary.FOOT)); 
 		System.out.println(" " + USCustomary.FOOT);
