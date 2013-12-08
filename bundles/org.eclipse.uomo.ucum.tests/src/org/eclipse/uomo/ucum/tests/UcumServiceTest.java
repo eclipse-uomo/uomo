@@ -33,7 +33,7 @@ import com.ibm.icu.text.NumberFormat;
 
 /**
  * @author Werner Keil
- * @version 1.3, 2013-11-19
+ * @version 1.4, 2013-12-08
  */
 public class UcumServiceTest {
 	private UcumService ucumService;
