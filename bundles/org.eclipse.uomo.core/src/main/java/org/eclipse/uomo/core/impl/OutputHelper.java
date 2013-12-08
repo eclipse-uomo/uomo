@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,14 +14,14 @@ package org.eclipse.uomo.core.impl;
  * A static helper class, checking e.g. if some tests require optional console
  * output XXX this could have options for using a logging framework eventually
  * TODO change to Service (either OSGi LogService or separate service)
- * @version $Revision: 97 $, $Date: 2010-07-30 20:13:27 +0100 (Fr, 30 Jul 2010) $
+ * @version 0.98, 2013-12-08
  * @author Werner Keil
  */
 public abstract class OutputHelper {
-	public static final String CONSOLE_OUTPUT = "consoleOutput";
+	static final String CONSOLE_OUTPUT = "consoleOutput"; //$NON-NLS-1$
 
 	public static final boolean isConsoleOutput() {
-		return ("true".equals(System.getProperty(CONSOLE_OUTPUT)));
+		return ("true".equals(System.getProperty(CONSOLE_OUTPUT))); //$NON-NLS-1$
 	}
 
 	public static final void print(String message) {
