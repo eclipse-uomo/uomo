@@ -12,15 +12,20 @@ package org.eclipse.uomo.examples.units.console;
 
 import org.eclipse.osgi.util.NLS;
 
-public class Messages extends NLS {
+final class Messages extends NLS {
 	private static final String BUNDLE_NAME = Messages.class.getPackage().getName() + ".messages"; //$NON-NLS-1$
-	public static String Planet_Radius;
-	public static String Planet_SurfaceGravity;
-	public static String Planet_Usage;
-	public static String Planet_SurfaceWeight;
-	public static String REP_100mR;
-	public static String REP_1R;
-	public static String REP_2dot5R;
+	public static String Demo_0;
+	public static String Demo_1;
+	public static String Demo_10;
+	public static String Demo_11;
+	public static String Demo_2;
+	public static String Demo_3;
+	public static String Demo_4;
+	public static String Demo_5;
+	public static String Demo_6;
+	public static String Demo_7;
+	public static String Demo_8;
+	public static String Demo_9;
 	
 	static {
 		// initialize resource bundle

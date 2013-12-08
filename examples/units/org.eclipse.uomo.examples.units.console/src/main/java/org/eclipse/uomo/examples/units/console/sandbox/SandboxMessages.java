@@ -12,7 +12,7 @@ package org.eclipse.uomo.examples.units.console.sandbox;
 
 import org.eclipse.osgi.util.NLS;
 
-class SandboxMessages extends NLS {
+final class SandboxMessages extends NLS {
 	private static final String BUNDLE_NAME = SandboxMessages.class.getPackage().getName() + ".messages"; //$NON-NLS-1$
 	public static String REP_100mR;
 	public static String REP_1R;

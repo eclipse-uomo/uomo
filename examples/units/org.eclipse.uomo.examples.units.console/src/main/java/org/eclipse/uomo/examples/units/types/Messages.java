@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil and others.
+ * Copyright (c) 2005, 2013, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,12 +8,11 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.examples.units;
+package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.osgi.util.NLS;
 
-@Deprecated
-public class Messages extends NLS {
+final class Messages extends NLS {
 	
 	private static final String BUNDLE_NAME = Messages.class.getPackage().getName() + ".messages"; //$NON-NLS-1$
 	public static String Planet_Radius;

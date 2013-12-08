@@ -11,7 +11,6 @@
 package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.eclipse.uomo.examples.units.Messages;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.unitsofmeasurement.unit.SystemOfUnits;

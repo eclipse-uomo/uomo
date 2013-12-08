@@ -54,39 +54,39 @@ public class Demo {
 
     public static void main(String[] args) {
     	IMeasure<Length> someLength = getSomeLength();
-        System.out.println("len = " + someLength);
+        System.out.println(Messages.Demo_0 + someLength);
         IMeasure<Length> moreLength = getMoreLength();
-        System.out.println("len2 = " + moreLength);
+        System.out.println(Messages.Demo_1 + moreLength);
         System.out.println();
 
         IMeasure<Mass> someMass = getSomeMass();
-        System.out.println("mass = " + someMass);        
+        System.out.println(Messages.Demo_2 + someMass);        
         IMeasure<Mass> moreMass = getMoreMass();
-        System.out.println("mass2 = " + moreMass);
+        System.out.println(Messages.Demo_3 + moreMass);
         System.out.println();
         
         IMeasure<Time> time = getTime();
-        System.out.println("time = " + time);
+        System.out.println(Messages.Demo_4 + time);
         
         IMeasure<?> result = someLength.divide(time);
-        System.out.println("speed = " + result);
+        System.out.println(Messages.Demo_5 + result);
         result = moreLength.divide(time);
-        System.out.println("speed2 = " + result);
+        System.out.println(Messages.Demo_6 + result);
         System.out.println();
         
         IMeasure<Length> convertedLength = moreLength.to(FOOT);
-        System.out.println("len2 converted = " + convertedLength);
+        System.out.println(Messages.Demo_7 + convertedLength);
         
         IMeasure<Length> convertedLengthPL = moreLength.to(ELL);
-        System.out.println("len2 converted (PL) = " + convertedLengthPL);
+        System.out.println(Messages.Demo_8 + convertedLengthPL);
         
         
         System.out.println();
         someLength = new LengthAmount(1, MILLI(METRE));
-        System.out.println("len3 = " + someLength);
+        System.out.println(Messages.Demo_9 + someLength);
         IMeasure<Length> someMoreLength = new LengthAmount(400, KILO(METRE));
         someMass = new MassAmount(60, MILLI(GRAM));
-        System.out.println("mass3 = " + someMass);
-        System.out.println("len4 = " + someMoreLength);
+        System.out.println(Messages.Demo_10 + someMass);
+        System.out.println(Messages.Demo_11 + someMoreLength);
     }
 }

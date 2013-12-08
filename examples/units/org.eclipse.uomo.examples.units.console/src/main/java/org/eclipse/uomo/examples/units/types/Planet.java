@@ -13,7 +13,6 @@ package org.eclipse.uomo.examples.units.types;
 import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.examples.units.types.SolarSystem.G;
 
-import org.eclipse.uomo.examples.units.Messages;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.quantity.AccelerationAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
