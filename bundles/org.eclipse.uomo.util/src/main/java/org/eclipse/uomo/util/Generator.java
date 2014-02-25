@@ -17,6 +17,7 @@ import org.eclipse.uomo.core.UOMoException;
  *
  * @param <M> the model
  * @param <O> the output
+ * @deprecated currently unused
  */
 public interface Generator<M, O> {
 	public O generate(M model) throws UOMoException;
