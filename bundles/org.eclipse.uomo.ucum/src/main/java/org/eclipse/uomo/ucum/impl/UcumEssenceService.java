@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.uomo.core.UOMoRuntimeException;
-import org.eclipse.uomo.core.impl.Pair;
+import org.eclipse.uomo.core.impl.CodeValuePair;
 import org.eclipse.uomo.ucum.UcumService;
 import org.eclipse.uomo.ucum.expression.Symbol;
 import org.eclipse.uomo.ucum.expression.Term;
@@ -304,7 +304,7 @@ public class UcumEssenceService implements UcumService {
 	 * org.eclipse.ohf.ucum.UcumServiceEx#getCanonicalForm(org.eclipse.ohf.ucum
 	 * .UcumEssenceService.Pair)
 	 */
-	public Pair<Number, String> getCanonicalForm(Pair<Number, String> value)
+	public CodeValuePair<Number, String> getCanonicalForm(CodeValuePair<Number, String> value)
 			throws UOMoRuntimeException {
 		assert value != null : paramError("getCanonicalForm", "value",
 				"must not be null");
@@ -314,10 +314,10 @@ public class UcumEssenceService implements UcumService {
 		Term term = new ExpressionParser(model).parse(value.getCode());
 		Canonical c = new UcumConverter(model, handlers).convert(term);
 		if (value.getValue() == null)
-			return new Pair<Number, String>(null,
+			return new CodeValuePair<Number, String>(null,
 					new ExpressionComposer().compose(c.getUnit()));
 		else
-			return new Pair<Number, String>(
+			return new CodeValuePair<Number, String>(
 					((BigDecimal) value.getValue()).multiply(c.getValue()),
 					new ExpressionComposer().compose(c.getUnit()));
 	}
@@ -352,20 +352,21 @@ public class UcumEssenceService implements UcumService {
 					+ " as they do not have matching canonical forms (" + s
 					+ " and " + d + " respectively)");
 		final BigDecimal decValue = (BigDecimal) value;
-		BigDecimal canValue = decValue.multiply(src.getValue());
+		final BigDecimal canValue = decValue.multiply(src.getValue());
+		final BigDecimal result = canValue.divide(dst.getValue(), new MathContext(25));
 		println(decValue.toPlainString() + sourceUnit + " =("
 				+ src.getValue().toPlainString() + ")= "
 				+ canValue.toPlainString() + s + " =("
 				+ dst.getValue().toPlainString() + ")= "
-				+ canValue.divide(dst.getValue()) + destUnit);
-		return canValue.divide(dst.getValue(), new MathContext(25));
+				+ result);
+		return result;
 	}
 
-	public Pair<Number, String> multiply(Pair<Number, String> o1,
-			Pair<Number, String> o2) {
+	public CodeValuePair<Number, String> multiply(CodeValuePair<Number, String> o1,
+			CodeValuePair<Number, String> o2) {
 		// Term term = new ExpressionParser(model).parse(o1.getCode());
 		// Canonical c = new Converter(model, handlers).convert(term);
-		return new Pair<Number, String>(
+		return new CodeValuePair<Number, String>(
 				((BigDecimal) o1.getValue()).multiply((BigDecimal) o2
 						.getValue()),
 				// new ExpressionComposer().compose(c.getUnit()));

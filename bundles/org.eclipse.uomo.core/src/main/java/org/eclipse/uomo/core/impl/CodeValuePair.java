@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2007 Jiva Medical.
+ * Crown Copyright (c) 2006, 2014, Copyright (c) 2006, 2007 Jiva Medical.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,13 +11,16 @@
 
 package org.eclipse.uomo.core.impl;
 
+import org.eclipse.uomo.core.ICode;
+import org.eclipse.uomo.core.IValue;
+
 /**
  * @author Werner Keil
  *
  * @param <V>
  * @param <C>
  */
-public class Pair<V, C> {
+public class CodeValuePair<V, C> implements ICode<C>, IValue<V> {
 
 	private V value;
 	private C code;
@@ -25,7 +28,7 @@ public class Pair<V, C> {
 	 * @param value
 	 * @param code
 	 */
-	public Pair(V value, C code) {
+	public CodeValuePair(V value, C code) {
 		super();
 		this.value = value;
 		this.code = code;

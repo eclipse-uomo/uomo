@@ -12,7 +12,7 @@ package org.eclipse.uomo.util.numbers;
 
 import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IName;
-import org.eclipse.uomo.core.INumericValue;
+import org.eclipse.uomo.core.IValue;
 
 /**
  * In this project, we have used a unique way of encoding spelled number to a
@@ -49,5 +49,5 @@ import org.eclipse.uomo.core.INumericValue;
  * @see {@link SpellContext#encode(String)}
  * 
  */
-public interface ISpellCode extends IName, ICode, INumericValue {
+public interface ISpellCode extends IName, ICode<String>, IValue<Number> {
 }

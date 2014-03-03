@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.uomo.core.impl.Pair;
+import org.eclipse.uomo.core.impl.CodeValuePair;
 import org.eclipse.uomo.core.IVersion;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.ucum.model.Concept;
@@ -171,7 +171,7 @@ public interface UcumService {
 	 * @return
 	 * @throws UOMoRuntimeException 
 	 */
-	public Pair<Number, String> getCanonicalForm(Pair<Number, String> value) throws UOMoRuntimeException;
+	public CodeValuePair<Number, String> getCanonicalForm(CodeValuePair<Number, String> value) throws UOMoRuntimeException;
 
 	/**
 	 * given a value and source unit, return the value in the given dest unit
@@ -193,6 +193,6 @@ public interface UcumService {
 	 * @param o2
 	 * @return
 	 */
-	public Pair<Number, String> multiply(Pair<Number, String> o1, Pair<Number, String> o2);
+	public CodeValuePair<Number, String> multiply(CodeValuePair<Number, String> o1, CodeValuePair<Number, String> o2);
 
 }

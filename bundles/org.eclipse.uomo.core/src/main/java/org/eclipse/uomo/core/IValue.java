@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2011, 2013 Werner Keil, Creative Arts & Technologies.
+ * Copyright (c) 2011, 2014 Werner Keil, Creative Arts & Technologies.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,11 @@
 package org.eclipse.uomo.core;
 
 /**
- * Denote entity that has a numeric value.
+ * Denote entity that has a {@code V} value.
  *
- * @version 0.2
+ * @version 0.3
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
-public interface INumericValue {
-	Number getValue();
+public interface IValue<V> {
+	V getValue();
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2014, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,9 +20,9 @@ import org.unitsofmeasurement.unit.Unit;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.3, $Date: 2013-04-28 $
+ * @version 1.4, $Date: 2014-03-03 $
  */
-public final class CatalyticActivityAmount extends BaseAmount<CatalyticActivity> {
+public final class CatalyticActivityAmount extends BaseAmount<CatalyticActivity> implements CatalyticActivity {
 
 	public CatalyticActivityAmount(Number number, Unit<CatalyticActivity> unit) {
 		super(number, unit);

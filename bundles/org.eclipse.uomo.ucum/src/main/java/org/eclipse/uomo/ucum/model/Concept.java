@@ -20,7 +20,7 @@ import org.eclipse.uomo.core.IDescription;
 import org.eclipse.uomo.core.INames;
 import org.eclipse.uomo.core.ISymbol;
 
-public class Concept implements ICode, IDescription, ISymbol, INames {
+public class Concept implements ICode<String>, IDescription, ISymbol, INames {
 
 	private final ConceptKind kind;
 	/**
