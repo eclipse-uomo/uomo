@@ -136,7 +136,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public static MoneyAmount of(QuantityAmount<IMoney> amount) {
 		// MoneyAmount amountSI = amount.toSI();
-		return MoneyAmount.of(BigDecimal.valueOf(amount.getNumber()
+		return MoneyAmount.of(BigDecimal.valueOf(amount.getValue()
 				.doubleValue()), amount.unit().getSystemUnit());
 	}
 

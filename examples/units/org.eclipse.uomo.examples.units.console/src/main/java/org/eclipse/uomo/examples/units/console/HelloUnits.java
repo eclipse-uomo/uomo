@@ -44,11 +44,11 @@ public class HelloUnits {
 		System.out.println(" " + USCustomary.FOOT);
 //		System.out.println(length.doubleValue(USCustomary.POUND)); // this won't work either.
 		UnitConverter inchConverter = lenUnit.getConverterTo(USCustomary.INCH);
-		System.out.print(inchConverter.convert(length.getNumber().doubleValue()));		
+		System.out.print(inchConverter.convert(length.getValue().doubleValue()));		
 		System.out.println(" " + USCustomary.INCH);
 		
 		@SuppressWarnings("unchecked")
-		AreaAmount area = new AreaAmount(length.getNumber().doubleValue() * length.getNumber().doubleValue(), 
+		AreaAmount area = new AreaAmount(length.getValue().doubleValue() * length.getValue().doubleValue(), 
 				(Unit<Area>) length.unit().multiply(SI.METRE));
 		System.out.println(area);
 		

@@ -13,6 +13,7 @@ package org.eclipse.uomo.units;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+import org.eclipse.uomo.units.internal.MeasureAmount;
 import org.unitsofmeasurement.quantity.Dimensionless;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.IncommensurableException;
@@ -36,9 +37,11 @@ import com.ibm.icu.util.MeasureUnit;
  *          Sep 2011) $ XXX rename to Amount, AbstractAmount or MeasureAmount?
  *          FIXME Bug 338334 overwrite equals()
  */
-public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
+public abstract class QuantityAmount<Q extends Quantity<Q>>
 		implements IMeasure<Q> {
-
+	
+	private final Measure measure;
+	
 	/**
 	 * Holds a dimensionless measure of one (exact).
 	 */
@@ -99,9 +102,17 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
 	// private double _maximum;
 
 	protected QuantityAmount(Number number, MeasureUnit unit) {
-		super(number, unit);
+		measure = MeasureAmount.of(number, unit);
 	}
 
+	/**
+	 * Returns the <b>ICU4J</b> <type>Measure</type> object.
+	 * @return the backing measure.
+	 */
+	public Measure getMeasure() {
+		return measure;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -153,7 +164,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
 	public Unit<Q> unit() {
 		return internalUnit();
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -175,6 +186,14 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
 	 */
 	public boolean isExact() {
 		return isExact;
+	}
+	
+	public Number getValue() {
+		return getNumber();
+	}
+	
+	public Unit<Q> getUnit() {
+		return internalUnit();
 	}
 
 	// ////////////////////
@@ -203,6 +222,10 @@ public abstract class QuantityAmount<Q extends Quantity<Q>> extends Measure
 	 */
 	@SuppressWarnings("unchecked")
 	private final AbstractUnit<Q> internalUnit() {
-		return (AbstractUnit<Q>) super.getUnit();
+		return (AbstractUnit<Q>) measure.getUnit();
+	}
+	
+	protected final Number getNumber() {
+		return measure.getNumber();
 	}
 }
