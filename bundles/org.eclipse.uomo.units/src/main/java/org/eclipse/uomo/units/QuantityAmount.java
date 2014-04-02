@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2014, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -49,34 +49,35 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 			QuantityFactory.getInstance(Dimensionless.class).create(
 					BigDecimal.ONE, AbstractUnit.ONE);
 	
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.ibm.icu.util.Measure#equals(java.lang.Object)
-	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((measure == null) ? 0 : measure.hashCode());
+		return result;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
 		if (obj == null)
 			return false;
-		if (obj == this)
-			return true;
-		if (this.getClass() == obj.getClass()) {
-			return super.equals(obj);
-		} else {
-			if (obj instanceof Measure) {
-				Measure m = (Measure) obj;
-				if (m.getNumber().getClass() == this.getNumber().getClass()
-						&& m.getUnit().getClass() == this.unit().getClass()) {
-					return super.equals(obj);
-				} else {
-					// if (this.getQuantityUnit() instanceof AbstractUnit<?>) {
-					// if
-					// }
-					return super.equals(obj);
-				}
-			}
+		if (getClass() != obj.getClass())
 			return false;
-		}
+		@SuppressWarnings("unchecked")
+		QuantityAmount<Q> other = (QuantityAmount<Q>) obj;
+		if (measure == null) {
+			if (other.measure != null)
+				return false;
+		} else if (!measure.equals(other.measure))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(measure);
 	}
 
 	/**
