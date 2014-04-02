@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2014, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.unitsofmeasurement.quantity.Time;
 /**
  * @author <a href="mailto:desruisseaux@users.sourceforge.net">Martin Desruisseaux</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.8, $Date: 2013-11-19 $
+ * @version 0.8.1, $Date: 2014-04-03 $
  */
 public class Demo {
 
