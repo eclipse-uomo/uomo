@@ -6,3 +6,4 @@ Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: Eclipse Org
 Fragment-Host: org.eclipse.uomo.business;bundle-version="0.7.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.junit;bundle-version="4.11.0"
