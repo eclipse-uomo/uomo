@@ -18,7 +18,7 @@
 		<project.build.javaVersion>1.6</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<tycho-version>0.16.0</tycho-version>
-
+		<icu4j-version>50.1.1</icu4j-version>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
