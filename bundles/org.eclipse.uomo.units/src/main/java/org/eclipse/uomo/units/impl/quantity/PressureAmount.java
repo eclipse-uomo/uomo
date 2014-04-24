@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.Pressure;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.1 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class PressureAmount extends BaseAmount<Pressure> {
+public class PressureAmount extends BaseQuantity<Pressure> {
 
 	public PressureAmount(Number number, Unit<Pressure> unit) {
 		super(number, unit);

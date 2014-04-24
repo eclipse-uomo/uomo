@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.Area;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -24,7 +24,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4.1, $Date: 2013-11-22 $
  */
-public final class AreaAmount extends BaseAmount<Area> implements Area {
+public final class AreaAmount extends BaseQuantity<Area> implements Area {
 
 	public AreaAmount(Number number, Unit<Area> unit) {
 		super(number, unit);

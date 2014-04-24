@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.CatalyticActivity;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4, $Date: 2014-03-03 $
  */
-public final class CatalyticActivityAmount extends BaseAmount<CatalyticActivity> implements CatalyticActivity {
+public final class CatalyticActivityAmount extends BaseQuantity<CatalyticActivity> implements CatalyticActivity {
 
 	public CatalyticActivityAmount(Number number, Unit<CatalyticActivity> unit) {
 		super(number, unit);

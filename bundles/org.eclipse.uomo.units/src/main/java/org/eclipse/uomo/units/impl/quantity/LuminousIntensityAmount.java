@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.LuminousIntensity;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -24,7 +24,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @version 1.2, $Date: 2013-05-21 $
  */
 public final class LuminousIntensityAmount extends
-		BaseAmount<LuminousIntensity> implements LuminousIntensity {
+		BaseQuantity<LuminousIntensity> implements LuminousIntensity {
 
 	public LuminousIntensityAmount(Number number, Unit<LuminousIntensity> unit) {
 		super(number, unit);

@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.Angle;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -23,7 +23,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3.1, $Date: 2013-11-22 $
  */
-public final class AngleAmount extends BaseAmount<Angle> implements Angle {
+public final class AngleAmount extends BaseQuantity<Angle> implements Angle {
 	
 	public AngleAmount(Number number, Unit<Angle> unit) {
 		super(number, unit);

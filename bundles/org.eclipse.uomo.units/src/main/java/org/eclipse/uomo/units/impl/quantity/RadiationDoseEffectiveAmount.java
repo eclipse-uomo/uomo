@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.RadiationDoseEffective;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -23,7 +23,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class RadiationDoseEffectiveAmount extends BaseAmount<RadiationDoseEffective> {
+public class RadiationDoseEffectiveAmount extends BaseQuantity<RadiationDoseEffective> {
 
 	public RadiationDoseEffectiveAmount(Number number, Unit<RadiationDoseEffective> unit) {
 		super(number, unit);

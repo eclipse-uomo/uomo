@@ -10,7 +10,8 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.Force;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -23,7 +24,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3, $Date: 2013-05-21 $
  */
-public final class ForceAmount extends BaseAmount<Force> implements Force {
+public final class ForceAmount extends BaseQuantity<Force> implements Force {
 
 	public ForceAmount(Number number, Unit<Force> unit) {
 		super(number, unit);

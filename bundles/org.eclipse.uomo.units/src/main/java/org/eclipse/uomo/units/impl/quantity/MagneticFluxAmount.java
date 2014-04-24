@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.MagneticFlux;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, $Date: 2010-05-21 $
  */
-public class MagneticFluxAmount extends BaseAmount<MagneticFlux> implements
+public class MagneticFluxAmount extends BaseQuantity<MagneticFlux> implements
 		MagneticFlux {
 
 	public MagneticFluxAmount(Number number, Unit<MagneticFlux> unit) {

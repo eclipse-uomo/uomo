@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.ElectricConductance;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, $Date: 2013-05-11 $
  */
-public final class ElectricConductanceAmount extends BaseAmount<ElectricConductance> {
+public final class ElectricConductanceAmount extends BaseQuantity<ElectricConductance> {
 
 	public ElectricConductanceAmount(Number number, Unit<ElectricConductance> unit) {
 		super(number, unit);

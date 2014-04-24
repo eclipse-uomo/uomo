@@ -10,7 +10,8 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.Mass;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -24,7 +25,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.6, $Date: 2013-05-21 $
  */
-public final class MassAmount extends BaseAmount<Mass> implements Mass {
+public final class MassAmount extends BaseQuantity<Mass> implements Mass {
 	
 	public MassAmount(Number number, Unit<Mass> unit) {
 		super(number, unit);

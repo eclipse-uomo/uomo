@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.AmountOfSubstance;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class SubstanceAmount extends BaseAmount<AmountOfSubstance> {
+public class SubstanceAmount extends BaseQuantity<AmountOfSubstance> {
 	
 	public SubstanceAmount(Number number, Unit<AmountOfSubstance> unit) {
 		super(number, unit);

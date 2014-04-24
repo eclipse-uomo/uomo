@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.Energy;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3, $Date: 2013-05-20 $
  */
-public final class EnergyAmount extends BaseAmount<Energy> implements Energy {
+public final class EnergyAmount extends BaseQuantity<Energy> implements Energy {
 
 	public EnergyAmount(Number number, Unit<Energy> unit) {
 		super(number, unit);

@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.ElectricPotential;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, $Date: 2013-05-13 $
  */
-public final class ElectricPotentialAmount extends BaseAmount<ElectricPotential> {
+public final class ElectricPotentialAmount extends BaseQuantity<ElectricPotential> {
 
 	public ElectricPotentialAmount(Number number, Unit<ElectricPotential> unit) {
 		super(number, unit);

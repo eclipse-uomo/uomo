@@ -17,7 +17,7 @@ import java.math.MathContext;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.IMeasure;
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.quantity.Time;
 import org.unitsofmeasurement.unit.IncommensurableException;
@@ -35,7 +35,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.6 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class TimeAmount extends BaseAmount<Time> implements Time {
+public final class TimeAmount extends BaseQuantity<Time> implements Time {
 
 	public TimeAmount(Number number, Unit<Time> unit) {
 		super(number, unit);
@@ -64,7 +64,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		Unit<Time> myUnit = unit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return converter.convert(getNumber().doubleValue());
+			return converter.convert(getValue().doubleValue());
 		} catch (UnconvertibleException e) {
 			throw e;
 		} catch (IncommensurableException e) {
@@ -86,7 +86,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
 			return (converter.convert(
-					BigDecimal.valueOf(getNumber().longValue()),
+					BigDecimal.valueOf(getValue().longValue()),
 					MathContext.DECIMAL128)).longValue();
 		} catch (UnconvertibleException e) {
 			throw e;
@@ -96,14 +96,14 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 	}
 
 	public TimeAmount add(IMeasure<Time> that) {
-		return new TimeAmount(super.getNumber().doubleValue()
-				+ ((BaseAmount<Time>) that).getValue().doubleValue(),
+		return new TimeAmount(super.getValue().doubleValue()
+				+ ((BaseQuantity<Time>) that).getValue().doubleValue(),
 				that.unit());
 	}
 
 	public TimeAmount substract(IMeasure<Time> that) {
-		return new TimeAmount(super.getNumber().doubleValue()
-				- ((BaseAmount<Time>) that).getValue().doubleValue(),
+		return new TimeAmount(super.getValue().doubleValue()
+				- ((BaseQuantity<Time>) that).getValue().doubleValue(),
 				that.unit());
 	}
 	
@@ -124,7 +124,7 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		// FIXME include number division
 //		return new TimeAmount((BigDecimal) getNumber())
 //				.divide((BigDecimal) ((Measure)that).getNumber()), unit);
-		return new TimeAmount(getNumber(), unit);
+		return new TimeAmount(getValue(), unit);
 	}
 
 	/**
@@ -146,14 +146,13 @@ public class TimeAmount extends BaseAmount<Time> implements Time {
 		return to(unit, MathContext.DECIMAL32);
 	}
 	
-	@SuppressWarnings("unchecked")
 	public TimeAmount to(Unit<Time> unit, MathContext ctx) {
         if (this.unit().equals(unit))
             return this;
         UnitConverter cvtr = this.unit().getConverterTo(unit);
         if (cvtr == AbstractConverter.IDENTITY)
-            return (TimeAmount) valueOf(this.getNumber(), unit);
-        return (TimeAmount) valueOf(convert(this.getNumber(), cvtr, ctx), unit);
+            return (TimeAmount) of(this.getValue().intValue(), unit);
+        return (TimeAmount) of(convert(this.getValue(), cvtr, ctx).intValue(), unit);
     }
 
     // Try to convert the specified value.

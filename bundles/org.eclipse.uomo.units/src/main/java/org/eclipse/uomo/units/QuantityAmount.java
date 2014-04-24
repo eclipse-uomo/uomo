@@ -11,16 +11,10 @@
 package org.eclipse.uomo.units;
 
 import java.math.BigDecimal;
-import java.math.MathContext;
-
 import org.eclipse.uomo.units.internal.MeasureAmount;
 import org.unitsofmeasurement.quantity.Dimensionless;
 import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
 import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
-
 import com.ibm.icu.util.Measure;
 import com.ibm.icu.util.MeasureUnit;
 
@@ -36,6 +30,7 @@ import com.ibm.icu.util.MeasureUnit;
  * @version 1.3.4 ($Revision: 212 $), $Date: 2011-09-12 01:20:44 +0200 (Mo, 12
  *          Sep 2011) $ XXX rename to Amount, AbstractAmount or MeasureAmount?
  *          FIXME Bug 338334 overwrite equals()
+ * @deprecated use AbstractQuantity
  */
 public abstract class QuantityAmount<Q extends Quantity<Q>>
 		implements IMeasure<Q> {
@@ -122,17 +117,9 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 * .Unit)
 	 */
 	@Override
-	public double doubleValue(Unit<Q> unit) {
-		Unit<Q> myUnit = unit();
-		try {
-			UnitConverter converter = unit.getConverterTo(myUnit);
-			return converter.convert(getNumber().doubleValue());
-		} catch (UnconvertibleException e) {
-			throw e;
-		} // catch (IncommensurableException e) {
-		// throw new IllegalArgumentException(e.getMessage());
-		// }
-	}
+    public double doubleValue(Unit<Q> unit) {
+        return (internalUnit().equals(unit)) ? value().doubleValue() : internalUnit().getConverterTo(unit).convert(value().doubleValue());
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -143,17 +130,11 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 */
 	@Override
 	public long longValue(Unit<Q> unit) {
-		Unit<Q> myUnit = unit();
-		try {
-			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return (converter.convert(
-					BigDecimal.valueOf(getNumber().longValue()),
-					MathContext.DECIMAL128)).longValue();
-		} catch (UnconvertibleException e) {
-			throw e;
-		} catch (IncommensurableException e) {
-			throw new IllegalArgumentException(e.getMessage());
-		}
+        double result = doubleValue(unit);
+        if ((result < Long.MIN_VALUE) || (result > Long.MAX_VALUE)) {
+            throw new ArithmeticException("Overflow (" + result + ")");
+        }
+        return (long) result;
 	}
 
 	/*
@@ -196,25 +177,6 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	public Unit<Q> getUnit() {
 		return internalUnit();
 	}
-
-	// ////////////////////
-	// Factory Creation //
-	// ////////////////////
-	
-//	private static <Q extends Quantity<Q>> QuantityAmount<Q> create(Number value, Unit<Q> unit) {
-//		
-//	}
-	
-
-//	@SuppressWarnings("unchecked")
-//	protected static <Q extends Quantity<Q>> QuantityAmount<Q> newInstance(
-//			Number value, Unit<?> unit) {
-//		QuantityAmount<Q> measure = FACTORY.create(value, unit);
-//
-//		measure._unit = (Unit<Q>) unit;
-//
-//		return measure;
-//	}
 
 	/**
 	 * Get the unit (convenience to avoid cast).

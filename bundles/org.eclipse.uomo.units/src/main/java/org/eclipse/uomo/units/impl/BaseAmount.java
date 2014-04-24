@@ -17,15 +17,17 @@ import java.math.BigInteger;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
+import org.eclipse.uomo.units.AbstractQuantity;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.IMeasure;
-import org.eclipse.uomo.units.QuantityAmount;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
+import org.eclipse.uomo.units.internal.MeasureAmount;
 import org.unitsofmeasurement.quantity.Dimensionless;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 import org.unitsofmeasurement.unit.UnitConverter;
 
+import com.ibm.icu.util.Measure;
 import com.ibm.icu.util.MeasureUnit;
 
 /**
@@ -33,16 +35,21 @@ import com.ibm.icu.util.MeasureUnit;
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.3.3, $Date: 2013-05-21 $
+ * @deprecated use BaseQuantity
  */
-public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
+public class BaseAmount<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 		implements Comparable<BaseAmount<Q>> {
-
+	
+	private final Measure measure;
+	
 	/**
 	 * @param number
 	 * @param unit
 	 */
 	public BaseAmount(Number number, Unit<Q> unit) {
-		super(number, (MeasureUnit) unit);
+		super(unit);
+		measure = MeasureAmount.of(number,  (MeasureUnit)unit);
+		//super(number, (MeasureUnit) unit);
 	}
 
 	/**
@@ -77,7 +84,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 	@Override
 	public BaseAmount<Q> substract(IMeasure<Q> that) {
 		final IMeasure<Q> thatToUnit = that.to(unit());
-		return new BaseAmount(this.getNumber().doubleValue()
+		return new BaseAmount(this.value().doubleValue()
 				- thatToUnit.value().doubleValue(), unit());
 
 	}
@@ -285,5 +292,33 @@ public class BaseAmount<Q extends Quantity<Q>> extends QuantityAmount<Q>
 			}
 		}
 		return super.equals(obj);
+	}
+
+	@Override
+	public Number value() {
+		return measure.getNumber();
+	}
+
+	@Override
+	public Number getValue() {
+		return value();
+	}
+
+	@Override
+	public boolean isBig() {
+		return value() instanceof BigDecimal;
+	}
+
+	@Override
+	public BigDecimal decimalValue(Unit<Q> unit, MathContext ctx)
+			throws ArithmeticException {
+		   BigDecimal decimal = (value() instanceof BigDecimal) ? (BigDecimal)value() : BigDecimal.valueOf(value().doubleValue()); // TODO check value if it is a BD, otherwise use different converter
+           return (unit().equals(unit)) ? decimal : ((AbstractConverter)unit().getConverterTo(unit)).convert(decimal, ctx);
+
+	}
+
+	@Override
+	public double doubleValue(Unit<Q> unit) throws ArithmeticException {
+		return (unit().equals(unit)) ? value().doubleValue() : unit().getConverterTo(unit).convert(value().doubleValue());
 	}
 }

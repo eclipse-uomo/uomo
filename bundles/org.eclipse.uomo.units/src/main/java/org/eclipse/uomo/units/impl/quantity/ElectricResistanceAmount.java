@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.ElectricResistance;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, $Date: 2013-05-13 $
  */
-public final class ElectricResistanceAmount extends BaseAmount<ElectricResistance> {
+public final class ElectricResistanceAmount extends BaseQuantity<ElectricResistance> {
 
 	public ElectricResistanceAmount(Number number, Unit<ElectricResistance> unit) {
 		super(number, unit);

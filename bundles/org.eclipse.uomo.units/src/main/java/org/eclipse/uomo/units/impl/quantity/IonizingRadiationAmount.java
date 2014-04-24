@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.IonizingRadiation;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.1, $Date: 2013-05-21 $
  */
-public final class IonizingRadiationAmount extends BaseAmount<IonizingRadiation>
+public final class IonizingRadiationAmount extends BaseQuantity<IonizingRadiation>
 		implements IonizingRadiation {
 
 	public IonizingRadiationAmount(Number number, Unit<IonizingRadiation> unit) {

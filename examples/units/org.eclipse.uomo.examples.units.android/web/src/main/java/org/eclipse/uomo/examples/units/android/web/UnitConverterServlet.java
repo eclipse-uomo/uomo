@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  */
 public class UnitConverterServlet<Q extends Quantity<Q>> extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private final QuantityAmount<Temperature> amount;
+	private final Quantity<Temperature> amount;
 	private UnitConverter converter;
 	
     /**

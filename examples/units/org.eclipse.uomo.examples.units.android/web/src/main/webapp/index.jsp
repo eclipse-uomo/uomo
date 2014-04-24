@@ -6,7 +6,7 @@
 <body>
 <h2>Hello UOMo!</h2>
 <%
-	QuantityAmount<Length> q = new LengthAmount(12, SI.METRE);
+	Quantity<Length> q = new LengthAmount(12, SI.METRE);
 %>
 <%= q %>
 </body>

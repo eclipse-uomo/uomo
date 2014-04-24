@@ -16,6 +16,7 @@ import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.IBasicType;
 import org.eclipse.uomo.business.types.Percent;
 import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.unit.Unit;
 
 import com.ibm.icu.math.BigDecimal;
@@ -25,7 +26,7 @@ import com.ibm.icu.math.BigDecimal;
  * @version 1.1
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
-public class PercentAmount extends BaseAmount<Percent> implements IBasicType, Percent {
+public class PercentAmount extends BaseQuantity<Percent> implements IBasicType, Percent {
 	final static long serialVersionUID = 362498820763181265L;
 
 	final static int precision = 15; // will be held, but not set
@@ -77,7 +78,7 @@ public class PercentAmount extends BaseAmount<Percent> implements IBasicType, Pe
 	 * @return boolean
 	 */
 	public boolean isPositive() {
-		return +1 == ((BigDecimal)getNumber()).compareTo(BigDecimal.ZERO);
+		return +1 == ((BigDecimal)getValue()).compareTo(BigDecimal.ZERO);
 	}
 
 	/**
@@ -158,7 +159,7 @@ public class PercentAmount extends BaseAmount<Percent> implements IBasicType, Pe
 	 * @return java.lang.String
 	 */
 	public String serialize() {
-		BigDecimal temp = (BigDecimal) getNumber();
+		BigDecimal temp = (BigDecimal) getValue();
 		temp = temp.multiply(BigDecimal.TEN, BDTHelper.MATH_CONTEXT);
 		temp = temp.multiply(BigDecimal.TEN, BDTHelper.MATH_CONTEXT);
 		temp = temp.divide(BigDecimal.ONE, BDTHelper.MATH_CONTEXT);

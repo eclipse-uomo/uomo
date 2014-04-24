@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.units.impl.quantity;
 
-import org.eclipse.uomo.units.impl.BaseAmount;
+import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.unitsofmeasurement.quantity.RadioactiveActivity;
 import org.unitsofmeasurement.unit.Unit;
 
@@ -22,7 +22,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, $Date: 2014-03-03 $
  */
-public class RadioactivityAmount extends BaseAmount<RadioactiveActivity>
+public class RadioactivityAmount extends BaseQuantity<RadioactiveActivity>
 		implements RadioactiveActivity {
 
 	public RadioactivityAmount(Number number, Unit<RadioactiveActivity> unit) {
