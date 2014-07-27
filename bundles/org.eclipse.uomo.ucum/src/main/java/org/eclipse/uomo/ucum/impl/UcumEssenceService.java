@@ -1,5 +1,6 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Copyright (c) 2010, 2014 Werner Keil, Creative Arts & Technologies. 
+ * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -325,7 +326,7 @@ public class UcumEssenceService implements UcumService {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.eclipse.uomo.ucum.UcumServiceEx#convert(java.math.BigDecimal,
+	 * @see org.eclipse.uomo.ucum.UcumServiceEx#convert(java.lang.Number,
 	 * java.lang.String, java.lang.String)
 	 */
 	public Number convert(final Number value, String sourceUnit, String destUnit)

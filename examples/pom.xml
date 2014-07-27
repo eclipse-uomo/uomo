@@ -11,25 +11,86 @@
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo Examples</name>
 	<build>
-	   <plugins>
-	        <!-- ======================================================= -->
-            <!-- Compilation -->
-            <!-- ======================================================= -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compilerPlugin.version}</version>
-                <configuration>
+		<plugins>
+			<!-- ======================================================= -->
+			<!-- Compilation -->
+			<!-- ======================================================= -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compilerPlugin.version}</version>
+				<configuration>
 					<source>${project.build.javaVersion}</source>
 					<target>${project.build.javaVersion}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 	<modules>
-	   <module>business</module>
-	   <module>units</module>
+		<module>business</module>
+		<module>units</module>
+		<module>ucum</module>
 	</modules>
-<!-- modules> <module>org.eclipse.uomo.test</module> </modules -->
+	<!-- modules> <module>org.eclipse.uomo.test</module> </modules -->
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.unitsofmeasurement</groupId>
+				<artifactId>unit-api</artifactId>
+				<version>0.6.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uomo</groupId>
+				<artifactId>org.eclipse.uomo.units</artifactId>
+				<version>${uomo-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uomo</groupId>
+				<artifactId>org.eclipse.uomo.util</artifactId>
+				<version>${uomo-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uomo</groupId>
+				<artifactId>org.eclipse.uomo.ucum</artifactId>
+				<version>${uomo-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uomo</groupId>
+				<artifactId>org.eclipse.uomo.business</artifactId>
+				<version>${uomo-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.8.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hamcrest</groupId>
+				<artifactId>hamcrest-all</artifactId>
+				<version>1.1</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uomo</groupId>
+				<artifactId>org.eclipse.uomo.core</artifactId>
+				<version>${uomo-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.ibm.icu</groupId>
+				<artifactId>icu4j</artifactId>
+				<version>${icu4j-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse</groupId>
+				<artifactId>osgi</artifactId>
+				<version>3.5.0.v20090520</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
 </project>

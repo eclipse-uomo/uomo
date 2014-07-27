@@ -1,5 +1,6 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2014, Copyright (c) 2006, 2007 Jiva Medical.
+ * Copyright (c) 2010, 2014 Werner Keil, Creative Arts & Technologies.
+ * Crown Copyright (c) 2006, 2007, Copyright (c) 2006, 2007 Jiva Medical.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +8,7 @@
  * 
  * Contributors:
  *    Jiva Medical - initial API and implementation
+ *    Werner Keil  - improvements, functional interfaces
  *******************************************************************************/
 
 package org.eclipse.uomo.core.impl;

@@ -2,27 +2,26 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.eclipse.uomo.examples.business</groupId>
-		<artifactId>org.eclipse.uomo.examples.business</artifactId>
+		<groupId>org.eclipse.uomo.examples.ucum</groupId>
+		<artifactId>org.eclipse.uomo.examples.ucum</artifactId>
 		<version>0.7.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.eclipse.uomo.examples.business.console</artifactId>
-	<name>UOMo Business Console Examples</name>
+	<artifactId>org.eclipse.uomo.examples.ucum.console</artifactId>
+	<name>UOMo UCUM Console Examples</name>
 
 	<dependencies>
+		<dependency>
+			<groupId>com.ibm.icu</groupId>
+			<artifactId>icu4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse</groupId>
+			<artifactId>osgi</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.unitsofmeasurement</groupId>
 			<artifactId>unit-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uomo</groupId>
-			<artifactId>org.eclipse.uomo.units</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uomo</groupId>
-			<artifactId>org.eclipse.uomo.business</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -38,12 +37,16 @@
 			<artifactId>org.eclipse.uomo.core</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.ibm.icu</groupId>
-			<artifactId>icu4j</artifactId>
+			<groupId>org.eclipse.uomo</groupId>
+			<artifactId>org.eclipse.uomo.units</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.eclipse</groupId>
-			<artifactId>osgi</artifactId>
+			<groupId>org.eclipse.uomo</groupId>
+			<artifactId>org.eclipse.uomo.util</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.uomo</groupId>
+			<artifactId>org.eclipse.uomo.ucum</artifactId>
 		</dependency>
 	</dependencies>
 </project>
