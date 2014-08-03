@@ -217,7 +217,7 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 	}
 
 	@Override
-	public IMeasure<Q> substract(IMeasure<Q> that) {
+	public IMeasure<Q> subtract(IMeasure<Q> that) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -410,7 +410,7 @@ public abstract class AbstractQuantity<Q extends Quantity<Q>> implements IMeasur
 		}
 
 		@Override
-		public IntegerQuantity<T> substract(IMeasure<T> that) {
+		public IntegerQuantity<T> subtract(IMeasure<T> that) {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -521,7 +521,7 @@ public abstract class AbstractQuantity<Q extends Quantity<Q>> implements IMeasur
 		}
 
 		@Override
-		public AbstractQuantity<T> substract(IMeasure<T> that) {
+		public AbstractQuantity<T> subtract(IMeasure<T> that) {
 			return of(value - that.value().floatValue(), getUnit()); // TODO use shift of the unit?
 		}
 
@@ -618,7 +618,7 @@ public abstract class AbstractQuantity<Q extends Quantity<Q>> implements IMeasur
 		}
 
 		@Override
-		public IMeasure<T> substract(IMeasure<T> that) {
+		public IMeasure<T> subtract(IMeasure<T> that) {
 			return of(value - that.value().doubleValue(), getUnit()); // TODO use shift of the unit?
 		}
 
@@ -713,7 +713,7 @@ public abstract class AbstractQuantity<Q extends Quantity<Q>> implements IMeasur
 		}
 
 		@Override
-		public IMeasure<T> substract(IMeasure<T> that) {
+		public IMeasure<T> subtract(IMeasure<T> that) {
 			return of(value.subtract((BigDecimal)that.value()), getUnit()); // TODO use shift of the unit?
 		}
 

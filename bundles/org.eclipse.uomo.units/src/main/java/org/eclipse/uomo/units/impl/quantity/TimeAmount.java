@@ -101,7 +101,7 @@ public final class TimeAmount extends BaseQuantity<Time> implements Time {
 				that.unit());
 	}
 
-	public TimeAmount substract(IMeasure<Time> that) {
+	public TimeAmount subtract(IMeasure<Time> that) {
 		return new TimeAmount(super.getValue().doubleValue()
 				- ((BaseQuantity<Time>) that).getValue().doubleValue(),
 				that.unit());

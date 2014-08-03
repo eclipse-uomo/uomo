@@ -82,7 +82,7 @@ public class BaseAmount<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
-	public BaseAmount<Q> substract(IMeasure<Q> that) {
+	public BaseAmount<Q> subtract(IMeasure<Q> that) {
 		final IMeasure<Q> thatToUnit = that.to(unit());
 		return new BaseAmount(this.value().doubleValue()
 				- thatToUnit.value().doubleValue(), unit());

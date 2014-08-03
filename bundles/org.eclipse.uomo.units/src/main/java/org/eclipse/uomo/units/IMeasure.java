@@ -44,7 +44,7 @@ import org.unitsofmeasurement.unit.Unit;
  * 
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 5.4.1, $Date: 2011-11-03 01:03:44 +0200 $
+ * @version 0.4.2, $Date: 2014-08-03 $
  * @param <Q>
  */
 public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {    
@@ -63,7 +63,7 @@ public interface IMeasure<Q extends Quantity<Q>> extends Quantity<Q> {
      * @param  that the number to be subtracted.
      * @return <code>this - that</code>.
      */
-    IMeasure<Q> substract(IMeasure<Q> that);
+    IMeasure<Q> subtract(IMeasure<Q> that);
     
     /**
      * Returns the product of this amount with the one specified.

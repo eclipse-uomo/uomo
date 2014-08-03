@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2014, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import com.ibm.icu.util.Currency;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.6, $Date: 2013-05-11 $
+ * @version 0.7, $Date: 2014-08-03 $
  */
 public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, MonetaryAmount,
 		Comparable<MonetaryAmount> {
@@ -288,10 +288,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		}
 	}
 
-	public IMeasure<IMoney> substract(IMeasure<IMoney> that) {
-		return minus((MoneyAmount) that);
-	}
-
 	public IMeasure<IMoney> divide(IMeasure<?> that) {
 		return divide((MoneyAmount) that);
 	}
@@ -442,13 +438,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return null;
 	}
 
-	 
-	public MonetaryAmount subtract(MonetaryAmount subtrahend) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	 
 	public MonetaryAmount subtract(Number subtrahend) {
 		// TODO Auto-generated method stub
 		return null;
@@ -708,5 +697,17 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	@Override
 	public MonetaryAmount add(MonetaryAmount augend) {
 		return plus((MoneyAmount) augend);
+	}
+
+	@Override
+	public IMeasure<IMoney> subtract(IMeasure<IMoney> that) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MonetaryAmount subtract(MonetaryAmount subtrahend) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
