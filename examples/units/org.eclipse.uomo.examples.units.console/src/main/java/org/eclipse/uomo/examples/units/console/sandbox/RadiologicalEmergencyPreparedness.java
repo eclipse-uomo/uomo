@@ -35,7 +35,6 @@ public class RadiologicalEmergencyPreparedness {
 	public static void main(String[] args) {
 		Map <IMeasure<IonizingRadiation>, String> repMap = new HashMap<IMeasure<IonizingRadiation>, String>();
 		IonizingRadiationAmount ira = new IonizingRadiationAmount(100, MILLI(ROENTGEN));
-		// TODO fix formatting for mR
 		
 		repMap.put(ira, SandboxMessages.REP_100mR);
 		ira = new IonizingRadiationAmount(1, ROENTGEN);
