@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2015, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,12 @@ package org.eclipse.uomo.business.money;
 import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
 
 import java.math.BigInteger;
-import java.util.Locale;
 import java.util.Map;
 
+import org.eclipse.uomo.business.internal.CurrencyUnit;
+import org.eclipse.uomo.business.internal.Localizable;
+import org.eclipse.uomo.business.types.IMoney;
+import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.impl.AlternateUnit;
@@ -24,10 +27,6 @@ import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.AddConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.eclipse.uomo.business.internal.CurrencyUnit;
-import org.eclipse.uomo.business.internal.Localizable;
-import org.eclipse.uomo.business.types.IMoney;
-import org.eclipse.uomo.core.IName;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Dimension;
 import org.unitsofmeasurement.unit.IncommensurableException;
@@ -41,12 +40,12 @@ import com.ibm.icu.util.ULocale;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2.7, $Date: 2013-05-25
+ * @version 0.2.8, $Date: 2015-04-15
  * @param <Q> the monetary quantity
  * 
  */
 public class MoneyUnit<Q extends IMoney> extends Currency implements
-		Unit<IMoney>, IName, CurrencyUnit, Localizable, Comparable<CurrencyUnit> {
+		Unit<IMoney>, IName, CurrencyUnit, Localizable {
 // TODO use JSR 354
 	/**
      * 

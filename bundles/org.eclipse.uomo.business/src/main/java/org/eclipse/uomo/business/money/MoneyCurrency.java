@@ -32,8 +32,7 @@ import com.ibm.icu.util.ULocale;
  * @author Werner Keil
  * @deprecated merge into MoneyUnit
  */
-public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable,
-		Comparable<CurrencyUnit> {
+public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable {
 
 	/**
 	 * serialVersionUID.
