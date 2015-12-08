@@ -6,19 +6,17 @@
 <!-- $Id: pom.xml 306 2012-10-29 20:42:27Z werner.keil $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<!--  parent>
+	<parent>
+		<!-- 
 		<artifactId>eclipse-parent</artifactId>
 		<groupId>org.eclipse</groupId>
 		<version>1.0.0</version>
-	</parent 
+ -->
+		<groupId>org.sonatype.oss</groupId>
+		<artifactId>oss-parent</artifactId>
+		<version>9</version>
+	</parent>
 	
-	<groupId>org.sonatype.oss</groupId>
-<artifactId>oss-parent</artifactId>
-<version>9</version>
-	
-	</parent 
-	
-	-->
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
