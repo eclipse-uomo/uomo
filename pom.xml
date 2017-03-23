@@ -21,11 +21,11 @@
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.javaVersion>1.6</project.build.javaVersion>
+		<project.build.javaVersion>1.7</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.7.0-SNAPSHOT</uomo-version>
 		<tycho-version>0.16.0</tycho-version>
-		<icu4j-version>50.1.1</icu4j-version>
+		<icu4j-version>56.1</icu4j-version>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
@@ -176,34 +176,116 @@
 				<version>${tycho-version}</version> <configuration> <archive> <addMavenDescriptor>false</addMavenDescriptor> 
 				</archive> </configuration> </plugin> -->
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.tycho
+										</groupId>
+										<artifactId>
+											tycho-compiler-plugin
+										</artifactId>
+										<versionRange>
+											[0.16.0,)
+										</versionRange>
+										<goals>
+											<goal>compile</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.eclipse.tycho
+										</groupId>
+										<artifactId>
+											tycho-packaging-plugin
+										</artifactId>
+										<versionRange>
+											[0.16.0,)
+										</versionRange>
+										<goals>
+											<goal>
+												build-qualifier-aggregator
+											</goal>
+											<goal>build-qualifier</goal>
+											<goal>validate-id</goal>
+											<goal>
+												validate-version
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-clean-plugin
+										</artifactId>
+										<versionRange>
+											[2.5,)
+										</versionRange>
+										<goals>
+											<goal>clean</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
-
-	<!-- ==================================================== -->
-	<!-- Repositories. This is where Maven looks for dependencies. The Maven 
-		repository is implicit and doesn't need to be specified. -->
-	<!-- ==================================================== -->
-	<!--  repositories>
+	<!-- Additional repositories -->
+	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
+	<repositories>
 		<repository>
-			<id>eclipse-public</id>
-			<name>Public Eclipse.org Nexus</name>
-			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
 		</repository>
-
 		<repository>
-			<id>eclipse-central</id>
-			<name>Central Eclipse.org Nexus</name>
-			<url>http://maven.eclipse.org/nexus/content/groups/central/</url>
-		</repository> -->
- 	<repositories>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-release</id>
+			<name>libs-release</name>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+		</repository>
 		<repository>
-			<id>maven-geotoolkit.org</id>
-			<name>GeoToolkit Repository for Maven</name>
-			<url>http://maven.geotoolkit.org/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>bintray-snapshot</id>
+			<name>libs-snapshot</name>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
+	
 	<ciManagement>
 		<system>Hudson</system>
-		<url>https://hudson.eclipse.org/hudson/job/uomo/</url>
+		<url>https://hudson.eclipse.org/uomo/</url>
 	</ciManagement>
 </project>

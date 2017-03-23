@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,13 +34,14 @@ import com.ibm.icu.util.MeasureUnit;
  * Represents a generic quantity amount.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.3.3, $Date: 2013-05-21 $
+ * @version 1.4, $Date: 2017-03-23 $
  * @deprecated use BaseQuantity
  */
 public class BaseAmount<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 		implements Comparable<BaseAmount<Q>> {
 	
 	private final Measure measure;
+	private final Number value;
 	
 	/**
 	 * @param number
@@ -48,7 +49,8 @@ public class BaseAmount<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 	 */
 	public BaseAmount(Number number, Unit<Q> unit) {
 		super(unit);
-		measure = MeasureAmount.of(number,  (MeasureUnit)unit);
+		value = number;
+		measure = null; //MeasureAmount.of(number,  (MeasureUnit)unit);
 		//super(number, (MeasureUnit) unit);
 	}
 
@@ -296,12 +298,12 @@ public class BaseAmount<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 
 	@Override
 	public Number value() {
-		return measure.getNumber();
+		return getValue();
 	}
 
 	@Override
 	public Number getValue() {
-		return value();
+		return value;
 	}
 
 	@Override

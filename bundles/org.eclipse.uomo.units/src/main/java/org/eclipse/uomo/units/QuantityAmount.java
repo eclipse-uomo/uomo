@@ -36,6 +36,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 		implements IMeasure<Q> {
 	
 	private final Measure measure;
+	private final Unit<Q> unit;
 	
 	/**
 	 * Holds a dimensionless measure of one (exact).
@@ -97,8 +98,13 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 */
 	// private double _maximum;
 
-	protected QuantityAmount(Number number, MeasureUnit unit) {
-		measure = MeasureAmount.of(number, unit);
+	protected QuantityAmount(Number number, Unit unit, MeasureUnit mUnit) {
+		this.unit = unit;
+		measure = MeasureAmount.of(number, mUnit);
+	}
+	
+	protected QuantityAmount(Number number, Unit unit) {
+		this(number, unit, null);
 	}
 
 	/**
@@ -118,7 +124,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 */
 	@Override
     public double doubleValue(Unit<Q> unit) {
-        return (internalUnit().equals(unit)) ? value().doubleValue() : internalUnit().getConverterTo(unit).convert(value().doubleValue());
+        return (internalUnit().equals(unit)) ? value().doubleValue() : unit().getConverterTo(unit).convert(value().doubleValue());
     }
 
 	/*
@@ -144,7 +150,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 */
 	@Override
 	public Unit<Q> unit() {
-		return internalUnit();
+		return unit;
 	}
 	
 	/*
@@ -175,7 +181,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	}
 	
 	public Unit<Q> getUnit() {
-		return internalUnit();
+		return unit();
 	}
 
 	/**
@@ -183,9 +189,8 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 * 
 	 * @provisional This API might change or be removed in a future release.
 	 */
-	@SuppressWarnings("unchecked")
-	private final AbstractUnit<Q> internalUnit() {
-		return (AbstractUnit<Q>) measure.getUnit();
+	private final MeasureUnit internalUnit() {
+		return measure.getUnit();
 	}
 	
 	protected final Number getNumber() {
