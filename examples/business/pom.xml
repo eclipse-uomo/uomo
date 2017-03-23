@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>org.eclipse.uomo.examples</artifactId>
 		<groupId>org.eclipse.uomo</groupId>
-		<version>0.7.0-SNAPSHOT</version>
+		<version>0.6.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.uomo.examples.business</artifactId>
 	<packaging>pom</packaging>
@@ -12,24 +12,32 @@
 	<modules>
     <module>org.eclipse.uomo.examples.business.console</module>
 	</modules>
-	<!-- ==================================================== -->
-    <!-- Repositories. This is where Maven looks for dependencies. 
-         The Maven repository is implicit and doesn't need 
-         to be specified. -->
-    <!-- ==================================================== -->
-    <repositories>
-        <repository>
-            <id>maven-geotoolkit.org</id>
-            <name>GeoToolkit Repository for Maven</name>
-            <url>http://maven.geotoolkit.org/</url>
-        </repository>
-        
-        <repository>
-            <id>OpenL10n</id>
-            <name>Openl10.net</name>
-            <url>http://nexus.openl10n.net/content/groups/public/</url>
-        </repository>
-    </repositories>
-	
+
+	<!-- Additional repositories -->
+	<!-- Helps to resolve Parent POM and Snapshot artifacts -->
+	<repositories>
+		<repository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-release</id>
+			<name>libs-release</name>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>bintray-snapshot</id>
+			<name>libs-snapshot</name>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+		</repository>
+	</repositories>
+
     <groupId>org.eclipse.uomo.examples.business</groupId>
 </project>

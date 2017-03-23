@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo Business Tests
 Bundle-SymbolicName: org.eclipse.uomo.business.tests
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.6.1.qualifier
 Bundle-Vendor: Eclipse Org
-Fragment-Host: org.eclipse.uomo.business;bundle-version="0.7.0"
+Fragment-Host: org.eclipse.uomo.business;bundle-version="0.6.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.junit;bundle-version="4.11.0"

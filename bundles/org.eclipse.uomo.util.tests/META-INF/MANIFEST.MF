@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UoMO Units Tests
 Bundle-SymbolicName: org.eclipse.uomo.util.tests
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.6.1.qualifier
 Bundle-Vendor: Eclipse org
-Fragment-Host: org.eclipse.uomo.util;bundle-version="0.7.0"
+Fragment-Host: org.eclipse.uomo.util;bundle-version="0.6.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.uomo.util.test,
  org.eclipse.uomo.util.test.numbers
