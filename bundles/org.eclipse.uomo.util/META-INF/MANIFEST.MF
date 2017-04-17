@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo Utilities
 Bundle-SymbolicName: org.eclipse.uomo.util;singleton:=true
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.8.0.qualifier
 Bundle-Activator: org.eclipse.uomo.util.internal.UtilitiesPlugin
 Bundle-Vendor: Eclipse.org
 Export-Package: org.eclipse.uomo.util,

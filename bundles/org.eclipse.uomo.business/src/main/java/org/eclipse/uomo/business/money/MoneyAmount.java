@@ -38,7 +38,7 @@ import com.ibm.icu.util.Currency;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, $Date: 2014-08-03 $
+ * @version 0.8, $Date: 2014-08-03 $
  */
 public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, MonetaryAmount,
 		Comparable<MonetaryAmount> {

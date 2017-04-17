@@ -26,7 +26,7 @@ import org.unitsofmeasurement.quantity.Time;
 /**
  * A 'Hello World!' style example showing some basic units and operations.
  * @author Werner Keil
- * @version 0.7
+ * @version 0.8
  */
 public class HelloUnits {
 
