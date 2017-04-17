@@ -87,7 +87,7 @@ import com.ibm.icu.util.MeasureUnit;
  * @see <a href="http://en.wikipedia.org/wiki/Units_of_measurement"> Wikipedia:
  *      Units of measurement</a>
  */
-public abstract class AbstractUnit<Q extends Quantity<Q>> extends MeasureUnit
+public abstract class AbstractUnit<Q extends Quantity<Q>>
 		implements Unit<Q>, IName, ISymbol {
 
 	/**

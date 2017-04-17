@@ -21,13 +21,13 @@
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.javaVersion>1.6</project.build.javaVersion>
+		<project.build.javaVersion>1.7</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.8.0-SNAPSHOT</uomo-version>
 		<tycho-version>0.16.0</tycho-version>
 		<icu4j-version>56.1</icu4j-version>
-		<maven.compiler.source>1.6</maven.compiler.source>
-		<maven.compiler.target>1.6</maven.compiler.target>
+		<maven.compiler.source>1.7</maven.compiler.source>
+		<maven.compiler.target>1.7</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
 	</properties>
 
