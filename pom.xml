@@ -11,7 +11,7 @@
 		<artifactId>eclipse-parent</artifactId>
 		<groupId>org.eclipse</groupId>
 		<version>1.0.0</version>
-  -->
+        -->
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
 		<version>9</version>
@@ -88,7 +88,7 @@
 
 	</contributors>
 	<scm>
-		<url>http://git.eclipse.org/c/uomo/org.eclipse.uomo.git/</url>
+		<url>http://git.eclipse.org/gitroot/uomo/org.eclipse.uomo.git/</url>
 	</scm>
 	<organization>
 		<name>Eclipse Foundation</name>
