@@ -26,6 +26,10 @@ public class UcumDemo {
 		
 		System.out.println("1 kg to Grams   = "
 				+ service.convert(new BigDecimal(1), "kg", "g"));
+		
+		System.out.println(service.getCanonicalUnits("st"));
+		
+		System.out.println(service.analyse("st"));
 	}
 
 }

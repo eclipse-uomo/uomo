@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.uomo.core.IVersion;
 public class UcumModel implements IName, IVersion {
 
 	/**
-	 * version="1.8" 
+	 * UCUM version
 	 */
 	private final String version;
 	
@@ -40,7 +40,6 @@ public class UcumModel implements IName, IVersion {
 	private final List<BaseUnit> baseUnits = new ArrayList<BaseUnit>();
 	private final List<DefinedUnit> definedUnits = new ArrayList<DefinedUnit>();
 
-	
 	/**
 	 * @param revision
 	 * @param revisionDate
