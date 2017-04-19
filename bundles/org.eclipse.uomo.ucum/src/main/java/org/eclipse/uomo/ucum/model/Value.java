@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,19 +15,17 @@ package org.eclipse.uomo.ucum.model;
 import java.math.BigDecimal;
 
 import org.eclipse.uomo.core.IDescription;
-import org.eclipse.uomo.core.IText;
+import org.eclipse.uomo.core.ISymbol;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 
-public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, IText {
+public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ISymbol {
 	// TODO should use Quantity
 	// TODO make this a "real" unit, should be at least UcumUnit
-	private String unit;
+	private final String unit;
+	private final String unitUC;
+	private final BigDecimal value;
 	private Unit<Q> realUnit;
-	private String unitUC;
-	
-	private BigDecimal value;
-	
 	private String text;
 
 	/**
@@ -43,47 +41,24 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	}
 
 	/**
-	 * @return the unit
+	 * @return the unit label
 	 */
-	public String getUnit() {
+	public String getSymbol() {
 		return unit;
 	}
 
 	/**
-	 * @param unit the unit to set
-	 */
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-
-	/**
-	 * @return the unitUC
+	 * @return the Uppercase variant of the symbol
 	 * @deprecated currently not used
 	 */
-	public String getUnitUC() {
+	public String getSymbolUC() {
 		return unitUC;
-	}
-
-	/**
-	 * @param unitUC the unitUC to set
-	 * @deprecated currently not used
-	 */
-	public void setUnitUC(String unitUC) {
-		this.unitUC = unitUC;
-	}
-
-	/**
-	 * @param value the value to set
-	 * @deprecated
-	 */
-	void setValue(BigDecimal value) {
-		this.value = value;
 	}
 
 	/**
 	 * @return the text
 	 */
-	public String getText() {
+	String getText() {
 		return text;
 	}
 
@@ -100,10 +75,24 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 		return value.toEngineeringString()+unit;
 	}
 
+	public Number getValue() {
+		return value;
+	}
+
+	public Unit<Q> getUnit() {
+		return realUnit;
+	}	
+	
+	/**
+	 * @deprecated use {@link #getValue()}
+	 */
 	public Number value() {
 		return value;
 	}
 
+	/**
+	 * @deprecated use {@link #getUnit()}
+	 */
 	public Unit<Q> unit() {
 		return realUnit;
 	}		

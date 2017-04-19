@@ -220,7 +220,7 @@ class UcumConverter extends AbstractConverter {
 			return res;
 		} else {
 			DefinedUnit unit = (DefinedUnit) comp.getUnit();
-			String u = unit.getValue().getUnit();
+			String u = unit.getValue().getSymbol();
 			if (unit.isSpecial()) {
 				if (!handlers.exists(unit.getCode()))
 					throw new UOMoRuntimeException("Not handled yet (special unit)"); //$NON-NLS-1$
