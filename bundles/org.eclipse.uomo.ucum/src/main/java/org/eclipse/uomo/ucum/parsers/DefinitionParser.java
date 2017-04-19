@@ -125,7 +125,7 @@ public class DefinitionParser implements Parser<String, UcumModel> {
 		}
 		@SuppressWarnings("rawtypes")
 		Value<?> value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val); //$NON-NLS-1$ //$NON-NLS-2$
-		value.setText(readElement(xpp, "value", context, true)); //$NON-NLS-1$
+		value.setString(readElement(xpp, "value", context, true)); //$NON-NLS-1$
 		return value;
 	}
 

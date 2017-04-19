@@ -14,18 +14,19 @@ package org.eclipse.uomo.ucum.model;
 
 import java.math.BigDecimal;
 
+import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IDescription;
-import org.eclipse.uomo.core.ISymbol;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 
-public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ISymbol {
+public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ICode<String> {
 	// TODO should use Quantity
 	// TODO make this a "real" unit, should be at least UcumUnit
 	private final String unit;
 	private final String unitUC;
 	private final BigDecimal value;
 	private Unit<Q> realUnit;
+	@SuppressWarnings("unused")
 	private String text;
 
 	/**
@@ -41,31 +42,24 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	}
 
 	/**
-	 * @return the unit label
+	 * @return the unit code
 	 */
-	public String getSymbol() {
+	public String getCode() {
 		return unit;
 	}
 
 	/**
-	 * @return the Uppercase variant of the symbol
+	 * @return the Uppercase variant of the label
 	 * @deprecated currently not used
 	 */
-	public String getSymbolUC() {
+	public String getCodeUC() {
 		return unitUC;
 	}
 
 	/**
-	 * @return the text
+	 * @param string the string value to set
 	 */
-	String getText() {
-		return text;
-	}
-
-	/**
-	 * @param text the text to set
-	 */
-	public void setText(String text) {
+	public void setString(String text) {
 		this.text = text;
 	}
 

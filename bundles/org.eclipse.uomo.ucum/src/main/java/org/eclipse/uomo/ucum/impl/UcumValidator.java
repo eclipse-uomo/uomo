@@ -62,7 +62,7 @@ public class UcumValidator implements IListValidator<String> {
 	private void checkUnits() {
 		for (DefinedUnit unit : model.getDefinedUnits()) {
 			if (!unit.isSpecial())
-				checkUnitCode(unit.getValue().getSymbol(), false);
+				checkUnitCode(unit.getValue().getCode(), false);
 			else if (!handlers.exists(unit.getCode()))
 				result.add("No Handler for " + unit.getCode().toString());
 		}
