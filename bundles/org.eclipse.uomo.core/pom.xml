@@ -10,6 +10,9 @@
 	<name>UOMo Core</name>
 	<packaging>eclipse-plugin</packaging>
 	<properties>
+		<maven.compiler.source>${project.build.javaVersion}</maven.compiler.source>
+		<maven.compiler.target>${project.build.javaVersion}</maven.compiler.target>
+
 		<site.basedir>${project.parent.basedir}</site.basedir>
 	</properties>
 </project>

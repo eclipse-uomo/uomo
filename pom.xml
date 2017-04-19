@@ -7,16 +7,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
-		<!-- 
-		<artifactId>eclipse-parent</artifactId>
-		<groupId>org.eclipse</groupId>
-		<version>1.0.0</version>
- -->
+		<!-- <artifactId>eclipse-parent</artifactId> <groupId>org.eclipse</groupId> 
+			<version>1.0.0</version> -->
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
 		<version>9</version>
 	</parent>
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
@@ -28,8 +25,11 @@
 		<icu4j-version>56.1</icu4j-version>
 		<maven.compiler.source>${project.build.javaVersion}</maven.compiler.source>
 		<maven.compiler.target>${project.build.javaVersion}</maven.compiler.target>
+		<maven.compile.targetLevel>${project.build.javaVersion}</maven.compile.targetLevel>
+		<maven.compile.sourceLevel>${project.build.javaVersion}</maven.compile.sourceLevel>
 		<site.basedir>${project.basedir}</site.basedir>
 	</properties>
+
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
@@ -105,31 +105,31 @@
 	<!-- ======================================================= -->
 	<build>
 		<plugins>
-		 <plugin>
-    <artifactId>maven-resources-plugin</artifactId>
-    <version>2.5</version>
-    <executions>
-      <execution>
-        <id>copy-sitedescriptor</id>
-        <!-- fetch site.xml before creating site documentation -->
-        <phase>pre-site</phase>
-        <goals>
-          <goal>copy-resources</goal>
-        </goals>
-        <configuration>
-          <outputDirectory>${basedir}/src/site/</outputDirectory>
-          <resources>          
-            <resource>                  
-              <directory>${site.basedir}/src/site/</directory>
-              <includes>
-                <include>**/site.xml</include>
-              </includes>
-            </resource>
-          </resources>              
-        </configuration>            
-      </execution>
-    </executions>
-   </plugin>        
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-sitedescriptor</id>
+						<!-- fetch site.xml before creating site documentation -->
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/site/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${site.basedir}/src/site/</directory>
+									<includes>
+										<include>**/site.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<!-- This sets up the target platform in PDE terms The version of Eclipse 
 					that the source will be built against -->
@@ -169,6 +169,16 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compilerPlugin.version}</version>
+				<configuration>
+					<source>${project.build.javaVersion}</source>
+					<target>${project.build.javaVersion}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
 				<version>2.4</version>
 			</plugin>
@@ -178,7 +188,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -283,7 +294,7 @@
 			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 	</repositories>
-	
+
 	<ciManagement>
 		<system>Hudson</system>
 		<url>https://hudson.eclipse.org/uomo/</url>
