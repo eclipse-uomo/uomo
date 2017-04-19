@@ -5,6 +5,6 @@ Bundle-SymbolicName: org.eclipse.uomo.core.tests
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: Eclipse org
 Fragment-Host: org.eclipse.uomo.core;bundle-version="0.7.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.uomo.core.impl;uses:="org.eclipse.uomo.core"
 Require-Bundle: org.junit

@@ -5,7 +5,7 @@ Bundle-SymbolicName: org.eclipse.uomo.ucum.tests
 Bundle-Version: 0.7.0.qualifier
 Bundle-Vendor: Eclipse.org
 Fragment-Host: org.eclipse.uomo.ucum;bundle-version="0.7.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.eclipse.uomo.ucum.tests
 Require-Bundle: org.junit;bundle-version="4.8.2",
  org.eclipse.uomo.util;bundle-version="0.7.0",
