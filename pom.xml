@@ -143,7 +143,7 @@
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
 							<version>0.8.0-SNAPSHOT</version>
-							<classifier>indigo</classifier>
+							<classifier>mars</classifier>
 						</artifact>
 					</target>
 					<ignoreTychoRepositories>true</ignoreTychoRepositories>
