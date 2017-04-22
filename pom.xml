@@ -22,7 +22,7 @@
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.7.0-SNAPSHOT</uomo-version>
 		<tycho-version>0.16.0</tycho-version>
-		<icu4j-version>56.1</icu4j-version>
+		<icu4j-version>54.1</icu4j-version>
 		<maven.compiler.source>${project.build.javaVersion}</maven.compiler.source>
 		<maven.compiler.target>${project.build.javaVersion}</maven.compiler.target>
 		<maven.compile.targetLevel>${project.build.javaVersion}</maven.compile.targetLevel>
@@ -143,7 +143,7 @@
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
 							<version>0.7.0-SNAPSHOT</version>
-							<classifier>indigo</classifier>
+							<classifier>mars</classifier>
 						</artifact>
 					</target>
 					<ignoreTychoRepositories>true</ignoreTychoRepositories>
