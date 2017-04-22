@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.uomo.util.Registry;
 /**
  * @author Grahame Grieve
  * @author Werner Keil
- * @version 1.1 ($Revision: 306 $), $Date: 2013-03-08 $
+ * @version 1.2, $Date: 2017-04-22 $
  */
 public class UcumValidator implements IListValidator<String> {
 
@@ -62,7 +62,7 @@ public class UcumValidator implements IListValidator<String> {
 	private void checkUnits() {
 		for (DefinedUnit unit : model.getDefinedUnits()) {
 			if (!unit.isSpecial())
-				checkUnitCode(unit.getValue().getUnit(), false);
+				checkUnitCode(unit.getValue().getCode(), false);
 			else if (!handlers.exists(unit.getCode()))
 				result.add("No Handler for " + unit.getCode().toString());
 		}

@@ -3,7 +3,7 @@
 	Maven Project Configuration File Eclipse UOMo http://www.eclipse.org/uomo/ 
 	======================================================================= -->
 
-<!-- $Id: pom.xml 306 2012-10-29 20:42:27Z werner.keil $ -->
+<!-- $Id: pom.xml 2017-04-22 werner.keil $ -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
@@ -24,10 +24,10 @@
 		<project.build.javaVersion>1.7</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.8.0-SNAPSHOT</uomo-version>
-		<tycho-version>0.16.0</tycho-version>
+		<tycho-version>1.0.0</tycho-version>
 		<icu4j-version>56.1</icu4j-version>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
 	</properties>
 
@@ -178,30 +178,36 @@
 		</plugins>
 	</build>
 
-
-	<!-- ==================================================== -->
-	<!-- Repositories. This is where Maven looks for dependencies. The Maven 
-		repository is implicit and doesn't need to be specified. -->
-	<!-- ==================================================== -->
-	<!--  repositories>
+	<!-- Additional repositories -->
+	<repositories>
 		<repository>
-			<id>eclipse-public</id>
-			<name>Public Eclipse.org Nexus</name>
-			<url>http://maven.eclipse.org/nexus/content/groups/public/</url>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
 		</repository>
-
 		<repository>
-			<id>eclipse-central</id>
-			<name>Central Eclipse.org Nexus</name>
-			<url>http://maven.eclipse.org/nexus/content/groups/central/</url>
-		</repository> -->
- 	<repositories>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>bintray-release</id>
+			<name>libs-release</name>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+		</repository>
 		<repository>
-			<id>maven-geotoolkit.org</id>
-			<name>GeoToolkit Repository for Maven</name>
-			<url>http://maven.geotoolkit.org/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<id>bintray-snapshot</id>
+			<name>libs-snapshot</name>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+		</repository>
+		<repository>
+			<id>bintray-uom</id>
+			<name>Bintray Units of Measurement</name>
+			<url>http://dl.bintray.com/unitsofmeasurement/maven</url>
 		</repository>
 	</repositories>
+
 	<ciManagement>
 		<system>Hudson</system>
 		<url>https://hudson.eclipse.org/hudson/job/uomo/</url>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ public class Concept implements ICode<String>, IDescription, ISymbol, INames {
 	private String codeUC;
 	
 	/**
-	 * print symbol for this code 
+	 * print symbol for this concept 
 	 */
 	private String printSymbol;
 	

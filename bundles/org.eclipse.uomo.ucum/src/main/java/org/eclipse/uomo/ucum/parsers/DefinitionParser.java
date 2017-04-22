@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2012, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -125,7 +125,7 @@ public class DefinitionParser implements Parser<String, UcumModel> {
 		}
 		@SuppressWarnings("rawtypes")
 		Value<?> value = new Value(xpp.getAttributeValue(null, "Unit"), xpp.getAttributeValue(null, "UNIT"), val); //$NON-NLS-1$ //$NON-NLS-2$
-		value.setText(readElement(xpp, "value", context, true)); //$NON-NLS-1$
+		value.setString(readElement(xpp, "value", context, true)); //$NON-NLS-1$
 		return value;
 	}
 

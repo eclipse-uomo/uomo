@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,20 +14,19 @@ package org.eclipse.uomo.ucum.model;
 
 import java.math.BigDecimal;
 
+import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IDescription;
-import org.eclipse.uomo.core.IText;
 import org.unitsofmeasurement.quantity.Quantity;
 import org.unitsofmeasurement.unit.Unit;
 
-public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, IText {
+public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ICode<String> {
 	// TODO should use Quantity
 	// TODO make this a "real" unit, should be at least UcumUnit
-	private String unit;
+	private final String unit;
+	private final String unitUC;
+	private final BigDecimal value;
 	private Unit<Q> realUnit;
-	private String unitUC;
-	
-	private BigDecimal value;
-	
+	@SuppressWarnings("unused")
 	private String text;
 
 	/**
@@ -43,54 +42,24 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	}
 
 	/**
-	 * @return the unit
+	 * @return the unit code
 	 */
-	public String getUnit() {
+	public String getCode() {
 		return unit;
 	}
 
 	/**
-	 * @param unit the unit to set
-	 */
-	public void setUnit(String unit) {
-		this.unit = unit;
-	}
-
-	/**
-	 * @return the unitUC
+	 * @return the Uppercase variant of the label
 	 * @deprecated currently not used
 	 */
-	public String getUnitUC() {
+	public String getCodeUC() {
 		return unitUC;
 	}
 
 	/**
-	 * @param unitUC the unitUC to set
-	 * @deprecated currently not used
+	 * @param string the string value to set
 	 */
-	public void setUnitUC(String unitUC) {
-		this.unitUC = unitUC;
-	}
-
-	/**
-	 * @param value the value to set
-	 * @deprecated
-	 */
-	void setValue(BigDecimal value) {
-		this.value = value;
-	}
-
-	/**
-	 * @return the text
-	 */
-	public String getText() {
-		return text;
-	}
-
-	/**
-	 * @param text the text to set
-	 */
-	public void setText(String text) {
+	public void setString(String text) {
 		this.text = text;
 	}
 
@@ -100,10 +69,24 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 		return value.toEngineeringString()+unit;
 	}
 
+	public Number getValue() {
+		return value;
+	}
+
+	public Unit<Q> getUnit() {
+		return realUnit;
+	}	
+	
+	/**
+	 * @deprecated use {@link #getValue()}
+	 */
 	public Number value() {
 		return value;
 	}
 
+	/**
+	 * @deprecated use {@link #getUnit()}
+	 */
 	public Unit<Q> unit() {
 		return realUnit;
 	}		

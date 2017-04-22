@@ -61,7 +61,7 @@ public class UcumServiceTest {
 				println(prop);
 			}
 		}
-		assertEquals(98, props.size());
+		assertEquals(100, props.size());
 	}
 	
 	
