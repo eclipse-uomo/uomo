@@ -27,6 +27,9 @@ public class UcumDemo {
 		System.out.println("1 kg to Grams   = "
 				+ service.convert(new BigDecimal(1), "kg", "g"));
 		
+		System.out.println("1 mStere to l   = "
+				+ service.convert(BigDecimal.ONE, "ust", "l"));
+		
 //		System.out.println(service.validate("L"));
 		System.out.println(service.analyse("l"));
 		System.out.println(service.validateUCUM());
