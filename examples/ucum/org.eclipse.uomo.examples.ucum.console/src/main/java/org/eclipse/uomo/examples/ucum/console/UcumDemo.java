@@ -30,6 +30,9 @@ public class UcumDemo {
 		System.out.println("1 mStere to l   = "
 				+ service.convert(BigDecimal.ONE, "ust", "l"));
 		
+//		System.out.println("1 dl to m3   = "
+//				+ service.convert(BigDecimal.ONE, "dL", "m3"));
+		
 //		System.out.println(service.validate("L"));
 		System.out.println(service.analyse("l"));
 		System.out.println(service.validateUCUM());
