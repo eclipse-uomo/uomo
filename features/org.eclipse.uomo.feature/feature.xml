@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.uomo.feature"
       label="Eclipse UOMo"
-      version="0.6.1.qualifier"
+      version="0.6.1"
       provider-name="Eclipse.org"
       plugin="org.eclipse.uomo.ui">
 

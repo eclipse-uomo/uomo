@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>org.eclipse.uomo</artifactId>
 		<groupId>org.eclipse.uomo</groupId>
-		<version>0.6.1-SNAPSHOT</version>
+		<version>0.6.1</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.eclipse.uomo.examples</artifactId>
@@ -44,22 +44,22 @@
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
 				<artifactId>org.eclipse.uomo.units</artifactId>
-				<version>0.6.1-SNAPSHOT</version>
+				<version>0.6.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
 				<artifactId>org.eclipse.uomo.util</artifactId>
-				<version>0.6.1-SNAPSHOT</version>
+				<version>0.6.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
 				<artifactId>org.eclipse.uomo.ucum</artifactId>
-				<version>0.6.1-SNAPSHOT</version>
+				<version>0.6.1</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
 				<artifactId>org.eclipse.uomo.business</artifactId>
-				<version>0.6.1-SNAPSHOT</version>
+				<version>0.6.1</version>
 			</dependency>
 
 			<dependency>
@@ -77,7 +77,7 @@
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
 				<artifactId>org.eclipse.uomo.core</artifactId>
-				<version>0.6.1-SNAPSHOT</version>
+				<version>0.6.1</version>
 			</dependency>
 			<dependency>
 				<groupId>com.ibm.icu</groupId>

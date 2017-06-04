@@ -23,7 +23,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.javaVersion>1.6</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
-		<uomo-version>0.6.1-SNAPSHOT</uomo-version>
+		<uomo-version>0.6.1</uomo-version>
 		<tycho-version>0.16.0</tycho-version>
 		<icu4j-version>52.1</icu4j-version>
 		<maven.compiler.source>${project.build.javaVersion}</maven.compiler.source>
@@ -33,7 +33,7 @@
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
-	<version>0.6.1-SNAPSHOT</version>
+	<version>0.6.1</version>
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo</name>
 
@@ -142,7 +142,7 @@
 						<artifact>
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
-							<version>0.6.1-SNAPSHOT</version>
+							<version>0.6.1</version>
 							<classifier>indigo</classifier>
 						</artifact>
 					</target>
