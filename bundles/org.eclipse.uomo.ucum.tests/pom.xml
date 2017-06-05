@@ -9,4 +9,11 @@
 	<artifactId>org.eclipse.uomo.ucum.tests</artifactId>
 	<name>UOMo UCUM Tests</name>
 	<packaging>eclipse-test-plugin</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>javax.measure</groupId>
+			<artifactId>unit-api</artifactId>
+		</dependency>
+	</dependencies>
 </project>

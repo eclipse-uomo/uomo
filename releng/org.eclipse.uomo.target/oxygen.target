@@ -41,5 +41,17 @@
       <unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20170120205402/repository/"/>
     </location>
+    <!--
+    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="javax.measure.unit-api" version="0.0.0"/>
+		<unit id="javax.measure.unit-api.source" version="0.0.0"/>
+		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
+		<unit id="tec.uom.lib.uom-lib-common.source" version="0.0.0"/>
+		<unit id="tec.uom.se" version="0.0.0"/>
+		<unit id="tec.uom.se.source" version="0.0.0"/>
+		<repository location="http://unitsofmeasurement.github.io/third-party/target/repository"/>
+	</location>
+	-->
+	<location path="${project_loc:releng}/third-party" type="Directory"/>
   </locations>
 </target>

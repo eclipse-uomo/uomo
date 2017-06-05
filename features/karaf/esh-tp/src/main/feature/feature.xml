@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2014-2017 by the respective copyright holders.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+
+-->
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.4.0">
+
+  <feature name="esh-tp" description="Eclipse UOMo Target Platform" version="${project.version}">
+    <feature>scr</feature>
+    <feature>eventadmin</feature>
+
+    <feature dependency="true">esh-tp-measurement</feature>
+  </feature>
+
+  <feature name="esh-tp-measurement" version="${project.version}">
+    <bundle>mvn:javax.measure/unit-api/1.0</bundle>
+    <bundle>mvn:tec.uom/uom-se/1.0.6</bundle>
+    <bundle>mvn:tec.uom.lib/uom-lib-common/1.0.1</bundle>
+  </feature>
+
+</features>

@@ -10,5 +10,6 @@
   <packaging>pom</packaging>
   <modules>
   	<module>org.eclipse.uomo.feature</module>
+  	<module>karaf</module>
   </modules>
 </project>

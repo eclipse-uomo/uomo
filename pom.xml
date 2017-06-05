@@ -7,16 +7,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<parent>
-		<!-- 
-		<artifactId>eclipse-parent</artifactId>
-		<groupId>org.eclipse</groupId>
-		<version>1.0.0</version>
-        -->
+		<!-- <artifactId>eclipse-parent</artifactId> <groupId>org.eclipse</groupId> 
+			<version>1.0.0</version> -->
 		<groupId>org.sonatype.oss</groupId>
 		<artifactId>oss-parent</artifactId>
 		<version>9</version>
 	</parent>
-	
+
 	<modelVersion>4.0.0</modelVersion>
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
@@ -25,7 +22,12 @@
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.8.0-SNAPSHOT</uomo-version>
 		<tycho-version>1.0.0</tycho-version>
+		<unit-api-version>1.0</unit-api-version>
+		<uom-lib-version>1.0.1</uom-lib-version>
+		<uom-se-version>1.0.6</uom-se-version>
 		<icu4j-version>56.1</icu4j-version>
+		<junit.version>4.12</junit.version>
+		<karaf.version>4.0.3</karaf.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
@@ -94,6 +96,25 @@
 		<name>Eclipse Foundation</name>
 		<url>http://www.eclipse.org</url>
 	</organization>
+
+	<!-- Dependency Management -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax.measure</groupId>
+				<artifactId>unit-api</artifactId>
+				<version>${unit-api-version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<modules>
 		<module>bundles</module>
 		<module>features</module>
@@ -105,31 +126,31 @@
 	<!-- ======================================================= -->
 	<build>
 		<plugins>
-		 <plugin>
-    <artifactId>maven-resources-plugin</artifactId>
-    <version>2.5</version>
-    <executions>
-      <execution>
-        <id>copy-sitedescriptor</id>
-        <!-- fetch site.xml before creating site documentation -->
-        <phase>pre-site</phase>
-        <goals>
-          <goal>copy-resources</goal>
-        </goals>
-        <configuration>
-          <outputDirectory>${basedir}/src/site/</outputDirectory>
-          <resources>          
-            <resource>                  
-              <directory>${site.basedir}/src/site/</directory>
-              <includes>
-                <include>**/site.xml</include>
-              </includes>
-            </resource>
-          </resources>              
-        </configuration>            
-      </execution>
-    </executions>
-   </plugin>        
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-sitedescriptor</id>
+						<!-- fetch site.xml before creating site documentation -->
+						<phase>pre-site</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/src/site/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${site.basedir}/src/site/</directory>
+									<includes>
+										<include>**/site.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<!-- This sets up the target platform in PDE terms The version of Eclipse 
 					that the source will be built against -->
@@ -147,6 +168,7 @@
 						</artifact>
 					</target>
 					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<pomDependencies>consider</pomDependencies>
 					<environments>
 						<environment>
 							<os>win32</os>
@@ -208,8 +230,25 @@
 		</repository>
 	</repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>tycho-snapshots</id>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>buchen-maven-repo</id>
+			<url>http://buchen.github.io/maven-repo</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>jcenter</id>
+			<name>JCenter</name>
+			<url>http://jcenter.bintray.com</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<ciManagement>
 		<system>Hudson</system>
-		<url>https://hudson.eclipse.org/hudson/job/uomo/</url>
+		<url>https://hudson.eclipse.org/uomo/</url>
 	</ciManagement>
 </project>

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (c) 2014-2017 by the respective copyright holders.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+
+-->
+<features name="${project.artifactId}-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.3.0">
+
+  <feature name="esh-base" description="ESH" version="${project.version}">
+    <details>ESH base bundles</details>
+    <feature dependency="true">esh-tp</feature>
+    <requirement>esh.tp;filter:="(&amp;(feature=xtext)(version&gt;=2.9.2)(!(version&gt;=2.9.3)))"</requirement>
+    <requirement>esh.tp;filter:="(feature=jax-rs)"</requirement>
+
+    <bundle>mvn:org.eclipse.uomo.config/org.eclipse.uomo.config.core/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.config.core.i18n.ConfigI18nLocalizationService
+    </capability>
+
+    <bundle>mvn:org.eclipse.uomo.config/org.eclipse.uomo.config.discovery/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.config/org.eclipse.uomo.config.dispatch/${project.version}</bundle>
+    <bundle start-level="75">mvn:org.eclipse.uomo.config/org.eclipse.uomo.config.xml/${project.version}</bundle>
+
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.core.i18n.I18nProvider
+    </capability>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.core.items.ItemRegistry
+    </capability>
+
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.autoupdate/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.binding.xml/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.id/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.persistence/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.scheduler/${project.version}</bundle>
+
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.thing/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.core.thing.ThingRegistry
+    </capability>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.core.thing.i18n.ThingTypeI18nLocalizationService
+    </capability>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.core.thing.link.ItemChannelLinkRegistry
+    </capability>
+
+    <bundle start-level="75">mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.thing.xml/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.transform/${project.version}</bundle>
+
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.audio/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.core.audio.AudioHTTPServer
+    </capability>
+
+    <bundle>mvn:org.eclipse.uomo.core/org.eclipse.uomo.core.voice/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.console/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.monitor/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.net/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.core/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.sse/${project.version}</bundle>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.core/${project.version}</bundle>
+  </feature>
+
+  <!-- optional ESH bundles -->
+
+  <feature name="esh-auth-jaas" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.auth/org.eclipse.uomo.auth.jaas/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-api" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.api/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.automation.RuleRegistry
+    </capability>
+  </feature>
+
+  <feature name="esh-automation-commands" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <feature dependency="true">esh-automation-core</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.commands/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-core" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.core/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-module-core" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.module.core/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-module-script" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.module.script/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-module-script-defaultscope" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <feature dependency="true">esh-automation-module-script</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.module.script.defaultscope/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-module-script-rulesupport" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <feature dependency="true">esh-automation-module-script</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.module.script.rulesupport/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-module-media" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <feature dependency="true">esh-automation-module-script</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.module.media/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-module-timer" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.module.timer/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-parser-gson" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.parser.gson/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-providers" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <feature dependency="true">esh-automation-core</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.providers/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-automation-rest" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature dependency="true">esh-automation-api</feature>
+    <bundle>mvn:org.eclipse.uomo.automation/org.eclipse.uomo.automation.rest/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-console-karaf" description="Karaf Console support for UOMo stuff" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>shell</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.console.karaf/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-rest-auth" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-tp-jax-rs-provider-security</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.auth/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-rest-auth-basic" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-io-rest-auth</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.auth.basic/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-rest-log" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.log/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-rest-sitemap" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-ui</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.sitemap/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-rest-voice" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.voice/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-rest-mdns" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-io-transport-mdns</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.rest.mdns/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-transport-dbus" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.transport.dbus/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-io-transport-mdns" version="${project.version}">
+    <feature>esh-base</feature>
+    <requirement>esh.tp;filter:="(feature=jmdns)"</requirement>
+
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.transport.mdns/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.io.transport.mdns.MDNSService
+    </capability>
+  </feature>
+
+  <feature name="esh-io-transport-mqtt" version="${project.version}">
+    <feature>esh-base</feature>
+    <requirement>esh.tp;filter:="(feature=paho)"</requirement>
+
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.transport.mqtt/${project.version}</bundle>
+    <capability>
+      osgi.service;objectClass=org.eclipse.uomo.io.transport.mqtt.MqttService
+    </capability>
+  </feature>
+
+  <feature name="esh-io-transport-upnp" version="${project.version}">
+    <feature>esh-base</feature>
+    <requirement>esh.tp;filter:="(feature=jupnp)"</requirement>
+    <bundle>mvn:org.eclipse.uomo.io/org.eclipse.uomo.io.transport.upnp/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-item" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.item/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-item-runtime" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-item</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.item.runtime/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-persistence" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-item</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.persistence/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-persistence-runtime" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-persistence</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.persistence.runtime/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-rule" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-item</feature>
+    <feature>esh-model-persistence</feature>
+    <feature>esh-model-script</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.rule/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-rule-runtime" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-rule</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.rule.runtime/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-script" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-persistence</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.script/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-script-runtime" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-script</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.script.runtime/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-sitemap" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.sitemap/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-sitemap-runtime" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-sitemap</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.sitemap.runtime/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-thing" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-item</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.thing/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-model-thing-runtime" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-thing</feature>
+    <bundle>mvn:org.eclipse.uomo.model/org.eclipse.uomo.model.thing.runtime/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-storage-mapdb" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.storage/org.eclipse.uomo.storage.mapdb/${project.version}</bundle>
+    <bundle dependency="true">mvn:org.mapdb/mapdb/1.0.9</bundle>
+  </feature>
+
+  <feature name="esh-storage-json" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.storage/org.eclipse.uomo.storage.json/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-ui" version="${project.version}">
+    <feature>esh-base</feature>
+    <feature>esh-model-item</feature>
+    <feature>esh-model-sitemap</feature>
+    <bundle>mvn:org.eclipse.uomo.ui/org.eclipse.uomo.ui/${project.version}</bundle>
+  </feature>
+
+  <feature name="esh-ui-icon" version="${project.version}">
+    <feature>esh-base</feature>
+    <bundle>mvn:org.eclipse.uomo.ui/org.eclipse.uomo.ui.icon/${project.version}</bundle>
+  </feature>
+
+</features>

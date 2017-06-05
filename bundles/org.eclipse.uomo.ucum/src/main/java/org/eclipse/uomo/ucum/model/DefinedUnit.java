@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,16 +14,17 @@ package org.eclipse.uomo.ucum.model;
 
 import java.util.Map;
 
-import org.eclipse.uomo.units.impl.DimensionImpl;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Dimension;
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
+
+import tec.uom.se.quantity.QuantityDimension;
 
 /**
  * @author Werner Keil
- * @version 1.1
+ * @version 2.0
  */
 public class DefinedUnit extends UcumUnit {
 
@@ -126,7 +127,7 @@ public class DefinedUnit extends UcumUnit {
 	}
 
 	@Override
-	public Unit add(double arg0) {
+	public Unit shift(double arg0) {
 		throw new UnsupportedOperationException();
 	}
 
@@ -161,13 +162,7 @@ public class DefinedUnit extends UcumUnit {
 
 	@Override
 	public Dimension getDimension() {
-		return DimensionImpl.NONE;
-	}
-
-	@Override
-	public Map getProductUnits() {
-		// TODO Auto-generated method stub
-		return null;
+		return QuantityDimension.NONE;
 	}
 
 	@Override
@@ -195,6 +190,18 @@ public class DefinedUnit extends UcumUnit {
 
 	@Override
 	public Unit transform(UnitConverter arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Map getBaseUnits() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getName() {
 		// TODO Auto-generated method stub
 		return null;
 	}

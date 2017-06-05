@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 Werner Keil.
+ * Copyright (c) 2010, 2017 Werner Keil.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import static org.eclipse.uomo.core.impl.OutputHelper.*;
 import java.math.BigDecimal;
 import java.util.Set;
 
+import javax.measure.Unit;
+
 import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.ucum.UcumService;
 import org.eclipse.uomo.ucum.expression.Symbol;
@@ -25,7 +27,6 @@ import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.util.Parser;
 import org.junit.Before;
 import org.junit.Test;
-import org.unitsofmeasurement.unit.Unit;
 
 import com.ibm.icu.text.DecimalFormat;
 import com.ibm.icu.text.NumberFormat;
@@ -33,7 +34,7 @@ import com.ibm.icu.text.NumberFormat;
 
 /**
  * @author Werner Keil
- * @version 1.4, 2013-12-08
+ * @version 2.0, 2017-06-05
  */
 public class UcumServiceTest {
 	private UcumService ucumService;
