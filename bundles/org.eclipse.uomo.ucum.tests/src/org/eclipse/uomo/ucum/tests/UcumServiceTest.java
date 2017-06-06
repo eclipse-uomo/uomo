@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
 import static org.eclipse.uomo.core.impl.OutputHelper.*;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.Set;
 
 import javax.measure.Unit;
@@ -28,13 +30,10 @@ import org.eclipse.uomo.util.Parser;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.ibm.icu.text.DecimalFormat;
-import com.ibm.icu.text.NumberFormat;
-
-
 /**
  * @author Werner Keil
- * @version 2.0, 2017-06-05
+ * @version 2.1, 2017-06-06
+ * @since 0.6
  */
 public class UcumServiceTest {
 	private UcumService ucumService;

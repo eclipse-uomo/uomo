@@ -26,6 +26,7 @@ import tec.uom.se.quantity.QuantityDimension;
 /**
  * @author Werner Keil
  * @version 2.0
+ * @since 0.6
  */
 public class BaseUnit extends UcumUnit {
 

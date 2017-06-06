@@ -22,6 +22,8 @@ import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.measure.UnitConverter;
+
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.ucum.expression.Component;
 import org.eclipse.uomo.ucum.expression.Factor;
@@ -32,9 +34,9 @@ import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.parsers.ExpressionComposer;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
-import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.util.Registry;
-import org.unitsofmeasurement.unit.UnitConverter;
+
+import tec.uom.se.AbstractConverter;
 
 /**
  * = [mu_0] = 4.[pi].10*-7.N/A2 = (g.m/s2)/(C/s)2? = g.m/s2/(C2/s2) =
@@ -226,7 +228,7 @@ class UcumConverter extends AbstractConverter {
 					throw new UOMoRuntimeException("Not handled yet (special unit)"); //$NON-NLS-1$
 				else {
 					u = handlers.get(unit.getCode()).getUnits();
-					ctxt.multiplyValue(handlers.get(unit.getCode()).value());
+					ctxt.multiplyValue(handlers.get(unit.getCode()).getValue());
 				}
 			} else
 				ctxt.multiplyValue(unit.getValue().value());
@@ -300,7 +302,7 @@ class UcumConverter extends AbstractConverter {
 
 	public BigDecimal convert(BigDecimal value, MathContext ctx)
 			throws ArithmeticException {
-		return compound.convert(value, ctx);
+		return ((AbstractConverter)compound).convert(value, ctx);
 	}
 
 	public List<UnitConverter> getCompoundConverters() {
@@ -309,8 +311,8 @@ class UcumConverter extends AbstractConverter {
 		return compound;
 	}
 
-	public UnitConverter inverse() {
-		return compound.inverse();
+	public AbstractConverter inverse() {
+		return (AbstractConverter)compound.inverse();
 	}
 
 	public boolean isIdentity() {
@@ -323,5 +325,17 @@ class UcumConverter extends AbstractConverter {
 
 	public Number convert(Number value) {
 		return compound.convert(value);
+	}
+
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

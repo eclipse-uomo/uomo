@@ -13,12 +13,14 @@
 
 package org.eclipse.uomo.ucum.special;
 
+import static tec.uom.se.unit.Units.KELVIN;
+
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-import org.eclipse.uomo.units.SI;
-import org.unitsofmeasurement.quantity.Temperature;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.quantity.Temperature;
 
 public class FahrenheitHandler extends SpecialUnitHandler<Temperature> {
 
@@ -36,15 +38,45 @@ public class FahrenheitHandler extends SpecialUnitHandler<Temperature> {
 	 * @see org.unitsofmeasurement.quantity.Quantity#unit()
 	 */
 	@Override
-	public Unit<Temperature> unit() {
-		return SI.KELVIN;
+	public Unit<Temperature> getUnit() {
+		return KELVIN;
 	}
 
 	/* (non-Javadoc)
 	 * @see org.unitsofmeasurement.quantity.Quantity#value()
 	 */
 	@Override
-	public BigDecimal value() {		
+	public BigDecimal getValue() {		
 		return new BigDecimal(5).divide(new BigDecimal(9), new MathContext(20));
+	}
+
+	@Override
+	public Quantity<Temperature> add(Quantity<Temperature> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Temperature> divide(Number arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Temperature> multiply(Number arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Temperature> subtract(Quantity<Temperature> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Temperature> to(Unit<Temperature> arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

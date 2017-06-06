@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2014, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2014, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,11 @@
 
 package org.eclipse.uomo.ucum.special;
 
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.quantity.Temperature;
+
 import org.eclipse.uomo.core.ICode;
-import org.unitsofmeasurement.quantity.Quantity;
 
 public abstract class SpecialUnitHandler<Q extends Quantity<Q>> implements Quantity<Q>, ICode<String> {
 
@@ -29,4 +32,30 @@ public abstract class SpecialUnitHandler<Q extends Quantity<Q>> implements Quant
 	 * @return
 	 */
 	public abstract String getUnits();
+	
+
+
+	@Override
+	public <T extends Quantity<T>> Quantity<T> asType(Class<T> arg0) throws ClassCastException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> divide(Quantity<?> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> inverse() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> multiply(Quantity<?> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

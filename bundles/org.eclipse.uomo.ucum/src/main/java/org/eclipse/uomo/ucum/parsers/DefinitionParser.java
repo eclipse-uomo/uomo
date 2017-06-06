@@ -20,7 +20,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
@@ -36,8 +38,6 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
-import com.ibm.icu.text.DateFormat;
-import com.ibm.icu.text.SimpleDateFormat;
 
 
 /**
@@ -45,6 +45,8 @@ import com.ibm.icu.text.SimpleDateFormat;
  * 
  * @author Grahame Grieve
  * @author Werner Keil
+ * @version 1.1
+ * @since 0.6
  */
 
 public class DefinitionParser implements Parser<String, UcumModel> {
