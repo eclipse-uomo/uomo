@@ -49,6 +49,7 @@
 		<unit id="tec.uom.lib.uom-lib-common.source" version="0.0.0"/>
 		<unit id="tec.uom.se" version="0.0.0"/>
 		<unit id="tec.uom.se.source" version="0.0.0"/>
+		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
 		<repository location="http://unitsofmeasurement.github.io/third-party/target/repository"/>
 	</location>
 	-->

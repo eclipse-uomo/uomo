@@ -53,5 +53,12 @@
       <unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/"/>
     </location>
+    	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="javax.measure.unit-api" version="0.0.0"/>
+		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
+		<unit id="tec.uom.se" version="0.0.0"/>
+		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
+		<repository location="https://dl.bintray.com/unitsofmeasurement/p2/systems.uom_p2_site/0.7"/>
+	</location>
   </locations>
 </target>

@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.uomo.util.Registry;
+import systems.uom.quantity.InformationRate;
 
 @SuppressWarnings("rawtypes")
 public class SpecialUnitRegistry implements Registry<SpecialUnitHandler> {
@@ -47,7 +48,7 @@ public class SpecialUnitRegistry implements Registry<SpecialUnitHandler> {
 		register(new HoldingHandler("B[uV]", "uV"));		
 		register(new HoldingHandler("B[W]", "W"));		
 		register(new HoldingHandler("B[kW]", "kW"));		
-//		register(new HoldingHandler<InformationRate>("bit_s", "1"));	FIXME add systems-quantity	
+		register(new HoldingHandler<InformationRate>("bit_s", "1"));	//FIXME add systems-quantity	
 	}
 
 	public boolean exists(String code) {
