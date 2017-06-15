@@ -23,12 +23,7 @@
       <unit id="org.eclipse.jetty.util" version="9.2.13.v20150730"/>
       <repository location="http://download.eclipse.org/releases/mars/"/>
     </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.epp.logging.aeri.feature.feature.group" version="2.0.4.v20170307-1435"/>
-      <unit id="org.eclipse.epp.logging.aeri.feature.source.feature.group" version="2.0.4.v20170307-1435"/>
-      <repository location="http://download.eclipse.org/technology/epp/logging/stable/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.jst.web_sdk.feature.feature.group" version="3.7.1.v201512021921"/>
       <unit id="org.eclipse.jst.server_sdk.feature.feature.group" version="3.4.200.v201512031711"/>
       <unit id="org.eclipse.jst.common.fproj.enablement.jdt.sdk.feature.group" version="3.6.3.v201501141810"/>
