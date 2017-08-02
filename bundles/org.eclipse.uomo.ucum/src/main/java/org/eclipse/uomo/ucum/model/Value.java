@@ -15,11 +15,11 @@ package org.eclipse.uomo.ucum.model;
 import java.math.BigDecimal;
 
 import org.eclipse.uomo.core.ICode;
-import org.eclipse.uomo.core.IDescription;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
+import tec.uom.lib.common.function.DescriptionSupplier;
+import javax.measure.Quantity;
+import javax.measure.Unit;
 
-public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ICode<String> {
+public class Value<Q extends Quantity<Q>> implements Quantity<Q>, DescriptionSupplier, ICode<String> {
 	// TODO should use Quantity
 	// TODO make this a "real" unit, should be at least UcumUnit
 	private final String unit;
@@ -89,5 +89,59 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	 */
 	public Unit<Q> unit() {
 		return realUnit;
+	}
+
+	@Override
+	public Quantity<Q> add(Quantity<Q> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T extends Quantity<T>> Quantity<T> asType(Class<T> arg0) throws ClassCastException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> divide(Quantity<?> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> divide(Number arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> inverse() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> multiply(Quantity<?> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> multiply(Number arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> subtract(Quantity<Q> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> to(Unit<Q> arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}		
 }

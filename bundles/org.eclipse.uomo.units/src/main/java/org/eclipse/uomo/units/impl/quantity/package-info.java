@@ -12,15 +12,15 @@
  * Provides quantitative properties or attributes of thing such as
  * mass, time, distance, heat, and angular separation.
  * Quantities of different kinds are represented by sub-types of the
- * {@link org.unitsofmeasurement.quantity.Quantity} interface, which can be
+ * {@link javax.measure.quantity.Quantity} interface, which can be
  * created by a new {@link org.eclipse.uomo.units.impl.BaseAmount} instance or its subclasses.
  *
  * <p> Only quantities defined in the <a href="http://en.wikipedia.org/wiki/International_System_of_Units">International System of Units</a>
  *     are provided here. Users can create their own quantity types by extending the {@link
- *     org.unitsofmeasurement.quantity.Quantity Quantity} interface.</p>
+ *     javax.measure.quantity.Quantity Quantity} interface.</p>
  *
  * <p> This package supports <cite>measurable</cite> quantities, which can be
- *     expressed as ({@link java.lang.Number}, {@link org.unitsofmeasurement.unit.Unit}) tuples.
+ *     expressed as ({@link java.lang.Number}, {@link javax.measure.Unit}) tuples.
  *     Those tuples are not expected to be used directly in numerically intensive code.
  *     They are more useful as metadata converted to the application internal representation
  *     (for example {@code double} primitive type with the requirement to provide values in

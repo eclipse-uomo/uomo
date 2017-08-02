@@ -17,13 +17,11 @@
 		<unit id="org.apache.xerces" version="2.9.0.v201101211617"/>
 		<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120526062928/repository/"/>
 	</location>
-	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="com.ibm.icu" version="50.1.1.v201304230130"/>
-		<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20130517111416/repository/"/>
-	</location>
    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<unit id="javax.measure.unit-api" version="0.0.0"/>
 		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
+		<unit id="si.uom.si-quantity" version="0.0.0"/>
+		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
 		<repository location="http://download.eclipse.org/uomo/third-party/repository"/>
 	</location>
 </locations>

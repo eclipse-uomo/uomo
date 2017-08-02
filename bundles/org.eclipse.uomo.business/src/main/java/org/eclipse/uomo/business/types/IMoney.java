@@ -12,8 +12,8 @@ package org.eclipse.uomo.business.types;
 
 import static org.eclipse.uomo.business.money.MoneyAmount.UNIT;
 
-import org.eclipse.uomo.units.IMeasure;
-import org.unitsofmeasurement.unit.Dimension;
+import javax.measure.Dimension;
+import javax.measure.Quantity;
 
 /**
  * This interface represents something generally accepted as a medium of
@@ -24,7 +24,7 @@ import org.unitsofmeasurement.unit.Dimension;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 3.2 ($Revision: 227 $), $Date: 2010-10-01 00:54:55 +0200 (Fr, 01 Okt 2010) $
  */
-public interface IMoney extends IBDType, IMeasure<IMoney> {
+public interface IMoney extends Quantity<IMoney> {
 
     /**
      * Holds the dimension for money quantities (dimension [$]).

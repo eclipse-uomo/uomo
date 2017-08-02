@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Pressure;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Pressure;
+import javax.measure.Unit;
 
 /**
  * Represents a force applied uniformly over a surface.

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,8 @@ package org.eclipse.uomo.ucum;
 import java.io.IOException;
 import java.text.ParsePosition;
 
-import org.unitsofmeasurement.service.UnitFormatService;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.spi.UnitFormatService;
+import javax.measure.Unit;
 
 /**
  * <p> This interface provides methods for OSGi bundles to parse/format units

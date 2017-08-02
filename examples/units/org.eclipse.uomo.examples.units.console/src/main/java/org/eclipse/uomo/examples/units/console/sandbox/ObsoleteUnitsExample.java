@@ -11,13 +11,13 @@
 package org.eclipse.uomo.examples.units.console.sandbox;
 
 import static org.eclipse.uomo.examples.units.types.GermanObsolete.*;
+import static org.eclipse.uomo.units.impl.system.SI.*;
 import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
-import static org.eclipse.uomo.units.SI.*;
 
 import org.eclipse.uomo.examples.units.types.PolishObsolete;
-import org.eclipse.uomo.units.IMeasure;
+import javax.measure.Quantity;
 import org.eclipse.uomo.units.impl.BaseAmount;
-import org.unitsofmeasurement.quantity.Length;
+import javax.measure.quantity.Length;
 
 /**
  * @author Werner Keil
@@ -30,7 +30,7 @@ public class ObsoleteUnitsExample {
 	 */
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) {
-		IMeasure<Length> l = BaseAmount.valueOf(10, METRE);
+		Quantity<Length> l = BaseAmount.valueOf(10, METRE);
 		System.out.println(l);
 		System.out.println(l.to(FOOT));
 		System.out.println(l.to(FOOT_ZURICH));

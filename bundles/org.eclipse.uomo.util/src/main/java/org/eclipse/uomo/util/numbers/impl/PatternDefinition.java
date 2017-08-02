@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.util.numbers.impl;
 
-import org.eclipse.uomo.core.IName;
+import tec.uom.lib.common.function.Nameable;
 
 /**
 * A simple class to hold the regular expression sub-definition to validate
@@ -26,7 +26,7 @@ import org.eclipse.uomo.core.IName;
 * @see {@link SpellContext#mySpellPatterns}
 * 
 */
-class PatternDefinition implements IName {
+class PatternDefinition implements Nameable {
 
 	/**
 	 * Represents the name of pattern, for example teen in $(teen).

@@ -16,7 +16,7 @@ import java.util.List;
 import org.eclipse.uomo.examples.units.types.Health;
 import org.eclipse.uomo.examples.units.types.HeartRate;
 import org.eclipse.uomo.examples.units.types.HeartRateAmount;
-import org.eclipse.uomo.units.IMeasure;
+import javax.measure.Quantity;
 
 /**
  * @author Werner Keil
@@ -28,16 +28,16 @@ public class HealthExamples {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		List<IMeasure<HeartRate>> rates = new LinkedList<IMeasure<HeartRate>>();
+		List<Quantity<HeartRate>> rates = new LinkedList<Quantity<HeartRate>>();
 		int value = 0;
 		for (int i=0; i<50; i++) {
 	        value = (int) (Math.random() * 40 + 50);
 		
-			IMeasure<HeartRate> rate = new HeartRateAmount(value, Health.BPM);
+			Quantity<HeartRate> rate = new HeartRateAmount(value, Health.BPM);
 			rates.add(rate);
 		}
 		
-		for (IMeasure<HeartRate> r : rates) {
+		for (Quantity<HeartRate> r : rates) {
 			System.out.println("Rate: " + r);
 		}
 	}

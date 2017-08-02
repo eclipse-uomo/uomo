@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,14 @@ package org.eclipse.uomo.units.impl;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+
+import java.util.Map;
+
+import javax.measure.IncommensurableException;
+import javax.measure.Quantity;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p>
@@ -32,7 +35,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * <p>
  * Transformed units have no label. But like any other units, they may have
  * labels attached to them (see
- * {@link org.eclipse.uomo.units.AbstractFormat.SymbolMap SymbolMap}
+ * {@link org.eclipse.uomo.units.AbstractUnitFormat.SymbolMap SymbolMap}
  * </p>
  * 
  * <p>
@@ -81,15 +84,31 @@ public final class TransformedUnit<Q extends Quantity<Q>> extends
 	 *            the untransformed unit from which this unit is derived.
 	 * @param toParentUnit
 	 *            the converter to the parent units.
+	 *            @param symbol
+	 * @throws IllegalArgumentException
+	 *             if <code>toParentUnit ==
+	 *         {@link AbstractConverter#IDENTITY UnitConverter.IDENTITY}</code>
+	 */
+	public TransformedUnit(Unit<Q> parentUnit, AbstractConverter toParentUnit, String symbol) {
+		if (toParentUnit == AbstractConverter.IDENTITY)
+			throw new IllegalArgumentException("Identity not allowed");
+		this.parentUnit = parentUnit;
+		this.toParentUnit = toParentUnit;
+	}
+	
+	/**
+	 * Creates a transformed unit from the specified parent unit.
+	 * 
+	 * @param parentUnit
+	 *            the untransformed unit from which this unit is derived.
+	 * @param toParentUnit
+	 *            the converter to the parent units.
 	 * @throws IllegalArgumentException
 	 *             if <code>toParentUnit ==
 	 *         {@link AbstractConverter#IDENTITY UnitConverter.IDENTITY}</code>
 	 */
 	public TransformedUnit(Unit<Q> parentUnit, AbstractConverter toParentUnit) {
-		if (toParentUnit == AbstractConverter.IDENTITY)
-			throw new IllegalArgumentException("Identity not allowed");
-		this.parentUnit = parentUnit;
-		this.toParentUnit = toParentUnit;
+		this(parentUnit, toParentUnit, null);
 	}
 
 	/**
@@ -143,5 +162,11 @@ public final class TransformedUnit<Q extends Quantity<Q>> extends
 	@Override
 	public Unit<Q> getSystemUnit() {
 		return toMetric();
+	}
+
+	@Override
+	public Map<? extends Unit<?>, Integer> getBaseUnits() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

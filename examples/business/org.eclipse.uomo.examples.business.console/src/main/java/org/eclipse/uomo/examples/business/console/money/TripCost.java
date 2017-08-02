@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,12 @@
  */
 package org.eclipse.uomo.examples.business.console.money;
 
+import static org.eclipse.uomo.units.impl.system.SI.METRE;
+import static org.eclipse.uomo.units.impl.system.SI.Prefix.KILO;
 // Constants (Java 5 static import)
 import static org.eclipse.uomo.units.impl.system.USCustomary.GALLON_LIQUID;
 import static org.eclipse.uomo.units.impl.system.USCustomary.LITER;
 import static org.eclipse.uomo.units.impl.system.USCustomary.MILE;
-import static org.eclipse.uomo.units.SI.Prefix.KILO;
-import static org.eclipse.uomo.units.SI.METRE;
 import static org.eclipse.uomo.business.money.MonetaryUnits.INR;
 import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
 import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
@@ -28,7 +28,7 @@ import org.eclipse.uomo.business.money.MoneyConverter;
 import org.eclipse.uomo.business.money.MoneyUnit;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.examples.business.console.internal.DemoMessages;
-import org.eclipse.uomo.units.IMeasure;
+import javax.measure.Quantity;
 import org.eclipse.uomo.units.QuantityAmount;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
@@ -56,15 +56,15 @@ public class TripCost {
 		// Calculates trip cost.
 		BaseAmount carMileage = new BaseAmount(20,
 				MILE.divide(GALLON_LIQUID)); // 20 mi/gal.
-		IMeasure<IMoney> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
+		Quantity<IMoney> gazPrice = new BaseAmount(1.2, EUR.divide(LITER));
 		// // 1.2 EUR/L
 		LengthAmount tripDistance = new LengthAmount(400, KILO(METRE)); // 400 km
-//		IMeasure<Length> tripDistance2 = new LengthAmount(400, KILO(METRE));
+//		Quantity<Length> tripDistance2 = new LengthAmount(400, KILO(METRE));
 //		LengthAmount tripDistance = new LengthAmount(4, (Unit<Length>) LAKH(METRE)); // 400 km 
 		
 		
 		// km
-		IMeasure<?> tripCost =  tripDistance.divide(
+		Quantity<?> tripCost =  tripDistance.divide(
 				carMileage).multiply(gazPrice); // .to(USD);
 
 		// Display trip.
@@ -80,7 +80,7 @@ public class TripCost {
 		// System.out.println(currFormat.format(mo));
 		System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost); // + " (" +
 
-		System.out.println("In USD: " + gazPrice.doubleValue(USD));
+		System.out.println("In USD: " + gazPrice.to(USD).getValue());
 		System.out.println("Trip Cost"
 				+ ((QuantityAmount) tripCost).to(USD)); //$NON-NLS-1$
 		//System.out.println(DemoMessages.MoneyDemo_Trip_cost + tripCost.to(USD));

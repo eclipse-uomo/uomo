@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Length;
+import javax.measure.Unit;
 
 /**
  * Represents the extent of something along its greatest

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil, Jean-Marie Dautelle and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,15 +13,19 @@ package org.eclipse.uomo.units;
 import static org.eclipse.uomo.units.AbstractUnit.ONE;
 
 import java.math.BigInteger;
+
+import org.eclipse.uomo.units.AbstractSystemOfUnits;
+import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.Messages;
 import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.quantity.*;
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.quantity.*;
+import javax.measure.spi.SystemOfUnits;
 
 /**
  * <p>
@@ -40,10 +44,11 @@ import org.unitsofmeasurement.quantity.*;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.32 ($Revision: 232 $), $Date: 2011-09-11 14:50:08 +0200 $
+ * @version 1.34, $Date: 2017-07-31 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/International_System_of_Units">Wikipedia:
  *      International System of Units</a>
+ *      @deprecated Use impl.system.SI
  */
 public final class SI extends AbstractSystemOfUnits {
 
@@ -140,8 +145,8 @@ public final class SI extends AbstractSystemOfUnits {
 	/**
 	 * The unit for magnetomotive force (<code>At</code>).
 	 */
-	public static final Unit<MagnetomotiveForce> AMPERE_TURN = addUnit(new AlternateUnit<MagnetomotiveForce>(
-			Messages.SI_At, (AbstractUnit<?>) SI.AMPERE));
+//	public static final Unit<MagnetomotiveForce> AMPERE_TURN = addUnit(new AlternateUnit<MagnetomotiveForce>(
+//			Messages.SI_At, (AbstractUnit<?>) SI.AMPERE));
 
 	/**
 	 * The derived unit for mass quantities (<code>g</code>). The base unit for
@@ -155,7 +160,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * between them is equal to the radius.
 	 */
 	public static final Unit<Angle> RADIAN = addUnit(new AlternateUnit<Angle>(
-			Messages.SI_rad, AbstractUnit.ONE));
+			AbstractUnit.ONE, Messages.SI_rad));
 
 	/**
 	 * The unit for solid angle quantities (<code>sr</code>). One steradian is
@@ -164,13 +169,13 @@ public final class SI extends AbstractSystemOfUnits {
 	 * solid angle of a sphere is 4*Pi steradians.
 	 */
 	public static final Unit<SolidAngle> STERADIAN = addUnit(new AlternateUnit<SolidAngle>(
-			Messages.SI_sr, AbstractUnit.ONE));
+			AbstractUnit.ONE, Messages.SI_sr));
 
 	/**
 	 * The unit for binary information (<code>bit</code>).
 	 */
-	public static final Unit<Information> BIT = addUnit(new AlternateUnit<Information>(
-			Messages.SI_bit, AbstractUnit.ONE));
+//	public static final Unit<Information> BIT = addUnit(new AlternateUnit<Information>(
+//			Messages.SI_bit, AbstractUnit.ONE));
 
 	/**
 	 * The derived unit for frequency (<code>Hz</code>). A unit of frequency
@@ -178,8 +183,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * German physicist who was the first to produce radio waves artificially.
 	 */
 	public static final Unit<Frequency> HERTZ = addUnit(new AlternateUnit<Frequency>(
-			Messages.SI_Hz,
-			(AbstractUnit<?>) AbstractUnit.ONE.divide(SECOND)));
+						(AbstractUnit<?>) AbstractUnit.ONE.divide(SECOND), Messages.SI_Hz));
 
 	/**
 	 * The derived unit for force (<code>N</code>). One newton is the force
@@ -188,8 +192,8 @@ public final class SI extends AbstractSystemOfUnits {
 	 * Isaac Newton (1642-1727).
 	 */
 	public static final Unit<Force> NEWTON = addUnit(new AlternateUnit<Force>(
-			Messages.SI_N, (AbstractUnit<?>) METRE.multiply(KILOGRAM)
-					.divide(SECOND.pow(2))));
+			(AbstractUnit<?>) METRE.multiply(KILOGRAM)
+					.divide(SECOND.pow(2)), Messages.SI_N));
 
 	/**
 	 * The derived unit for pressure, stress (<code>Pa</code>). One pascal is
@@ -197,7 +201,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * philosopher and mathematician Blaise Pascal (1623-1662).
 	 */
 	public static final Unit<Pressure> PASCAL = addUnit(new AlternateUnit<Pressure>(
-			Messages.SI_Pa, (AbstractUnit<?>) NEWTON.divide(METRE.pow(2))));
+			(AbstractUnit<?>) NEWTON.divide(METRE.pow(2)), Messages.SI_Pa));
 
 	/**
 	 * The derived unit for energy, work, quantity of heat (<code>J</code>). One
@@ -206,7 +210,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * after the English physicist James Prescott Joule (1818-1889).
 	 */
 	public static final Unit<Energy> JOULE = addUnit(new AlternateUnit<Energy>(
-			Messages.SI_J, (AbstractUnit<?>) NEWTON.multiply(METRE)));
+			(AbstractUnit<?>) NEWTON.multiply(METRE), Messages.SI_J));
 
 	/**
 	 * The derived unit for power, radiant, flux (<code>W</code>). One watt is
@@ -214,7 +218,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * James Watt (1736-1819).
 	 */
 	public static final Unit<Power> WATT = addUnit(new AlternateUnit<Power>(
-			Messages.SI_W, (AbstractUnit<?>) JOULE.divide(SECOND)));
+			(AbstractUnit<?>) JOULE.divide(SECOND), Messages.SI_W));
 
 	/**
 	 * The derived unit for electric charge, quantity of electricity (
@@ -223,7 +227,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * after the French physicist Charles Augustin de Coulomb (1736-1806).
 	 */
 	public static final Unit<ElectricCharge> COULOMB = addUnit(new AlternateUnit<ElectricCharge>(
-			Messages.SI_C, (AbstractUnit<?>) SECOND.multiply(AMPERE)));
+			(AbstractUnit<?>) SECOND.multiply(AMPERE), Messages.SI_C));
 
 	/**
 	 * The derived unit for electric potential difference, electromotive force (
@@ -234,7 +238,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * (1745-1827).
 	 */
 	public static final Unit<ElectricPotential> VOLT = addUnit(new AlternateUnit<ElectricPotential>(
-			Messages.SI_V, (AbstractUnit<?>) WATT.divide(AMPERE)));
+			(AbstractUnit<?>) WATT.divide(AMPERE), Messages.SI_V));
 
 	/**
 	 * The derived unit for capacitance (<code>F</code>). One Farad is equal to
@@ -244,7 +248,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * Faraday (1791-1867).
 	 */
 	public static final Unit<ElectricCapacitance> FARAD = addUnit(new AlternateUnit<ElectricCapacitance>(
-			Messages.SI_F, (AbstractUnit<?>) COULOMB.divide(VOLT)));
+			(AbstractUnit<?>) COULOMB.divide(VOLT), Messages.SI_F));
 
 	/**
 	 * The derived unit for electric resistance (<code>Ohm</code>). One Ohm is
@@ -253,7 +257,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * after the German physicist Georg Simon Ohm (1789-1854).
 	 */
 	public static final Unit<ElectricResistance> OHM = addUnit(new AlternateUnit<ElectricResistance>(
-			Messages.SI_OhmS, (AbstractUnit<?>) VOLT.divide(AMPERE)));
+			(AbstractUnit<?>) VOLT.divide(AMPERE), Messages.SI_OhmS));
 
 	/**
 	 * The derived unit for electric conductance (<code>S</code>). One Siemens
@@ -261,7 +265,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * Ernst Werner von Siemens (1816-1892).
 	 */
 	public static final Unit<ElectricConductance> SIEMENS = addUnit(new AlternateUnit<ElectricConductance>(
-			Messages.SI_S, (AbstractUnit<?>) AMPERE.divide(VOLT)));
+			(AbstractUnit<?>) AMPERE.divide(VOLT), Messages.SI_S));
 
 	/**
 	 * The derived unit for magnetic flux (<code>Wb</code>). One Weber is equal
@@ -271,7 +275,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * Weber (1804-1891).
 	 */
 	public static final Unit<MagneticFlux> WEBER = addUnit(new AlternateUnit<MagneticFlux>(
-			Messages.SI_Wb, (AbstractUnit<?>) VOLT.multiply(SECOND)));
+			(AbstractUnit<?>) VOLT.multiply(SECOND), Messages.SI_Wb));
 
 	/**
 	 * The derived unit for magnetic flux density (<code>T</code>). One Tesla is
@@ -280,7 +284,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * (1856-1943).
 	 */
 	public static final Unit<MagneticFluxDensity> TESLA = addUnit(new AlternateUnit<MagneticFluxDensity>(
-			Messages.SI_T, (AbstractUnit<?>) WEBER.divide(METRE.pow(2))));
+			(AbstractUnit<?>) WEBER.divide(METRE.pow(2)), Messages.SI_T));
 
 	/**
 	 * The derived unit for inductance (<code>H</code>). One Henry is equal to
@@ -289,14 +293,14 @@ public final class SI extends AbstractSystemOfUnits {
 	 * It is named after the American physicist Joseph Henry (1791-1878).
 	 */
 	public static final Unit<ElectricInductance> HENRY = addUnit(new AlternateUnit<ElectricInductance>(
-			Messages.SI_H, (AbstractUnit<?>) WEBER.divide(AMPERE)));
+			(AbstractUnit<?>) WEBER.divide(AMPERE), Messages.SI_H));
 
 	/**
 	 * The derived unit for Celsius temperature (<code>Cel</code>). This is a
 	 * unit of temperature such as the freezing point of water (at one
 	 * atmosphere of pressure) is 0 Cel, while the boiling point is 100 Cel.
 	 */
-	public static final Unit<Temperature> CELSIUS = addUnit(KELVIN.add(273.15));
+	public static final Unit<Temperature> CELSIUS = addUnit(KELVIN.shift(273.15));
 
 	/**
 	 * The derived unit for luminous flux (<code>lm</code>). One Lumen is equal
@@ -304,23 +308,22 @@ public final class SI extends AbstractSystemOfUnits {
 	 * candela intensity radiating equally in all directions.
 	 */
 	public static final Unit<LuminousFlux> LUMEN = addUnit(new AlternateUnit<LuminousFlux>(
-			Messages.SI_lm, (AbstractUnit<?>) CANDELA.multiply(STERADIAN)));
+			(AbstractUnit<?>) CANDELA.multiply(STERADIAN), Messages.SI_lm));
 
 	/**
 	 * The derived unit for illuminance (<code>lx</code>). One Lux is equal to
 	 * one lumen per square metre.
 	 */
 	public static final Unit<Illuminance> LUX = addUnit(new AlternateUnit<Illuminance>(
-			Messages.SI_lx, (AbstractUnit<?>) LUMEN.divide(METRE.pow(2))));
+			(AbstractUnit<?>) LUMEN.divide(METRE.pow(2)), Messages.SI_lx));
 
 	/**
 	 * The derived unit for activity of a radionuclide (<code>Bq</code>). One
 	 * becquerel is the radiation caused by one disintegration per second. It is
 	 * named after the French physicist, Antoine-Henri Becquerel (1852-1908).
 	 */
-	public static final Unit<RadioactiveActivity> BECQUEREL = addUnit(new AlternateUnit<RadioactiveActivity>(
-			Messages.SI_Bq,
-			(AbstractUnit<?>) AbstractUnit.ONE.divide(SECOND)));
+	public static final Unit<Radioactivity> BECQUEREL = addUnit(new AlternateUnit<Radioactivity>(
+			(AbstractUnit<?>) AbstractUnit.ONE.divide(SECOND), Messages.SI_Bq));
 
 	/**
 	 * The derived unit for absorbed dose, specific energy (imparted), kerma (
@@ -329,31 +332,32 @@ public final class SI extends AbstractSystemOfUnits {
 	 * physician L. H. Gray (1905-1965).
 	 */
 	public static final Unit<RadiationDoseAbsorbed> GRAY = addUnit(new AlternateUnit<RadiationDoseAbsorbed>(
-			Messages.SI_Gy, (AbstractUnit<?>) JOULE.divide(KILOGRAM)));
+			(AbstractUnit<?>) JOULE.divide(KILOGRAM), Messages.SI_Gy));
 
-	/**
+	/**,
 	 * The derived unit for dose equivalent (<code>Sv</code>). One Sievert is
 	 * equal is equal to the actual dose, in grays, multiplied by a
 	 * "quality factor" which is larger for more dangerous forms of radiation.
 	 * It is named after the Swedish physicist Rolf Sievert (1898-1966).
 	 */
 	public static final Unit<RadiationDoseEffective> SIEVERT = addUnit(new AlternateUnit<RadiationDoseEffective>(
-			Messages.SI_Sv, (AbstractUnit<?>) JOULE.divide(KILOGRAM)));
+			(AbstractUnit<?>) JOULE.divide(KILOGRAM), Messages.SI_Sv));
 
 	/**
 	 * The derived unit for catalytic activity (<code>kat</code>).
 	 */
 	public static final Unit<CatalyticActivity> KATAL = addUnit(new AlternateUnit<CatalyticActivity>(
-			Messages.SI_kat, (AbstractUnit<?>) MOLE.divide(SECOND)));
+			(AbstractUnit<?>) MOLE.divide(SECOND), Messages.SI_kat));
+	
 	// ////////////////////////////
 	// SI DERIVED PRODUCT UNITS //
 	// ////////////////////////////
 
 	/**
-	 * The metric unit for velocity quantities (<code>m/s</code>).
+	 * The metric unit for Speed quantities (<code>m/s</code>).
 	 * 
 	 */
-	public static final Unit<Velocity> METRES_PER_SECOND = addUnit(new ProductUnit<Velocity>(
+	public static final Unit<Speed> METRES_PER_SECOND = addUnit(new ProductUnit<Speed>(
 			(AbstractUnit<?>) METRE.divide(SECOND)));
 
 	/**
@@ -392,8 +396,8 @@ public final class SI extends AbstractSystemOfUnits {
 	 * <code>Roentgen</code>).
 	 */
 	@SuppressWarnings("unchecked")
-	public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(COULOMB.divide(KILOGRAM)
-			.multiply(2.58e-4), Messages.NonSI_R_name);
+//	public static final Unit<IonizingRadiation> ROENTGEN = (Unit<IonizingRadiation>) addUnit(COULOMB.divide(KILOGRAM)
+//			.multiply(2.58e-4), Messages.NonSI_R_name);
 	
 	public static class Prefix {
 

@@ -13,7 +13,7 @@ package org.eclipse.uomo.units.impl.format;
 
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.impl.converter.LogConverter;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 /** */
 class UnitParser implements UnitParserConstants {
@@ -94,14 +94,14 @@ Unit<?> addExpr() throws ParseException {
             if (sign1.image.equals("-")) {
                 result = result.multiply(-1);
             }
-            result = result.add(n1.doubleValue());
+            result = result.shift(n1.doubleValue());
         }
         if (n2 != null) {
             double offset = n2.doubleValue();
             if (sign2.image.equals("-")) {
                 offset = -offset;
             }
-            result = result.add(offset);
+            result = result.shift(offset);
         }
         {if (true) return result;}
     throw new Error("Missing return statement in function");

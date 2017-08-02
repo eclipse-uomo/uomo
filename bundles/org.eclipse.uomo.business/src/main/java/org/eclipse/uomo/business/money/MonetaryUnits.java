@@ -12,10 +12,8 @@ package org.eclipse.uomo.business.money;
 
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
-
-import com.ibm.icu.util.Currency;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>

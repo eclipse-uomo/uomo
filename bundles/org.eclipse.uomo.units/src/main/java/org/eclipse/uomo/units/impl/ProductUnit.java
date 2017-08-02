@@ -16,14 +16,12 @@ import java.util.Map;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
-
-import com.ibm.icu.util.Measure;
+import javax.measure.Quantity;
+import javax.measure.UnconvertibleException;
+import javax.measure.Dimension;
+import javax.measure.IncommensurableException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p>  This class represents units formed by the product of rational powers of
@@ -139,7 +137,7 @@ public final class ProductUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> im
         if (resultIndex == 0)
             return (Unit<?>) AbstractUnit.ONE;
         else if ((resultIndex == 1) && (result[0].pow == result[0].root))
-            return (Unit<? extends Measure>) result[0].unit;
+            return (Unit<? extends Quantity>) result[0].unit;
         else {
             Element[] elems = new Element[resultIndex];
             for (int i = 0; i < resultIndex; i++) {
@@ -262,8 +260,8 @@ public final class ProductUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> im
      *         <code>(index &lt; 0 || index &gt;= getUnitCount())</code>.
      */
     @SuppressWarnings("unchecked")
-	public Unit<? extends Measure> getUnit(int index) {
-        return (Unit<? extends Measure>) elements[index].getUnit();
+	public Unit<? extends Quantity<Q>> getUnit(int index) {
+        return (Unit<? extends Quantity<Q>>) elements[index].getUnit();
     }
 
     /**
@@ -291,7 +289,7 @@ public final class ProductUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> im
     }
 
     @Override
-    public Map<Unit<?>, Integer> getProductUnits() {
+    public Map<Unit<?>, Integer> getBaseUnits() {
         Map<Unit<?>, Integer> units = new HashMap<Unit<?>, Integer>();
         for (int i = 0; i < getUnitCount(); i++) {
             units.put(getUnit(i), getUnitPow(i));
@@ -382,7 +380,7 @@ public final class ProductUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> im
 
     @Override
     public Dimension getDimension() {
-        Dimension dimension = DimensionImpl.NONE;
+        Dimension dimension = QuantityDimension.NONE;
         for (int i = 0; i < this.getUnitCount(); i++) {
             Unit<?> unit = this.getUnit(i);
             Dimension d = unit.getDimension().pow(this.getUnitPow(i)).root(this.getUnitRoot(i));

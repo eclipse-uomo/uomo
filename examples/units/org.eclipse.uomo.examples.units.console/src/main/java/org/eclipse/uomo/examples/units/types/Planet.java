@@ -10,17 +10,17 @@
  */
 package org.eclipse.uomo.examples.units.types;
 
-import static org.eclipse.uomo.units.SI.*;
 import static org.eclipse.uomo.examples.units.types.SolarSystem.G;
+import static org.eclipse.uomo.units.impl.system.SI.*;
 
-import org.eclipse.uomo.units.IMeasure;
+import javax.measure.Quantity;
 import org.eclipse.uomo.units.impl.quantity.AccelerationAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
-import org.unitsofmeasurement.quantity.Acceleration;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Acceleration;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import javax.measure.Unit;
 
 /**
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
@@ -46,35 +46,35 @@ public enum Planet {
     URANUS(newMass(8.686e+25, KILOGRAM), newLength(2.5559e7, METRE)),
     NEPTUNE(newMass(1.024e+26, KILOGRAM), newLength(2.4746e7, METRE));
 
-    private final IMeasure<Mass> mass;   // in kilograms
+    private final Quantity<Mass> mass;   // in kilograms
 
-    private final IMeasure<Length> radius; // in meters
+    private final Quantity<Length> radius; // in meters
 
-    Planet(IMeasure<Mass> mass, IMeasure<Length> radius) {
+    Planet(Quantity<Mass> mass, Quantity<Length> radius) {
         this.mass = mass;
         this.radius = radius;
     }
 
-    public IMeasure<Mass> getMass() {
+    public Quantity<Mass> getMass() {
         return mass;
     }
 
-    public IMeasure<Length> getRadius() {
+    public Quantity<Length> getRadius() {
         return radius;
     }
 
     public Acceleration surfaceGravity() {
-        double m = mass.doubleValue(KILOGRAM);
-        double r = radius.doubleValue(METRE);
+        double m = mass.to(KILOGRAM).getValue().doubleValue();
+        double r = radius.to(METRE).getValue().doubleValue();
         return new AccelerationAmount(
                 G * m / (r * r), METRES_PER_SQUARE_SECOND);
     }
 
-    private static IMeasure<Mass> newMass(double value, Unit<Mass> unit) {
+    private static Quantity<Mass> newMass(double value, Unit<Mass> unit) {
         return new MassAmount(value, unit);
     }
 
-    private static IMeasure<Length> newLength(double value, Unit<Length> unit) {
+    private static Quantity<Length> newLength(double value, Unit<Length> unit) {
         return new LengthAmount(value, unit);
     }
 

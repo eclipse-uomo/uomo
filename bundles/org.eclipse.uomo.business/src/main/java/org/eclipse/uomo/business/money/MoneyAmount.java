@@ -10,10 +10,12 @@
  */
 package org.eclipse.uomo.business.money;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 import java.text.FieldPosition;
 import java.text.NumberFormat;
+import java.util.Currency;
 
 import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.MonetaryAmount;
@@ -21,16 +23,14 @@ import org.eclipse.uomo.business.internal.MonetaryOperator;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.units.AbstractConverter;
-import org.eclipse.uomo.units.IMeasure;
+import org.eclipse.uomo.units.AbstractQuantity;
 import org.eclipse.uomo.units.QuantityAmount;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
-
-import com.ibm.icu.math.BigDecimal;
-import com.ibm.icu.util.Currency;
+import javax.measure.IncommensurableException;
+import javax.measure.Quantity;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * This class represents an amount of money specified in a given
@@ -38,17 +38,20 @@ import com.ibm.icu.util.Currency;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7, $Date: 2014-08-03 $
+ * @version 0.7.1, $Date: 2017-07-30 $
  */
-public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, MonetaryAmount,
-		Comparable<MonetaryAmount> {
+public class MoneyAmount extends AbstractQuantity<IMoney> implements IMoney {
 
 	/**
 	 * Holds the base unit for money quantities (symbol "$").
 	 */
 	public final static MoneyUnit<IMoney> UNIT = new MoneyUnit<IMoney>(
 			"$");
+	
+	private final Number number;
 
+	private MonetaryAmount money;
+	
 	/**
 	 * Creates a money amount always on the heap independently from the current
 	 * {@link javolution.context.AllocatorContext allocator context}. To allow
@@ -61,9 +64,14 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 *            the currency in which the value is stated.
 	 */
 	public MoneyAmount(Number value, MoneyUnit unit) {
-		super(value, unit);
+		super(unit);
+		this.number = value;
 	}
 
+	public Number getValue() {
+		return number;
+	}
+	
 	/**
 	 * Returns the money amount corresponding to the specified Number value
 	 * and currency.
@@ -120,7 +128,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public static MoneyAmount of(long value, int cents, Currency currency) {
 		return new MoneyAmount(BigDecimal.valueOf(value * 100
-				+ cents, -2), (MoneyUnit) currency);
+				+ cents, -2), MoneyUnit.of(currency.getCurrencyCode()));
 	}
 
 	/**
@@ -137,7 +145,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	public static MoneyAmount of(QuantityAmount<IMoney> amount) {
 		// MoneyAmount amountSI = amount.toSI();
 		return MoneyAmount.of(BigDecimal.valueOf(amount.getValue()
-				.doubleValue()), amount.unit().getSystemUnit());
+				.doubleValue()), amount.getUnit().getSystemUnit());
 	}
 
 	
@@ -163,8 +171,8 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @return the string representation of this money amount.
 	 */
 	public String toStringLocale() {
-		BigDecimal value = (BigDecimal) this.getNumber();
-		// int digits = ((Currency) this.getUnit()).getDefaultFractionDigits();
+		BigDecimal value = (BigDecimal) this.getValue();
+		// int digits = ((Currency) this.getgetUnit()).getDefaultFractionDigits();
 		// int exponent = value.getExponent();
 		// LargeInteger significand = value.getSignificand();
 		// int scale = exponent + digits;
@@ -175,7 +183,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		StringBuffer tmp = new StringBuffer();
 		numberFormat.format(value, tmp, new FieldPosition(0));
 		tmp.append(' ');
-		tmp.append(this.unit().toString());
+		tmp.append(this.getUnit().toString());
 		return tmp.toString();
 	}
 
@@ -185,29 +193,29 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 
 	protected MoneyAmount plus(IMoney that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
-		return MoneyAmount.of(this.getNumber().doubleValue()
-				+ that.value().doubleValue(), getCurrency());
+		return MoneyAmount.of(this.getValue().doubleValue()
+				+ that.getValue().doubleValue(), getCurrency());
 	}
 	
 	protected MoneyAmount plus(MoneyAmount that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
-		return MoneyAmount.of(this.getNumber().doubleValue()
-				+ that.getNumber().doubleValue(), getCurrency());
+		return MoneyAmount.of(this.getValue().doubleValue()
+				+ that.getValue().doubleValue(), getCurrency());
 	}
 
 	protected MoneyAmount minus(MoneyAmount that) {
 		// MoneyAmount amount = that.to((Unit) getCurrency());
-		return MoneyAmount.of(this.getNumber().doubleValue()
-				- that.getNumber().doubleValue(), getCurrency());
+		return MoneyAmount.of(this.getValue().doubleValue()
+				- that.getValue().doubleValue(), getCurrency());
 	}
 
 	public MoneyAmount multiply(Number that) {
 		return MoneyAmount.of(
-				getNumber().doubleValue() * that.doubleValue(), getCurrency());
+				getValue().doubleValue() * that.doubleValue(), getCurrency());
 	}
 
 	public MoneyAmount multiply(long n) {
-		return MoneyAmount.of(getNumber().longValue() * n,
+		return MoneyAmount.of(getValue().longValue() * n,
 				getCurrency());
 	}
 
@@ -217,45 +225,33 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 	
 	protected MoneyAmount times(MoneyAmount that) {
-		Unit<?> unit = unit().multiply(that.unit());
-		return MoneyAmount.of(((BigDecimal) getNumber())
-				.multiply((BigDecimal) that.getNumber()), unit);
+		Unit<?> unit = getUnit().multiply(that.getUnit());
+		return MoneyAmount.of(((BigDecimal) getValue())
+				.multiply((BigDecimal) that.getValue()), unit);
 	}
 
 	public MoneyAmount pow(int exp) {
-		return MoneyAmount.of(((BigDecimal) getNumber()).pow(BigDecimal
-				.valueOf(exp)), unit().pow(exp));
+		return MoneyAmount.of(((BigDecimal) getValue()).pow(exp), getUnit().pow(exp));
 	}
 
 	// protected MoneyAmount inverse() {
-	// return MoneyAmount.valueOf(((BigDecimal) getNumber()).inverse(),
-	// unit().inverse());
+	// return MoneyAmount.valueOf(((BigDecimal) getValue()).inverse(),
+	// getUnit().inverse());
 	// }
 
 	public MoneyAmount divide(long n) {
-		return MoneyAmount.of(getNumber().longValue() / n,
+		return MoneyAmount.of(getValue().longValue() / n,
 				getCurrency());
 	}
 
 	protected MoneyAmount divide(MoneyAmount that) {
-		Unit<?> unit = unit().divide(that.unit());
-		return MoneyAmount.of(((BigDecimal) getNumber())
-				.divide((BigDecimal) that.getNumber()), unit);
+		Unit<?> unit = getUnit().divide(that.getUnit());
+		return MoneyAmount.of(((BigDecimal) getValue())
+				.divide((BigDecimal) that.getValue()), unit);
 	}
 
 	public MoneyAmount copy() {
-		return MoneyAmount.of(getNumber(), getCurrency());
-	}
-
-	/**
-	 * Get the unit (convenience to avoid cast).
-	 * 
-	 * @draft UOMo 0.5
-	 * @provisional This API might change or be removed in a future release.
-	 */
-	@SuppressWarnings("unchecked")
-	public MoneyUnit<IMoney> unit() {
-		return (MoneyUnit<IMoney>) getUnit();
+		return MoneyAmount.of(getValue(), getCurrency());
 	}
 
 	public int compareTo(IMoney o) {
@@ -264,10 +260,10 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	public double doubleValue(Unit<IMoney> unit) {
-		Unit<IMoney> myUnit = unit();
+		Unit<IMoney> myUnit = getUnit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return converter.convert(getNumber().doubleValue());
+			return converter.convert(getValue().doubleValue());
 		} catch (UnconvertibleException e) {
 			throw e;
 		} catch (IncommensurableException e) {
@@ -276,10 +272,10 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	public long longValue(Unit<IMoney> unit) throws ArithmeticException {
-		Unit<IMoney> myUnit = unit();
+		Unit<IMoney> myUnit = getUnit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return (converter.convert(BigDecimal.valueOf(super.getNumber()
+			return (converter.convert(BigDecimal.valueOf(getValue()
 					.longValue())).longValue());
 		} catch (UnconvertibleException e) {
 			throw e;
@@ -288,25 +284,25 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		}
 	}
 
-	public IMeasure<IMoney> divide(IMeasure<?> that) {
+	public Quantity<IMoney> divide(Quantity<?> that) {
 		return divide((MoneyAmount) that);
 	}
 
-	public IMeasure<IMoney> multiply(IMeasure<?> that) {
+	public Quantity<IMoney> multiply(Quantity<?> that) {
 		return multiply((MonetaryAmount) that);
 	}
 
-	public IMeasure<IMoney> to(Unit<IMoney> unit) {
+	public Quantity<IMoney> to(Unit<IMoney> unit) {
 		return to(unit, MathContext.DECIMAL32);
 	}
 
-	protected IMeasure<IMoney> to(Unit<IMoney> unit, MathContext ctx) {
-		if (this.unit().equals(unit))
+	protected Quantity<IMoney> to(Unit<IMoney> unit, MathContext ctx) {
+		if (this.getUnit().equals(unit))
 			return this;
-		UnitConverter cvtr = this.unit().getConverterTo(unit);
+		UnitConverter cvtr = this.getUnit().getConverterTo(unit);
 		if (cvtr == AbstractConverter.IDENTITY)
-			return (IMeasure<IMoney>) of(this.getNumber(), unit);
-		return (IMeasure<IMoney>) of(convert(this.getNumber(), cvtr, ctx),
+			return (Quantity<IMoney>) of(this.getValue(), unit);
+		return (Quantity<IMoney>) of(convert(this.getValue(), cvtr, ctx),
 				unit);
 	}
 
@@ -333,7 +329,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 			return secondConversion;
 		} else { // Try using BigDecimal as intermediate.
 			BigDecimal decimalValue = BigDecimal.valueOf(value.doubleValue());
-			Number newValue = cvtr.convert(decimalValue.toBigDecimal(), ctx);
+			Number newValue = ((AbstractConverter)cvtr).convert(decimalValue, ctx);
 			return newValue;
 			// if (((FieldNumber)value) instanceof Decimal)
 			// return (N)((FieldNumber)Decimal.valueOf(newValue));
@@ -346,8 +342,8 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 	
 	private final BigDecimal bigNumber() {
-		if (getNumber() instanceof BigDecimal) {
-			return (BigDecimal)getNumber();
+		if (getValue() instanceof BigDecimal) {
+			return (BigDecimal)getValue();
 		} else {
 			throw new UOMoRuntimeException(
 					new IllegalArgumentException("Cannot represent as BigDecimal"));
@@ -364,11 +360,11 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	public Number value() {
-		return getNumber();
+		return getValue();
 	}
 
-	public IMeasure<? extends IMeasure<IMoney>> inverse() {
-		final IMeasure<? extends IMeasure<IMoney>> m = of(value(), unit()
+	public Quantity<? extends Quantity<IMoney>> inverse() {
+		final Quantity<? extends Quantity<IMoney>> m = of(value(), getUnit()
 				.inverse());
 		return m;
 	}
@@ -395,14 +391,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return null;
 	}
 
-	 
-	public MonetaryAmount divide(Number divisor) {
-		// TODO Auto-generated method stub
-		//return of((BigDecimal)value()).divide((BigDecimal)divisor));
-		return null;
-	}
-
-	 
 	public MonetaryAmount[] divideAndRemainder(MonetaryAmount divisor) {
 		// TODO Auto-generated method stub
 		return null;
@@ -507,12 +495,6 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 		return null;
 	}
 
-	 
-	public MonetaryAmount with(MonetaryOperator operator) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -528,7 +510,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#getPrecision()
 	 */
 	public int getPrecision() {
-		return bigNumber().toBigDecimal().precision();
+		return bigNumber().precision();
 	}
 
 	/*
@@ -537,7 +519,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#intValue()
 	 */
 	public int intValue() {
-		return this.getNumber().intValue();
+		return this.getValue().intValue();
 	}
 
 	/*
@@ -555,7 +537,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#longValue()
 	 */
 	public long longValue() {
-		return this.getNumber().longValue();
+		return this.getValue().longValue();
 	}
 
 	/*
@@ -573,7 +555,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#floatValue()
 	 */
 	public float floatValue() {
-		return this.getNumber().floatValue();
+		return this.getValue().floatValue();
 	}
 
 	/*
@@ -582,7 +564,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#doubleValue()
 	 */
 	public double doubleValue() {
-		return this.getNumber().doubleValue();
+		return this.getValue().doubleValue();
 	}
 
 	/*
@@ -591,7 +573,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#byteValue()
 	 */
 	public byte byteValue() {
-		return this.getNumber().byteValue();
+		return this.getValue().byteValue();
 	}
 
 	/*
@@ -600,7 +582,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 * @see MonetaryAmount#shortValue()
 	 */
 	public short shortValue() {
-		return getNumber().shortValue();
+		return getValue().shortValue();
 	}
 
 	/*
@@ -629,7 +611,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public String toEngineeringString() {
 		return getCurrency().getCurrencyCode() + ' '
-				+ bigNumber().toBigDecimal().toEngineeringString();
+				+ bigNumber().toEngineeringString();
 	}
 
 	/*
@@ -639,7 +621,7 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	 */
 	public String toPlainString() {
 		return getCurrency().getCurrencyCode() + ' '
-				+ bigNumber().toBigDecimal().toPlainString();
+				+ bigNumber().toPlainString();
 	}
 	 
 	public boolean isLessThan(MonetaryAmount amount) {
@@ -666,48 +648,37 @@ public class MoneyAmount extends QuantityAmount<IMoney> implements IMoney, Monet
 	}
 
 	 
-	public boolean isEqualTo(MonetaryAmount amount) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	 
 	public boolean isNotEqualTo(MonetaryAmount amount) {
-		return !getNumber().equals(amount);
+		return getMonetaryAmount().isNotEqualTo(amount);
 	}
 
-	public <T> T asType(Class<T> type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Class<?> getNumberType() {
-		return getNumber().getClass();
+	public Class<?> getValueType() {
+		return getValue().getClass();
 	}
 
 	public CurrencyUnit getCurrency() {
-		return (CurrencyUnit)unit();
+		return (CurrencyUnit)getUnit();
 	}
 
 	@Override
-	public IMoney add(IMeasure<IMoney> that) {
-		return plus((IMoney) that);
-	}
-
-	@Override
-	public MonetaryAmount add(MonetaryAmount augend) {
-		return plus((MoneyAmount) augend);
-	}
-
-	@Override
-	public IMeasure<IMoney> subtract(IMeasure<IMoney> that) {
+	public Quantity<IMoney> subtract(Quantity<IMoney> arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public MonetaryAmount subtract(MonetaryAmount subtrahend) {
+	public Quantity<IMoney> add(Quantity<IMoney> arg0) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Quantity<IMoney> divide(Number arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public MonetaryAmount getMonetaryAmount() {
+		return money;
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,11 @@ import static java.util.FormattableFlags.LEFT_JUSTIFY;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
+import java.util.Currency;
 import java.util.Formattable;
 import java.util.Formatter;
 import java.util.List;
+import java.util.Locale;
 
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uomo.business.internal.CurrencyUnit;
@@ -24,11 +26,8 @@ import org.eclipse.uomo.business.internal.ExchangeRate;
 import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractConverter;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
-
-import com.ibm.icu.util.Currency;
-import com.ibm.icu.util.ULocale;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p>
@@ -126,7 +125,7 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 	public MoneyConverter(Unit<?> source, Unit<IMoney> target,
 			Number factor) {
 		
-			CurrencyUnit defCurrency = MoneyCurrency.of(Currency.getInstance(ULocale.getDefault()));
+			CurrencyUnit defCurrency = MoneyCurrency.of(Currency.getInstance(Locale.getDefault()));
 			rate = new MoneyExchangeRate(defCurrency, defCurrency, factor);
 		
 	}
@@ -143,10 +142,10 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 	 *            the multiplier factor from source to target.
 	 * @return the corresponding converter.
 	 */
-	public MoneyConverter(java.util.Currency source,
-			java.util.Currency target, Number factor) {
-		rate = new MoneyExchangeRate(fromJDK(source), fromJDK(target), factor);
-	}
+//	public MoneyConverter(java.util.Currency source,
+//			java.util.Currency target, Number factor) {
+//		rate = new MoneyExchangeRate(fromJDK(source), fromJDK(target), factor);
+//	}
 
 	/**
 	 * Returns the source currency.

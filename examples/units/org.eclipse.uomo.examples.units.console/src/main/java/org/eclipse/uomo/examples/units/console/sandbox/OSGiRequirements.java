@@ -1,12 +1,12 @@
 package org.eclipse.uomo.examples.units.console.sandbox;
 
-import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.system.Imperial;
+import org.eclipse.uomo.units.impl.system.SI;
 import org.eclipse.uomo.util.Parser;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.quantity.Length;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * 

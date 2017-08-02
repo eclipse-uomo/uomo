@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,9 @@ package org.eclipse.uomo.units.impl;
 import java.util.Map;
 
 import org.eclipse.uomo.units.AbstractUnit;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents an annotated unit. It  allows for unit specialization
@@ -132,6 +132,11 @@ public class AnnotatedUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> {
         return actualUnit.getConverterToMetric();
     }
 
+    @Override
+    public Map<? extends Unit<?>, Integer> getBaseUnits() {
+      return actualUnit.getBaseUnits();
+    }
+    
     @Override
     public boolean equals(Object that) {
         if (this == that)

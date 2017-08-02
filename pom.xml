@@ -100,6 +100,30 @@
 		<module>examples</module>
 		<module>releng</module>
 	</modules>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>javax.measure</groupId>
+				<artifactId>unit-api</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>tec.uom.lib</groupId>
+				<artifactId>uom-lib-common</artifactId>
+				<version>1.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-quantity</artifactId>
+				<version>0.7</version>
+			</dependency>
+			<dependency>
+				<groupId>systems.uom</groupId>
+				<artifactId>systems-quantity</artifactId>
+				<version>0.7</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<!-- ======================================================= -->
 	<!-- Build Settings -->
 	<!-- ======================================================= -->

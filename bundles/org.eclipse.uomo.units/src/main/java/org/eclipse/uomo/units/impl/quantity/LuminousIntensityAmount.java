@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.LuminousIntensity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.LuminousIntensity;
+import javax.measure.Unit;
 
 /**
  * Represents the luminous flux density per solid angle as measured in a given

@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+/*
+ * Copyright (c) 2005, 2010, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents a converter multiplying numeric values by a

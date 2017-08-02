@@ -108,6 +108,10 @@ public class Concept implements ICode<String>, IDescription, ISymbol, INames {
 	public List<String> getNames() {
 		return names;
 	}
+	
+	public String getName() {
+		return (names!=null && names.size()>0) ? names.get(0) : "";
+	}
 
 	/**
 	 * @return the kind

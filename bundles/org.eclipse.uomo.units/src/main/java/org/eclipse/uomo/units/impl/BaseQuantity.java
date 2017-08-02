@@ -21,12 +21,12 @@ import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractQuantity;
-import org.eclipse.uomo.units.IMeasure;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+
+import javax.measure.IncommensurableException;
+import javax.measure.Quantity;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * An amount of quantity, consisting of a Number and a Unit. BaseMeasurement
@@ -37,20 +37,18 @@ import org.unitsofmeasurement.unit.UnitConverter;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @param <Q>
  *            The type of the quantity.
- * @version 1.6, $Date: 2014-04-08 $
+ * @version 1.7, $Date: 2017-07-30 $
  */
-public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
-		implements Quantity<Q>, Comparable<BaseQuantity<Q>> {
-//FIXME Bug 338334 overwrite equals()
-    
+public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q> implements Quantity<Q> {
+	// FIXME Bug 338334 overwrite equals()
 
 	/**
 	 * 
 	 */
-//	private static final long serialVersionUID = 7312161895652321241L;
+	// private static final long serialVersionUID = 7312161895652321241L;
 
 	private final Number value;
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -68,8 +66,8 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 			if (obj instanceof Quantity) {
 				@SuppressWarnings("rawtypes")
 				Quantity m = (Quantity) obj;
-				if (m.value().getClass() == this.getValue().getClass()
-						&& m.unit().getClass() == this.getUnit().getClass()) {
+				if (m.getValue().getClass() == this.getValue().getClass()
+						&& m.getUnit().getClass() == this.getUnit().getClass()) {
 					return super.equals(obj);
 				} else {
 					// if (this.getQuantityUnit() instanceof AbstractUnit<?>) {
@@ -91,7 +89,7 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 	 * Indicates if this measure is big.
 	 */
 	private final boolean isBig;
-	
+
 	/**
 	 * Holds the exact value (when exact) stated in this measure unit.
 	 */
@@ -113,14 +111,98 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 		super(unit);
 		value = number;
 		isExact = false;
-		isBig = false;;
+		isBig = false;
+		;
+	}
+
+	/**
+	 * Returns the scalar quantity for the specified <code>long</code> stated in
+	 * the specified unit.
+	 *
+	 * @param longValue
+	 *            the quantity value.
+	 * @param unit
+	 *            the measurement unit.
+	 * @return the corresponding <code>int</code> quantity.
+	 */
+	public static <Q extends Quantity<Q>> AbstractQuantity<Q> of(long longValue, Unit<Q> unit) {
+		return new LongQuantity<Q>(longValue, unit);
+	}
+
+	/**
+	 * Returns the scalar quantity for the specified <code>int</code> stated in
+	 * the specified unit.
+	 *
+	 * @param intValue
+	 *            the quantity value.
+	 * @param unit
+	 *            the measurement unit.
+	 * @return the corresponding <code>int</code> quantity.
+	 */
+	public static <Q extends Quantity<Q>> AbstractQuantity<Q> of(int intValue, Unit<Q> unit) {
+		return new IntegerQuantity<Q>(intValue, unit);
+	}
+
+	/**
+	 * Returns the scalar quantity for the specified <code>short</code> stated
+	 * in the specified unit.
+	 *
+	 * @param value
+	 *            the quantity value.
+	 * @param unit
+	 *            the measurement unit.
+	 * @return the corresponding <code>short</code> quantity.
+	 */
+	public static <Q extends Quantity<Q>> AbstractQuantity<Q> of(short value, Unit<Q> unit) {
+		return new ShortQuantity<Q>(value, unit);
+	}
+
+	/**
+	 * Returns the scalar quantity for the specified <code>float</code> stated
+	 * in the specified unit.
+	 *
+	 * @param floatValue
+	 *            the measurement value.
+	 * @param unit
+	 *            the measurement unit.
+	 * @return the corresponding <code>float</code> quantity.
+	 */
+	public static <Q extends Quantity<Q>> AbstractQuantity<Q> of(float floatValue, Unit<Q> unit) {
+		return new FloatQuantity<Q>(floatValue, unit);
+	}
+
+	/**
+	 * Returns the scalar quantity for the specified <code>double</code> stated
+	 * in the specified unit.
+	 *
+	 * @param doubleValue
+	 *            the measurement value.
+	 * @param unit
+	 *            the measurement unit.
+	 * @return the corresponding <code>double</code> quantity.
+	 */
+	public static <Q extends Quantity<Q>> AbstractQuantity<Q> of(double doubleValue, Unit<Q> unit) {
+		return new DoubleQuantity<Q>(doubleValue, unit);
+	}
+
+	/**
+	 * Returns the scalar quantity for the specified <code>double</code> stated
+	 * in the specified unit.
+	 *
+	 * @param doubleValue
+	 *            the measurement value.
+	 * @param unit
+	 *            the measurement unit.
+	 * @return the corresponding <code>double</code> quantity.
+	 */
+	public static <Q extends Quantity<Q>> AbstractQuantity<Q> of(BigDecimal doubleValue, Unit<Q> unit) {
+		return new BaseAmount<Q>(doubleValue, unit);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * Measurement#doubleValue(javax.measure.Unit)
+	 * @see Measurement#doubleValue(javax.measure.Unit)
 	 */
 	public double doubleValue(Unit<Q> unit) {
 		Unit<Q> myUnit = getUnit();
@@ -130,32 +212,30 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 		} catch (UnconvertibleException e) {
 			throw e;
 		} // catch (IncommensurableException e) {
-		// throw new IllegalArgumentException(e.getMessage());
-		// }
+			// throw new IllegalArgumentException(e.getMessage());
+			// }
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see
-	 * org.eclipse.uomo.units.AbstractMeasurement#longValue(javax.measure
+	 * @see org.eclipse.uomo.units.AbstractMeasurement#longValue(javax.measure
 	 * .Unit)
 	 */
 	public long longValue(Unit<Q> unit) {
 		Unit<Q> myUnit = getUnit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			if ((getValue() instanceof BigDecimal || getValue() instanceof BigInteger) 
+			if ((getValue() instanceof BigDecimal || getValue() instanceof BigInteger)
 					&& converter instanceof AbstractConverter) {
-				return (((AbstractConverter)converter).convert(
-						BigDecimal.valueOf(getValue().longValue()),
+				return (((AbstractConverter) converter).convert(BigDecimal.valueOf(getValue().longValue()),
 						MathContext.DECIMAL128)).longValue();
 			} else {
-		        double result = doubleValue(unit);
-		        if ((result < Long.MIN_VALUE) || (result > Long.MAX_VALUE)) {
-		            throw new ArithmeticException("Overflow (" + result + ")");
-		        }
-		        return (long) result;
+				double result = doubleValue(unit);
+				if ((result < Long.MIN_VALUE) || (result > Long.MAX_VALUE)) {
+					throw new ArithmeticException("Overflow (" + result + ")");
+				}
+				return (long) result;
 			}
 		} catch (UnconvertibleException e) {
 			throw e;
@@ -185,10 +265,10 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 	public boolean isExact() {
 		return isExact;
 	}
-	
+
 	/**
-	 * Indicates if this measured amount is a big number, i.E. BigDecimal or BigInteger.
-	 * In all other cases this would be false.
+	 * Indicates if this measured amount is a big number, i.E. BigDecimal or
+	 * BigInteger. In all other cases this would be false.
 	 * 
 	 * @return <code>true</code> if this measure is big; <code>false</code>
 	 *         otherwise.
@@ -196,97 +276,83 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 	public boolean isBig() {
 		return isBig;
 	}
-	
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public BaseQuantity<Q> add(AbstractQuantity<Q> that) {
-		final AbstractQuantity<Q> thatToUnit = that.to(getUnit());
-		return new BaseQuantity(this.getValue().doubleValue()
-				+ thatToUnit.getValue().doubleValue(), 
-                                  getUnit());
+		final Quantity<Q> thatToUnit = that.to(getUnit());
+		return new BaseQuantity(this.getValue().doubleValue() + thatToUnit.getValue().doubleValue(), getUnit());
 	}
-	
+
 	public String toString() {
-		return  String.valueOf(getValue()) + " " 
-                        + String.valueOf(getUnit());
+		return String.valueOf(getValue()) + " " + String.valueOf(getUnit());
 	}
 
 	@Override
-	public IMeasure<Q> add(IMeasure<Q> that) {
+	public Quantity<Q> add(Quantity<Q> that) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IMeasure<Q> subtract(IMeasure<Q> that) {
+	public Quantity<Q> subtract(Quantity<Q> that) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public IMeasure<?> multiply(IMeasure<?> that) {
-		final Unit<?> unit = getUnit().multiply(that.unit());
-		return of((getValue().doubleValue() * that.value()
-				.doubleValue()), unit);	
-	}
-        
-        @Override
-	public BaseQuantity<?> multiply(Number that) {
-		return (BaseQuantity<Q>) of((getValue().doubleValue() * that
-				.doubleValue()), getUnit());	
-	}
-        
-	@Override
-	public IMeasure<?> divide(IMeasure<?> that) {
-		final Unit<?> unit = getUnit().divide(that.unit());
-		return of((getValue().doubleValue() / that.value()
-				.doubleValue()), unit);	
+	public Quantity<?> multiply(Quantity<?> that) {
+		final Unit<?> unit = getUnit().multiply(that.getUnit());
+		return of((getValue().doubleValue() * that.getValue().doubleValue()), unit);
 	}
 
-	public IMeasure<?> divide(Number that) {
+	@Override
+	public Quantity<Q> multiply(Number that) {
+		return (BaseQuantity<Q>) of((getValue().doubleValue() * that.doubleValue()), getUnit());
+	}
+
+	@Override
+	public Quantity<?> divide(Quantity<?> that) {
+		final Unit<?> unit = getUnit().divide(that.getUnit());
+		return of((getValue().doubleValue() / that.getValue().doubleValue()), unit);
+	}
+
+	public Quantity<Q> divide(Number that) {
 		// TODO may use isBig() here, too
 		if (value instanceof BigDecimal && that instanceof BigDecimal) {
-			return of(((BigDecimal)value).divide((BigDecimal)that), 
-                                getUnit());
+			return of(((BigDecimal) value).divide((BigDecimal) that), getUnit());
 		}
-		return of(getValue().doubleValue() / that.doubleValue(), 
-                        getUnit());	
+		return of(getValue().doubleValue() / that.doubleValue(), getUnit());
 	}
-	
-//	@Override
-//	public IMeasure<Q> inverse() {
-//		@SuppressWarnings({ "rawtypes", "unchecked" })
-//		final IMeasure<Q> m = new BaseQuantity(getValue(),
-//				getUnit().inverse()); // TODO keep value same?
-//		return m;
-//	}
 
-	@Override
-	public BigDecimal decimalValue(Unit<Q> unit, MathContext ctx)
-			throws ArithmeticException {
+	// @Override
+	// public Quantity<Q> inverse() {
+	// @SuppressWarnings({ "rawtypes", "unchecked" })
+	// final Quantity<Q> m = new BaseQuantity(getValue(),
+	// getUnit().inverse()); // TODO keep value same?
+	// return m;
+	// }
+
+	public BigDecimal decimalValue(Unit<Q> unit, MathContext ctx) throws ArithmeticException {
 		if (value instanceof BigDecimal) {
-                    return (BigDecimal)value;
-                }
-                if (value instanceof BigInteger) {
-                    return new BigDecimal((BigInteger)value);
-                }
+			return (BigDecimal) value;
+		}
+		if (value instanceof BigInteger) {
+			return new BigDecimal((BigInteger) value);
+		}
 		return BigDecimal.valueOf(value.doubleValue());
 	}
 
-	@Override
 	public int compareTo(BaseQuantity<Q> o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
-	public Number value() {
-		return getValue();
-	}
-
-	@Override
-	public IMeasure<? extends IMeasure<Q>> inverse() {
-		final IMeasure<? extends IMeasure<Q>> m = new BaseQuantity(getValue(),
-		getUnit().inverse()); // TODO keep value same?
+	public Quantity<? extends Quantity<Q>> inverse() {
+		final Quantity<? extends Quantity<Q>> m = new BaseQuantity(getValue(), getUnit().inverse()); // TODO
+																										// keep
+																										// value
+																										// same?
 		return m;
 	}
 }

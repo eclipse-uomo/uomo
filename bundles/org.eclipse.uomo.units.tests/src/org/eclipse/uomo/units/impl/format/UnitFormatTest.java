@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.format;
 
@@ -26,8 +26,8 @@ import org.eclipse.uomo.units.AbstractUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Length;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
@@ -40,7 +40,7 @@ public class UnitFormatTest {
 	private static final Locale COMPARISON_LOCALE = Locale.UK;
 	private static final Locale MULTI_LOCALE = Locale.ENGLISH;
 
-	LocalUnitFormatImpl format;
+	LocalUnitFormat format;
 	Unit<Length> cm;
 	Unit<Length> mm;
 	Unit<Length> foot;
@@ -60,7 +60,7 @@ public class UnitFormatTest {
 
 	@Test
 	public void testDefault() {
-		format = LocalUnitFormatImpl.getInstance();
+		format = LocalUnitFormat.getInstance();
 		// format.format(unit, appendable);
 		String formattedText = format.format(cm);
 		println(formattedText);
@@ -73,7 +73,7 @@ public class UnitFormatTest {
 
 	@Test
 	public void testGetInstanceLocale() {
-		format = LocalUnitFormatImpl.getInstance(COMPARISON_LOCALE);
+		format = LocalUnitFormat.getInstance(COMPARISON_LOCALE);
 		String formattedText = format.format(cm);
 		print(formattedText);
 		// System.out.println(unit2);
@@ -104,7 +104,7 @@ public class UnitFormatTest {
 	 */
 	@Test
 	public void testMultiples() {
-		format = LocalUnitFormatImpl.getInstance(MULTI_LOCALE);
+		format = LocalUnitFormat.getInstance(MULTI_LOCALE);
 		assertEquals("m", format.format(METRE));
 		// Multiples
 		assertEquals(COMPARISON_KM, format.format(KILO(METRE)));

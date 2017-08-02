@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,10 +11,10 @@
 package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.eclipse.uomo.units.SI;
-import org.unitsofmeasurement.quantity.Energy;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import org.eclipse.uomo.units.impl.system.SI;
+import javax.measure.quantity.Energy;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
@@ -23,7 +23,7 @@ import org.unitsofmeasurement.unit.Unit;
 public class Seismic extends AbstractSystemOfUnits {
 
 	// Richter scale.
-	public static final  Unit<Energy> RICHTER_MAGNITUDE = (SI.JOULE.multiply(1.5d)).add(4.4d);
+	public static final  Unit<Energy> RICHTER_MAGNITUDE = (SI.JOULE.multiply(1.5d)).shift(4.4d);
 	// e = 10 ^ (4.4 +3 M / 2)
 		//SI.JOULE.divide(Math.pow(10, 4.4d)).transform(new LogConverter());
 	

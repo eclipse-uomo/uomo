@@ -20,13 +20,11 @@ Bundle-Activator: org.eclipse.uomo.core.internal.Activator
 Bundle-ManifestVersion: 2
 Bundle-Description: UOMo adds Units of Measurement support for IT Syst
  ems and Services both to Language and Data.
-Import-Package: com.ibm.icu.math,
- org.osgi.framework;version="1.3",
+Import-Package: org.osgi.framework;version="1.3",
  org.osgi.util.tracker
 Bundle-SymbolicName: org.eclipse.uomo.core
 Bundle-DocURL: http://www.eclipse.org
 Include-Resource: src/main/resources
 Originally-Created-By: 1.6.0_23-ea (Sun Microsystems Inc.)
-Bundle-ClassPath: libs/unit-api-0.6.1.jar,
- .
+Bundle-ClassPath: .
 

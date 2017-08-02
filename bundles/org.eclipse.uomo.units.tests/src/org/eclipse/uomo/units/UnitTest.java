@@ -25,10 +25,10 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
-import org.unitsofmeasurement.quantity.Dimensionless;
-import org.unitsofmeasurement.quantity.Power;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.quantity.Power;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 
 /**
@@ -140,7 +140,7 @@ public class UnitTest {
      */
     @Test
     public void testAdd() {
-    	Unit<?> result = one.add(10);
+    	Unit<?> result = one.shift(10);
         assertNotSame(result, one);
     }
 

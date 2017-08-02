@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,31 +14,32 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.uomo.units.SI;
-import org.unitsofmeasurement.service.SystemOfUnitsService;
-import org.unitsofmeasurement.unit.SystemOfUnits;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.spi.SystemOfUnitsService;
+
+import org.eclipse.uomo.units.impl.system.Units;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.6.1, $Date$
+ * @version 0.7.1, $Date$
  */
 public class SystemOfUnitsServiceImpl implements SystemOfUnitsService {
 	
-	final Map<String, SystemOfUnits> souMap = new HashMap<String, SystemOfUnits>();
+	final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
 	public SystemOfUnitsServiceImpl() {
 		souMap.put(SI.class.getSimpleName(), SI.getInstance());
-		souMap.put(CommonUnits.class.getSimpleName(), CommonUnits.getInstance());
+		souMap.put(Units.class.getSimpleName(), Units.getInstance());
 		souMap.put(USCustomary.class.getSimpleName(), USCustomary.getInstance());
 	}
 	
-	public Collection<SystemOfUnits> getSystemsOfUnits() {
+	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
 		return souMap.values();
 	}
 	
 	@Override
 	public SystemOfUnits getSystemOfUnits() {
-		return getSystemOfUnits(SI.class.getSimpleName());
+		return getSystemOfUnits(Units.class.getSimpleName());
 	}
 
 	@Override

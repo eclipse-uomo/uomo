@@ -94,7 +94,6 @@ public final class ExpConverter extends AbstractConverter {
 		return Math.exp(logOfBase * value);
 	}
 
-	@Override
 	public BigDecimal convert(BigDecimal value, MathContext ctx)
 			throws ArithmeticException {
 		return BigDecimal.valueOf(convert(value.doubleValue())); // Reverts to

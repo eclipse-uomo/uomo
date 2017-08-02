@@ -11,7 +11,7 @@
 package org.eclipse.uomo.util.numbers;
 
 import org.eclipse.uomo.core.ICode;
-import org.eclipse.uomo.core.IName;
+import tec.uom.lib.common.function.Nameable;
 import org.eclipse.uomo.core.IValue;
 
 /**
@@ -49,5 +49,5 @@ import org.eclipse.uomo.core.IValue;
  * @see {@link SpellContext#encode(String)}
  * 
  */
-public interface ISpellCode extends IName, ICode<String>, IValue<Number> {
+public interface ISpellCode extends Nameable, ICode<String>, IValue<Number> {
 }

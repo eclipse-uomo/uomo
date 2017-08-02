@@ -13,7 +13,7 @@
  *
  * <h3> Standard/NonStandard Units</h3>
  *      Standard units and prefixes are provided by the
- *      {@link org.eclipse.uomo.units.SI} class (Système International d'Unités) and
+ *      {@link org.eclipse.uomo.units.impl.system.SI} class (Système International d'Unités) and
  *      about 50 non-standard units are available through the
  *      {@link org.eclipse.uomo.units.impl.system.USCustomary} class.
  *

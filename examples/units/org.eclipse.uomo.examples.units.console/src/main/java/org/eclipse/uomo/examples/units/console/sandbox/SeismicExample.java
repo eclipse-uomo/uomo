@@ -11,9 +11,9 @@
 package org.eclipse.uomo.examples.units.console.sandbox;
 
 import org.eclipse.uomo.examples.units.types.Seismic;
-import org.eclipse.uomo.units.IMeasure;
+import javax.measure.Quantity;
 import org.eclipse.uomo.units.impl.quantity.EnergyAmount;
-import org.unitsofmeasurement.quantity.Energy;
+import javax.measure.quantity.Energy;
 
 /**
  * @author Werner Keil
@@ -25,7 +25,7 @@ public class SeismicExample {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		IMeasure<Energy> e = new EnergyAmount(8.3, Seismic.RICHTER_MAGNITUDE);
+		Quantity<Energy> e = new EnergyAmount(8.3, Seismic.RICHTER_MAGNITUDE);
 		System.out.println(e);
 	}
 

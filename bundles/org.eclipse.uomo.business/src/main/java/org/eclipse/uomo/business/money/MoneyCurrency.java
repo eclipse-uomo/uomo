@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2013, Werner Keil and others.
+ * Copyright (c) 2006, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@ package org.eclipse.uomo.business.money;
 
 import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
 
-//import java.util.Currency;
+import java.util.Currency;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,18 +21,15 @@ import java.util.logging.Logger;
 import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.Localizable;
 
-import com.ibm.icu.util.Currency;
-import com.ibm.icu.util.ULocale;
-
 /**
  * Adapter that implements the  {@link CurrencyUnit} interface using the
  * ICU4J {@link com.ibm.icu.util.Currency}.
  * 
- * @version 0.2.3
+ * @version 0.3
  * @author Werner Keil
  * @deprecated merge into MoneyUnit
  */
-public class MoneyCurrency extends com.ibm.icu.util.Currency implements CurrencyUnit, Localizable {
+public class MoneyCurrency implements CurrencyUnit, Localizable {
 
 	/**
 	 * serialVersionUID.
@@ -51,7 +48,9 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	private final boolean legalTender;
 	/** true, if it is a virtual currency. */
 	private final boolean virtual;
-
+	private Currency backingCurrency;
+	private String name;
+	
 	private static final Map<String, MoneyCurrency> CACHED = new ConcurrentHashMap<String, MoneyCurrency>();
 
 	private static final Logger LOGGER = Logger.getLogger(MoneyCurrency.class
@@ -65,7 +64,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	private MoneyCurrency(String namespace, String code, int numCode,
 			int fractionDigits, Long validFrom, Long validUntil, boolean legal,
 			boolean virtual) {
-		super(code);
+		//super(code);
 		this.namespace = namespace;
 		this.currencyCode = code;
 		this.validFrom = validFrom;
@@ -80,7 +79,6 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 	 * @param currency
 	 */
 	private MoneyCurrency(Currency currency) {
-		super(currency != null ? currency.getCurrencyCode() : "");
 		if (currency == null) {
 			throw new IllegalArgumentException("Currency required.");
 		}
@@ -638,7 +636,7 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		 */
 		public String getDisplayName(Locale locale) {
 			//return currency.getName(locale, nameStyle, isChoiceFormat) (locale);
-			return currency.getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+			return currency.getDisplayName(locale); //currency.getName(locale, LONG_NAME, new boolean[1]);
 		}
 
 	}
@@ -664,14 +662,14 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		 * 
 		 * @serial
 		 */
-		private final com.ibm.icu.util.Currency currency;
+		private final Currency currency;
 
 		/**
 		 * Private constructor.
 		 * 
 		 * @param currency
 		 */
-		private ICUCurrencyAdapter(com.ibm.icu.util.Currency currency) {
+		private ICUCurrencyAdapter(Currency currency) {
 			super(ISO_NAMESPACE, currency.getCurrencyCode(), -1, currency.getDefaultFractionDigits(),
 					null, null, true, false);
 			this.currency = currency;
@@ -694,13 +692,36 @@ public class MoneyCurrency extends com.ibm.icu.util.Currency implements Currency
 		 */
 		
 		public String getDisplayName(Locale locale) {
-			return currency.getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+			return currency.getDisplayName(locale); //getName(locale, LONG_NAME, new boolean[1]);
 		}
 
 	}
 
+	@Override
+	public String getDisplayName(Locale locale) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCurrencyCode() {
+		return currencyCode;
+	}
+
+	@Override
+	public int getNumericCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getDefaultFractionDigits() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 //	public String getDisplayName(Locale locale) {
-//		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+//		return getName(Locale.forLocale(locale), LONG_NAME, new boolean[1]);
 //	}
 //
 //	public int getNumericCode() {

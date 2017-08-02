@@ -10,9 +10,10 @@
  */
 package org.eclipse.uomo.units;
 
+import org.eclipse.uomo.units.impl.system.SI;
 import org.eclipse.uomo.units.impl.system.USCustomary;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This interface provides a set of mappings between

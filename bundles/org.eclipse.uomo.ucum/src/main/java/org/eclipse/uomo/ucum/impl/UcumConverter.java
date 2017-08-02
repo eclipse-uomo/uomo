@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.util.Registry;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 /**
  * = [mu_0] = 4.[pi].10*-7.N/A2 = (g.m/s2)/(C/s)2? = g.m/s2/(C2/s2) =
@@ -226,7 +226,7 @@ class UcumConverter extends AbstractConverter {
 					throw new UOMoRuntimeException("Not handled yet (special unit)"); //$NON-NLS-1$
 				else {
 					u = handlers.get(unit.getCode()).getUnits();
-					ctxt.multiplyValue(handlers.get(unit.getCode()).value());
+					ctxt.multiplyValue(handlers.get(unit.getCode()).getValue());
 				}
 			} else
 				ctxt.multiplyValue(unit.getValue().value());
@@ -300,7 +300,7 @@ class UcumConverter extends AbstractConverter {
 
 	public BigDecimal convert(BigDecimal value, MathContext ctx)
 			throws ArithmeticException {
-		return compound.convert(value, ctx);
+		return ((AbstractConverter)compound).convert(value, ctx);
 	}
 
 	public List<UnitConverter> getCompoundConverters() {

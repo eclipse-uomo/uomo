@@ -10,10 +10,10 @@
  */
 package org.eclipse.uomo.examples.units.console.sandbox;
 
-import static org.eclipse.uomo.units.SI.Prefix.KILO;
+import static org.eclipse.uomo.units.impl.system.SI.Prefix.KILO;
 
-import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
+import org.eclipse.uomo.units.impl.system.SI;
 
 public class EqualsTest {
 	public static void main(String[] args) {

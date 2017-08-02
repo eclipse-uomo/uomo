@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,19 +10,19 @@
  */
 package org.eclipse.uomo.units;
 
-import org.eclipse.uomo.core.IName;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.quantity.Time;
+import tec.uom.lib.common.function.Nameable;
+import javax.measure.Quantity;
+import javax.measure.quantity.Time;
 
 /**
  * Groups a state name, value and timestamp.
- * The state itself is represented as a <type>Number</type> and the time is measured in IMeasure<Time>
+ * The state itself is represented as a <type>Number</type> and the time is measured in Quantity<Time>
  * A State object is immutable so that it may be easily shared.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.1, $Date: 2011-04-07 02:02:02 +0430 $
  */
-public interface IState<Q extends Quantity<Q>> extends IName {
-	IMeasure<Time> time();
-	IMeasure<Q> value(); // TODO get* vs. getter-less, also avoid value().value()
+public interface IState<Q extends Quantity<Q>> extends Nameable {
+	Quantity<Time> time();
+	Quantity<Q> value(); // TODO get* vs. getter-less, also avoid value().value()
 }

@@ -16,10 +16,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.eclipse.uomo.core.IName;
+import tec.uom.lib.common.function.Nameable;
 import org.eclipse.uomo.core.IVersion;
 
-public class UcumModel implements IName, IVersion {
+public class UcumModel implements Nameable, IVersion {
 
 	/**
 	 * UCUM version

@@ -42,6 +42,8 @@
     <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<unit id="javax.measure.unit-api" version="0.0.0"/>
 		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
+		<unit id="si.uom.si-quantity" version="0.0.0"/>
+		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
 		<repository location="http://download.eclipse.org/uomo/third-party/repository"/>
 	</location>
   </locations>

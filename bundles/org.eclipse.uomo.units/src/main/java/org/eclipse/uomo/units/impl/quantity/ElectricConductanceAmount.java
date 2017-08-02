@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.ElectricConductance;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.ElectricConductance;
+import javax.measure.Unit;
 
 /**
  * Represents an electric conductance amount.

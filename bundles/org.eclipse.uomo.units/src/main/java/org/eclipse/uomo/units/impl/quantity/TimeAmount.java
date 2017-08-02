@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,16 +14,17 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
 
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
+import javax.measure.quantity.Time;
+
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
-import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
 
 /**
  * Represents a period of existence or persistence. The metric system unit for
@@ -48,7 +49,7 @@ public final class TimeAmount extends BaseQuantity<Time> implements Time {
 	 * @provisional This API might change or be removed in a future release.
 	 */
 	public AbstractUnit<Time> unit() {
-		return (AbstractUnit<Time>) super.unit();
+		return (AbstractUnit<Time>) super.getUnit();
 	}
 
 	/**
@@ -85,7 +86,7 @@ public final class TimeAmount extends BaseQuantity<Time> implements Time {
 		Unit<Time> myUnit = unit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return (converter.convert(
+			return (((AbstractConverter)converter).convert(
 					BigDecimal.valueOf(getValue().longValue()),
 					MathContext.DECIMAL128)).longValue();
 		} catch (UnconvertibleException e) {
@@ -95,19 +96,19 @@ public final class TimeAmount extends BaseQuantity<Time> implements Time {
 		}
 	}
 
-	public TimeAmount add(IMeasure<Time> that) {
+	public TimeAmount add(Quantity<Time> that) {
 		return new TimeAmount(super.getValue().doubleValue()
 				+ ((BaseQuantity<Time>) that).getValue().doubleValue(),
-				that.unit());
+				that.getUnit());
 	}
 
-	public TimeAmount subtract(IMeasure<Time> that) {
+	public TimeAmount subtract(Quantity<Time> that) {
 		return new TimeAmount(super.getValue().doubleValue()
 				- ((BaseQuantity<Time>) that).getValue().doubleValue(),
-				that.unit());
+				that.getUnit());
 	}
 	
-//	public IMeasure<Time> divide(IMeasure<?> that) {
+//	public Quantity<Time> divide(Quantity<?> that) {
 //		@SuppressWarnings("unchecked")
 //		Unit<Time> unit = (Unit<Time>) unit().divide(that.unit());
 		
@@ -118,8 +119,8 @@ public final class TimeAmount extends BaseQuantity<Time> implements Time {
 //	}
 
 	@SuppressWarnings({ "unchecked" })
-	public TimeAmount multiply(IMeasure<?> that) {
-		Unit<Time> unit = (Unit<Time>) unit().multiply(that.unit());
+	public TimeAmount multiply(Quantity<?> that) {
+		Unit<Time> unit = (Unit<Time>) unit().multiply(that.getUnit());
 		
 		// FIXME include number division
 //		return new TimeAmount((BigDecimal) getNumber())
@@ -173,7 +174,7 @@ public final class TimeAmount extends BaseQuantity<Time> implements Time {
             return secondConversion;
         } else { // Try using BigDecimal as intermediate.
             BigDecimal decimalValue = BigDecimal.valueOf(value.doubleValue());
-            BigDecimal newValue = cvtr.convert(decimalValue, ctx);
+            BigDecimal newValue = ((AbstractConverter)cvtr).convert(decimalValue, ctx);
             return newValue;
 //            if (((FieldNumber)value) instanceof Decimal)
 //                return (N)((FieldNumber)Decimal.valueOf(newValue));

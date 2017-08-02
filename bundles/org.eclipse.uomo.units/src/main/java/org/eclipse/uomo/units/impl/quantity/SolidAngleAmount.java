@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.SolidAngle;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.SolidAngle;
+import javax.measure.Unit;
 
 /**
  * Represents the angle formed by three or more planes intersecting at a common point.

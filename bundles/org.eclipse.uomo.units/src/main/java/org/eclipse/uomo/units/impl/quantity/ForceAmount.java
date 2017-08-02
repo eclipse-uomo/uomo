@@ -12,8 +12,8 @@ package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Force;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Force;
+import javax.measure.Unit;
 
 /**
  * Represents a quantity that tends to produce an acceleration of a body in the

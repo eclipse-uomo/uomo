@@ -1,30 +1,29 @@
-/**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.system;
 
-
-import static org.eclipse.uomo.units.SI.*;
-import static org.eclipse.uomo.units.SI.Prefix.MICRO;
-import static org.eclipse.uomo.units.internal.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
-import static org.eclipse.uomo.units.internal.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
+import static org.eclipse.uomo.units.impl.system.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
+import static org.eclipse.uomo.units.impl.system.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
+import static org.eclipse.uomo.units.impl.system.SI.*;
+import static org.eclipse.uomo.units.impl.system.SI.Prefix.MICRO;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.unitsofmeasurement.quantity.Area;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.quantity.Temperature;
-import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.quantity.Volume;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import javax.measure.quantity.Temperature;
+import javax.measure.quantity.Time;
+import javax.measure.quantity.Volume;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * <p>
@@ -116,7 +115,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	 * @see #RANKINE
 	 */
 	static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE
-			.add(459.67));
+			.shift(459.67));
 
 	// /////////
 	// Angle //

@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Jean-Marie Dautelle, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil and others - initial API and implementation
  */
 package org.eclipse.uomo.units;
 
@@ -16,7 +16,7 @@ import java.math.MathContext;
 import java.util.Arrays;
 import java.util.List;
 
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents a converter of numeric values.</p>
@@ -31,7 +31,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.4 ($Revision: 231 $), $Date: 2010-10-13 16:53:37 +0200 (Mi, 13 Okt 2010) $
+ * @version 1.5, $Date: 2017-07-30 $
  */
 public abstract class AbstractConverter implements UnitConverter, Serializable {
 
@@ -45,6 +45,11 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
      * (<code>ONE.convert(x) == x</code>). This instance is unique.
      */
     public static final UnitConverter IDENTITY = new Identity();
+    
+    /**
+     * The ratio of the circumference of a circle to its diameter.
+     **/
+    protected static final double PI = 3.1415926535897932384626433832795;
 
     /**
      * Default constructor.
@@ -81,7 +86,8 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
      */
     //@Override
     //public abstract int hashCode();
-
+    public abstract BigDecimal convert(BigDecimal value, MathContext ctx);
+    
     /**
      * Concatenates this converter with another converter. The resulting
      * converter is equivalent to first converting by the specified converter
@@ -104,7 +110,7 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
 	}
 
 	@Override
-	public List<UnitConverter> getCompoundConverters() {
+	public List<UnitConverter> getConversionSteps() {
 		return Arrays.asList((UnitConverter)new CompoundImpl(this, this));
 	}
 	
@@ -152,7 +158,6 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
             return value;
         }
 
-        @Override
         public BigDecimal convert(BigDecimal value, MathContext ctx) {
             return value;
         }
@@ -224,11 +229,9 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
             return left.convert(right.convert(value));
         }
 
-        @Override
         public BigDecimal convert(BigDecimal value, MathContext ctx) {
             return left.convert(right.convert(value, ctx), ctx);
         }
-
 
 		public Number convert(Number value) {
 			return left.convert(right.convert(value));
@@ -269,7 +272,7 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
 		}
 
 		@Override
-		public List<UnitConverter> getCompoundConverters() {
+		public List<UnitConverter> getConversionSteps() {
 			return Arrays.asList((UnitConverter)new CompoundImpl(this, this));
 		}
     }

@@ -14,7 +14,7 @@ package org.eclipse.uomo.core;
 /**
  * Denote entity that has a visible name.
  * 
- * @version $Id: IName.java 152 2010-08-22 20:48:31Z werner.keil $
+ * @version $Id: Nameable.java 152 2010-08-22 20:48:31Z werner.keil $
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 public interface IVisibleName {

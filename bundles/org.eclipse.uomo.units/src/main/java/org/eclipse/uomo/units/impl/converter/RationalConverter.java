@@ -1,12 +1,12 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.converter;
 
@@ -15,7 +15,7 @@ import java.math.BigInteger;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents a converter multiplying numeric values by an
@@ -26,7 +26,7 @@ import org.unitsofmeasurement.unit.UnitConverter;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.3 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.4, $Date: 2017-07-31 $
  */
 public final class RationalConverter extends AbstractConverter {
 
@@ -74,6 +74,39 @@ public final class RationalConverter extends AbstractConverter {
     }
 
     /**
+     * Convenience method equivalent to <code>new RationalConverter(dividend, divisor)</code>
+     *
+     * @param dividend
+     *          the dividend.
+     * @param divisor
+     *          the positive divisor.
+     * @throws IllegalArgumentException
+     *           if <code>divisor &lt;= 0</code>
+     * @throws IllegalArgumentException
+     *           if <code>dividend == divisor</code>
+     */
+    public static RationalConverter of(BigInteger dividend, BigInteger divisor) {
+      return new RationalConverter(dividend, divisor);
+    }
+
+    /**
+     * Convenience method equivalent to <code>new RationalConverter(dividend, divisor)</code>
+     *
+     * @param dividend
+     *          the dividend.
+     * @param divisor
+     *          the positive divisor.
+     * @throws IllegalArgumentException
+     *           if <code>divisor &lt;= 0</code>
+     * @throws IllegalArgumentException
+     *           if <code>dividend == divisor</code>
+     */
+    public static RationalConverter of(long dividend, long divisor) {
+      return new RationalConverter(dividend, divisor);
+    }
+
+    
+    /**
      * Returns the integer dividend for this rational converter.
      *
      * @return this converter dividend.
@@ -101,7 +134,6 @@ public final class RationalConverter extends AbstractConverter {
         return (integer.bitLength() < 64) ? integer.longValue() : integer.doubleValue();
     }
 
-    @Override
     public BigDecimal convert(BigDecimal value, MathContext ctx) throws ArithmeticException {
         BigDecimal decimalDividend = new BigDecimal(dividend, 0);
         BigDecimal decimalDivisor = new BigDecimal(divisor, 0);

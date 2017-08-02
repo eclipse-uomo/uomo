@@ -1,13 +1,14 @@
 package org.eclipse.uomo.examples.units.console.sandbox;
 
-import org.eclipse.uomo.units.IMeasure;
-import org.eclipse.uomo.units.SI;
+import javax.measure.Quantity;
+
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
+import org.eclipse.uomo.units.impl.system.SI;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import javax.measure.Quantity;
+import javax.measure.Unit;
 
 
 public class KawaExample {
@@ -22,9 +23,9 @@ public class KawaExample {
 		Unit<?> result = g.multiply(m);
 		System.out.println(result);
 		
-		IMeasure<Length> q1 = new LengthAmount(1, m);
+		Quantity<Length> q1 = new LengthAmount(1, m);
 		System.out.println(q1);
-		IMeasure<Mass> q2 = new MassAmount(1, g);
+		Quantity<Mass> q2 = new MassAmount(1, g);
 		System.out.println(q2);
 		Quantity<?> q3 = q1.multiply(q2);
 		System.out.println(q3);

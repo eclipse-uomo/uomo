@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013, Werner Keil and others.
+ * Copyright (c) 2013, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,23 +10,23 @@
  */
 package org.eclipse.uomo.examples.units.types;
 
-import static org.eclipse.uomo.units.SI.*;
-import static org.eclipse.uomo.units.SI.Prefix.KILO;
 import static org.eclipse.uomo.examples.units.types.SolarSystem.G;
+import static org.eclipse.uomo.units.impl.system.SI.*;
+import static org.eclipse.uomo.units.impl.system.SI.Prefix.KILO;
 
-import org.eclipse.uomo.units.IMeasure;
+import javax.measure.Quantity;
 import org.eclipse.uomo.units.impl.quantity.AccelerationAmount;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
-import org.unitsofmeasurement.quantity.Acceleration;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Acceleration;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import javax.measure.Unit;
 
 /**
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.0
- * 
+ * @version 1.1
+ * @since 0.6
  * This <type>enum</type> is inspired by Josh Bloch's example in <a href="http://www.oracle.com/technetwork/java/effectivejava-136174.html">Effective Java Second Edition</a>
  * 
  * <p>
@@ -43,35 +43,35 @@ public enum DwarfPlanet {
     MAKEMAKE(newMass(3e+21, KILOGRAM), newLength(715, KILO(METRE))),
     ERIS(newMass(1.67e+22, KILOGRAM), newLength(1163, KILO(METRE)));
 
-    private final IMeasure<Mass> mass;   // in kilograms
+    private final Quantity<Mass> mass;   // in kilograms
 
-    private final IMeasure<Length> radius; // in meters
+    private final Quantity<Length> radius; // in meters
 
-    DwarfPlanet(IMeasure<Mass> mass, IMeasure<Length> radius) {
+    DwarfPlanet(Quantity<Mass> mass, Quantity<Length> radius) {
         this.mass = mass;
         this.radius = radius;
     }
 
-    public IMeasure<Mass> getMass() {
+    public Quantity<Mass> getMass() {
         return mass;
     }
 
-    public IMeasure<Length> getRadius() {
+    public Quantity<Length> getRadius() {
         return radius;
     }
 
     public Acceleration surfaceGravity() {
-        double m = mass.doubleValue(KILOGRAM);
-        double r = radius.doubleValue(METRE);
+        double m = mass.to(KILOGRAM).getValue().doubleValue();
+        double r = radius.to(METRE).getValue().doubleValue();
         return new AccelerationAmount(
                 G * m / (r * r), METRES_PER_SQUARE_SECOND);
     }
 
-    private static IMeasure<Mass> newMass(double value, Unit<Mass> unit) {
+    private static Quantity<Mass> newMass(double value, Unit<Mass> unit) {
         return new MassAmount(value, unit);
     }
 
-    private static IMeasure<Length> newLength(double value, Unit<Length> unit) {
+    private static Quantity<Length> newLength(double value, Unit<Length> unit) {
         return new LengthAmount(value, unit);
     }
 

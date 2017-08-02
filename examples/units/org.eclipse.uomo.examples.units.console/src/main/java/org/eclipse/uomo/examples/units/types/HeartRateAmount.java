@@ -1,7 +1,7 @@
 package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.uomo.units.impl.BaseAmount;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 /**
  * Represents the speed of heart beat.

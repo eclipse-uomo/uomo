@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil, JScience and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,12 +11,11 @@
 package org.eclipse.uomo.units.impl.format;
 
 import java.util.Locale;
+import java.util.Set;
 
-import org.eclipse.uomo.units.AbstractFormat;
-import org.unitsofmeasurement.service.UnitFormatService;
-import org.unitsofmeasurement.unit.UnitFormat;
-
-import com.ibm.icu.util.ULocale;
+import org.eclipse.uomo.units.AbstractUnitFormat;
+import javax.measure.format.UnitFormat;
+import javax.measure.spi.UnitFormatService;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
@@ -26,7 +25,7 @@ public class UnitFormatServiceImpl implements UnitFormatService {
 
 	@Override
 	public UnitFormat getUnitFormat() {
-		return AbstractFormat.getUnitFormat();
+		return AbstractUnitFormat.getUnitFormat();
 	}
 
 	@Override
@@ -34,9 +33,14 @@ public class UnitFormatServiceImpl implements UnitFormatService {
 		return getUnitFormat();
 	}
 
-	@Override
 	public UnitFormat getUnitFormat(Locale locale) {
-		return AbstractFormat.getUnitFormat(ULocale.forLocale(locale));
+		return AbstractUnitFormat.getUnitFormat(locale);
+	}
+
+	@Override
+	public Set<String> getAvailableFormatNames() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

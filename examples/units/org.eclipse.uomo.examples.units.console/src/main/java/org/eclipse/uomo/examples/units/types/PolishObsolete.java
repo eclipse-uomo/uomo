@@ -11,10 +11,10 @@
 package org.eclipse.uomo.examples.units.types;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.eclipse.uomo.units.SI;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import org.eclipse.uomo.units.impl.system.SI;
+import javax.measure.quantity.Length;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>

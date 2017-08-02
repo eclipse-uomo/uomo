@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Velocity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Speed;
+import javax.measure.Unit;
 
 /**
  * Represents a distance traveled divided by the time of travel.
@@ -22,9 +22,9 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class VelocityAmount extends BaseQuantity<Velocity> {
+public class VelocityAmount extends BaseQuantity<Speed> {
 
-	public VelocityAmount(Number number, Unit<Velocity> unit) {
+	public VelocityAmount(Number number, Unit<Speed> unit) {
 		super(number, unit);
 	}
 }

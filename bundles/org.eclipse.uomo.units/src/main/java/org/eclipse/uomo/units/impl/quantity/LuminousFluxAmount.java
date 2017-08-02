@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.LuminousFlux;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.LuminousFlux;
+import javax.measure.Unit;
 
 /**
  * Represents a luminous flux. The metric system unit for this quantity is "lm"

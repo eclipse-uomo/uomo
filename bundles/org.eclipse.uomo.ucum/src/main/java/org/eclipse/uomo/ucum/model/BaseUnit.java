@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,12 @@ package org.eclipse.uomo.ucum.model;
 
 import java.util.Map;
 
-import org.eclipse.uomo.units.impl.DimensionImpl;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import org.eclipse.uomo.units.impl.QuantityDimension;
+import javax.measure.Dimension;
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * @author Werner Keil
@@ -56,7 +56,7 @@ public class BaseUnit extends UcumUnit {
 	}
 
 	@Override
-	public Unit add(double arg0) {
+	public Unit shift(double arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -89,11 +89,11 @@ public class BaseUnit extends UcumUnit {
 
 	@Override
 	public Dimension getDimension() {
-		return DimensionImpl.valueOf(dim);
+		return QuantityDimension.parse(dim);
 	}
 
 	@Override
-	public Map getProductUnits() {
+	public Map getBaseUnits() {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -126,6 +126,4 @@ public class BaseUnit extends UcumUnit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

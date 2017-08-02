@@ -22,8 +22,8 @@ import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.SymbolMap;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 
 /**

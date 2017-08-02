@@ -1,11 +1,11 @@
 package org.eclipse.uomo.examples.units.console;
 
-import org.unitsofmeasurement.quantity.Acceleration;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.unit.Unit;
+import static org.eclipse.uomo.units.impl.system.SI.*;
 
-import static org.eclipse.uomo.units.SI.*;
+import javax.measure.quantity.Acceleration;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Time;
+import javax.measure.Unit;
 
 public class UnitsExample {
 	  public static void main(String[] args) {

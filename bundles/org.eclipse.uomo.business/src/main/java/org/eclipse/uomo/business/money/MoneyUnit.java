@@ -13,12 +13,13 @@ package org.eclipse.uomo.business.money;
 import static org.eclipse.uomo.business.money.MonetaryUnits.ISO_NAMESPACE;
 
 import java.math.BigInteger;
+import java.util.Locale;
 import java.util.Map;
 
 import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.Localizable;
 import org.eclipse.uomo.business.types.IMoney;
-import org.eclipse.uomo.core.IName;
+import tec.uom.lib.common.function.Nameable;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.impl.AlternateUnit;
@@ -27,16 +28,12 @@ import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.AddConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
-
-import com.ibm.icu.util.Currency;
-import com.ibm.icu.util.ULocale;
-
+import javax.measure.Quantity;
+import javax.measure.Dimension;
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
@@ -44,8 +41,8 @@ import com.ibm.icu.util.ULocale;
  * @param <Q> the monetary quantity
  * 
  */
-public class MoneyUnit<Q extends IMoney> extends Currency implements
-		Unit<IMoney>, IName, CurrencyUnit, Localizable {
+public class MoneyUnit<Q extends IMoney> implements
+		Unit<IMoney>, Nameable, CurrencyUnit, Localizable {
 // TODO use JSR 354
 	/**
      * 
@@ -62,11 +59,13 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	private final boolean legalTender;
 	/** true, if it is a virtual currency. */
 	private final boolean virtual;
+	private final String code;
+	private String name;
 	
 	protected MoneyUnit(String theCode, String namespace, 
 			Long validFrom, Long validUntil,
 			boolean legalTender, boolean virtual) {
-		super(theCode);
+		this.code = theCode;
 		this.namespace = namespace;
 		this.validFrom = validFrom;
 		this.validUntil = validUntil;
@@ -135,7 +134,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	 *            <code>CELSIUS = KELVIN.add(273.15)</code>).
 	 * @return <code>this.transform(new AddConverter(offset))</code>
 	 */
-	public final Unit<IMoney> add(double offset) {
+	public final Unit<IMoney> shift(double offset) {
 		if (offset == 0)
 			return this;
 		return transform(new AddConverter(offset));
@@ -168,7 +167,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public final Unit<IMoney> alternate(String symbol) {
-		return new AlternateUnit(symbol, this);
+		return new AlternateUnit(this, symbol);
 	}
 
 	public <T extends Quantity<T>> Unit<T> asType(Class<T> type) {
@@ -387,7 +386,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	}
 
 	public String getName() {
-		return getName(ULocale.getDefault(), LONG_NAME, new boolean[] { false });
+		return name;
 	}
 
 	public Unit<IMoney> getSystemUnit() {
@@ -478,8 +477,43 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 		return new MoneyUnit(currencyCode);
 	}
 
+	@Override
+	public String getDisplayName(Locale locale) {
+		return getName();
+	}
+
+	@Override
+	public String getCurrencyCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getNumericCode() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getDefaultFractionDigits() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Map<? extends Unit<?>, Integer> getBaseUnits() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSymbol() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	public String getDisplayName(Locale locale) {
-//		return getName(ULocale.forLocale(locale), LONG_NAME, new boolean[1]);
+//		return getName(Locale.forLocale(locale), LONG_NAME, new boolean[1]);
 //	}
 //
 //	public int getNumericCode() {

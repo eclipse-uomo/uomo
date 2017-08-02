@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.MagnetomotiveForce;
-import org.unitsofmeasurement.unit.Unit;
+import si.uom.quantity.MagnetomotiveForce;
+import javax.measure.Unit;
 
 /**
  * Represents an amount of force that produces magnetic flux. The metric system

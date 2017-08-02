@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.uomo.util.Registry;
-import org.unitsofmeasurement.quantity.InformationRate;
+import systems.uom.quantity.InformationRate;
 
 @SuppressWarnings("rawtypes")
 public class SpecialUnitRegistry implements Registry<SpecialUnitHandler> {

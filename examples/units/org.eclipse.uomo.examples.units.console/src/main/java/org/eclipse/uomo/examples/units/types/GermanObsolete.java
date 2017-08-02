@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2013, Werner Keil and others.
+ * Copyright (c) 2013, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,18 +10,18 @@
  */
 package org.eclipse.uomo.examples.units.types;
 
-import static org.eclipse.uomo.units.SI.METRE;
-import static org.eclipse.uomo.units.SI.Prefix.MILLI;
+import static org.eclipse.uomo.units.impl.system.SI.METRE;
+import static org.eclipse.uomo.units.impl.system.SI.Prefix.MILLI;
 import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Length;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.1
+ * @version 0.2
  * @see <a
  *      href="http://en.wikipedia.org/wiki/German_obsolete_units_of_measurement">Wikipedia: German Obsolete Units of Measurement</a>
  * @deprecated

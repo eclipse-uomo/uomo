@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -41,9 +41,9 @@ public class QuantityAmountTest {
 	// QuantityFactory.getInstance(Length.class);
 	final LengthAmount length = new LengthAmount(Double.valueOf(4.0), METRE);
 
-	assertSame("Wrong tuple element.", METRE, length.unit());
+	assertSame("Wrong tuple element.", METRE, length.getUnit());
 	assertEquals("Wrong tuple element.", Double.valueOf(4.0), 
-			length.value());
+			length.getValue());
 	assertEquals("Wrong conversion.", 4.0, length.doubleValue(METRE), 0.0);
 	assertEquals("Wrong conversion.", 0.04, length
 		.doubleValue(CENTI(METRE)), 0.0);
@@ -76,8 +76,8 @@ public class QuantityAmountTest {
 	final BigInteger value = BigInteger.valueOf(4);
 	final LengthAmount length = new LengthAmount(value, METRE);
 
-	assertSame("Wrong tuple element.", METRE, length.unit());
-	assertEquals("Wrong tuple element.", BigInteger.valueOf(4), length.value());
+	assertSame("Wrong tuple element.", METRE, length.getUnit());
+	assertEquals("Wrong tuple element.", BigInteger.valueOf(4), length.getValue());
 	assertEquals("Wrong conversion.", 4.0, length.doubleValue(METRE), 0.0);
 	assertEquals("Wrong conversion.", 0.04, length
 		.doubleValue(CENTI(METRE)), 0.0);

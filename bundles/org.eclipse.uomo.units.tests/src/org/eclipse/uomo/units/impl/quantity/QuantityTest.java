@@ -1,17 +1,17 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.quantity;
 
 import static org.eclipse.uomo.core.impl.OutputHelper.*;
-import static org.eclipse.uomo.units.SI.AMPERE_TURN;
+//import static org.eclipse.uomo.units.SI.AMPERE_TURN;
 import static org.eclipse.uomo.units.SI.KILOGRAM;
 import static org.eclipse.uomo.units.SI.METRE;
 import static org.eclipse.uomo.units.SI.METRES_PER_SQUARE_SECOND;
@@ -33,7 +33,7 @@ import org.junit.Test;
 public class QuantityTest {
 	LengthAmount length;
 	AccelerationAmount accel;
-	MagnetomotiveForceAmount magneto;
+//	MagnetomotiveForceAmount magneto;
 	
     // universal gravitational constant  (m3 kg-1 s-2)
     private static final double G = 6.67300E-11;
@@ -46,7 +46,7 @@ public class QuantityTest {
 	public void setUp() throws Exception {
 		length  = new LengthAmount(4.0, METRE);
 		accel   = new AccelerationAmount(30, METRES_PER_SQUARE_SECOND);
-		magneto = new MagnetomotiveForceAmount(50, AMPERE_TURN);
+//		magneto = new MagnetomotiveForceAmount(50, AMPERE_TURN);
 		
 		mass 	= new MassAmount(30, KILOGRAM);
 		radius  = new LengthAmount(400, KILO(METRE));
