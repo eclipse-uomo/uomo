@@ -17,17 +17,18 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Set;
+import javax.measure.Unit;
+import javax.measure.MeasurementException;
 
-import org.eclipse.uomo.core.UOMoException;
 import org.eclipse.uomo.ucum.UcumService;
 import org.eclipse.uomo.ucum.expression.Symbol;
 import org.eclipse.uomo.ucum.expression.Term;
 import org.eclipse.uomo.ucum.impl.UcumEssenceService;
 import org.eclipse.uomo.ucum.parsers.ExpressionParser;
-import org.eclipse.uomo.util.Parser;
+import tec.uom.lib.common.function.Parser;
 import org.junit.Before;
 import org.junit.Test;
-import javax.measure.Unit;
+
 
 /**
  * @author Werner Keil
@@ -73,7 +74,7 @@ public class UcumServiceTest {
 			Symbol s = (Symbol)t.getComp();
 			Unit<?> u = s.getUnit();
 			assertEquals("m", u.getSymbol());
-		} catch (UOMoException e) {
+		} catch (MeasurementException e) {
 			println(e.getLocalizedMessage());
 			fail(e.getLocalizedMessage());
 		}
@@ -89,7 +90,7 @@ public class UcumServiceTest {
 			Symbol s = (Symbol)t.getComp();
 			Unit<?> u = s.getUnit();
 			assertEquals("m", u.getSymbol());
-		} catch (UOMoException e) {
+		} catch (MeasurementException e) {
 			println(e.getLocalizedMessage());
 			fail(e.getLocalizedMessage());
 		}
@@ -110,7 +111,7 @@ public class UcumServiceTest {
 			Unit<?> u = s.getUnit();
 			assertEquals("g", u.getSymbol());
 			assertEquals("k", s.getPrefix().getSymbol());
-		} catch (UOMoException e) {
+		} catch (MeasurementException e) {
 			println(e.getLocalizedMessage());
 			fail(e.getLocalizedMessage());
 		}

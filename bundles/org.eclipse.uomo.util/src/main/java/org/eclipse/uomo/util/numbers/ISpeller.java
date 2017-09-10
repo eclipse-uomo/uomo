@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2013, Werner Keil and others.
+ * Copyright (c) 2009, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,13 +10,13 @@
  */
 package org.eclipse.uomo.util.numbers;
 
-import org.eclipse.uomo.util.Parser;
+import tec.uom.lib.common.function.Parser;
 
 /**
  * A tool for number spelling, text parsing and encoding.
  * 
  * @author Werner Keil
- * @version 1.0
+ * @version 1.1
  */
 public interface ISpeller extends Parser<String, Number> {
 	/**

@@ -1,9 +1,6 @@
 Manifest-Version: 1.0
 Export-Package: org.eclipse.uomo.core,
- org.eclipse.uomo.core.impl,
- org.unitsofmeasurement.quantity,
- org.unitsofmeasurement.service,
- org.unitsofmeasurement.unit
+ org.eclipse.uomo.core.impl
 Private-Package: org.eclipse.uomo.core;version=0.2.0.SNAPSHOT,org.ecli
  pse.uomo.core.impl;version=0.2.0.SNAPSHOT
 Bundle-ActivationPolicy: lazy

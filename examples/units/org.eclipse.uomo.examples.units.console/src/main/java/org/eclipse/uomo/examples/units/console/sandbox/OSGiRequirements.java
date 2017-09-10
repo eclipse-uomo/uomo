@@ -2,7 +2,7 @@ package org.eclipse.uomo.examples.units.console.sandbox;
 
 import org.eclipse.uomo.units.impl.system.Imperial;
 import org.eclipse.uomo.units.impl.system.SI;
-import org.eclipse.uomo.util.Parser;
+import tec.uom.lib.common.function.Parser;
 import javax.measure.quantity.Length;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.Unit;

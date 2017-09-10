@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2013, Werner Keil and others.
+ * Copyright (c) 2009, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  */
 package org.eclipse.uomo.util.numbers;
 
-import org.eclipse.uomo.core.UOMoException;
+import javax.measure.format.ParserException;
 
 
 /**
@@ -19,7 +19,7 @@ import org.eclipse.uomo.core.UOMoException;
 *         A simple checked exception class.
 * 
 */
-public class SpellException extends UOMoException {
+public class SpellException extends ParserException {
 
 	/**
 	 * 
@@ -31,6 +31,6 @@ public class SpellException extends UOMoException {
 	 *            The message carried by this exception object
 	 */
 	public SpellException(String message) {
-		super(message);
+		super(message, 0);
 	}
 }

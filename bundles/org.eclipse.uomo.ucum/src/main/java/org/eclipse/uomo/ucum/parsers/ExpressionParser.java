@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 20017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
 
 package org.eclipse.uomo.ucum.parsers;
 
-import org.eclipse.uomo.core.UOMoRuntimeException;
+import javax.measure.format.ParserException;
 import org.eclipse.uomo.ucum.expression.Component;
 import org.eclipse.uomo.ucum.expression.Factor;
 import org.eclipse.uomo.ucum.expression.Operator;
@@ -23,7 +23,7 @@ import org.eclipse.uomo.ucum.model.DefinedUnit;
 import org.eclipse.uomo.ucum.model.Prefix;
 import org.eclipse.uomo.ucum.model.UcumModel;
 import org.eclipse.uomo.ucum.model.UcumUnit;
-import org.eclipse.uomo.util.Parser;
+import tec.uom.lib.common.function.Parser;
 
 public class ExpressionParser implements Parser<String, Term> {
 
@@ -37,13 +37,13 @@ public class ExpressionParser implements Parser<String, Term> {
 		this.model = model;
 	}
 
-	public Term parse(String code) throws UOMoRuntimeException {
+	public Term parse(String code) throws ParserException {
 		Lexer lexer = new Lexer(code);
 		return parseTerm(lexer, true);
 	}
 
 	private Term parseTerm(Lexer lexer, boolean first)
-			throws UOMoRuntimeException {
+			throws ParserException {
 		Term res = new Term();
 		if (first && lexer.getType() == TokenType.NONE) {
 			res.setComp(new Factor(1));
@@ -67,7 +67,7 @@ public class ExpressionParser implements Parser<String, Term> {
 		return res;
 	}
 
-	private Component parseComp(Lexer lexer) throws UOMoRuntimeException {
+	private Component parseComp(Lexer lexer) throws ParserException {
 		if (lexer.getType() == TokenType.NUMBER) {
 			Factor fact = new Factor(lexer.getTokenAsInt());
 			lexer.consume();
@@ -81,7 +81,7 @@ public class ExpressionParser implements Parser<String, Term> {
 		return null; // we never get to here
 	}
 
-	private Component parseSymbol(Lexer lexer) throws UOMoRuntimeException {
+	private Component parseSymbol(Lexer lexer) throws ParserException {
 		Symbol symbol = new Symbol();
 		String sym = lexer.getToken();
 
