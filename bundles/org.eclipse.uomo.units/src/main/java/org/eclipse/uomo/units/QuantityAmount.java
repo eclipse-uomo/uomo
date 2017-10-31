@@ -12,9 +12,9 @@ package org.eclipse.uomo.units;
 
 import java.math.BigDecimal;
 import org.eclipse.uomo.units.internal.MeasureAmount;
-import org.unitsofmeasurement.quantity.Dimensionless;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.Quantity;
+import javax.measure.Unit;
 import com.ibm.icu.util.Measure;
 import com.ibm.icu.util.MeasureUnit;
 
@@ -119,7 +119,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.uomo.units.IMeasure#doubleValue(org.unitsofmeasurement.unit
+	 * org.eclipse.uomo.units.IMeasure#doubleValue(javax.measure.unit
 	 * .Unit)
 	 */
 	@Override
@@ -131,7 +131,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * org.eclipse.uomo.units.IMeasure#longValue(org.unitsofmeasurement.unit
+	 * org.eclipse.uomo.units.IMeasure#longValue(javax.measure.unit
 	 * .Unit)
 	 */
 	@Override
@@ -146,7 +146,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.unitsofmeasurement.quantity.Quantity#unit()
+	 * @see javax.measure.Quantity#unit()
 	 */
 	@Override
 	public Unit<Q> unit() {
@@ -156,7 +156,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see org.unitsofmeasurement.quantity.Quantity#value()
+	 * @see javax.measure.Quantity#value()
 	 */
 	@Override
 	public Number value() {

@@ -12,7 +12,7 @@
  */
 package org.eclipse.uomo.business.types;
 
-import org.unitsofmeasurement.quantity.Quantity;
+import javax.measure.Quantity;
 
 
 /**

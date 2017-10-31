@@ -17,14 +17,14 @@ import static org.eclipse.uomo.units.internal.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
 import static org.eclipse.uomo.units.internal.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.unitsofmeasurement.quantity.Area;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.quantity.Temperature;
-import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.quantity.Volume;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import javax.measure.quantity.Temperature;
+import javax.measure.quantity.Time;
+import javax.measure.quantity.Volume;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * <p>

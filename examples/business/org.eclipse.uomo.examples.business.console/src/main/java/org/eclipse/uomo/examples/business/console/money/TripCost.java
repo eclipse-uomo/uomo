@@ -22,7 +22,7 @@ import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 
 import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.UnitFormat;
+import javax.measure.format.UnitFormat;
 
 import org.eclipse.uomo.business.money.MoneyConverter;
 import org.eclipse.uomo.business.money.MoneyUnit;

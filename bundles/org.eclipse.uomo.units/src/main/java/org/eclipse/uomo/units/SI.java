@@ -19,9 +19,9 @@ import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.quantity.*;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
+import javax.measure.quantity.*;
 
 /**
  * <p>

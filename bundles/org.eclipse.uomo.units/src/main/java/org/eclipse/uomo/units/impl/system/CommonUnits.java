@@ -3,9 +3,9 @@ package org.eclipse.uomo.units.impl.system;
 import static org.eclipse.uomo.units.SI.METRES_PER_SECOND;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.unitsofmeasurement.quantity.Velocity;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Velocity;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 public class CommonUnits extends AbstractSystemOfUnits {
 

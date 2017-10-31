@@ -18,10 +18,10 @@ import java.util.Map.Entry;
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.SI;
-import org.unitsofmeasurement.quantity.Dimensionless;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.Dimension;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p>

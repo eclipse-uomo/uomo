@@ -21,9 +21,9 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.util.tracker.ServiceTracker;
-import org.unitsofmeasurement.service.UnitFormatService;
-import org.unitsofmeasurement.service.SystemOfUnitsService;
-import org.unitsofmeasurement.unit.SystemOfUnits;
+import javax.measure.service.UnitFormatService;
+import javax.measure.service.SystemOfUnitsService;
+import javax.measure.spi.SystemOfUnits;
 
 /**
  * OSGi part of implementation.

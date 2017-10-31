@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Power;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Power;
+import javax.measure.Unit;
 
 /**
  * Represents the rate at which work is done.

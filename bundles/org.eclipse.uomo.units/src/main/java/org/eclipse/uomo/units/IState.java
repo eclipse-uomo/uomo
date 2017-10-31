@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units;
 
 import org.eclipse.uomo.core.IName;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.quantity.Time;
+import javax.measure.Quantity;
+import javax.measure.quantity.Time;
 
 /**
  * Groups a state name, value and timestamp.

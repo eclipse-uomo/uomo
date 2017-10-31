@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2017, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,15 +11,14 @@
 package org.eclipse.uomo.units;
 
 import java.io.IOException;
+import java.text.Format;
 import java.text.ParsePosition;
+import java.util.Locale;
 
 import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
 import org.eclipse.uomo.units.impl.system.USCustomary;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitFormat;
-
-import com.ibm.icu.text.UFormat;
-import com.ibm.icu.util.ULocale;
+import javax.measure.Unit;
+import javax.measure.format.UnitFormat;
 
 
 /**
@@ -38,7 +37,7 @@ import com.ibm.icu.util.ULocale;
  * @version 1.5.1 ($Revision: 215 $), $Date: 2010-09-19 22:12:08 +0200 (So, 19 Sep 2010) $
  * 
  */
-public abstract class AbstractFormat extends UFormat implements UnitFormat {
+public abstract class AbstractFormat extends Format implements UnitFormat {
 
    /**
      * Returns the {@link SymbolMap} for this unit format.
@@ -80,8 +79,8 @@ public abstract class AbstractFormat extends UFormat implements UnitFormat {
      * @return a formatter object
      * @stable ICU 3.0
      */
-    public static AbstractFormat getUnitFormat(ULocale locale) {
-        return LocalUnitFormatImpl.getInstance(locale.toLocale());
+    public static AbstractFormat getUnitFormat(Locale locale) {
+        return LocalUnitFormatImpl.getInstance(locale);
     }
 
     /**
@@ -91,7 +90,7 @@ public abstract class AbstractFormat extends UFormat implements UnitFormat {
      * @stable ICU 3.0
      */
     public static AbstractFormat getUnitFormat() {
-        return getUnitFormat(ULocale.getDefault());
+        return getUnitFormat(Locale.getDefault());
     }
     
     /**

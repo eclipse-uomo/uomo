@@ -18,19 +18,19 @@ import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.Messages;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.ProductUnit;
-import org.unitsofmeasurement.quantity.Angle;
-import org.unitsofmeasurement.quantity.Area;
-import org.unitsofmeasurement.quantity.Information;
-import org.unitsofmeasurement.quantity.Energy;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.quantity.Power;
-import org.unitsofmeasurement.quantity.Temperature;
-import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.quantity.Velocity;
-import org.unitsofmeasurement.quantity.Volume;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Angle;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Information;
+import javax.measure.quantity.Energy;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+import javax.measure.quantity.Power;
+import javax.measure.quantity.Temperature;
+import javax.measure.quantity.Time;
+import javax.measure.quantity.Velocity;
+import javax.measure.quantity.Volume;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * <p>

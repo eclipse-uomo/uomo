@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.RadioactiveActivity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.RadioactiveActivity;
+import javax.measure.Unit;
 
 /**
  * Represents radioactivity. The metric system unit for this quantity is "Bq"

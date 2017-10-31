@@ -12,9 +12,9 @@ package org.eclipse.uomo.units;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
-import org.unitsofmeasurement.quantity.Dimensionless;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.Quantity;
+import javax.measure.Unit;
 
 /**
  * <p> This class represents the immutable result of a scalar IMeasure stated
@@ -71,7 +71,7 @@ import org.unitsofmeasurement.unit.Unit;
  * @author  <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 1.3, $Date: 2014-04-23 $
  */
-public abstract class AbstractQuantity<Q extends Quantity<Q>> implements IMeasure<Q> {
+public abstract class AbstractQuantity<Q extends Quantity<Q>> implements Quantity<Q> {
 	
     /**
 	 * 

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 
 /**

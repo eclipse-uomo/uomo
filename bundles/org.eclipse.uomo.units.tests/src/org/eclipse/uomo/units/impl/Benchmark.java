@@ -18,11 +18,11 @@ import java.util.Random;
 import java.util.logging.Logger;
 
 import org.eclipse.uomo.units.impl.quantity.MassAmount;
-import org.unitsofmeasurement.quantity.Quantity;
+import javax.measure.Quantity;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>

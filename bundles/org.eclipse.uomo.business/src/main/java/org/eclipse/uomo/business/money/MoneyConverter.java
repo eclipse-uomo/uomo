@@ -24,8 +24,8 @@ import org.eclipse.uomo.business.internal.ExchangeRate;
 import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractConverter;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 import com.ibm.icu.util.Currency;
 import com.ibm.icu.util.ULocale;

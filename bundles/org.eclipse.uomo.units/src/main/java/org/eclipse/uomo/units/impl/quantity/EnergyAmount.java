@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Energy;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Energy;
+import javax.measure.Unit;
 
 /**
  * Represents the capacity of a physical system to do work.

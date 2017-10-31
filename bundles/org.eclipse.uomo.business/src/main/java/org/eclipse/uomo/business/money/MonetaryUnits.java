@@ -13,7 +13,7 @@ package org.eclipse.uomo.business.money;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 import com.ibm.icu.util.Currency;
 

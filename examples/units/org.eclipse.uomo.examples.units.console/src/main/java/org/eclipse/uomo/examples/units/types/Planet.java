@@ -20,7 +20,7 @@ import org.eclipse.uomo.units.impl.quantity.MassAmount;
 import org.unitsofmeasurement.quantity.Acceleration;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 /**
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>

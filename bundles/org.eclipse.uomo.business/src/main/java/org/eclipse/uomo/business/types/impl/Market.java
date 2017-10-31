@@ -18,7 +18,7 @@ import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IMarket;
 import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 import com.ibm.icu.util.Holiday;
 

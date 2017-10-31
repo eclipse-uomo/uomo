@@ -14,7 +14,7 @@ import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>

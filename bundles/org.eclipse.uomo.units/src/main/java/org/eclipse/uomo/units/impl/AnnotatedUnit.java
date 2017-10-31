@@ -13,9 +13,9 @@ package org.eclipse.uomo.units.impl;
 import java.util.Map;
 
 import org.eclipse.uomo.units.AbstractUnit;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents an annotated unit. It  allows for unit specialization

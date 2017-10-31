@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.CatalyticActivity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.CatalyticActivity;
+import javax.measure.Unit;
 
 /**
  * Represents a catalytic activity.

@@ -40,8 +40,8 @@ import org.eclipse.uomo.units.impl.converter.LogConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.eclipse.uomo.units.Messages;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 import com.ibm.icu.util.ULocale;
 

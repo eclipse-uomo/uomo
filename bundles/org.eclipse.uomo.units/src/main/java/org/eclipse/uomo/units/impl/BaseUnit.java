@@ -14,10 +14,10 @@ import java.io.Serializable;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Quantity;
+import javax.measure.Dimension;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents the building blocks on top of which all others

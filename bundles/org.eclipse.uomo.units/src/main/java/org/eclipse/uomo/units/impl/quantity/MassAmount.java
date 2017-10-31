@@ -12,8 +12,8 @@ package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Mass;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Mass;
+import javax.measure.Unit;
 
 /**
  * Represents the measure of the quantity of matter that a body or an object contains.

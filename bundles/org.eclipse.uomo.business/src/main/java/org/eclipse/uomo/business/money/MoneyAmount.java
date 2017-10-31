@@ -26,8 +26,8 @@ import org.eclipse.uomo.units.QuantityAmount;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.unitsofmeasurement.unit.IncommensurableException;
 import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 import com.ibm.icu.math.BigDecimal;
 import com.ibm.icu.util.Currency;

@@ -16,8 +16,8 @@ import java.math.BigDecimal;
 
 import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IDescription;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Quantity;
+import javax.measure.Unit;
 
 public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ICode<String> {
 	// TODO should use Quantity

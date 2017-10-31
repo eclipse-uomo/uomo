@@ -15,10 +15,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.eclipse.uomo.core.IName;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Quantity;
+import javax.measure.Dimension;
+import javax.measure.spi.ServiceProvider;
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.Unit;
 
 /**
  * <p> An abstract base class for unit systems.</p>
@@ -51,7 +52,7 @@ public abstract class AbstractSystemOfUnits implements SystemOfUnits, IName {
 
 	@Override
 	public <T extends Quantity<T>> Unit<T> getUnit(Class<T> quantityType) {
-		return QuantityFactory.getInstance(quantityType).getMetricUnit();
+		return ServiceProvider.current().getQuantityFactory(quantityType).getSystemUnit();
 	}
 	
 	/**

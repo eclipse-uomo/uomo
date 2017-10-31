@@ -13,8 +13,8 @@ package org.eclipse.uomo.units.impl.format;
 import java.util.Locale;
 
 import org.eclipse.uomo.units.AbstractFormat;
-import org.unitsofmeasurement.service.UnitFormatService;
-import org.unitsofmeasurement.unit.UnitFormat;
+import javax.measure.service.UnitFormatService;
+import javax.measure.format.UnitFormat;
 
 import com.ibm.icu.util.ULocale;
 

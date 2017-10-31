@@ -15,7 +15,7 @@ import java.math.BigInteger;
 import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 /**
  * <p> This class represents a converter multiplying numeric values by an

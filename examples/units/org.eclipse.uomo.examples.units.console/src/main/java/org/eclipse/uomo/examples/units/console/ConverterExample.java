@@ -21,7 +21,7 @@ import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.quantity.LengthAmount;
 import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 public class ConverterExample {
 

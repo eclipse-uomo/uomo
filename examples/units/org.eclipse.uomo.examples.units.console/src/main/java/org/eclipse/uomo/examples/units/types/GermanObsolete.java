@@ -17,7 +17,7 @@ import static org.eclipse.uomo.units.impl.system.USCustomary.FOOT;
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>

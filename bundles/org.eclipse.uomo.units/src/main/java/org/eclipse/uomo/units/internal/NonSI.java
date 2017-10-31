@@ -43,8 +43,8 @@ import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.SI;
 import org.eclipse.uomo.units.impl.converter.LogConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.quantity.*;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.*;
+import javax.measure.Unit;
 
 /**
  * <p>

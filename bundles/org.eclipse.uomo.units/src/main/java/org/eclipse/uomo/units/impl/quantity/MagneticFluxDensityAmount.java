@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.MagneticFluxDensity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.MagneticFluxDensity;
+import javax.measure.Unit;
 
 /**
  * Represents a magnetic flux density. The metric system unit for this quantity

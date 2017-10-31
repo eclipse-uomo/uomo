@@ -1,6 +1,6 @@
 package org.eclipse.uomo.examples.units.types;
 
-import org.unitsofmeasurement.quantity.Quantity;
+import javax.measure.Quantity;
 
 /**
  * Heartbeat is a unit of heart beats.

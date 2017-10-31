@@ -5,8 +5,8 @@ import org.eclipse.uomo.units.impl.system.Imperial;
 import org.eclipse.uomo.util.Parser;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 /**
  * 

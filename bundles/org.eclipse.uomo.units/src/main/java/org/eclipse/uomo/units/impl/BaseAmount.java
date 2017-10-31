@@ -22,10 +22,10 @@ import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.IMeasure;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.eclipse.uomo.units.internal.MeasureAmount;
-import org.unitsofmeasurement.quantity.Dimensionless;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.Quantity;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
 
 import com.ibm.icu.util.Measure;
 import com.ibm.icu.util.MeasureUnit;

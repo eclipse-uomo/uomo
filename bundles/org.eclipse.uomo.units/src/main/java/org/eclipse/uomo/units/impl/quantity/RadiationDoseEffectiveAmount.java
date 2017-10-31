@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.RadiationDoseEffective;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.RadiationDoseEffective;
+import javax.measure.Unit;
 
 /**
  * Represents the effective (or "equivalent") dose of radiation

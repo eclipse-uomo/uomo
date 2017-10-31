@@ -5,7 +5,7 @@ import java.util.*;
 import org.eclipse.uomo.core.IName;
 import org.eclipse.uomo.core.ISymbol;
 import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 import com.ibm.icu.util.Holiday;
 

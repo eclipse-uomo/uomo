@@ -3,7 +3,7 @@ package org.eclipse.uomo.examples.units.console;
 import org.unitsofmeasurement.quantity.Acceleration;
 import org.unitsofmeasurement.quantity.Length;
 import org.unitsofmeasurement.quantity.Time;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 import static org.eclipse.uomo.units.SI.*;
 

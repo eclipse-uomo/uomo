@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.Velocity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.Velocity;
+import javax.measure.Unit;
 
 /**
  * Represents a distance traveled divided by the time of travel.

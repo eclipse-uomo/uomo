@@ -13,7 +13,7 @@ package org.eclipse.uomo.business.types;
 import static org.eclipse.uomo.business.money.MoneyAmount.UNIT;
 
 import org.eclipse.uomo.units.IMeasure;
-import org.unitsofmeasurement.unit.Dimension;
+import javax.measure.Dimension;
 
 /**
  * This interface represents something generally accepted as a medium of

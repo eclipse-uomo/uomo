@@ -17,7 +17,7 @@ import org.eclipse.uomo.business.types.IBasicType;
 import org.eclipse.uomo.business.types.Percent;
 import org.eclipse.uomo.units.impl.BaseAmount;
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 import com.ibm.icu.math.BigDecimal;
 

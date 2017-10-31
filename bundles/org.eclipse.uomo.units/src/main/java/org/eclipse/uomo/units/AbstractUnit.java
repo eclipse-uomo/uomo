@@ -29,14 +29,14 @@ import org.eclipse.uomo.units.impl.converter.LogConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
-import org.unitsofmeasurement.quantity.Dimensionless;
-import org.unitsofmeasurement.quantity.Quantity;
-import org.unitsofmeasurement.unit.Dimension;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
-import org.unitsofmeasurement.unit.Unit;
-import org.unitsofmeasurement.unit.UnitConverter;
-import org.unitsofmeasurement.unit.UnitFormat;
+import javax.measure.quantity.Dimensionless;
+import javax.measure.Quantity;
+import javax.measure.Dimension;
+import javax.measure.unit.IncommensurableException;
+import javax.measure.unit.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
+import javax.measure.format.UnitFormat;
 
 import com.ibm.icu.util.MeasureUnit;
 

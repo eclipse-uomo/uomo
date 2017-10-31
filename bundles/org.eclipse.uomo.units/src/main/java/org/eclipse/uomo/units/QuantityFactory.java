@@ -20,8 +20,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.unitsofmeasurement.quantity.*;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.*;
+import javax.measure.Unit;
 
 import com.ibm.icu.util.TimeUnitAmount;
 

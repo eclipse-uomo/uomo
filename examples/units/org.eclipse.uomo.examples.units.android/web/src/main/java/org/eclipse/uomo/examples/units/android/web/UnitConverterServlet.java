@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.eclipse.uomo.units.*;
 import org.eclipse.uomo.units.impl.quantity.TemperatureAmount;
-import org.unitsofmeasurement.quantity.Quantity;
+import javax.measure.Quantity;
 import org.unitsofmeasurement.quantity.Temperature;
-import org.unitsofmeasurement.unit.UnitConverter;
+import javax.measure.UnitConverter;
 
 /**
  * Servlet implementation class UnitConverterServlet

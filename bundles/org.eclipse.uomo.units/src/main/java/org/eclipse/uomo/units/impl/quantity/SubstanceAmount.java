@@ -11,8 +11,8 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import org.unitsofmeasurement.quantity.AmountOfSubstance;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.quantity.AmountOfSubstance;
+import javax.measure.Unit;
 
 /**
  * Represents the number of elementary entities (molecules, for example) of a substance.

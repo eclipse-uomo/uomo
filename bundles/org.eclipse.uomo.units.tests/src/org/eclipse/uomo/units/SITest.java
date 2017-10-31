@@ -27,7 +27,7 @@ import org.junit.Test;
 import org.unitsofmeasurement.quantity.Mass;
 import org.unitsofmeasurement.quantity.Volume;
 import org.unitsofmeasurement.unit.SystemOfUnits;
-import org.unitsofmeasurement.unit.Unit;
+import javax.measure.Unit;
 
 /**
  * Unit test for class org.eclipse.uomo.units.SI

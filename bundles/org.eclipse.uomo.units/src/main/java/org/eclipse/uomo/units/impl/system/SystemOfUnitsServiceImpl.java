@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.uomo.units.SI;
-import org.unitsofmeasurement.service.SystemOfUnitsService;
-import org.unitsofmeasurement.unit.SystemOfUnits;
+import javax.measure.service.SystemOfUnitsService;
+import javax.measure.spi.SystemOfUnits;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>

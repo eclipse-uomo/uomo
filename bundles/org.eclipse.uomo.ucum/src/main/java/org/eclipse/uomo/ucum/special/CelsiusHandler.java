@@ -33,7 +33,7 @@ public class CelsiusHandler extends SpecialUnitHandler<Temperature> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.quantity.Quantity#unit()
+	 * @see javax.measure.Quantity#unit()
 	 */
 	@Override
 	public Unit<Temperature> getUnit() {
@@ -41,7 +41,7 @@ public class CelsiusHandler extends SpecialUnitHandler<Temperature> {
 	}
 	
 	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.quantity.Quantity#value()
+	 * @see javax.measure.Quantity#value()
 	 */
 	@Override
 	public BigDecimal getValue() {
