@@ -15,14 +15,21 @@ Import-Package: javax.measure,
  tec.uom.lib.common.function
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.uomo.units,
- org.eclipse.uomo.units.impl;uses:="org.unitsofmeasurement.unit,org.eclipse.uomo.units",
- org.eclipse.uomo.units.impl.converter;uses:="org.unitsofmeasurement.unit,org.eclipse.uomo.units",
+ org.eclipse.uomo.units.impl;uses:="javax.measure,javax.measure.spi,org.eclipse.uomo.units",
+ org.eclipse.uomo.units.impl.converter;uses:="javax.measure,tec.uom.lib.common.function,org.eclipse.uomo.units",
  org.eclipse.uomo.units.impl.format,
  org.eclipse.uomo.units.impl.quantity;
-  uses:="org.eclipse.uomo.units.impl,
+  uses:="javax.measure,
    javax.measure.quantity,
-   javax.measure,
+   si.uom.quantity,
+   org.eclipse.uomo.units.impl,
    org.eclipse.uomo.units",
- org.eclipse.uomo.units.impl.system;uses:="javax.measure,org.eclipse.uomo.units,org.unitsofmeasurement.service"
+ org.eclipse.uomo.units.impl.system;
+  uses:="javax.measure.spi,
+   javax.measure,
+   org.eclipse.uomo.units.impl.converter,
+   tec.uom.lib.common.function,
+   org.eclipse.uomo.units.impl,
+   org.eclipse.uomo.units"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ClassPath: .
