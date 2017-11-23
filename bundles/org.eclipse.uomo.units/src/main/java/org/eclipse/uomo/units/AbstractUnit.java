@@ -33,7 +33,7 @@ import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.QuantityDimension;
 import org.eclipse.uomo.units.impl.ProductUnit;
-import org.eclipse.uomo.units.impl.DefaultQuantityFactory;
+import org.eclipse.uomo.units.impl.QuantityFactoryImpl;
 import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.AddConverter;
 import org.eclipse.uomo.units.impl.converter.LogConverter;
@@ -270,7 +270,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> implements Unit<Q>, Na
 	 */
 	@SuppressWarnings("unchecked")
 	public final <T extends Quantity<T>> Unit<T> asType(Class<T> type) throws ClassCastException {
-		Unit<T> metricUnit = DefaultQuantityFactory.getInstance(type).getSystemUnit();
+		Unit<T> metricUnit = QuantityFactoryImpl.getInstance(type).getSystemUnit();
 		if ((metricUnit == null) || metricUnit.isCompatible(this))
 			return (Unit<T>) this;
 		throw new ClassCastException("The unit: " + this //$NON-NLS-1$

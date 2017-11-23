@@ -12,7 +12,7 @@ package org.eclipse.uomo.units;
 
 import java.math.BigDecimal;
 
-import org.eclipse.uomo.units.impl.DefaultQuantityFactory;
+import org.eclipse.uomo.units.impl.QuantityFactoryImpl;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.Quantity;
 import javax.measure.Unit;
@@ -41,7 +41,7 @@ public abstract class QuantityAmount<Q extends Quantity<Q>>
 	 * Holds a dimensionless number of one (exact).
 	 */
 	public static final Quantity<Dimensionless> ONE =
-			DefaultQuantityFactory.getInstance(Dimensionless.class).create(
+			QuantityFactoryImpl.getInstance(Dimensionless.class).create(
 					BigDecimal.ONE, AbstractUnit.ONE);
 	
 	@Override

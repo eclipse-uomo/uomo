@@ -40,7 +40,7 @@ import org.eclipse.uomo.units.AbstractUnit;
  * @version 1.0, $Date: 2016-10-04 $
  * @since 1.0
  */
-public final class DefaultQuantityFactory<Q extends Quantity<Q>> extends AbstractQuantityFactory<Q> {
+public final class QuantityFactoryImpl<Q extends Quantity<Q>> extends AbstractQuantityFactory<Q> {
   /**
    * The type of the quantities created by this factory.
    */
@@ -59,7 +59,7 @@ public final class DefaultQuantityFactory<Q extends Quantity<Q>> extends Abstrac
    *          The type of the quantities created by this factory.
    */
   @SuppressWarnings("unchecked")
-  DefaultQuantityFactory(final Class<Q> type) {
+  QuantityFactoryImpl(final Class<Q> type) {
     this.type = type;
     metricUnit = CLASS_TO_METRIC_UNIT.get(type);
   }
@@ -124,7 +124,7 @@ public final class DefaultQuantityFactory<Q extends Quantity<Q>> extends Abstrac
     logger.log(LOG_LEVEL, "Type: " + type + ": " + type.isInterface());
     QuantityFactory<Q> factory;
     if (!type.isInterface()) {
-      factory = new DefaultQuantityFactory<Q>(type);
+      factory = new QuantityFactoryImpl<Q>(type);
       // TODO use instances?
     } else {
       factory = INSTANCES.get(type);
@@ -136,7 +136,7 @@ public final class DefaultQuantityFactory<Q extends Quantity<Q>> extends Abstrac
         // user don't try to trick the Java generic types system with
         // unsafe cast.
         throw new ClassCastException();
-      factory = new DefaultQuantityFactory<Q>(type);
+      factory = new QuantityFactoryImpl<Q>(type);
       setInstance(type, factory);
     }
     return factory;

@@ -25,7 +25,7 @@ import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.spi.SystemOfUnits;
 
-import org.eclipse.uomo.units.impl.DefaultQuantityFactory;
+import org.eclipse.uomo.units.impl.QuantityFactoryImpl;
 import org.eclipse.uomo.units.impl.format.SimpleUnitFormat;
 import org.eclipse.uomo.units.impl.format.UnitStyle;
 
@@ -72,7 +72,7 @@ public abstract class AbstractSystemOfUnits implements SystemOfUnits, Nameable {
 
 	@Override
 	public <T extends Quantity<T>> Unit<T> getUnit(Class<T> quantityType) {
-		return DefaultQuantityFactory.getInstance(quantityType).getSystemUnit();
+		return QuantityFactoryImpl.getInstance(quantityType).getSystemUnit();
 	}
 
 	/**
