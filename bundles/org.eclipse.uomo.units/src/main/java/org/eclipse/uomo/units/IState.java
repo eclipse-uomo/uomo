@@ -11,6 +11,7 @@
 package org.eclipse.uomo.units;
 
 import tec.uom.lib.common.function.Nameable;
+import tec.uom.lib.common.function.ValueSupplier;
 import javax.measure.Quantity;
 import javax.measure.quantity.Time;
 
@@ -20,9 +21,10 @@ import javax.measure.quantity.Time;
  * A State object is immutable so that it may be easily shared.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.1, $Date: 2011-04-07 02:02:02 +0430 $
+ * @version 1.2, $Date: 2017-11-23 $
  */
-public interface IState<Q extends Quantity<Q>> extends Nameable {
+public interface IState<Q extends Quantity<Q>> extends Nameable, ValueSupplier<Quantity<Q>> {
 	Quantity<Time> time();
+	/** @deprecated use #getValue() instead */
 	Quantity<Q> value(); // TODO get* vs. getter-less, also avoid value().value()
 }
