@@ -21,16 +21,16 @@ import org.eclipse.uomo.units.impl.system.Units;
 
 /**
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 0.7.1, $Date$
+ * @version 0.7.2, 2017-11-24
  */
 public class SystemOfUnitsServiceImpl implements SystemOfUnitsService {
 	
 	final Map<String, SystemOfUnits> souMap = new HashMap<>();
 
 	public SystemOfUnitsServiceImpl() {
-		souMap.put(SI.class.getSimpleName(), SI.getInstance());
+		//souMap.put(SI.class.getSimpleName(), SI.getInstance());
 		souMap.put(Units.class.getSimpleName(), Units.getInstance());
-		souMap.put(USCustomary.class.getSimpleName(), USCustomary.getInstance());
+		//souMap.put(USCustomary.class.getSimpleName(), USCustomary.getInstance());
 	}
 	
 	public Collection<SystemOfUnits> getAvailableSystemsOfUnits() {
