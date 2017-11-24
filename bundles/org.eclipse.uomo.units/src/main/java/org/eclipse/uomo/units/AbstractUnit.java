@@ -28,7 +28,7 @@ import javax.measure.format.UnitFormat;
 import javax.measure.quantity.Dimensionless;
 
 import tec.uom.lib.common.function.Nameable;
-import org.eclipse.uomo.core.ISymbol;
+import tec.uom.lib.common.function.SymbolSupplier;
 import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.QuantityDimension;
@@ -85,11 +85,11 @@ import org.eclipse.uomo.units.impl.system.SI;
  *         Desruisseaux</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * 
- * @version 1.8, $Date: 2017-07-30 $
+ * @version 1.9, $Date: 2017-11-24 $
  * @see <a href="http://en.wikipedia.org/wiki/Units_of_measurement"> Wikipedia:
  *      Units of measurement</a>
  */
-public abstract class AbstractUnit<Q extends Quantity<Q>> implements Unit<Q>, Nameable, ISymbol, Serializable {
+public abstract class AbstractUnit<Q extends Quantity<Q>> implements Unit<Q>, Nameable, SymbolSupplier, Serializable {
 
 	/**
 	 * For cross-version compatibility.
