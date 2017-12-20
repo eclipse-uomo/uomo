@@ -30,7 +30,6 @@
 		<site.basedir>${project.basedir}</site.basedir>
 	</properties>
 
-
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
 	<version>0.7.0</version>
