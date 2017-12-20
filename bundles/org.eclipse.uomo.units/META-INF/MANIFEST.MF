@@ -11,7 +11,8 @@ Import-Package: javax.measure,
  javax.measure.quantity,
  javax.measure.spi,
  org.osgi.framework;version="1.3.0",
- org.osgi.util.tracker;version="1.3.1"
+ org.osgi.util.tracker;version="1.3.1",
+ tec.uom.lib.common.function
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.uomo.units,
  org.eclipse.uomo.units.impl;uses:="javax.measure,org.eclipse.uomo.units",

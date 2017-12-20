@@ -262,7 +262,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	@SuppressWarnings("unchecked")
 	public final <T extends Quantity<T>> Unit<T> asType(Class<T> type)
 			throws ClassCastException {
-		Unit<T> metricUnit = QuantityFactory.getInstance(type).getMetricUnit();
+		Unit<T> metricUnit = QuantityFactoryImpl.getInstance(type).getMetricUnit();
 		if ((metricUnit == null) || metricUnit.isCompatible(this))
 			return (Unit<T>) this;
 		throw new ClassCastException("The unit: " + this //$NON-NLS-1$
@@ -602,11 +602,11 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 
 	/**
 	 * Returns a unit instance that is defined from the specified character
-	 * sequence (text) using the {@linkplain AbstractFormat#getInstance default}
+	 * sequence (text) using the {@linkplain AbstractUnitFormat#getInstance default}
 	 * unit format (<a href="http://unitsofmeasure.org/">UCUM</a> based). This
 	 * method is capable of parsing any units representations produced by
 	 * {@link #toString()}. Locale-sensitive unit formatting and parsing are
-	 * handled by the {@link AbstractFormat} class and its subclasses.
+	 * handled by the {@link AbstractUnitFormat} class and its subclasses.
 	 * 
 	 * <p>
 	 * This method can be used to parse dimensionless units.[code]
@@ -635,7 +635,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 * locale. This means that it can be used as a canonical string
 	 * representation for exchanging units, or as a key for a Hashtable, etc.
 	 * Locale-sensitive unit formatting and parsing is handled by
-	 * {@link AbstractFormat} class and its subclasses.
+	 * {@link AbstractUnitFormat} class and its subclasses.
 	 * 
 	 * @return <code>UnitFormat.getInstance().format(this)</code>
 	 */

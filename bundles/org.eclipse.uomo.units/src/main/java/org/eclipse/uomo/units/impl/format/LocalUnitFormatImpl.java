@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractConverter.Compound;
-import org.eclipse.uomo.units.AbstractFormat;
+import org.eclipse.uomo.units.AbstractUnitFormat;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.SymbolMap;
 import org.eclipse.uomo.units.impl.AnnotatedUnit;
@@ -155,7 +155,7 @@ import com.ibm.icu.util.ULocale;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.4.1 ($Revision: 232 $), $Date: 2010-10-13 17:13:18 +0200 (Mi, 13 Okt 2010) $
  */
-public class LocalUnitFormatImpl extends AbstractFormat {
+public class LocalUnitFormatImpl extends AbstractUnitFormat {
 
 	// ////////////////////////////////////////////////////
 	// Class variables //

@@ -21,9 +21,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.measure.quantity.*;
+import javax.measure.spi.QuantityFactory;
+import javax.measure.Quantity;
 import javax.measure.Unit;
-
-import com.ibm.icu.util.TimeUnitAmount;
 
 /**
  * A factory producing simple quantities instances (tuples {@link Number}/{@link AbstractUnit}).
@@ -39,15 +39,15 @@ import com.ibm.icu.util.TimeUnitAmount;
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @version 1.0.8 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-abstract class QuantityFactory<Q extends Quantity<Q>>  {
+abstract class QuantityFactoryImpl<Q extends Quantity<Q>> implements QuantityFactory<Q> {
 
     /**
      * Holds the current instances.
      */
     @SuppressWarnings("rawtypes")
-	private static final ConcurrentHashMap<Class, QuantityFactory> INSTANCES = new ConcurrentHashMap<Class, QuantityFactory>();
+	private static final ConcurrentHashMap<Class, QuantityFactoryImpl> INSTANCES = new ConcurrentHashMap<Class, QuantityFactoryImpl>();
     
-    private static final Logger logger = Logger.getLogger(QuantityFactory.class.getName());
+    private static final Logger logger = Logger.getLogger(QuantityFactoryImpl.class.getName());
     
     private static final Level LOG_LEVEL = Level.FINE;
     
@@ -59,10 +59,10 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
      * @return the quantity factory for the specified type
      */
     @SuppressWarnings("unchecked")
-	public static <Q extends Quantity<Q>>  QuantityFactory<Q> getInstance(final Class<Q> type) {
+	public static <Q extends Quantity<Q>>  QuantityFactoryImpl<Q> getInstance(final Class<Q> type) {
         
          logger.log(LOG_LEVEL, "Type: " + type + ": " + type.isInterface());
-         QuantityFactory<Q> factory;
+         QuantityFactoryImpl<Q> factory;
          if (!type.isInterface()) {
         	 if (type != null && type.getInterfaces() != null & type.getInterfaces().length > 0) {
 	        	 logger.log(LOG_LEVEL, "Type0: " + type.getInterfaces()[0]);
@@ -107,7 +107,7 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
      * @param type the quantity type
      * @param factory the quantity factory
      */
-    protected static <Q extends Quantity<Q>>  void setInstance(final Class<Q> type, QuantityFactory<Q> factory) {
+    protected static <Q extends Quantity<Q>>  void setInstance(final Class<Q> type, QuantityFactoryImpl<Q> factory) {
         if (!QuantityAmount.class.isAssignableFrom(type))
             // This exception is not documented because it should never happen if the
             // user don't try to trick the Java generic types system with unsafe cast.
@@ -138,7 +138,7 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
      *
      * @param <Q> The type of the quantity
      */
-    private static final class Default<Q extends Quantity<Q>>  extends QuantityFactory<Q> {
+    private static final class Default<Q extends Quantity<Q>>  extends QuantityFactoryImpl<Q> {
 
         /**
          * The type of the quantities created by this factory.
@@ -170,7 +170,7 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
             CLASS_TO_METRIC_UNIT.put(Mass.class, KILOGRAM);
             CLASS_TO_METRIC_UNIT.put(Length.class, METRE);
             CLASS_TO_METRIC_UNIT.put(AmountOfSubstance.class, MOLE);
-            CLASS_TO_METRIC_UNIT.put(TimeUnitAmount.class, SECOND);
+            CLASS_TO_METRIC_UNIT.put(Time.class, SECOND);
             CLASS_TO_METRIC_UNIT.put(MagnetomotiveForce.class, AMPERE_TURN);
             CLASS_TO_METRIC_UNIT.put(Angle.class, RADIAN);
             CLASS_TO_METRIC_UNIT.put(SolidAngle.class, STERADIAN);
@@ -190,11 +190,11 @@ abstract class QuantityFactory<Q extends Quantity<Q>>  {
             CLASS_TO_METRIC_UNIT.put(ElectricInductance.class, HENRY);
             CLASS_TO_METRIC_UNIT.put(LuminousFlux.class, LUMEN);
             CLASS_TO_METRIC_UNIT.put(Illuminance.class, LUX);
-            CLASS_TO_METRIC_UNIT.put(RadioactiveActivity.class, BECQUEREL);
+            CLASS_TO_METRIC_UNIT.put(Radioactivity.class, BECQUEREL);
             CLASS_TO_METRIC_UNIT.put(RadiationDoseAbsorbed.class, GRAY);
             CLASS_TO_METRIC_UNIT.put(RadiationDoseEffective.class, SIEVERT);
             CLASS_TO_METRIC_UNIT.put(CatalyticActivity.class, KATAL);
-            CLASS_TO_METRIC_UNIT.put(Velocity.class, METRES_PER_SECOND);
+            CLASS_TO_METRIC_UNIT.put(Speed.class, METRES_PER_SECOND);
             CLASS_TO_METRIC_UNIT.put(Acceleration.class, METRES_PER_SQUARE_SECOND);
             CLASS_TO_METRIC_UNIT.put(Area.class, SQUARE_METRE);
             CLASS_TO_METRIC_UNIT.put(Volume.class, CUBIC_METRE);

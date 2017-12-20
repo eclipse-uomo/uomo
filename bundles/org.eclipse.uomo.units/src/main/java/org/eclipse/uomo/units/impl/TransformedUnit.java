@@ -32,7 +32,7 @@ import javax.measure.UnitConverter;
  * <p>
  * Transformed units have no label. But like any other units, they may have
  * labels attached to them (see
- * {@link org.eclipse.uomo.units.AbstractFormat.SymbolMap SymbolMap}
+ * {@link org.eclipse.uomo.units.AbstractUnitFormat.SymbolMap SymbolMap}
  * </p>
  * 
  * <p>

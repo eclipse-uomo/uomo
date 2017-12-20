@@ -12,7 +12,7 @@ package org.eclipse.uomo.units.impl.format;
 
 import java.util.Locale;
 
-import org.eclipse.uomo.units.AbstractFormat;
+import org.eclipse.uomo.units.AbstractUnitFormat;
 import javax.measure.service.UnitFormatService;
 import javax.measure.format.UnitFormat;
 
@@ -26,7 +26,7 @@ public class UnitFormatServiceImpl implements UnitFormatService {
 
 	@Override
 	public UnitFormat getUnitFormat() {
-		return AbstractFormat.getUnitFormat();
+		return AbstractUnitFormat.getUnitFormat();
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class UnitFormatServiceImpl implements UnitFormatService {
 
 	@Override
 	public UnitFormat getUnitFormat(Locale locale) {
-		return AbstractFormat.getUnitFormat(ULocale.forLocale(locale));
+		return AbstractUnitFormat.getUnitFormat(ULocale.forLocale(locale));
 	}
 
 }

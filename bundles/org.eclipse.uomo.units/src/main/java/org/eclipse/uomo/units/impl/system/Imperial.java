@@ -116,7 +116,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	 * @see #RANKINE
 	 */
 	static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE
-			.add(459.67));
+			.shift(459.67));
 
 	// /////////
 	// Angle //

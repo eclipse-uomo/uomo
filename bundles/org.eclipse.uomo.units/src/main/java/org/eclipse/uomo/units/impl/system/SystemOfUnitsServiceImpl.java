@@ -28,7 +28,7 @@ public class SystemOfUnitsServiceImpl implements SystemOfUnitsService {
 
 	public SystemOfUnitsServiceImpl() {
 		souMap.put(SI.class.getSimpleName(), SI.getInstance());
-		souMap.put(CommonUnits.class.getSimpleName(), CommonUnits.getInstance());
+		souMap.put(Units.class.getSimpleName(), Units.getInstance());
 		souMap.put(USCustomary.class.getSimpleName(), USCustomary.getInstance());
 	}
 	

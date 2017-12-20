@@ -37,7 +37,7 @@ import javax.measure.format.UnitFormat;
  * @version 1.5.1 ($Revision: 215 $), $Date: 2010-09-19 22:12:08 +0200 (So, 19 Sep 2010) $
  * 
  */
-public abstract class AbstractFormat extends Format implements UnitFormat {
+public abstract class AbstractUnitFormat extends Format implements UnitFormat {
 
    /**
      * Returns the {@link SymbolMap} for this unit format.
@@ -79,7 +79,7 @@ public abstract class AbstractFormat extends Format implements UnitFormat {
      * @return a formatter object
      * @stable ICU 3.0
      */
-    public static AbstractFormat getUnitFormat(Locale locale) {
+    public static AbstractUnitFormat getUnitFormat(Locale locale) {
         return LocalUnitFormatImpl.getInstance(locale);
     }
 
@@ -89,7 +89,7 @@ public abstract class AbstractFormat extends Format implements UnitFormat {
      * @return a formatter object
      * @stable ICU 3.0
      */
-    public static AbstractFormat getUnitFormat() {
+    public static AbstractUnitFormat getUnitFormat() {
         return getUnitFormat(Locale.getDefault());
     }
     

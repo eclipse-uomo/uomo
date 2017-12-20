@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,14 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.util.tracker.ServiceTracker;
-import javax.measure.service.UnitFormatService;
-import javax.measure.service.SystemOfUnitsService;
+import javax.measure.spi.UnitFormatService;
+import javax.measure.spi.SystemOfUnitsService;
 import javax.measure.spi.SystemOfUnits;
 
 /**
  * OSGi part of implementation.
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.5.2 ($Revision: 215 $), $Date: 2010-09-19 22:12:08 +0200 (So, 19 Sep 2010) $
+ * @version 0.5.3, $Date: 2017-12-20 $
  */
 public class Activator implements BundleActivator, ServiceListener {
 	private SystemOfUnitsService souService;
