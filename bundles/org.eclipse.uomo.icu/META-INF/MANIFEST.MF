@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo Units ICU
 Bundle-SymbolicName: org.eclipse.uomo.icu
-Bundle-Version: 0.7.0.qualifier
+Bundle-Version: 0.7.0
 Export-Package: org.eclipse.uomo.icu,
  org.eclipse.uomo.icu.impl
 Require-Bundle: com.ibm.icu;bundle-version="51.0.0";visibility:=reexport,
