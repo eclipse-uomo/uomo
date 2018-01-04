@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+/*
+ * Copyright (c) 2005, 2017, Jean-Marie Dautelle, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,33 +12,35 @@
 package org.eclipse.uomo.units;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.text.ParsePosition;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.uomo.core.IName;
-import org.eclipse.uomo.core.ISymbol;
+import javax.measure.IncommensurableException;
+import javax.measure.Dimension;
+import javax.measure.Quantity;
+import javax.measure.UnconvertibleException;
+import javax.measure.Unit;
+import javax.measure.UnitConverter;
+import javax.measure.format.UnitFormat;
+import javax.measure.quantity.Dimensionless;
+
+import tec.uom.lib.common.function.Nameable;
+import tec.uom.lib.common.function.SymbolSupplier;
 import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.BaseUnit;
 import org.eclipse.uomo.units.impl.DimensionImpl;
 import org.eclipse.uomo.units.impl.ProductUnit;
+import org.eclipse.uomo.units.impl.QuantityFactoryImpl;
 import org.eclipse.uomo.units.impl.TransformedUnit;
 import org.eclipse.uomo.units.impl.converter.AddConverter;
 import org.eclipse.uomo.units.impl.converter.LogConverter;
 import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
 import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
-import javax.measure.quantity.Dimensionless;
-import javax.measure.Quantity;
-import javax.measure.Dimension;
-import javax.measure.unit.IncommensurableException;
-import javax.measure.unit.UnconvertibleException;
-import javax.measure.Unit;
-import javax.measure.UnitConverter;
-import javax.measure.format.UnitFormat;
-
-import com.ibm.icu.util.MeasureUnit;
+import org.eclipse.uomo.units.impl.format.LocalUnitFormat;
+import org.eclipse.uomo.units.impl.system.SI;
 
 /**
  * <p>
@@ -83,23 +85,26 @@ import com.ibm.icu.util.MeasureUnit;
  *         Desruisseaux</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * 
- * @version 1.7 ($Revision: 312 $), $Date: 2011-03-07 00:50:44 +0430 $
+ * @version 1.9, $Date: 2017-11-24 $
  * @see <a href="http://en.wikipedia.org/wiki/Units_of_measurement"> Wikipedia:
  *      Units of measurement</a>
  */
-public abstract class AbstractUnit<Q extends Quantity<Q>>
-		implements Unit<Q>, IName, ISymbol {
+public abstract class AbstractUnit<Q extends Quantity<Q>> implements Unit<Q>, Nameable, SymbolSupplier, Serializable {
 
 	/**
 	 * For cross-version compatibility.
 	 */
-	@SuppressWarnings("unused")
 	private static final long serialVersionUID = -2107517222666572443L;
 
 	/**
 	 * Holds the name.
 	 */
 	private String name;
+
+	/**
+	 * Holds the symbol.
+	 */
+	private String symbol;
 
 	/**
 	 * Holds the dimensionless unit <code>ONE</code>.
@@ -121,15 +126,15 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	/**
 	 * Named constructor.
 	 */
-	@SuppressWarnings("deprecation")
 	protected AbstractUnit(String name) {
 		this.name = name;
 	}
 
-	void setName(String name) {
+	protected void setName(String name) {
 		this.name = name;
 	}
-	
+
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -143,6 +148,10 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 */
 	public String getSymbol() {
 		return null;
+	}
+
+	protected void setSymbol(String s) {
+		this.symbol = s;
 	}
 
 	/**
@@ -260,9 +269,8 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 *             if the specified type is not recognized.
 	 */
 	@SuppressWarnings("unchecked")
-	public final <T extends Quantity<T>> Unit<T> asType(Class<T> type)
-			throws ClassCastException {
-		Unit<T> metricUnit = QuantityFactoryImpl.getInstance(type).getMetricUnit();
+	public final <T extends Quantity<T>> Unit<T> asType(Class<T> type) throws ClassCastException {
+		Unit<T> metricUnit = QuantityFactoryImpl.getInstance(type).getSystemUnit();
 		if ((metricUnit == null) || metricUnit.isCompatible(this))
 			return (Unit<T>) this;
 		throw new ClassCastException("The unit: " + this //$NON-NLS-1$
@@ -272,7 +280,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 
 	/**
 	 * Returns the dimension of this unit (depends upon the current dimension
-	 * {@linkplain DimensionImpl.Model model}).
+	 * {@linkplain QuantityDimension.Model model}).
 	 * 
 	 * @return the dimension of this unit for the current model.
 	 */
@@ -284,8 +292,8 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 
 	/**
 	 * Returns the intrinsic dimensional transform of this unit (depends upon
-	 * the current {@linkplain DimensionImpl.Model model} for {@link BaseUnit}
-	 * instance). Metric units should override this method.
+	 * the current {@linkplain QuantityDimension.Model model} for
+	 * {@link BaseUnit} instance). Metric units should override this method.
 	 * 
 	 * @return the intrinsic transformation of this unit relatively to its
 	 *         dimension.
@@ -296,8 +304,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	public UnitConverter getDimensionalTransform() {
 		// All possible metric units (BaseUnit, AlternateUnit and ProductUnit)
 		// overrides this method.
-		return this.getConverterToMetric().concatenate(
-				((AbstractUnit<Q>) this.toMetric()).getDimensionalTransform());
+		return this.getConverterToMetric().concatenate(((AbstractUnit<Q>) this.toMetric()).getDimensionalTransform());
 	}
 
 	/**
@@ -310,15 +317,14 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 * @throws UnconvertibleException
 	 *             if the converter cannot be constructed.
 	 */
-	public UnitConverter getConverterTo(Unit<Q> that)
-			throws UnconvertibleException {
+	public UnitConverter getConverterTo(Unit<Q> that) throws UnconvertibleException {
 		return searchConverterTo(that);
 	}
 
 	/**
 	 * Returns a converter form this unit to the specified unit of type unknown.
 	 * This method can be used when the dimension of the specified unit is
-	 * unknown at compile-time or when the {@linkplain DimensionImpl.Model
+	 * unknown at compile-time or when the {@linkplain QuantityDimension.Model
 	 * dimensional model} allows for conversion between units of different type.
 	 * To convert to a unit having the same parameterized type,
 	 * {@link #getConverterTo(AbstractUnit)} is preferred (no checked exception
@@ -333,35 +339,29 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 * @throws UnsupportedOperationException
 	 *             if the converter cannot be constructed.
 	 */
-	public UnitConverter getConverterToAny(Unit<?> that)
-			throws IncommensurableException, UnconvertibleException {
-		return ((this == that) || this.equals(that)) ? AbstractConverter.IDENTITY
-				: searchConverterTo(that);
+	public UnitConverter getConverterToAny(Unit<?> that) throws IncommensurableException, UnconvertibleException {
+		return ((this == that) || this.equals(that)) ? AbstractConverter.IDENTITY : searchConverterTo(that);
 	}
 
 	@SuppressWarnings("unchecked")
-	private UnitConverter searchConverterTo(Unit<?> that)
-			throws UnconvertibleException {
+	private UnitConverter searchConverterTo(Unit<?> that) throws UnconvertibleException {
 		// First we have find a common dimension to convert to.
 
 		// Try the SI unit.
 		Unit<Q> thisSI = this.toMetric();
 		Unit<?> thatSI = that.getSystemUnit();
 		if (thisSI.equals(thatSI))
-			return ((AbstractUnit<?>) that).getConverterToMetric().inverse()
-					.concatenate(this.getConverterToMetric());
+			return ((AbstractUnit<?>) that).getConverterToMetric().inverse().concatenate(this.getConverterToMetric());
 
 		// Use dimensional unit.
 		if (!thisSI.getDimension().equals(thatSI.getDimension()))
 			throw new UnconvertibleException(this + " is not compatible with " //$NON-NLS-1$
 					+ that);
-		UnitConverter thisTransform = ((AbstractUnit<?>) thisSI)
-				.getDimensionalTransform().concatenate(
-						this.getConverterToMetric());
+		UnitConverter thisTransform = ((AbstractUnit<?>) thisSI).getDimensionalTransform()
+				.concatenate(this.getConverterToMetric());
 		@SuppressWarnings("rawtypes")
-		UnitConverter thatTransform = ((AbstractUnit<Dimensionless>) thatSI)
-				.getDimensionalTransform().concatenate(
-						((AbstractUnit) that).getConverterToMetric());
+		UnitConverter thatTransform = ((AbstractUnit<Dimensionless>) thatSI).getDimensionalTransform()
+				.concatenate(((AbstractUnit) that).getConverterToMetric());
 		return thatTransform.inverse().concatenate(thisTransform);
 	}
 
@@ -392,7 +392,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public final Unit<Q> alternate(String symbol) {
-		return new AlternateUnit(symbol, this);
+		return new AlternateUnit(this, symbol);
 	}
 
 	/**
@@ -410,16 +410,14 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	public final Unit<Q> transform(UnitConverter operation) {
 		if (this instanceof TransformedUnit) {
 			Unit<Q> tf = this;
-			Unit<?> parent = (Unit<?>) ((TransformedUnit<?>) tf)
-					.getParentUnit();
+			Unit<?> parent = (Unit<?>) ((TransformedUnit<?>) tf).getParentUnit();
 			UnitConverter toParent = ((TransformedUnit<?>) tf).toParentUnit();
 			if (toParent == null)
 				return (Unit<Q>) parent;
 			UnitConverter toParentConcat = toParent.concatenate(operation);
 			if (toParentConcat == AbstractConverter.IDENTITY)
 				return (Unit<Q>) parent;
-			return new TransformedUnit<Q>((Unit<Q>) parent,
-					(AbstractConverter) toParentConcat);
+			return new TransformedUnit<Q>((Unit<Q>) parent, (AbstractConverter) toParentConcat);
 		}
 		if (operation == AbstractConverter.IDENTITY)
 			return this;
@@ -435,7 +433,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 *            <code>CELSIUS = KELVIN.add(273.15)</code>).
 	 * @return <code>this.transform(new AddConverter(offset))</code>
 	 */
-	public final Unit<Q> add(double offset) {
+	public final Unit<Q> shift(double offset) {
 		if (offset == 0)
 			return this;
 		return transform(new AddConverter(offset));
@@ -452,8 +450,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	final Unit<Q> multiply(long factor) {
 		if (factor == 1)
 			return this;
-		return transform(new RationalConverter(BigInteger.valueOf(factor),
-				BigInteger.ONE));
+		return transform(new RationalConverter(BigInteger.valueOf(factor), BigInteger.ONE));
 	}
 
 	/**
@@ -495,8 +492,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 		if (!(this instanceof TransformedUnit<?>))
 			return false;
 		TransformedUnit<Q> tu = (TransformedUnit<Q>) this;
-		return tu.getParentUnit().equals(ONE)
-				&& (tu.getConverterTo(tu.getSystemUnit()) instanceof RationalConverter);
+		return tu.getParentUnit().equals(ONE) && (tu.getConverterTo(tu.getSystemUnit()) instanceof RationalConverter);
 	}
 
 	/**
@@ -524,8 +520,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	public final Unit<Q> divide(long divisor) {
 		if (divisor == 1)
 			return this;
-		return transform(new RationalConverter(BigInteger.ONE,
-				BigInteger.valueOf(divisor)));
+		return transform(new RationalConverter(BigInteger.ONE, BigInteger.valueOf(divisor)));
 	}
 
 	/**
@@ -540,14 +535,14 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 			return this;
 		return transform(new MultiplyConverter(1.0 / divisor));
 	}
-	
+
 	/**
 	 * Returns the logarithmic result of this unit.
 	 * 
 	 * @param base
 	 *            the logarithmic base.
 	 * @return <code>this.transform(new MultiplyConverter(1.0 / divisor))</code>
-	 */	
+	 */
 	public final Unit<Q> log(double base) {
 		return transform(new LogConverter(base));
 	}
@@ -602,11 +597,12 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 
 	/**
 	 * Returns a unit instance that is defined from the specified character
-	 * sequence (text) using the {@linkplain AbstractUnitFormat#getInstance default}
-	 * unit format (<a href="http://unitsofmeasure.org/">UCUM</a> based). This
-	 * method is capable of parsing any units representations produced by
-	 * {@link #toString()}. Locale-sensitive unit formatting and parsing are
-	 * handled by the {@link AbstractUnitFormat} class and its subclasses.
+	 * sequence (text) using the {@linkplain AbstractUnitFormat#getInstance
+	 * default} unit format (<a href="http://unitsofmeasure.org/">UCUM</a>
+	 * based). This method is capable of parsing any units representations
+	 * produced by {@link #toString()}. Locale-sensitive unit formatting and
+	 * parsing are handled by the {@link AbstractUnitFormat} class and its
+	 * subclasses.
 	 * 
 	 * <p>
 	 * This method can be used to parse dimensionless units.[code]
@@ -621,8 +617,7 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	 *             parsed (e.g. not UCUM compliant).
 	 */
 	public static Unit<?> valueOf(CharSequence charSequence) {
-		return LocalUnitFormatImpl.getInstance().parse(charSequence,
-				new ParsePosition(0));
+		return LocalUnitFormat.getInstance().parse(charSequence, new ParsePosition(0));
 	}
 
 	// ////////////////////
@@ -642,9 +637,8 @@ public abstract class AbstractUnit<Q extends Quantity<Q>>
 	@Override
 	public String toString() {
 		try {
-			UnitFormat format = LocalUnitFormatImpl.getInstance();
-			return String.valueOf(format
-					.format(this, new StringBuilder()));
+			UnitFormat format = LocalUnitFormat.getInstance();
+			return String.valueOf(format.format(this, new StringBuilder()));
 		} catch (IOException e) {
 			// TODO should this happen?
 			return ""; //$NON-NLS-1$

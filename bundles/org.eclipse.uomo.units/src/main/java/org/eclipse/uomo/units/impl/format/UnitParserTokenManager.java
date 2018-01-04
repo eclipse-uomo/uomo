@@ -12,7 +12,7 @@
 package org.eclipse.uomo.units.impl.format;
 
 /** Token Manager. */
-class UnitParserTokenManager implements UnitParserConstants
+class UnitParserTokenManager implements UnitTokenConstants
 {
 
   /** Debug output. */

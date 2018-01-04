@@ -11,6 +11,8 @@
 package org.eclipse.uomo.units;
 
 import java.math.BigDecimal;
+
+import org.eclipse.uomo.units.impl.QuantityFactoryImpl;
 import org.eclipse.uomo.units.internal.MeasureAmount;
 import javax.measure.quantity.Dimensionless;
 import javax.measure.Quantity;

@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2005, 2011, Werner Keil, JScience and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import javax.measure.UnitConverter;
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author Eric Russell
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.1 , $Date: 2011-01-11 $
+ * @version 1.2 , $Date: 2017-12-25 $
  */
 public interface SymbolMap {
 
@@ -46,8 +46,8 @@ public interface SymbolMap {
      * recognize different variants of the same unit.[code]
      *     symbolMap.alias({@link USCustomary USCustomary}.FOOT, "foot");
      *     symbolMap.alias({@link USCustomary USCustomary}.FOOT, "feet");
-     *     symbolMap.alias({@link SI SI}.METER, "meter");
-     *     symbolMap.alias({@link SI SI}.METER, "metre");
+     *     symbolMap.alias({@link SI SI}.METRE, "meter");
+     *     symbolMap.alias({@link SI SI}.METRE, "metre");
      * [/code]
      *
      * @param unit the unit to label.

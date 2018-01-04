@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.units;
+package org.eclipse.uomo.units.impl.system;
 
 import java.math.BigInteger;
 
@@ -26,11 +26,10 @@ import javax.measure.Unit;
  * Unit<Length> PATHU_METER = PATHU(METER); </code>
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.2 ($Revision$), $Date: 2012-04-02 $
+ * @version 1.3 ($Revision$), $Date: 2017-12-24 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Tamil_units_of_measurement#Whole_numbers">Wikipedia:
  *      Tamil units of measurement - Whole numbers</a>
- * @deprecated use org.eclipse.uomo.units.impl.system.TamilPrefix
  */
 public abstract class TamilPrefix  {
 

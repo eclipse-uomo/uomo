@@ -15,7 +15,7 @@ import java.text.Format;
 import java.text.ParsePosition;
 import java.util.Locale;
 
-import org.eclipse.uomo.units.impl.format.LocalUnitFormatImpl;
+import org.eclipse.uomo.units.impl.format.LocalUnitFormat;
 import org.eclipse.uomo.units.impl.system.USCustomary;
 import javax.measure.Unit;
 import javax.measure.format.UnitFormat;
@@ -80,7 +80,7 @@ public abstract class AbstractUnitFormat extends Format implements UnitFormat {
      * @stable ICU 3.0
      */
     public static AbstractUnitFormat getUnitFormat(Locale locale) {
-        return LocalUnitFormatImpl.getInstance(locale);
+        return LocalUnitFormat.getInstance(locale);
     }
 
     /**

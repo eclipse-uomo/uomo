@@ -21,10 +21,9 @@ import java.math.MathContext;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractQuantity;
-import org.eclipse.uomo.units.IMeasure;
 import javax.measure.Quantity;
-import javax.measure.unit.IncommensurableException;
-import javax.measure.unit.UnconvertibleException;
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
@@ -68,8 +67,8 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 			if (obj instanceof Quantity) {
 				@SuppressWarnings("rawtypes")
 				Quantity m = (Quantity) obj;
-				if (m.value().getClass() == this.getValue().getClass()
-						&& m.unit().getClass() == this.getUnit().getClass()) {
+				if (m.getValue().getClass() == this.getValue().getClass()
+						&& m.getUnit().getClass() == this.getUnit().getClass()) {
 					return super.equals(obj);
 				} else {
 					// if (this.getQuantityUnit() instanceof AbstractUnit<?>) {
@@ -208,18 +207,6 @@ public class BaseQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q>
 	public String toString() {
 		return  String.valueOf(getValue()) + " " 
                         + String.valueOf(getUnit());
-	}
-
-	@Override
-	public IMeasure<Q> add(IMeasure<Q> that) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IMeasure<Q> subtract(IMeasure<Q> that) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	@Override

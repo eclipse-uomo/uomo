@@ -1,12 +1,12 @@
-/**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl;
 
@@ -18,12 +18,10 @@ import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import javax.measure.Quantity;
 import javax.measure.Dimension;
-import javax.measure.unit.IncommensurableException;
-import javax.measure.unit.UnconvertibleException;
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-
-import com.ibm.icu.util.Measure;
 
 /**
  * <p>  This class represents units formed by the product of rational powers of

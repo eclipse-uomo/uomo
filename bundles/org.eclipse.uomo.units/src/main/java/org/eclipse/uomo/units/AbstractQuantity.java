@@ -221,9 +221,7 @@ public abstract class AbstractQuantity<Q extends Quantity<Q>> implements Quantit
     return getUnit().hashCode() + getValue().hashCode();
   }
 
-  final boolean isBig() {
-    return false;
-  }
+  protected abstract boolean isBig();
 
   /**
    * Returns the <code>String</code> representation of this quantity. The string produced for a given quantity is always the same; it is not affected

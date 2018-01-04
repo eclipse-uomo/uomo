@@ -31,7 +31,7 @@ import javax.measure.UnitConverter;
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.4 ($Revision: 231 $), $Date: 2010-10-13 16:53:37 +0200 (Mi, 13 Okt 2010) $
+ * @version 1.5, $Date: 2017-12-24 $
  */
 public abstract class AbstractConverter implements UnitConverter, Serializable {
 
@@ -60,6 +60,8 @@ public abstract class AbstractConverter implements UnitConverter, Serializable {
      * @return the inverse of this converter.
      */
     public abstract UnitConverter inverse();
+    
+    public abstract BigDecimal convert(BigDecimal value, MathContext ctx) throws ArithmeticException;
 
     /**
      * Indicates whether this converter is considered to be the the same as the

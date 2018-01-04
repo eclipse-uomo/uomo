@@ -40,7 +40,7 @@ public class UnitFormatTest {
 	private static final Locale COMPARISON_LOCALE = Locale.UK;
 	private static final Locale MULTI_LOCALE = Locale.ENGLISH;
 
-	LocalUnitFormatImpl format;
+	LocalUnitFormat format;
 	Unit<Length> cm;
 	Unit<Length> mm;
 	Unit<Length> foot;
@@ -60,7 +60,7 @@ public class UnitFormatTest {
 
 	@Test
 	public void testDefault() {
-		format = LocalUnitFormatImpl.getInstance();
+		format = LocalUnitFormat.getInstance();
 		// format.format(unit, appendable);
 		String formattedText = format.format(cm);
 		println(formattedText);
@@ -73,7 +73,7 @@ public class UnitFormatTest {
 
 	@Test
 	public void testGetInstanceLocale() {
-		format = LocalUnitFormatImpl.getInstance(COMPARISON_LOCALE);
+		format = LocalUnitFormat.getInstance(COMPARISON_LOCALE);
 		String formattedText = format.format(cm);
 		print(formattedText);
 		// System.out.println(unit2);
@@ -104,7 +104,7 @@ public class UnitFormatTest {
 	 */
 	@Test
 	public void testMultiples() {
-		format = LocalUnitFormatImpl.getInstance(MULTI_LOCALE);
+		format = LocalUnitFormat.getInstance(MULTI_LOCALE);
 		assertEquals("m", format.format(METRE));
 		// Multiples
 		assertEquals(COMPARISON_KM, format.format(KILO(METRE)));

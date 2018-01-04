@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2005, 2010, Werner Keil, JScience and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import org.eclipse.uomo.units.impl.converter.RationalConverter;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 
-
 /**
  * Utility class holding prefixes used today in India, Pakistan, Bangladesh, Nepal
  * and Myanmar (Burma); based on grouping by two decimal places, rather than the
@@ -29,6 +28,7 @@ import javax.measure.Unit;
  * @version 1.4 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/Indian_numbering_system">Wikipedia: Indian numbering system</a>
+ * @deprecated use org.eclipse.uomo.units.impl.system.IndianPrefix
  */
 public abstract class IndianPrefix {
 

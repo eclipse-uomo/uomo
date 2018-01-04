@@ -16,7 +16,7 @@ import org.eclipse.uomo.units.impl.converter.LogConverter;
 import javax.measure.Unit;
 
 /** */
-class UnitParser implements UnitParserConstants {
+class UnitParser implements UnitTokenConstants {
 
     private static class Exponent {
         final int pow;

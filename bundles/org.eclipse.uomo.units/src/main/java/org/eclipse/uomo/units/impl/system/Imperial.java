@@ -1,18 +1,17 @@
-/**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil and others - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.system;
 
-
-import static org.eclipse.uomo.units.SI.*;
-import static org.eclipse.uomo.units.SI.Prefix.MICRO;
+import static org.eclipse.uomo.units.impl.system.SI.*;
+import static org.eclipse.uomo.units.impl.system.MetricPrefix.MICRO;
 import static org.eclipse.uomo.units.internal.NonSI.AVOIRDUPOIS_POUND_DIVIDEND;
 import static org.eclipse.uomo.units.internal.NonSI.AVOIRDUPOIS_POUND_DIVISOR;
 
@@ -35,7 +34,7 @@ import javax.measure.Unit;
  * @noextend This class is not intended to be extended by clients.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.1 ($Revision: 332 $), $Date: 2011-09-11 14:52:11 +0200 $
+ * @version 1.2, $Date: 2017-12-25 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/http://en.wikipedia.org/wiki/Imperial_unit">Wikipedia:
  *      Imperial Units</a>

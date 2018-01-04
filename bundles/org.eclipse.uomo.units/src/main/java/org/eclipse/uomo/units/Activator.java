@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -11,8 +11,11 @@
 package org.eclipse.uomo.units;
 
 import java.util.Dictionary;
-import java.util.Hashtable;
 import java.util.Locale;
+
+import javax.measure.spi.SystemOfUnits;
+import javax.measure.spi.SystemOfUnitsService;
+import javax.measure.spi.UnitFormatService;
 
 import org.eclipse.uomo.units.impl.format.UnitFormatServiceImpl;
 import org.eclipse.uomo.units.impl.system.SystemOfUnitsServiceImpl;
@@ -21,14 +24,11 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceEvent;
 import org.osgi.framework.ServiceListener;
 import org.osgi.util.tracker.ServiceTracker;
-import javax.measure.spi.UnitFormatService;
-import javax.measure.spi.SystemOfUnitsService;
-import javax.measure.spi.SystemOfUnits;
 
 /**
  * OSGi part of implementation.
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.5.3, $Date: 2017-12-20 $
+ * @version 0.6, $Date: 2017-07-31 $
  */
 public class Activator implements BundleActivator, ServiceListener {
 	private SystemOfUnitsService souService;

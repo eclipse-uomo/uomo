@@ -1,18 +1,21 @@
-/**
- * Copyright (c) 2005, 2017, Werner Keil, Ikayzo and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil and others - initial API and implementation
  */
 package org.eclipse.uomo.units.impl;
 
 import org.eclipse.uomo.units.AbstractConverter;
 import org.eclipse.uomo.units.AbstractUnit;
 import javax.measure.Quantity;
+
+import java.util.Map;
+
 import javax.measure.Dimension;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
@@ -29,7 +32,7 @@ import javax.measure.UnitConverter;
  * @param <Q> The type of the quantity measured by this unit.
  *
  * @author  <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
- * @version 1.1, $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.2, $Date: 2017-12-21 $
  */
 public final class AlternateUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> {
 
@@ -59,8 +62,8 @@ public final class AlternateUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> 
      *         associated to a different unit.
      */
     @SuppressWarnings("rawtypes")
-	public AlternateUnit(String symbol, Unit<?> parent) {
-	this(symbol, (AbstractUnit)parent);
+	public AlternateUnit(Unit<?> parent, String symbol) {
+	this((AbstractUnit)parent, symbol);
     }
     
     
@@ -76,7 +79,7 @@ public final class AlternateUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> 
      * @throws IllegalArgumentException if the specified symbol is
      *         associated to a different unit.
      */
-    public AlternateUnit(String symbol, AbstractUnit<?> parent) {
+    public AlternateUnit(AbstractUnit<?> parent, String symbol) {
         if (parent == null || !parent.isUnscaledMetric())
             throw new UnsupportedOperationException(parent + " is not an unscaled metric unit");
         this.parent = parent;
@@ -138,6 +141,11 @@ public final class AlternateUnit<Q extends Quantity<Q>> extends AbstractUnit<Q> 
         return ((AbstractUnit)parent).getDimensionalTransform();
     }
 
+    @Override
+    public Map<? extends Unit<?>, Integer> getBaseUnits() {
+      return parent.getBaseUnits();
+    }
+    
     @Override
     public int hashCode() {
         return symbol.hashCode();

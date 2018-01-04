@@ -8,7 +8,7 @@
  * Contributors:
  *    Werner Keil, Jean-Marie Dautelle - initial API and implementation
  */
-package org.eclipse.uomo.units;
+package org.eclipse.uomo.units.impl.system;
 
 import java.math.BigInteger;
 
@@ -23,10 +23,9 @@ import javax.measure.Unit;
  * Utility class holding binary prefixes.
  * 
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.1 ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
+ * @version 1.2, $Date: 2017-12-24 $
  * @see <a href="http://en.wikipedia.org/wiki/Binary_prefix">Wikipedia: Binary
  *      Prefix</a>
- * @deprecated use org.eclipse.uomo.units.impl.system.BinaryPrefix
  */
 public final class BinaryPrefix {
 

@@ -11,12 +11,14 @@
 package org.eclipse.uomo.units.impl.format;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.text.ParsePosition;
 
 import javax.measure.MeasurementException;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.format.ParserException;
+import javax.measure.format.UnitFormat;
 
 import org.eclipse.uomo.units.AbstractQuantity;
 import org.eclipse.uomo.units.AbstractUnit;
@@ -35,8 +37,8 @@ import tec.uom.lib.common.function.Parser;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 1.1, $Date: 2017-07-30 $
- * @since 1.0
+ * @version 1.2, $Date: 2017-12-24 $
+ * @since 0.7
  */
 @SuppressWarnings("rawtypes")
 public abstract class QuantityFormat implements Parser<CharSequence, Quantity> {
@@ -44,13 +46,19 @@ public abstract class QuantityFormat implements Parser<CharSequence, Quantity> {
   /**
    * 
    */
-  // private static final long serialVersionUID = -4628006924354248662L;
+  private static final long serialVersionUID = -4628006924354248662L;
 
   /**
    * Holds the default format instance.
    */
   private static final QuantityFormat DEFAULT = new Standard();
 
+  /**
+   * Holds the localized format instance.
+   */
+  private static final NumberSpaceQuantityFormat LOCAL = new NumberSpaceQuantityFormat(NumberFormat.getInstance(), LocalUnitFormat.getInstance());
+
+  
   /**
    * Holds the Number-Space-Unit format instance.
    */
@@ -68,6 +76,40 @@ public abstract class QuantityFormat implements Parser<CharSequence, Quantity> {
     return DEFAULT;
   }
 
+  /**
+   * Returns the quantity format using the specified number format and unit format (the number and unit are separated by one space).
+   *
+   * @param numberFormat
+   *          the number format.
+   * @param unitFormat
+   *          the unit format.
+   * @return the corresponding format.
+   */
+  public static QuantityFormat getInstance(NumberFormat numberFormat, UnitFormat unitFormat) {
+    return new NumberSpaceQuantityFormat(numberFormat, unitFormat);
+  }
+
+  /**
+   * Returns the culture invariant format based upon {@link BigDecimal} canonical format and the {@link UnitFormat#getStandardInstance() standard}
+   * unit format. This format <b>is not</b> locale-sensitive and can be used for unambiguous electronic communication of quantities together with
+   * their units without loss of information. For example: <code>"1.23456789 kg.m/s2"</code> returns
+   * <code>Quantities.getQuantity(new BigDecimal("1.23456789"), AbstractUnit.parse("kg.m/s2")));</code>
+   *
+   * @param style
+   *          the format style to apply.
+   * @return the desired format.
+   */
+  public static QuantityFormat getInstance(FormatBehavior style) {
+    switch (style) {
+      case LOCALE_NEUTRAL:
+        return DEFAULT;
+      case LOCALE_SENSITIVE:
+        return LOCAL;
+      default:
+        return DEFAULT;
+    }
+  }
+  
   /**
    * Formats the specified quantity into an <code>Appendable</code>.
    * 

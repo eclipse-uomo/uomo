@@ -1,36 +1,37 @@
-/**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+/*
+ * Copyright (c) 2005, 2017, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Werner Keil, Ikayzo and others - initial API and implementation
+ *    Werner Keil - initial API and implementation
  */
 package org.eclipse.uomo.units.impl.system;
 
 import static org.eclipse.uomo.units.SI.*;
-import static org.eclipse.uomo.units.SI.Prefix.MICRO;
+import static org.eclipse.uomo.units.impl.system.MetricPrefix.MICRO;
 
 import org.eclipse.uomo.units.AbstractSystemOfUnits;
 import org.eclipse.uomo.units.AbstractUnit;
 import org.eclipse.uomo.units.Messages;
 import org.eclipse.uomo.units.SI;
+import org.eclipse.uomo.units.impl.AlternateUnit;
 import org.eclipse.uomo.units.impl.ProductUnit;
 import javax.measure.quantity.Angle;
 import javax.measure.quantity.Area;
-import javax.measure.quantity.Information;
 import javax.measure.quantity.Energy;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 import javax.measure.quantity.Power;
 import javax.measure.quantity.Temperature;
 import javax.measure.quantity.Time;
-import javax.measure.quantity.Velocity;
+import javax.measure.quantity.Speed;
 import javax.measure.quantity.Volume;
 import javax.measure.spi.SystemOfUnits;
 import javax.measure.Unit;
+import systems.uom.quantity.Information;
 
 /**
  * <p>
@@ -42,7 +43,7 @@ import javax.measure.Unit;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 1.15 ($Revision: 332 $), $Date: 2011-09-11 14:52:11 +0200 $
+ * @version 1.16, $Date: 2017-12-25 $
  * @see <a
  *      href="http://en.wikipedia.org/wiki/United_States_customary_units">Wikipedia:
  *      United State Customary Units</a>
@@ -163,7 +164,7 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	 * @see #RANKINE
 	 */
 	public static final Unit<Temperature> FAHRENHEIT = addUnit(RANKINE
-			.add(459.67));
+			.shift(459.67));
 
 	// /////////
 	// Angle //
@@ -225,28 +226,28 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	public static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
 	// ////////////
-	// Velocity //
+	// Speed //
 	// ////////////
 	/**
-	 * A unit of velocity expressing the number of {@link #FOOT feet} per
+	 * A unit of Speed expressing the number of {@link #FOOT feet} per
 	 * {@link SI#SECOND second}.
 	 */
-	public static final Unit<Velocity> FEET_PER_SECOND = addUnit(
-			FOOT.divide(SECOND)).asType(Velocity.class);
+	public static final Unit<Speed> FEET_PER_SECOND = addUnit(
+			FOOT.divide(SECOND)).asType(Speed.class);
 
 	/**
-	 * A unit of velocity expressing the number of international {@link #MILE
+	 * A unit of Speed expressing the number of international {@link #MILE
 	 * miles} per {@link #HOUR hour} (abbreviation <code>mph</code>).
 	 */
-	public static final Unit<Velocity> MILES_PER_HOUR = addUnit(
-			MILE.divide(HOUR)).asType(Velocity.class);
+	public static final Unit<Speed> MILES_PER_HOUR = addUnit(
+			MILE.divide(HOUR)).asType(Speed.class);
 
 	/**
-	 * A unit of velocity expressing the number of {@link #NAUTICAL_MILE
+	 * A unit of Speed expressing the number of {@link #NAUTICAL_MILE
 	 * nautical miles} per {@link #HOUR hour} (abbreviation <code>kn</code>).
 	 */
-	public static final Unit<Velocity> KNOT = addUnit(
-			NAUTICAL_MILE.divide(HOUR)).asType(Velocity.class);
+	public static final Unit<Speed> KNOT = addUnit(
+			NAUTICAL_MILE.divide(HOUR)).asType(Speed.class);
 
 	// ////////
 	// Area //
@@ -274,6 +275,12 @@ public final class USCustomary extends AbstractSystemOfUnits {
 	// ///////////////
 	// Data Amount //
 	// ///////////////
+	/**
+	 * The unit for binary information (<code>bit</code>).
+	 */
+	public static final Unit<Information> BIT = addUnit(new AlternateUnit<Information>(
+			 AbstractUnit.ONE, Messages.SI_bit));
+
 	/**
 	 * A unit of data amount equal to <code>8 {@link SI#BIT}</code> (BinarY
 	 * TErm, standard name <code>byte</code>).
