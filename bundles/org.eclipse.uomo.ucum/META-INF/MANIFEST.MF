@@ -10,11 +10,11 @@ Export-Package: org.eclipse.uomo.ucum,
  org.eclipse.uomo.ucum.model,
  org.eclipse.uomo.ucum.parsers,
  org.eclipse.uomo.ucum.special
-Require-Bundle: org.eclipse.uomo.core;bundle-version="0.1.0",
- org.eclipse.uomo.util;bundle-version="0.2.6",
- org.eclipse.uomo.xml;bundle-version="0.2.0",
- org.eclipse.uomo.units;bundle-version="0.7.1",
- org.apache.commons.lang;bundle-version="2.3.0"
+Require-Bundle: org.eclipse.uomo.core;bundle-version="0.7.0",
+ org.eclipse.uomo.util;bundle-version="0.7.0",
+ org.eclipse.uomo.xml;bundle-version="0.7.0",
+ org.eclipse.uomo.units;bundle-version="0.7.0",
+ org.apache.commons.lang;bundle-version="2.0.0"
 Bundle-Vendor: Eclipse.org
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javax.measure,

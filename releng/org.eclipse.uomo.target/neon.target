@@ -8,19 +8,19 @@
 	</location>
 	 <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="true" type="InstallableUnit">
       <unit id="org.junit" version="4.12.0.v201504281640"/>
-      <unit id="javax.measure.unit-api" version="1.0.0.v20170818-1538"/>
       <repository id="eclipse-orbit-oxygen-sr1" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20170818183741/repository"/>
     </location>
-	<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
-		<unit id="si.uom.si-quantity" version="0.0.0"/>
-		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
-		<repository location="http://download.eclipse.org/uomo/third-party/repository/"/>
-	</location>
 	<location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.equinox.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.core.runtime.feature.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/eclipse/updates/4.6/R-4.6.2-201611241400/"/>
     </location>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+		<unit id="javax.measure.unit-api" version="0.0.0"/>
+		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
+		<unit id="si.uom.si-quantity" version="0.0.0"/>
+		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
+		<repository location="http://download.eclipse.org/uomo/third-party/repository/"/>
+	</location>
 </locations>
 </target>

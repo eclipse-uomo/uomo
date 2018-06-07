@@ -114,12 +114,12 @@
 			<dependency>
 				<groupId>si.uom</groupId>
 				<artifactId>si-quantity</artifactId>
-				<version>0.7.1</version>
+				<version>0.8</version>
 			</dependency>
 			<dependency>
 				<groupId>systems.uom</groupId>
 				<artifactId>systems-quantity</artifactId>
-				<version>0.7.2</version>
+				<version>0.8</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

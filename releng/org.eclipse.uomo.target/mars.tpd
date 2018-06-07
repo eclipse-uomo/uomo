@@ -50,9 +50,3 @@ location "http://download.eclipse.org/webtools/repository/mars/" {
     org.eclipse.jst.enterprise_sdk.feature.feature.group
     org.eclipse.wst.server_adapters.sdk.feature.feature.group
 }
-
-location "http://download.eclipse.org/tools/orbit/downloads/drops/R20160221192158/repository/" {
-	org.hamcrest
-	ch.qos.logback.slf4j
-	org.slf4j.log4j
-}
