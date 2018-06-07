@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Eclipse UOMo
 Bundle-SymbolicName: org.eclipse.uomo.ui
-Bundle-Version: 0.7.0
+Bundle-Version: 0.7.1
 Bundle-Vendor: Eclipse UOMo
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7,
  JavaSE-1.7

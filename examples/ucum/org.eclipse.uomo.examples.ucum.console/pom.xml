@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.eclipse.uomo.examples.ucum</groupId>
 		<artifactId>org.eclipse.uomo.examples.ucum</artifactId>
-		<version>0.7.0</version>
+		<version>0.7.1</version>
 	</parent>
 	<artifactId>org.eclipse.uomo.examples.ucum.console</artifactId>
 	<name>UOMo UCUM Console Examples</name>

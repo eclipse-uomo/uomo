@@ -20,7 +20,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.javaVersion>1.7</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
-		<uomo-version>0.7.0</uomo-version>
+		<uomo-version>0.7.1</uomo-version>
 		<tycho-version>0.16.0</tycho-version>
 		<icu4j-version>54.1</icu4j-version>
 		<maven.compiler.source>${project.build.javaVersion}</maven.compiler.source>
@@ -32,7 +32,7 @@
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
-	<version>0.7.0</version>
+	<version>0.7.1</version>
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo</name>
 
@@ -165,11 +165,11 @@
 						<artifact>
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
-							<version>0.7.0</version>
-							<classifier>mars</classifier>
+							<version>0.7.1</version>
+							<classifier>neon</classifier>
 						</artifact>
 					</target>
-					<ignoreTychoRepositories>true</ignoreTychoRepositories>
+					<ignoreTychoRepositories>false</ignoreTychoRepositories>
 					<environments>
 						<environment>
 							<os>win32</os>
@@ -319,7 +319,7 @@
 	</repositories>
 
 	<ciManagement>
-		<system>Hudson</system>
+		<system>Jenkins</system>
 		<url>https://hudson.eclipse.org/uomo/</url>
 	</ciManagement>
 </project>

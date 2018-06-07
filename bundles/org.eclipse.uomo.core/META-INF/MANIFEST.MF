@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Export-Package: org.eclipse.uomo.core,
  org.eclipse.uomo.core.impl
-Private-Package: org.eclipse.uomo.core;version=0.7.0,org.ecli
- pse.uomo.core.impl;version=0.7.0
+Private-Package: org.eclipse.uomo.core;version=0.7.1,org.ecli
+ pse.uomo.core.impl;version=0.7.1
 Bundle-ActivationPolicy: lazy
 Tool: Bnd-0.0.160
 Bundle-Name: UOMo Core
@@ -11,7 +11,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Require-Bundle: org.eclipse.osgi;bundle-version="3.6.0";visibility:=reexport,
  org.eclipse.osgi.services;bundle-version="3.2.100";visibility:=reexport
 Bundle-Vendor: Eclipse.org
-Bundle-Version: 0.7.0
+Bundle-Version: 0.7.1
 Bnd-LastModified: 1288905964975
 Bundle-Activator: org.eclipse.uomo.core.internal.Activator
 Bundle-ManifestVersion: 2
