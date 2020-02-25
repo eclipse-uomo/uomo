@@ -36,7 +36,7 @@ import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
 import org.eclipse.uomo.util.Registry;
 
-import tec.uom.se.AbstractConverter;
+import tech.units.indriya.AbstractConverter;
 
 /**
  * = [mu_0] = 4.[pi].10*-7.N/A2 = (g.m/s2)/(C/s)2? = g.m/s2/(C2/s2) =

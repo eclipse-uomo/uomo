@@ -13,7 +13,7 @@
 
 package org.eclipse.uomo.ucum.special;
 
-import static tec.uom.se.unit.Units.KELVIN;
+import static tech.units.indriya.unit.Units.KELVIN;
 
 import java.math.BigDecimal;
 import java.math.MathContext;

@@ -16,7 +16,7 @@ import java.math.BigDecimal;
 import javax.measure.Quantity;
 import javax.measure.Unit;
 
-import tec.uom.se.AbstractUnit;
+import tech.units.indriya.AbstractUnit;
 
 
 /**

@@ -20,7 +20,7 @@ import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
-import tec.uom.se.quantity.QuantityDimension;
+import tech.units.indriya.quantity.QuantityDimension;
 
 
 /**

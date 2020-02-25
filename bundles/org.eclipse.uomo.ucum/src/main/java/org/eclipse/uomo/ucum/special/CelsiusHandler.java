@@ -18,7 +18,7 @@ import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.quantity.Temperature;
 
-import static tec.uom.se.unit.Units.KELVIN;
+import static tech.units.indriya.unit.Units.KELVIN;
 
 public class CelsiusHandler extends SpecialUnitHandler<Temperature> {
 
