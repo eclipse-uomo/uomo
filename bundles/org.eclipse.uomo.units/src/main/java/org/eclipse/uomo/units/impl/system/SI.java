@@ -312,7 +312,7 @@ public final class SI extends AbstractSystemOfUnits {
 	 * becquerel is the radiation caused by one disintegration per second. It is
 	 * named after the French physicist, Antoine-Henri Becquerel (1852-1908).
 	 */
-	public static final Unit<RadioactiveActivity> BECQUEREL = addUnit(new AlternateUnit<RadioactiveActivity>(
+	public static final Unit<Radioactivity> BECQUEREL = addUnit(new AlternateUnit<Radioactivity>(
 			Messages.SI_Bq,
 			(AbstractUnit<?>) AbstractUnit.ONE.divide(SECOND)));
 
@@ -344,10 +344,10 @@ public final class SI extends AbstractSystemOfUnits {
 	// ////////////////////////////
 
 	/**
-	 * The metric unit for velocity quantities (<code>m/s</code>).
+	 * The metric unit for Speed quantities (<code>m/s</code>).
 	 * 
 	 */
-	public static final Unit<Velocity> METRES_PER_SECOND = addUnit(new ProductUnit<Velocity>(
+	public static final Unit<Speed> METRES_PER_SECOND = addUnit(new ProductUnit<Speed>(
 			(AbstractUnit<?>) METRE.divide(SECOND)));
 
 	/**

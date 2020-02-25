@@ -177,9 +177,9 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> implements Unit<Q>, Na
 	 * <p>
 	 * Because the metric unit is unique by quantity type, it can be be used to
 	 * identify the quantity given the unit. For example:[code] static boolean
-	 * isAngularVelocity(Unit<?> unit) { return
+	 * isAngularSpeed(Unit<?> unit) { return
 	 * unit.toMetric().equals(RADIAN.divide(SECOND)); }
-	 * assert(REVOLUTION.divide(MINUTE).isAngularVelocity()); // Returns true.
+	 * assert(REVOLUTION.divide(MINUTE).isAngularSpeed()); // Returns true.
 	 * [/code]
 	 * 
 	 * @return the metric unit this unit is derived from or <code>this</code> if
@@ -254,8 +254,8 @@ public abstract class AbstractUnit<Q extends Quantity<Q>> implements Unit<Q>, Na
 	 * Casts this unit to a parameterized unit of specified nature or throw a
 	 * <code>ClassCastException</code> if the dimension of the specified
 	 * quantity and this unit's dimension do not match. For example:[code]
-	 * Unit<Velocity> C =
-	 * METRE.times(299792458).divide(SECOND).asType(Velocity.class); [/code]
+	 * Unit<Speed> C =
+	 * METRE.times(299792458).divide(SECOND).asType(Speed.class); [/code]
 	 * 
 	 * @param <T>
 	 *            The type of the quantity measured by the unit.

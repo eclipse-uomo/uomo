@@ -18,13 +18,13 @@
 	<properties>
 		<sourceEncoding>UTF-8</sourceEncoding> <!-- in Maven 3. -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.build.javaVersion>1.7</project.build.javaVersion>
+		<project.build.javaVersion>1.8</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.8.0-SNAPSHOT</uomo-version>
 		<tycho-version>1.0.0</tycho-version>
 		<unit-api-version>1.0</unit-api-version>
-		<uom-lib-version>1.0.1</uom-lib-version>
-		<uom-se-version>1.0.6</uom-se-version>
+		<uom-lib-version>1.1</uom-lib-version>
+		<indriya-version>1.3</indriya-version>
 		<icu4j-version>56.1</icu4j-version>
 		<junit.version>4.12</junit.version>
 		<karaf.version>4.0.3</karaf.version>

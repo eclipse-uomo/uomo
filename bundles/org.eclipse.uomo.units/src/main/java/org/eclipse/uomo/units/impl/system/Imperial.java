@@ -138,7 +138,7 @@ public final class Imperial extends AbstractSystemOfUnits  {
 	static final Unit<Time> HOUR = addUnit(MINUTE.multiply(60));
 
 	// ////////////
-	// Velocity //
+	// Speed //
 	// ////////////
 
 

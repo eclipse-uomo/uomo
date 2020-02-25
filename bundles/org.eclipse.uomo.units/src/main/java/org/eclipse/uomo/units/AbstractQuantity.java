@@ -32,7 +32,7 @@ import tec.uom.lib.common.function.ValueSupplier;
  * 
  * <p>
  * <code>
- *         public static final Quantity&lt;Velocity&gt; C = NumberQuantity.parse("299792458 m/s").asType(Velocity.class);
+ *         public static final Quantity&lt;Speed&gt; C = NumberQuantity.parse("299792458 m/s").asType(Speed.class);
  *         // Speed of Light (exact).
  *    </code>
  * </p>
@@ -40,7 +40,7 @@ import tec.uom.lib.common.function.ValueSupplier;
  * <p>
  * Quantities can be converted to different units.<br>
  * <code>
- *         Quantity&lt;Velocity&gt; milesPerHour = C.to(MILES_PER_HOUR); // Use double implementation (fast).
+ *         Quantity&lt;Speed&gt; milesPerHour = C.to(MILES_PER_HOUR); // Use double implementation (fast).
  *         System.out.println(milesPerHour);
  * 
  *         &gt; 670616629.3843951 m/h

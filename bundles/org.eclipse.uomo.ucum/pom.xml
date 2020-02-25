@@ -15,12 +15,12 @@
 			<artifactId>unit-api</artifactId>
 		</dependency>
 			<dependency>
-				<groupId>tec.uom</groupId>
-				<artifactId>uom-se</artifactId>
-				<version>${uom-se-version}</version>
+				<groupId>tech.units</groupId>
+				<artifactId>indriya</artifactId>
+				<version>${indriya-version}</version>
 			</dependency>
 			<dependency>
-				<groupId>tec.uom.lib</groupId>
+				<groupId>tech.uom.lib</groupId>
 				<artifactId>uom-lib-common</artifactId>
 				<version>${uom-lib-version}</version>
 			</dependency>
@@ -31,7 +31,7 @@
 		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
+			<url>https://jcenter.bintray.com</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -39,7 +39,7 @@
 			</snapshots>
 			<id>bintray-release</id>
 			<name>libs-release</name>
-			<url>http://oss.jfrog.org/artifactory/libs-release</url>
+			<url>https://oss.jfrog.org/artifactory/libs-release</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -47,12 +47,12 @@
 			</snapshots>
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
-			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
+			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 		<repository>
 			<id>bintray-uom</id>
 			<name>Bintray Units of Measurement</name>
-			<url>http://dl.bintray.com/unitsofmeasurement/maven</url>
+			<url>https://dl.bintray.com/unitsofmeasurement/maven</url>
 		</repository>
 	</repositories>
 </project>

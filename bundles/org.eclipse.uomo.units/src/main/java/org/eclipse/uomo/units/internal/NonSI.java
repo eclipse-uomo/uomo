@@ -347,13 +347,13 @@ public final class NonSI extends AbstractSystemOfUnits {
 			.multiply(Math.PI).asType(Angle.class));
 	
 	// ////////////
-	// Velocity //
+	// Speed //
 	// ////////////
 	/**
-	 * A unit of velocity relative to the speed of light (standard name
+	 * A unit of Speed relative to the speed of light (standard name
 	 * <code>c</code>).
 	 */
-	static final Unit<Velocity> C = addUnit(METRES_PER_SECOND
+	static final Unit<Speed> C = addUnit(METRES_PER_SECOND
 			.multiply(299792458));
 
 	// ////////////////
@@ -475,7 +475,7 @@ public final class NonSI extends AbstractSystemOfUnits {
 	// /////////
 	/**
 	 * A unit of power equal to the power required to raise a mass of 75
-	 * kilograms at a velocity of 1 meter per second (metric, standard name
+	 * kilograms at a Speed of 1 meter per second (metric, standard name
 	 * <code>hp</code>).
 	 */
 	static final Unit<Power> HORSEPOWER = addUnit(WATT.multiply(735.499));
@@ -535,14 +535,14 @@ public final class NonSI extends AbstractSystemOfUnits {
 	 * A unit of radioctive activity equal to the activity of a gram of radium
 	 * (standard name <code>Ci</code>).
 	 */
-	static final Unit<RadioactiveActivity> CURIE = addUnit(BECQUEREL
+	static final Unit<Radioactivity> CURIE = addUnit(BECQUEREL
 			.multiply(37000000000L));
 
 	/**
 	 * A unit of radioctive activity equal to 1 million radioactive
 	 * disintegrations per second (standard name <code>Rd</code>).
 	 */
-	static final Unit<RadioactiveActivity> RUTHERFORD = addUnit(BECQUEREL
+	static final Unit<Radioactivity> RUTHERFORD = addUnit(BECQUEREL
 			.multiply(1000000));
 
 	// ///////////////

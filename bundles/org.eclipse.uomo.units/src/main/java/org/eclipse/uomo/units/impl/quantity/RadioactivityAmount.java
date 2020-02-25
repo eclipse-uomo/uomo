@@ -11,21 +11,21 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import javax.measure.quantity.RadioactiveActivity;
+import javax.measure.quantity.Radioactivity;
 import javax.measure.Unit;
 
 /**
- * Represents radioactivity. The metric system unit for this quantity is "Bq"
+ * Represents Radioactivity. The metric system unit for this quantity is "Bq"
  * (Becquerel).
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, $Date: 2014-03-03 $
  */
-public class RadioactivityAmount extends BaseQuantity<RadioactiveActivity>
-		implements RadioactiveActivity {
+public class RadioactivityAmount extends BaseQuantity<Radioactivity>
+		implements Radioactivity {
 
-	public RadioactivityAmount(Number number, Unit<RadioactiveActivity> unit) {
+	public RadioactivityAmount(Number number, Unit<Radioactivity> unit) {
 		super(number, unit);
 	}
 }

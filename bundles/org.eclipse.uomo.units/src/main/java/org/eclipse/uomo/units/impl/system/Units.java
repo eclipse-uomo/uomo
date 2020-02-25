@@ -303,7 +303,7 @@ public class Units extends AbstractSystemOfUnits implements Nameable {
   public static final Unit<Volume> CUBIC_METRE = addUnit(new ProductUnit<Volume>(SQUARE_METRE.multiply(METRE)), Volume.class);
 
   /**
-   * A unit of velocity expressing the number of international {@link #KILOMETRE kilometres} per {@link #HOUR hour} (abbreviation <code>km/h</code>).
+   * A unit of Speed expressing the number of international {@link #KILOMETRE kilometres} per {@link #HOUR hour} (abbreviation <code>km/h</code>).
    */
   public static final Unit<Speed> KILOMETRE_PER_HOUR = addUnit(METRE_PER_SECOND.multiply(0.277778d)).asType(Speed.class);
 

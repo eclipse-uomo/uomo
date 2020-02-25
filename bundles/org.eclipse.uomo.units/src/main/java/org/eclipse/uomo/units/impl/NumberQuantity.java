@@ -264,4 +264,10 @@ public class NumberQuantity<Q extends Quantity<Q>> extends AbstractQuantity<Q> {
   public static Quantity<?> parse(CharSequence csq) {
     return QuantityFormat.getInstance().parse(csq);
   }
+
+@Override
+protected boolean isBig() {
+	// TODO Auto-generated method stub
+	return false;
+}
 }

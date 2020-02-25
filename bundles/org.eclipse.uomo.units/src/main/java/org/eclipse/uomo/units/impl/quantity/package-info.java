@@ -27,9 +27,9 @@
  *     metres) before the computation begin. For this purpose, the {@code Quantity} interface
  *     provides the {@code longValue(Unit<Q>)} and {@code doubleValue(Unit<Q>)} convenience
  *     methods. Example:[code]
- *        TimeAmount calculateTravelTime(Length distance, Velocity velocity) {
+ *        TimeAmount calculateTravelTime(Length distance, Speed Speed) {
  *            double seconds = distance.doubleValue(METRE) /
- *                             velocity.doubleValue(METRE_PER_SECOND);
+ *                             Speed.doubleValue(METRE_PER_SECOND);
  *            return new TimeAmount(seconds, SECOND);
  *        }
  *     [/code]
@@ -40,7 +40,7 @@
  *        Sensor<Temperature> sensor ... // Generic sensor.
  *        Temperature temp = sensor.getValue();
  *        MassAmount mass = new MassAmount(180, POUND); // Combination magnitude/precision/unit (measurement)
- *        Vector3D<Velocity> aircraftSpeed = new Vector3D(12.0, 34.0, -45.5, METRE_PER_SECOND);
+ *        Vector3D<Speed> aircraftSpeed = new Vector3D(12.0, 34.0, -45.5, METRE_PER_SECOND);
  *     [/code]</p>
  *
  * <p> This package holds only the quantities required by the metric system.</p>

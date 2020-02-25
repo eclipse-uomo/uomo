@@ -11,7 +11,7 @@
 package org.eclipse.uomo.units.impl.quantity;
 
 import org.eclipse.uomo.units.impl.BaseQuantity;
-import javax.measure.quantity.Velocity;
+import javax.measure.quantity.Speed;
 import javax.measure.Unit;
 
 /**
@@ -22,9 +22,9 @@ import javax.measure.Unit;
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 1.2, ($Revision: 212 $), $Date: 2010-09-13 23:50:44 +0200 (Mo, 13 Sep 2010) $
  */
-public class VelocityAmount extends BaseQuantity<Velocity> {
+public class SpeedAmount extends BaseQuantity<Speed> {
 
-	public VelocityAmount(Number number, Unit<Velocity> unit) {
+	public SpeedAmount(Number number, Unit<Speed> unit) {
 		super(number, unit);
 	}
 }
