@@ -30,7 +30,6 @@
 			<artifactId>systems-quantity</artifactId>
 			<version>1.0</version>
 		</dependency>
-
 	</dependencies>
 
 	<!-- Additional repositories -->
