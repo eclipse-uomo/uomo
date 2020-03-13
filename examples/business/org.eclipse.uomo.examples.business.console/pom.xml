@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.eclipse.uomo.examples.business</groupId>
 		<artifactId>org.eclipse.uomo.examples.business</artifactId>
-		<version>0.8.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.uomo.examples.business.console</artifactId>
 	<name>UOMo Business Console Examples</name>
