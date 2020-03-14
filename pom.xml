@@ -24,7 +24,7 @@
 		<project.build.javaVersion>1.6</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>0.6.1</uomo-version>
-		<tycho-version>0.16.0</tycho-version>
+		<tycho-version>1.0.0</tycho-version>
 		<icu4j-version>52.1</icu4j-version>
 		<maven.compiler.source>${project.build.javaVersion}</maven.compiler.source>
 		<maven.compiler.target>${project.build.javaVersion}</maven.compiler.target>
