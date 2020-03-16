@@ -69,12 +69,20 @@
 			<email>christopher.senior@gmail.com</email>
 			<organization>Private Individual</organization>
 			<roles>
-				<role>Architect</role>
-				<role>Java Developer</role>
+				<role>Committer emeritus</role>
 			</roles>
 		</developer>
 	</developers>
 	<contributors>
+		<contributor>
+			<name>Chris Senior</name>
+			<!-- >csenior</id -->
+			<email>christopher.senior@gmail.com</email>
+			<organization>Private Individual</organization>
+			<roles>
+				<role>Committer emeritus</role>
+			</roles>
+		</contributor>
 		<contributor>
 			<name>Grahame Grieve</name>
 			<!-- id>grahameg</id -->
@@ -248,7 +256,7 @@
 	</pluginRepositories>
 
 	<ciManagement>
-		<system>Hudson</system>
-		<url>https://hudson.eclipse.org/uomo/</url>
+		<system>Jenkins</system>
+		<url>https://ci.eclipse.org/uomo/</url>
 	</ciManagement>
 </project>
