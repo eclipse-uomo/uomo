@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2013, Werner Keil and others.
+ * Copyright (c) 2006, 2020, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,8 +11,8 @@
 package org.eclipse.uomo.business.money;
 
 import org.eclipse.uomo.business.types.IMoney;
-import org.eclipse.uomo.units.AbstractSystemOfUnits;
-import org.unitsofmeasurement.unit.SystemOfUnits;
+import tech.units.indriya.AbstractSystemOfUnits;
+import javax.measure.spi.SystemOfUnits;
 import javax.measure.Unit;
 
 import com.ibm.icu.util.Currency;

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2013, Werner Keil and others.
+ * Copyright (c) 2005, 2020, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,18 +10,18 @@
  */
 package org.eclipse.uomo.examples.units.console;
 
-import org.eclipse.uomo.units.IMeasure;
-import org.eclipse.uomo.units.SI;
-import org.eclipse.uomo.units.impl.quantity.AreaAmount;
-import org.eclipse.uomo.units.impl.quantity.LengthAmount;
-import org.eclipse.uomo.units.impl.quantity.TimeAmount;
-import org.eclipse.uomo.units.impl.system.USCustomary;
+import javax.measure.Quantity;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
-import org.unitsofmeasurement.quantity.Acceleration;
-import org.unitsofmeasurement.quantity.Area;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Time;
+import javax.measure.quantity.Area;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Speed;
+import javax.measure.quantity.Time;
+
+import si.uom.SI;
+import systems.uom.common.USCustomary;
+import tech.units.indriya.ComparableQuantity;
+import tech.units.indriya.quantity.Quantities;
 
 /**
  * A 'Hello World!' style example showing some basic units and operations.
@@ -34,13 +34,13 @@ public class HelloUnits {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		LengthAmount length = new LengthAmount(10, SI.METRE);
+		ComparableQuantity length = Quantities.getQuantity(10, SI.METRE);
 //		LengthAmount length = new LengthAmount(10, SI.KILOGRAM); // this won't work ;-)
 		
 		System.out.println(length);
-		Unit<Length> lenUnit =  length.unit();
+		Unit<Length> lenUnit =  length.getUnit();
 		
-		System.out.print(length.doubleValue(USCustomary.FOOT)); 
+		//System.out.print(length.doubleValue(USCustomary.FOOT)); 
 		System.out.println(" " + USCustomary.FOOT);
 //		System.out.println(length.doubleValue(USCustomary.POUND)); // this won't work either.
 		UnitConverter inchConverter = lenUnit.getConverterTo(USCustomary.INCH);
@@ -48,15 +48,15 @@ public class HelloUnits {
 		System.out.println(" " + USCustomary.INCH);
 		
 		@SuppressWarnings("unchecked")
-		AreaAmount area = new AreaAmount(length.getValue().doubleValue() * length.getValue().doubleValue(), 
-				(Unit<Area>) length.unit().multiply(SI.METRE));
+		ComparableQuantity area = Quantities.getQuantity(length.getValue().doubleValue() * length.getValue().doubleValue(), 
+				(Unit<Area>) length.getUnit().multiply(SI.METRE));
 		System.out.println(area);
 		
 		// Equivalent to 
-		IMeasure<Length> meters = new LengthAmount(5, SI.METRE);
-		IMeasure<Time> secs = new TimeAmount(2, SI.SECOND);
+		Quantity<Length> meters = Quantities.getQuantity(5, SI.METRE);
+		Quantity<Time> secs = Quantities.getQuantity(2, SI.SECOND);
 		@SuppressWarnings("unchecked")
-		IMeasure<Acceleration> speed = (IMeasure<Acceleration>) meters.divide(secs);
+		Quantity<Speed> speed = (Quantity<Speed>) meters.divide(secs);
 		System.out.println(meters + 
 				"; " + secs +
 				"; " + speed);

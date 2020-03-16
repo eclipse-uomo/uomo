@@ -13,9 +13,11 @@
   <modules>
   	<module>org.eclipse.uomo.core</module>
   	<module>org.eclipse.uomo.core.tests</module>
+  	<!--
   	<module>org.eclipse.uomo.units</module>
   	<module>org.eclipse.uomo.units.tests</module>
-	<!-- <module>org.eclipse.uomo.icu</module>-->
+	 <module>org.eclipse.uomo.icu</module>
+	 -->
   	<module>org.eclipse.uomo.xml</module>
   	<module>org.eclipse.uomo.xml.tests</module>
   	<module>org.eclipse.uomo.util</module>

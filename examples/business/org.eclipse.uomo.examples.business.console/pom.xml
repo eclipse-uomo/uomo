@@ -11,13 +11,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.unitsofmeasurement</groupId>
+			<groupId>javax.measure</groupId>
 			<artifactId>unit-api</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.eclipse.uomo</groupId>
-			<artifactId>org.eclipse.uomo.units</artifactId>
-		</dependency>
+   		<dependency>
+        	<groupId>tech.units</groupId>
+        	<artifactId>indriya</artifactId>
+        </dependency>
 		<dependency>
 			<groupId>org.eclipse.uomo</groupId>
 			<artifactId>org.eclipse.uomo.business</artifactId>

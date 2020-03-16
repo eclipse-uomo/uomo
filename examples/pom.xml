@@ -37,14 +37,24 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.unitsofmeasurement</groupId>
+				<groupId>javax.measure</groupId>
 				<artifactId>unit-api</artifactId>
-				<version>0.6.1</version>
+				<version>1.0</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse.uomo</groupId>
-				<artifactId>org.eclipse.uomo.units</artifactId>
-				<version>${uomo-version}</version>
+				<groupId>tech.units</groupId>
+				<artifactId>indriya</artifactId>
+				<version>${indriya-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>si.uom</groupId>
+				<artifactId>si-units</artifactId>
+				<version>${si-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>systems.uom</groupId>
+				<artifactId>systems-common</artifactId>
+				<version>${systems-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
