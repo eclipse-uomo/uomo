@@ -89,5 +89,59 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	 */
 	public Unit<Q> unit() {
 		return realUnit;
+	}
+
+	@Override
+	public Quantity<Q> add(Quantity<Q> augend) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> subtract(Quantity<Q> subtrahend) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> divide(Quantity<?> divisor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> divide(Number divisor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> multiply(Quantity<?> multiplier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> multiply(Number multiplier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<?> inverse() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Quantity<Q> to(Unit<Q> unit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public <T extends Quantity<T>> Quantity<T> asType(Class<T> type) throws ClassCastException {
+		// TODO Auto-generated method stub
+		return null;
 	}		
 }
