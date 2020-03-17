@@ -59,7 +59,7 @@ public final class MonetaryUnits extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private final static <U extends Unit<?>> U monetary(U unit) {
-        UNITS.add(unit);
+        INSTANCE.add(unit);
         return unit;
     }
 

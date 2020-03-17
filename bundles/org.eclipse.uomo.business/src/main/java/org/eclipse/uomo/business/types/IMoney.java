@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2010, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2020, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,8 @@ package org.eclipse.uomo.business.types;
 
 import static org.eclipse.uomo.business.money.MoneyAmount.UNIT;
 
-import org.eclipse.uomo.units.IMeasure;
 import javax.measure.Dimension;
+import javax.measure.Quantity;
 
 /**
  * This interface represents something generally accepted as a medium of
@@ -24,7 +24,7 @@ import javax.measure.Dimension;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @version 3.2 ($Revision: 227 $), $Date: 2010-10-01 00:54:55 +0200 (Fr, 01 Okt 2010) $
  */
-public interface IMoney extends IBDType, IMeasure<IMoney> {
+public interface IMoney extends IBDType, Quantity<IMoney> {
 
     /**
      * Holds the dimension for money quantities (dimension [$]).

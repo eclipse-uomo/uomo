@@ -19,28 +19,30 @@ import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.Localizable;
 import org.eclipse.uomo.business.types.IMoney;
 import org.eclipse.uomo.core.IName;
-import org.eclipse.uomo.units.AbstractConverter;
-import org.eclipse.uomo.units.AbstractUnit;
-import org.eclipse.uomo.units.impl.AlternateUnit;
-import org.eclipse.uomo.units.impl.ProductUnit;
-import org.eclipse.uomo.units.impl.TransformedUnit;
-import org.eclipse.uomo.units.impl.converter.AddConverter;
-import org.eclipse.uomo.units.impl.converter.MultiplyConverter;
-import org.eclipse.uomo.units.impl.converter.RationalConverter;
+
 import javax.measure.Quantity;
+import javax.measure.UnconvertibleException;
 import javax.measure.Dimension;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
+import javax.measure.IncommensurableException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
 import com.ibm.icu.util.Currency;
 import com.ibm.icu.util.ULocale;
 
+import tech.units.indriya.AbstractConverter;
+import tech.units.indriya.AbstractUnit;
+import tech.units.indriya.function.AddConverter;
+import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.unit.AlternateUnit;
+import tech.units.indriya.unit.ProductUnit;
+import tech.units.indriya.unit.TransformedUnit;
+
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.2.8, $Date: 2015-04-15
+ * @version 0.3, $Date: 2020-03-16
  * @param <Q> the monetary quantity
  * 
  */
@@ -168,7 +170,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public final Unit<IMoney> alternate(String symbol) {
-		return new AlternateUnit(symbol, this);
+		return new AlternateUnit(this, symbol);
 	}
 
 	public <T extends Quantity<T>> Unit<T> asType(Class<T> type) {
@@ -244,7 +246,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 			return this;
 		if (this.isRationalFactor())
 			return this.transform(this.getConverterTo((Unit) ONE).inverse());
-		return ProductUnit.getQuotientInstance(ONE, this);
+		return ProductUnit.ofQuotient(ONE, this);
 	}
 
 	public boolean isCompatible(Unit<?> that) {
@@ -300,7 +302,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 			return that.transform(this.getConverterTo(ONE));
 		if (((MoneyUnit<?>) that).isRationalFactor())
 			return this.transform(that.getConverterTo((Unit) ONE));
-		return ProductUnit.getProductInstance(this, (AbstractUnit<?>) that);
+		return ProductUnit.ofProduct(this, (AbstractUnit<?>) that);
 	}
 
 	/**
@@ -332,7 +334,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	 */
 	public final Unit<?> root(int n) {
 		if (n > 0)
-			return ProductUnit.getRootInstance(this, n);
+			return ProductUnit.ofRoot(this, n);
 		else if (n == 0)
 			throw new ArithmeticException("Root's order of zero"); //$NON-NLS-1$
 		else
@@ -361,7 +363,7 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 			Unit<IMoney> tf = this;
 			Unit<?> parent = (Unit<?>) ((TransformedUnit<?>) tf)
 					.getParentUnit();
-			UnitConverter toParent = ((TransformedUnit<?>) tf).toParentUnit();
+			UnitConverter toParent = tf.getConverterTo((Unit<IMoney>) parent);
 			if (toParent == null)
 				return (Unit<IMoney>) parent;
 			UnitConverter toParentConcat = toParent.concatenate(operation);
@@ -476,6 +478,18 @@ public class MoneyUnit<Q extends IMoney> extends Currency implements
 	 */
 	public static MoneyUnit of(String currencyCode) {
 		return new MoneyUnit(currencyCode);
+	}
+
+	@Override
+	public Map<? extends Unit<?>, Integer> getBaseUnits() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Unit<IMoney> shift(double offset) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 //	public String getDisplayName(Locale locale) {
