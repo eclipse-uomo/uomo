@@ -24,7 +24,9 @@
   	<module>org.eclipse.uomo.util.tests</module>
   	<module>org.eclipse.uomo.ucum</module>
   	<module>org.eclipse.uomo.ucum.tests</module>
+  	<!--
   	<module>org.eclipse.uomo.business</module>
+  	-->
   	<module>org.eclipse.uomo.ui</module>
   	<!-- <module>org.eclipse.uomo.business.tests</module>-->
   </modules>
