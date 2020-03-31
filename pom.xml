@@ -38,7 +38,7 @@
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>0.8.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo</name>
 
@@ -67,13 +67,12 @@
 			</roles>
 		</developer>
 		<developer>
-			<id>otaviojava</id>
-			<name>Otávio Gonçalves de Santana</name>
-			<email>otaviopolianasantana@gmail.com</email>
-			<organization>Individual / SouJava</organization>
-			<timezone>-5</timezone>
+			<name>Chris Senior</name>
+			<id>csenior</id>
+			<email>christopher.senior@gmail.com</email>
+			<organization>Private Individual</organization>
 			<roles>
-				<role>Java Developer</role>
+				<role>Committer emeritus</role>
 			</roles>
 		</developer>
 	</developers>
@@ -175,8 +174,8 @@
 						<artifact>
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
-							<version>1.0.0-SNAPSHOT</version>
-							<classifier>neon</classifier>
+							<version>0.8.0-SNAPSHOT</version>
+							<classifier>${target.release}</classifier>
 						</artifact>
 					</target>
 					<ignoreTychoRepositories>true</ignoreTychoRepositories>
@@ -316,7 +315,7 @@
 		<repository>
 			<id>jcenter</id>
 			<name>JCenter</name>
-			<url>https://jcenter.bintray.com</url>
+			<url>http://jcenter.bintray.com</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -324,7 +323,7 @@
 			</snapshots>
 			<id>bintray-release</id>
 			<name>libs-release</name>
-			<url>https://oss.jfrog.org/artifactory/libs-release</url>
+			<url>http://oss.jfrog.org/artifactory/libs-release</url>
 		</repository>
 		<repository>
 			<snapshots>
@@ -332,12 +331,12 @@
 			</snapshots>
 			<id>bintray-snapshot</id>
 			<name>libs-snapshot</name>
-			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
+			<url>http://oss.jfrog.org/artifactory/libs-snapshot</url>
 		</repository>
 		<repository>
 			<id>bintray-uom</id>
 			<name>Bintray Units of Measurement</name>
-			<url>https://dl.bintray.com/unitsofmeasurement/maven</url>
+			<url>http://dl.bintray.com/unitsofmeasurement/maven</url>
 		</repository>
 	</repositories>
 
@@ -348,13 +347,13 @@
 		</pluginRepository>
 		<pluginRepository>
 			<id>buchen-maven-repo</id>
-			<url>https://buchen.github.io/maven-repo</url>
+			<url>http://buchen.github.io/maven-repo</url>
 			<layout>default</layout>
 		</pluginRepository>
 		<pluginRepository>
 			<id>jcenter</id>
 			<name>JCenter</name>
-			<url>https://jcenter.bintray.com</url>
+			<url>http://jcenter.bintray.com</url>
 		</pluginRepository>
 	</pluginRepositories>
 
