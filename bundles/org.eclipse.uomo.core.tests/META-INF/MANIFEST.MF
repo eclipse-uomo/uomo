@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMO Core Tests
 Bundle-SymbolicName: org.eclipse.uomo.core.tests
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Eclipse org
 Fragment-Host: org.eclipse.uomo.core;bundle-version="0.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

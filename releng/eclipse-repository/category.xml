@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.eclipse.uomo.feature_0.8.0.qualifier.jar" id="org.eclipse.uomo.feature" version="0.8.0.qualifier">
+   <feature url="features/org.eclipse.uomo.feature_0.8.0.qualifier.jar" id="org.eclipse.uomo.feature" version="1.0.0.qualifier">
    	  <category name="uomo-category"/>
    </feature>
    <category-def name="uomo-category" label="Units of Measurement (UOMo)">
