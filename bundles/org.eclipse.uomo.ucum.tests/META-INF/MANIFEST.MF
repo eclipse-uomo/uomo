@@ -2,14 +2,14 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UCUM Tests
 Bundle-SymbolicName: org.eclipse.uomo.ucum.tests
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.9.0.qualifier
 Bundle-Vendor: Eclipse.org
-Fragment-Host: org.eclipse.uomo.ucum;bundle-version="0.8.0"
+Fragment-Host: org.eclipse.uomo.ucum;bundle-version="0.9.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.uomo.ucum.tests
 Require-Bundle: org.junit;bundle-version="4.8.2",
- org.eclipse.uomo.util;bundle-version="0.8.0",
- org.eclipse.uomo.xml;bundle-version="0.8.0"
+ org.eclipse.uomo.util;bundle-version="0.9.0",
+ org.eclipse.uomo.xml;bundle-version="0.9.0"
 Import-Package: javax.measure,
  javax.measure.format,
  javax.measure.quantity,

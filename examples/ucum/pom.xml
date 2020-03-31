@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.eclipse.uomo</groupId>
     <artifactId>org.eclipse.uomo.examples</artifactId>
-    <version>0.8.0-SNAPSHOT</version>
+    <version>0.9.0-SNAPSHOT</version>
   </parent>
   <groupId>org.eclipse.uomo.examples.ucum</groupId>
   <artifactId>org.eclipse.uomo.examples.ucum</artifactId>

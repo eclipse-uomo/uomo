@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo XML
 Bundle-SymbolicName: org.eclipse.uomo.xml
-Bundle-Version: 0.8.0.qualifier
-Require-Bundle: org.eclipse.uomo.core;bundle-version="0.8.0",
+Bundle-Version: 0.9.0.qualifier
+Require-Bundle: org.eclipse.uomo.core;bundle-version="0.9.0",
  org.apache.commons.lang;bundle-version="2.6.0",
  org.apache.xerces,
  org.junit;bundle-version="4.8.2"
