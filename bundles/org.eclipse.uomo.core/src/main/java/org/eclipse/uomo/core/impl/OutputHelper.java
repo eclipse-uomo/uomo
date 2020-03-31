@@ -13,7 +13,7 @@ package org.eclipse.uomo.core.impl;
 /**
  * A static helper class, checking e.g. if some tests require optional console
  * output XXX this could have options for using a logging framework eventually
- * TODO change to Service (either OSGi LogService or separate service)
+ * TODO change to Service
  * @version 0.98, 2013-12-08
  * @author Werner Keil
  */

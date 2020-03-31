@@ -13,16 +13,20 @@
   <modules>
   	<module>org.eclipse.uomo.core</module>
   	<module>org.eclipse.uomo.core.tests</module>
+  	<!--
   	<module>org.eclipse.uomo.units</module>
   	<module>org.eclipse.uomo.units.tests</module>
-	<!-- <module>org.eclipse.uomo.icu</module>-->
+	 <module>org.eclipse.uomo.icu</module>
+	 -->
   	<module>org.eclipse.uomo.xml</module>
   	<module>org.eclipse.uomo.xml.tests</module>
   	<module>org.eclipse.uomo.util</module>
   	<module>org.eclipse.uomo.util.tests</module>
   	<module>org.eclipse.uomo.ucum</module>
   	<module>org.eclipse.uomo.ucum.tests</module>
+  	<!--
   	<module>org.eclipse.uomo.business</module>
+  	-->
   	<module>org.eclipse.uomo.ui</module>
   	<!-- <module>org.eclipse.uomo.business.tests</module>-->
   </modules>

@@ -1,18 +1,18 @@
 package org.eclipse.uomo.examples.units.console;
 
-import org.unitsofmeasurement.quantity.Acceleration;
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.quantity.Time;
+import javax.measure.quantity.Speed;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Time;
 import javax.measure.Unit;
 
-import static org.eclipse.uomo.units.SI.*;
+import static si.uom.SI.*;
 
 public class UnitsExample {
 	  public static void main(String[] args) {
 	    Unit<Length> distance = METRE.multiply(5);
 	    Unit<Time> time = SECOND.multiply(10);
 	    @SuppressWarnings("unchecked")
-		Unit<Acceleration> speed = (Unit<Acceleration>) distance.divide(time);
+		Unit<Speed> speed = (Unit<Speed>) distance.divide(time);
 
 	    System.out.println("Speed = " + speed);
 

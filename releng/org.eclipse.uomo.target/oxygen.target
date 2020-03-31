@@ -26,33 +26,17 @@
       <repository location="http://download.eclipse.org/releases/oxygen/201702031000/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.jst.web_sdk.feature.feature.group" version="3.8.0.v201701262152"/>
-      <unit id="org.eclipse.jst.server_sdk.feature.feature.group" version="3.4.300.v201606081655"/>
-      <unit id="org.eclipse.jst.common.fproj.enablement.jdt.sdk.feature.group" version="3.8.0.v201603091933"/>
-      <unit id="org.eclipse.wst.common.fproj.sdk.feature.group" version="3.7.0.v201505072140"/>
-      <unit id="org.eclipse.wst.web_sdk.feature.feature.group" version="3.9.0.v201701262152"/>
-      <unit id="org.eclipse.jst.enterprise_sdk.feature.feature.group" version="3.8.0.v201701262152"/>
-      <unit id="org.eclipse.wst.server_adapters.sdk.feature.feature.group" version="3.2.600.v201606081655"/>
-      <repository location="http://download.eclipse.org/webtools/downloads/drops/R3.9.0/S-3.9.0M5-20170201000249/repository"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+	  <unit id="javax.measure.unit-api" version="0.0.0"/>
       <unit id="org.hamcrest" version="1.1.0.v20090501071000"/>
       <unit id="ch.qos.logback.slf4j" version="1.1.2.v20160301-0943"/>
       <unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
-      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20170120205402/repository/"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository/"/>
     </location>
-    <!--
-    <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-		<unit id="javax.measure.unit-api" version="0.0.0"/>
-		<unit id="javax.measure.unit-api.source" version="0.0.0"/>
-		<unit id="tec.uom.lib.uom-lib-common" version="0.0.0"/>
-		<unit id="tec.uom.lib.uom-lib-common.source" version="0.0.0"/>
-		<unit id="tec.uom.se" version="0.0.0"/>
-		<unit id="tec.uom.se.source" version="0.0.0"/>
-		<unit id="systems.uom.systems-quantity" version="0.0.0"/>
-		<repository location="http://unitsofmeasurement.github.io/third-party/target/repository"/>
+	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+	  <unit id="tech.uom.lib.uom-lib-common" version="0.0.0"/>
+	  <unit id="tech.units.indriya" version="0.0.0"/>
+	  <unit id="systems.uom.systems-quantity" version="0.0.0"/>
+	  <repository location="https://dl.bintray.com/unitsofmeasurement/p2/systems.uom_p2_site/1.3a"/>
 	</location>
-	-->
-	<location path="${project_loc:releng}/third-party" type="Directory"/>
   </locations>
 </target>

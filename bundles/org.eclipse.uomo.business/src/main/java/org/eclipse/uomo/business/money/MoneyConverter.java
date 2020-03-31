@@ -23,7 +23,6 @@ import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.ExchangeRate;
 import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.IMoney;
-import org.eclipse.uomo.units.AbstractConverter;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
@@ -46,10 +45,10 @@ import com.ibm.icu.util.ULocale;
  * 
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
- * @version 5.3, $Date: 2013-05-25 $
+ * @version 5.4, $Date: 2020-03-17 $
  * @deprecated use JSR 354
  */
-public class MoneyConverter extends AbstractConverter implements Formattable {
+public class MoneyConverter implements UnitConverter, Formattable {
 
 	/**
      * 
@@ -283,5 +282,11 @@ public class MoneyConverter extends AbstractConverter implements Formattable {
 					sb.insert(0, ' ');
 
 		fmt.format(sb.toString());
+	}
+
+	@Override
+	public List<? extends UnitConverter> getConversionSteps() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

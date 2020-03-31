@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
+ * Crown Copyright (c) 2006, 2020, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import static org.eclipse.uomo.core.impl.OutputHelper.println;
 import static org.eclipse.uomo.ucum.model.ConceptKind.*;
 import static org.eclipse.uomo.ucum.expression.Operator.*;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ import tech.units.indriya.AbstractConverter;
  * @author Grahame Grieve
  * @author Werner Keil
  */
-class UcumConverter extends AbstractConverter {
+class UcumConverter implements UnitConverter, Serializable, Comparable<UnitConverter> {
 
 	/**
 	 * 
@@ -300,10 +301,10 @@ class UcumConverter extends AbstractConverter {
 		return compound.convert(value);
 	}
 
-	public BigDecimal convert(BigDecimal value, MathContext ctx)
-			throws ArithmeticException {
-		return ((AbstractConverter)compound).convert(value, ctx);
-	}
+//	public BigDecimal convert(BigDecimal value, MathContext ctx)
+//			throws ArithmeticException {
+//		return ((AbstractConverter)compound).convert(value, ctx);
+//	}
 
 	public List<UnitConverter> getCompoundConverters() {
 		final List<UnitConverter> compound = new ArrayList<UnitConverter>();
@@ -337,5 +338,17 @@ class UcumConverter extends AbstractConverter {
 	public int hashCode() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public int compareTo(UnitConverter o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public List<? extends UnitConverter> getConversionSteps() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
