@@ -14,9 +14,11 @@ import static org.eclipse.uomo.icu.types.BDTHelper.Operation.*;
 
 import java.math.BigDecimal;
 
+import javax.measure.Quantity;
 import javax.measure.Unit;
 
 import tech.units.indriya.AbstractQuantity;
+import tech.units.indriya.ComparableQuantity;
 
 /**
  * This class describes Percent amounts
@@ -31,12 +33,12 @@ public class PercentAmount extends AbstractQuantity<Percent> implements IBasicTy
 	final BigDecimal percentValue;
 	
 	PercentAmount(char[] c, Unit<Percent> unit) {
-		super(new BigDecimal(c), unit);
+		super(unit);
 		percentValue = calcPercent(String.valueOf(c));
 	}
 
 	public PercentAmount(BigDecimal bd, Unit<Percent> unit) {
-		super(bd, unit);
+		super(unit);
 		percentValue = calcPercent(bd);
 	}
 
@@ -171,5 +173,67 @@ public class PercentAmount extends AbstractQuantity<Percent> implements IBasicTy
 	 */
 	public String toString() {
 		return serialize();
+	}
+
+	@Override
+	public ComparableQuantity<Percent> add(Quantity<Percent> that) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComparableQuantity<Percent> subtract(Quantity<Percent> that) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComparableQuantity<?> divide(Quantity<?> that) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComparableQuantity<Percent> divide(Number that) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComparableQuantity<?> multiply(Quantity<?> multiplier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComparableQuantity<Percent> multiply(Number multiplier) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ComparableQuantity<?> inverse() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Number getValue() {
+		return percentValue;
+	}
+
+	public boolean isBig() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public BigDecimal decimalValue(Unit<Percent> unit) throws ArithmeticException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double doubleValue(Unit<Percent> unit) throws ArithmeticException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
