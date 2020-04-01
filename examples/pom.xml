@@ -60,6 +60,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>
+				<artifactId>org.eclipse.uomo.icu</artifactId>
+				<version>${uomo-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.uomo</groupId>
 				<artifactId>org.eclipse.uomo.util</artifactId>
 				<version>${uomo-version}</version>
 			</dependency>

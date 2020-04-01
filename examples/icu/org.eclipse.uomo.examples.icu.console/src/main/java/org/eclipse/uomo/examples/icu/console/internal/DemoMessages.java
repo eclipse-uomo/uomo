@@ -13,7 +13,7 @@ package org.eclipse.uomo.examples.icu.console.internal;
 import org.eclipse.osgi.util.NLS;
 
 public class DemoMessages extends NLS {
-	private static final String BUNDLE_NAME = "org.eclipse.uomo.business.money.demomessages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.eclipse.uomo.examples.icu.demomessages"; //$NON-NLS-1$
 	public static String MoneyDemo_Car_mileage;
 	public static String MoneyDemo_Gas_price;
 	public static String MoneyDemo_Trip_cost;
