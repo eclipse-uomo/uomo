@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="esh-tp-0.9.0-SNAPSHOT">
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.3.0" name="esh-tp-1.0.0-SNAPSHOT">
     <feature version="0.0.0">
         <feature prerequisite="false" dependency="false">esh-tp-measurement</feature>
         <feature prerequisite="false" dependency="false">eventadmin</feature>

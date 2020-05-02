@@ -4,7 +4,7 @@
 	<parent>
 		<artifactId>org.eclipse.uomo.releng</artifactId>
 		<groupId>org.eclipse.uomo</groupId>
-		<version>0.9.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.uomo.target</artifactId>
 	<name>Eclipse UOMo Target Definition</name>

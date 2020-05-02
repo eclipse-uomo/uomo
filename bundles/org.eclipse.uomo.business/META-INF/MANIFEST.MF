@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo Business
 Bundle-SymbolicName: org.eclipse.uomo.business
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Eclipse.org
 Import-Package: javax.measure;version="[1.0,2)",
  javax.measure.format;version="[1.0,2)",
