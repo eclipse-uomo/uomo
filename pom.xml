@@ -311,34 +311,16 @@
 	</build>
 
 	<!-- Additional repositories -->
-	<repositories>
-		<repository>
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>https://jcenter.bintray.com</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>false</enabled>
-			</snapshots>
-			<id>bintray-release</id>
-			<name>libs-release</name>
-			<url>https://oss.jfrog.org/artifactory/libs-release</url>
-		</repository>
-		<repository>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-			<id>bintray-snapshot</id>
-			<name>libs-snapshot</name>
-			<url>https://oss.jfrog.org/artifactory/libs-snapshot</url>
-		</repository>
-		<repository>
-			<id>bintray-uom</id>
-			<name>Bintray Units of Measurement</name>
-			<url>https://dl.bintray.com/unitsofmeasurement/maven</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>ossrh-snapshot</id>
+            <name>OSSRH Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>       
+    </repositories>
 
 	<pluginRepositories>
 		<pluginRepository>
@@ -350,7 +332,7 @@
 			<url>https://buchen.github.io/maven-repo</url>
 			<layout>default</layout>
 		</pluginRepository>
-		<pluginRepository>
+		<pluginRepository><!-- TODO remove by late 2021 -->
 			<id>jcenter</id>
 			<name>JCenter</name>
 			<url>https://jcenter.bintray.com</url>
