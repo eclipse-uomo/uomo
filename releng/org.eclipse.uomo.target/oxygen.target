@@ -36,7 +36,7 @@
 	  <unit id="tech.uom.lib.uom-lib-common" version="0.0.0"/>
 	  <unit id="tech.units.indriya" version="0.0.0"/>
 	  <unit id="systems.uom.systems-quantity" version="0.0.0"/>
-	  <repository location="https://dl.bintray.com/unitsofmeasurement/p2/systems.uom_p2_site/1.3a"/>
+	  <repository location="http://download.eclipse.org/uomo/dependency/uom-systems/1.3a"/>
 	</location>
   </locations>
 </target>
