@@ -4,5 +4,5 @@ Bundle-Name: Eclipse UOMo
 Bundle-SymbolicName: org.eclipse.uomo.ui
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Eclipse UOMo
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8,
+Bundle-RequiredExecutionEnvironment: JavaSE-9,
  JavaSE-1.7

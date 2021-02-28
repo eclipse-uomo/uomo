@@ -72,7 +72,7 @@
                 <descriptor>mvn:${project.groupId}/esh-ext/${project.version}/xml/features</descriptor>
               </descriptors>
               <distribution>org.apache.karaf.features:framework</distribution>
-              <javase>1.8</javase>
+              <javase>9</javase>
               <framework>
                 <feature>framework</feature>
               </framework>
