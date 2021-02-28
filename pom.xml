@@ -59,12 +59,14 @@
 			</roles>
 		</developer>
 		<developer>
-			<name>Chris Senior</name>
-			<id>csenior</id>
-			<email>christopher.senior@gmail.com</email>
-			<organization>Private Individual</organization>
+			<id>otaviojava</id>
+			<name>Otávio Gonçalves de Santana</name>
+			<email>otaviopolianasantana@gmail.com</email>
+			<organization>Individual / SouJava</organization>
+			<timezone>+1</timezone>
 			<roles>
-				<role>Committer emeritus</role>
+				<role>Committer</role>
+				<role>Java Developer</role>
 			</roles>
 		</developer>
 	</developers>
