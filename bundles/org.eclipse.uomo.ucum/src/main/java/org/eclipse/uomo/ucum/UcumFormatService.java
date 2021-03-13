@@ -25,7 +25,7 @@ import javax.measure.spi.UnitFormatService;
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @see <a href="http://aurora.regenstrief.org/~ucum/ucum.html">UCUM Full Specification</a>
- * @version 1.1 ($Revision: 306 $), $Date: 2010-10-29 21:42:27 +0100 (Fr, 29 Okt 2010) $
+ * @version 2.0, $Date: 2021-03-13 $
  */
 public interface UcumFormatService extends UnitFormatService {
 

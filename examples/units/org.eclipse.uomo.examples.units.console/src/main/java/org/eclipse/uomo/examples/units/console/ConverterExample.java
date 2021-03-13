@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2020, Werner Keil and others.
+ * Copyright (c) 2005, 2021, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,7 +11,7 @@
 package org.eclipse.uomo.examples.units.console;
 
 import static si.uom.SI.*;
-import static tech.units.indriya.unit.MetricPrefix.KILO;
+import static javax.measure.MetricPrefix.KILO;
 import static systems.uom.common.USCustomary.FOOT;
 import static systems.uom.common.USCustomary.INCH;
 import static systems.uom.common.USCustomary.MILE;
