@@ -17,6 +17,11 @@
     <!-- Helps to resolve Parent POM and Snapshot artifacts -->
    <repositories>
         <repository>
+            <id>maven-geotoolkit.org</id>
+            <name>GeoToolkit Repository for Maven</name>
+            <url>https://maven.geotoolkit.org/</url>
+        </repository>
+        <repository>
 			<id>springplugins</id>
 			<name>Spring Plugins Repository</name>
 			<url>https://repo.spring.io/plugins-release/</url>
