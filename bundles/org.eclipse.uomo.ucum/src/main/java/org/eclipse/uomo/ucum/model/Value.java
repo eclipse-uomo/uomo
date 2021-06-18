@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
+ * Crown Copyright (c) 2006, 2011, Copyright (c) 2006, 2021 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import org.eclipse.uomo.core.ICode;
 import org.eclipse.uomo.core.IDescription;
 import javax.measure.Quantity;
+import javax.measure.Quantity.Scale;
 import javax.measure.Unit;
 
 public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, ICode<String> {
@@ -25,20 +26,32 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	private final String unit;
 	private final String unitUC;
 	private final BigDecimal value;
+	private final Scale scale;
 	private Unit<Q> realUnit;
 	@SuppressWarnings("unused")
 	private String text;
-
+	
+	/**
+	 * @param unit
+	 * @param unitUC
+	 * @param value
+	 * @param scale
+	 */
+	public Value(String unit, String unitUC, BigDecimal value, Scale scale) {
+		super();
+		this.unit = unit;
+		this.unitUC = unitUC;
+		this.value = value;
+		this.scale = scale;
+	}
+	
 	/**
 	 * @param unit
 	 * @param unitUC
 	 * @param value
 	 */
 	public Value(String unit, String unitUC, BigDecimal value) {
-		super();
-		this.unit = unit;
-		this.unitUC = unitUC;
-		this.value = value;
+		this(unit, unitUC, value, Scale.ABSOLUTE);
 	}
 
 	/**
@@ -54,6 +67,13 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	 */
 	public String getCodeUC() {
 		return unitUC;
+	}
+	
+	/**
+	 * @return the scale
+	 */
+	public Scale getScale() {
+		return scale;
 	}
 
 	/**
@@ -134,6 +154,12 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	}
 
 	@Override
+	public Quantity<Q> negate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public Quantity<Q> to(Unit<Q> unit) {
 		// TODO Auto-generated method stub
 		return null;
@@ -143,5 +169,11 @@ public class Value<Q extends Quantity<Q>> implements Quantity<Q>, IDescription, 
 	public <T extends Quantity<T>> Quantity<T> asType(Class<T> type) throws ClassCastException {
 		// TODO Auto-generated method stub
 		return null;
-	}		
+	}
+	
+	@Override
+	public boolean isEquivalentTo(Quantity<Q> q) {
+		//return this.getConverterTo(q).isIdentity();
+		return false;
+	}
 }

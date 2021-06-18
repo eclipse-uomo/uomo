@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2020, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
+ * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2021 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -7,6 +7,7 @@
  * 
  * Contributors:
  *    Kestral Computing P/L - initial implementation
+ *    Werner Keil - JSR 385 integration
  *    
  *******************************************************************************/
 
@@ -37,7 +38,7 @@ import org.eclipse.uomo.ucum.parsers.ExpressionParser;
 import org.eclipse.uomo.ucum.special.SpecialUnitHandler;
 import org.eclipse.uomo.util.Registry;
 
-import tech.units.indriya.AbstractConverter;
+import tech.units.indriya.function.AbstractConverter;
 
 /**
  * = [mu_0] = 4.[pi].10*-7.N/A2 = (g.m/s2)/(C/s)2? = g.m/s2/(C2/s2) =

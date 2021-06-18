@@ -79,4 +79,10 @@ public class FahrenheitHandler extends SpecialUnitHandler<Temperature> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public boolean isEquivalentTo(Quantity<Temperature> that) {
+		//return this.getConverterTo(that).isIdentity();
+		return false;
+	}
 }

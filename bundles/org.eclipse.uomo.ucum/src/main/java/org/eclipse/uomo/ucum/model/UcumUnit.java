@@ -12,14 +12,16 @@
 
 package org.eclipse.uomo.ucum.model;
 
+import javax.measure.Dimension;
 import javax.measure.Unit;
 
 import tech.units.indriya.function.MultiplyConverter;
+import tech.units.indriya.unit.UnitDimension;
 import tech.uom.lib.common.function.*;
 
 /**
  * @author Werner Keil
- * @version 2.0
+ * @version 2.1
  */
 @SuppressWarnings("rawtypes")
 public abstract class UcumUnit extends Concept implements Unit {
@@ -33,9 +35,24 @@ public abstract class UcumUnit extends Concept implements Unit {
 	 * kind of thing this base unit represents
 	 */
 	private String property;
+	
+	/**
+	 * kind of thing this base unit represents
+	 */
+	private Dimension dimension;
 
-	protected UcumUnit(ConceptKind kind, String code, String codeUC) {
+	protected UcumUnit(ConceptKind kind, String code, String codeUC, Dimension dim) {
 		super(kind, code, codeUC);
+		this.dimension = dim;
+	}
+	
+	protected UcumUnit(ConceptKind kind, String code, String codeUC) {
+		this(kind, code, codeUC, UnitDimension.NONE);
+	}
+	
+	@Override
+	public Dimension getDimension() {
+		return dimension;
 	}
 
 	/**

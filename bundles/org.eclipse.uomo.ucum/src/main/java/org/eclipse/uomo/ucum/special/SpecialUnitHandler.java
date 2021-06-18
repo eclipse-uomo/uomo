@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2014, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
+ * Crown Copyright (c) 2006, 2014, Copyright (c) 2006, 2021 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.uomo.ucum.special;
 
 import javax.measure.Quantity;
+import javax.measure.Quantity.Scale;
 import javax.measure.Unit;
 import javax.measure.quantity.Temperature;
 
@@ -31,9 +32,7 @@ public abstract class SpecialUnitHandler<Q extends Quantity<Q>> implements Quant
 	 * TODO use Unit-API here where possible
 	 * @return
 	 */
-	public abstract String getUnits();
-	
-
+	public abstract String getUnits();	
 
 	@Override
 	public <T extends Quantity<T>> Quantity<T> asType(Class<T> arg0) throws ClassCastException {
@@ -52,10 +51,27 @@ public abstract class SpecialUnitHandler<Q extends Quantity<Q>> implements Quant
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Quantity<Q> negate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	@Override
 	public Quantity<?> multiply(Quantity<?> arg0) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public boolean isEquivalentTo(Quantity<Q> q) {
+		//return this.getConverterTo(q).isIdentity();
+		return false;
+	}
+	
+	@Override
+	public Scale getScale() {
+		return Scale.ABSOLUTE;
 	}
 }

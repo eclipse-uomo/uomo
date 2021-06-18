@@ -132,6 +132,11 @@ public class DefinedUnit extends UcumUnit {
 	}
 
 	@Override
+	public Unit shift(Number n) {
+		return shift(n.doubleValue());
+	}
+	
+	@Override
 	public Unit alternate(String arg0) {
 		throw new UnsupportedOperationException();
 	}
@@ -145,7 +150,12 @@ public class DefinedUnit extends UcumUnit {
 	public Unit divide(Unit arg0) {
 		throw new UnsupportedOperationException();
 	}
-
+	
+	@Override
+	public Unit divide(Number n) {
+		return divide(n.doubleValue());
+	}
+	
 	@Override
 	public UnitConverter getConverterTo(Unit arg0)
 			throws UnconvertibleException {
@@ -159,10 +169,11 @@ public class DefinedUnit extends UcumUnit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
-	public Dimension getDimension() {
-		return UnitDimension.NONE;
+	public boolean isEquivalentTo(Unit that) {
+		//return this.getConverterTo(that).isIdentity();
+		return false;
 	}
 
 	@Override
@@ -210,5 +221,4 @@ public class DefinedUnit extends UcumUnit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
