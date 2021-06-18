@@ -20,7 +20,8 @@ Import-Package: javax.measure,
  tech.units.indriya.function,
  tech.units.indriya.quantity,
  tech.units.indriya.spi,
- tech.units.indriya.unit
+ tech.units.indriya.unit,
+ tech.uom.lib.common.function
 Require-Bundle: org.eclipse.uomo.core;bundle-version="0.7.0",
  org.eclipse.uomo.util;bundle-version="0.7.0",
  org.eclipse.uomo.xml;bundle-version="0.7.0",

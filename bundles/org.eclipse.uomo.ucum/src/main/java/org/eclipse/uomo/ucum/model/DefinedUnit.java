@@ -20,7 +20,7 @@ import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
-import tech.units.indriya.quantity.QuantityDimension;
+import tech.units.indriya.unit.UnitDimension;
 
 /**
  * @author Werner Keil
@@ -162,7 +162,7 @@ public class DefinedUnit extends UcumUnit {
 
 	@Override
 	public Dimension getDimension() {
-		return QuantityDimension.NONE;
+		return UnitDimension.NONE;
 	}
 
 	@Override
@@ -181,7 +181,12 @@ public class DefinedUnit extends UcumUnit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
+	@Override
+	public Unit multiply(Number n) {
+		return multiply(n.doubleValue());
+	}
+	
 	@Override
 	public Unit multiply(Unit arg0) {
 		// TODO Auto-generated method stub

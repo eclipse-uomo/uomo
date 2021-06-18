@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2008 Kestral Computing P/L.
+ * Crown Copyright (c) 2006, 2008, Copyright (c) 2006, 2021 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.eclipse.uomo.ucum.model;
 
 import java.math.BigDecimal;
 
+// FIXME consider changing name to UcumPrefix to avoid confusion with JSR type
 public class Prefix extends Concept {
 	
 	/**

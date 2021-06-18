@@ -11,7 +11,7 @@ Bundle-Vendor: Eclipse.org
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: javax.measure,
  javax.measure.quantity,
- tec.uom.lib.common.function,
+ tech.uom.lib.common.function,
  tech.units.indriya,
  tech.units.indriya.format,
  tech.units.indriya.function,

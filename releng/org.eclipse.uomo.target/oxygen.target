@@ -33,10 +33,12 @@
       <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository/"/>
     </location>
 	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-	  <unit id="tech.uom.lib.uom-lib-common" version="0.0.0"/>
-	  <unit id="tech.units.indriya" version="0.0.0"/>
-	  <unit id="systems.uom.systems-quantity" version="0.0.0"/>
-	  <repository location="http://download.eclipse.org/uomo/dependency/uom-systems/1.3a"/>
+		<unit id="jakarta.annotation-api" version="0.0.0"/>	      
+		<unit id="jakarta.inject.jakarta.inject-api" version="0.0.0"/>	  
+	  	<unit id="uom-lib-common" version="0.0.0"/>
+	  	<unit id="tech.units.indriya" version="0.0.0"/>
+	  	<unit id="systems.uom.quantity" version="0.0.0"/>
+	  	<repository location="http://download.eclipse.org/uomo/dependency/uom-systems/2.1a"/>
 	</location>
   </locations>
 </target>

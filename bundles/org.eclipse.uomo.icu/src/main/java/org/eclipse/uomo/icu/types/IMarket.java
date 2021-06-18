@@ -2,9 +2,8 @@ package org.eclipse.uomo.icu.types;
 
 import java.util.*;
 
-import tec.uom.lib.common.function.Nameable;
-
-import tec.uom.lib.common.function.SymbolSupplier;
+import org.eclipse.uomo.core.IName;
+import org.eclipse.uomo.core.ISymbol;
 import javax.measure.quantity.Time;
 import javax.measure.Unit;
 
@@ -15,7 +14,7 @@ import com.ibm.icu.util.Holiday;
  * @version $Revision$, Change date: ($Date$)
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
-public interface IMarket extends IBDType, Nameable, SymbolSupplier {
+public interface IMarket extends IBDType, IName, ISymbol {
 	/**
 	 * Insert the method's description here. Creation date: (9/26/00 4:55:31 PM)
 	 * 

@@ -8,11 +8,14 @@
  * Contributors:
  *    Werner Keil - initial API and implementation
  */
-package org.eclipse.uomo.icu.types;
+package org.eclipse.uomo.icu.impl;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.*;
+
+import org.eclipse.uomo.icu.types.BDTypeException;
+import org.eclipse.uomo.icu.types.IMarket;
 
 /**
  * This is a helper class supporting the other classes in this package
@@ -20,7 +23,7 @@ import java.util.*;
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  */
 
-public abstract class BDTHelper {
+abstract class UHelper {
 	public static enum Operation {
 		EQ, // equal
 		LT, // less than
@@ -82,7 +85,7 @@ public abstract class BDTHelper {
 	 * Dummy constructor for BDTHelper - ensures no instance can be built
 	 */
 
-	private BDTHelper() {
+	private UHelper() {
 	}
 
 	/**
@@ -246,27 +249,27 @@ public abstract class BDTHelper {
 	 *            int - desired relationship (less than, equal, not equal, etc.)
 	 * @throws BDTypeException
 	 */
-	public static boolean comp(PercentAmount x, PercentAmount y, Operation op)
-			throws BDTypeException {
-
-		switch (op) {
-		case EQ:
-			return (0 == x.compareTo(y));
-		case NE:
-			return (0 != x.compareTo(y));
-		case LT:
-			return (-1 == x.compareTo(y));
-		case LE:
-			return (1 != x.compareTo(y));
-		case GT:
-			return (1 == x.compareTo(y));
-		case GE:
-			return (-1 != x.compareTo(y));
-		default:
-			throw new BDTypeException("Unknown compare operator: " + op);
-		}
-
-	}
+//	public static boolean comp(PercentAmount x, PercentAmount y, Operation op)
+//			throws BDTypeException {
+//
+//		switch (op) {
+//		case EQ:
+//			return (0 == x.compareTo(y));
+//		case NE:
+//			return (0 != x.compareTo(y));
+//		case LT:
+//			return (-1 == x.compareTo(y));
+//		case LE:
+//			return (1 != x.compareTo(y));
+//		case GT:
+//			return (1 == x.compareTo(y));
+//		case GE:
+//			return (-1 != x.compareTo(y));
+//		default:
+//			throw new BDTypeException("Unknown compare operator: " + op);
+//		}
+//
+//	}
 
 	/**
 	 * Generalized compare for BigDecimal

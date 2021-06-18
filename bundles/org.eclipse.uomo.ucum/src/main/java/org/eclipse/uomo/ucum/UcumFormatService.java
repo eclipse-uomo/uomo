@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2017, Werner Keil and others.
+ * Copyright (c) 2005, 2021, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.text.ParsePosition;
 
 import javax.measure.Unit;
-import javax.measure.spi.UnitFormatService;
+import javax.measure.spi.FormatService;
 
 
 /**
@@ -25,9 +25,9 @@ import javax.measure.spi.UnitFormatService;
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>
  * @author  <a href="mailto:uomo@catmedia.us">Werner Keil</a>
  * @see <a href="http://aurora.regenstrief.org/~ucum/ucum.html">UCUM Full Specification</a>
- * @version 2.0, $Date: 2021-03-13 $
+ * @version 2.1, $Date: 2021-06-18 $
  */
-public interface UcumFormatService extends UnitFormatService {
+public interface UcumFormatService extends FormatService {
 
     /**
      * Formats the specified unit.

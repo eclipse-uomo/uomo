@@ -20,12 +20,12 @@ import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
-import tech.units.indriya.quantity.QuantityDimension;
+import tech.units.indriya.unit.UnitDimension;
 
 
 /**
  * @author Werner Keil
- * @version 2.0
+ * @version 2.1
  * @since 0.6
  */
 public class BaseUnit extends UcumUnit {
@@ -63,6 +63,11 @@ public class BaseUnit extends UcumUnit {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Unit shift(Number n) {
+		return shift(n.doubleValue());
+	}
 
 	@Override
 	public Unit asType(Class arg0) {
@@ -70,6 +75,12 @@ public class BaseUnit extends UcumUnit {
 		return null;
 	}
 
+	@Override
+	public Unit divide(Number arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public Unit divide(Unit arg0) {
 		// TODO Auto-generated method stub
@@ -92,7 +103,7 @@ public class BaseUnit extends UcumUnit {
 
 	@Override
 	public Dimension getDimension() {
-		return QuantityDimension.parse(dim);
+		return UnitDimension.parse(dim);
 	}
 
 	@Override
@@ -112,6 +123,11 @@ public class BaseUnit extends UcumUnit {
 		return null;
 	}
 
+	@Override
+	public Unit multiply(Number n) {
+		return multiply(n.doubleValue());
+	}
+	
 	@Override
 	public Unit multiply(Unit arg0) {
 		// TODO Auto-generated method stub
@@ -135,6 +151,4 @@ public class BaseUnit extends UcumUnit {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 }

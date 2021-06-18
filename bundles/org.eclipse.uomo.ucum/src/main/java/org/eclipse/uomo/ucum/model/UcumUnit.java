@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2017 Kestral Computing P/L and others.
+ * Crown Copyright (c) 2006, 2013, Copyright (c) 2006, 2021 Kestral Computing P/L and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,12 @@ package org.eclipse.uomo.ucum.model;
 
 import javax.measure.Unit;
 
+import tech.units.indriya.function.MultiplyConverter;
+import tech.uom.lib.common.function.*;
+
 /**
  * @author Werner Keil
- * @version 1.2
+ * @version 2.0
  */
 @SuppressWarnings("rawtypes")
 public abstract class UcumUnit extends Concept implements Unit {
@@ -74,6 +77,12 @@ public abstract class UcumUnit extends Concept implements Unit {
 		return u.getDimension() != null && u.getDimension().equals(getDimension());
 	}
 	
+	@Override
+	public boolean isEquivalentTo(Unit that) {
+		//return this.getConverterTo(that).isIdentity();
+		return false;
+	}
+	
 	/**
 	 * Returns a unit equals to this unit raised to an exponent.
 	 * 
@@ -96,5 +105,9 @@ public abstract class UcumUnit extends Concept implements Unit {
 		if (n == 0)
 			throw new ArithmeticException("Root's order of zero"); //$NON-NLS-1$
 		return null;
+	}
+	
+	public Unit<?> prefix(javax.measure.Prefix prefix) {
+		return this.transform(MultiplyConverter.ofPrefix(prefix));
 	}
 }
