@@ -15,7 +15,12 @@
 
 	<!-- Additional repositories -->
     <!-- Helps to resolve Parent POM and Snapshot artifacts -->
-    <repositories>
+   <repositories>
+        <repository>
+			<id>springplugins</id>
+			<name>Spring Plugins Repository</name>
+			<url>https://repo.spring.io/plugins-release/</url>
+		</repository>
         <repository>
             <snapshots>
                 <enabled>true</enabled>
@@ -23,7 +28,7 @@
             <id>ossrh-snapshot</id>
             <name>OSSRH Snapshots</name>
             <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        </repository>       
+        </repository>              
     </repositories>
 
     <groupId>org.eclipse.uomo.examples.business</groupId>

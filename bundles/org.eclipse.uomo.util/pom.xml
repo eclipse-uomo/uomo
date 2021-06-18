@@ -86,5 +86,19 @@
 <!--             <url>http://repository.jboss.org/maven2</url>             -->
 <!--         </repository> -->
 <!--     </repositories> -->
-	
+	   <repositories>
+        <repository>
+			<id>springplugins</id>
+			<name>Spring Plugins Repository</name>
+			<url>https://repo.spring.io/plugins-release/</url>
+		</repository>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>ossrh-snapshot</id>
+            <name>OSSRH Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>              
+    </repositories>
 </project>
