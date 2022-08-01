@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2017, Werner Keil and others.
+ * Copyright (c) 2010, 2022, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ public class MeasureAmount extends Measure {
 	 * @param unit the given unit
 	 * @return a new instance of <type>MeasureAmount</type>
 	 */
-	public static Measure of(Number number, MeasureUnit unit) {
+	public static MeasureAmount of(Number number, MeasureUnit unit) {
 		return new MeasureAmount(number, unit);
 	}
 }

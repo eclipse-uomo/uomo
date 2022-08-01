@@ -32,9 +32,9 @@
 		<module>business</module>
 		-->
 		<module>units</module>
+		<module>icu</module>
 		<module>ucum</module>
 	</modules>
-	<!-- modules> <module>org.eclipse.uomo.test</module> </modules -->
 
 	<dependencyManagement>
 		<dependencies>
