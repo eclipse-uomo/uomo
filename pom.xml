@@ -22,8 +22,8 @@
 		<icu4j-version>64.2</icu4j-version>
 		<junit.version>4.12</junit.version><!-- TODO update to 5 -->
 		<karaf.version>4.2.2</karaf.version>
-		<maven.compiler.source>9.0</maven.compiler.source>
-		<maven.compiler.target>9.0</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
 		<target.release>oxygen</target.release>
 		
