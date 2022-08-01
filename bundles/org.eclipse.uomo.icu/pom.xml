@@ -7,7 +7,7 @@
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>org.eclipse.uomo.icu</artifactId>
-	<name>UOMo Units ICU</name>
+	<name>UOMo ICU</name>
 	<packaging>eclipse-plugin</packaging>
 	
 	<dependencies>
