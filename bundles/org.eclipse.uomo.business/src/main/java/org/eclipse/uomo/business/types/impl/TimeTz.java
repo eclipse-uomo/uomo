@@ -27,7 +27,7 @@ class TimeTz implements IBasicType {
 	 * @return com.jpmorrsn.jbdtypes.TimeStamp
 	 * @param d
 	 *            com.jpmorrsn.jbdtypes.Date
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
 	TimeStamp buildTimeStamp(BDate d) throws UOMoRuntimeException {
 

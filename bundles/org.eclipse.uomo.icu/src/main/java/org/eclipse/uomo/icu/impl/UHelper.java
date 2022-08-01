@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2022, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.*;
 
-import org.eclipse.uomo.icu.types.BDTypeException;
+import org.eclipse.uomo.core.UOMoRuntimeException;
 import org.eclipse.uomo.icu.types.IMarket;
 
 /**
@@ -153,9 +153,9 @@ abstract class UHelper {
 	 * @return int[]
 	 * @param bd
 	 *            java.math.BigDecimal
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
-	static int[] calcVulgarFrac(BigDecimal bd) throws BDTypeException {
+	static int[] calcVulgarFrac(BigDecimal bd) throws UOMoRuntimeException {
 
 		int[] parts = { 0, 0, 0 };
 		parts[0] = bd.intValue();
@@ -172,7 +172,7 @@ abstract class UHelper {
 			parts[1] = pow.intValueExact();
 		} catch (ArithmeticException e) {
 			parts[2] = 0; // reset denominator, so value will display as decimal
-			throw new BDTypeException(
+			throw new UOMoRuntimeException(
 					"Fractional value not divisible by power of 2: " + bd);
 		}
 		;
@@ -190,15 +190,15 @@ abstract class UHelper {
 	 *            ExchRate - second exchange rate
 	 * @param op
 	 *            int - desired relationship (less than, equal, not equal, etc.)
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
 	// static boolean Comp(ExchangeRate x, ExchangeRate y, int op) throws
-	// BDTypeException{
+	// UOMoRuntimeException{
 	// if (x.m_sourceCurrency != y.m_sourceCurrency)
-	// throw new BDTypeException("Source currency mismatch: " +
+	// throw new UOMoRuntimeException("Source currency mismatch: " +
 	// x.m_sourceCurrency.getAbbrev() + ", " + y.m_sourceCurrency.getAbbrev());
 	// if (x.m_targetCurrency != y.m_targetCurrency)
-	// throw new BDTypeException("Target currency mismatch: " +
+	// throw new UOMoRuntimeException("Target currency mismatch: " +
 	// x.m_targetCurrency.getAbbrev() + ", " + y.m_targetCurrency.getAbbrev());
 	// switch (op) {
 	// case EQ: return (0 == x.m_value.compareTo(y.m_value));
@@ -207,7 +207,7 @@ abstract class UHelper {
 	// case LE: return (1 != x.m_value.compareTo(y.m_value));
 	// case GT: return (1 == x.m_value.compareTo(y.m_value));
 	// case GE: return (-1 != x.m_value.compareTo(y.m_value));
-	// default: throw new BDTypeException("Unknown compare operator: " + op);
+	// default: throw new UOMoRuntimeException("Unknown compare operator: " + op);
 	// }
 	//
 	// }
@@ -221,11 +221,11 @@ abstract class UHelper {
 	 *            Monetary - second monetary amount
 	 * @param op
 	 *            int - desired relationship (less than, equal, not equal, etc.)
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
-	// static boolean Comp(Money x, Money y, int op) throws BDTypeException{
+	// static boolean Comp(Money x, Money y, int op) throws UOMoRuntimeException{
 	// if (x.m_currency != y.m_currency)
-	// throw new BDTypeException("Currency mismatch: " +
+	// throw new UOMoRuntimeException("Currency mismatch: " +
 	// x.getCurrAbbr() + ", " + y.getCurrAbbr());
 	// switch (op) {
 	// case EQ: return (0 == x.m_value.compareTo(y.m_value));
@@ -234,7 +234,7 @@ abstract class UHelper {
 	// case LE: return (1 != x.m_value.compareTo(y.m_value));
 	// case GT: return (1 == x.m_value.compareTo(y.m_value));
 	// case GE: return (-1 != x.m_value.compareTo(y.m_value));
-	// default: throw new BDTypeException("Unknown compare operator: " + op);
+	// default: throw new UOMoRuntimeException("Unknown compare operator: " + op);
 	// }
 	// }
 	/**
@@ -247,10 +247,10 @@ abstract class UHelper {
 	 *            Percent - second Percent
 	 * @param op
 	 *            int - desired relationship (less than, equal, not equal, etc.)
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
 //	public static boolean comp(PercentAmount x, PercentAmount y, Operation op)
-//			throws BDTypeException {
+//			throws UOMoRuntimeException {
 //
 //		switch (op) {
 //		case EQ:
@@ -266,7 +266,7 @@ abstract class UHelper {
 //		case GE:
 //			return (-1 != x.compareTo(y));
 //		default:
-//			throw new BDTypeException("Unknown compare operator: " + op);
+//			throw new UOMoRuntimeException("Unknown compare operator: " + op);
 //		}
 //
 //	}
@@ -281,11 +281,11 @@ abstract class UHelper {
 	 *            java.math.BigDecimal - second BigDecimal
 	 * @param op
 	 *            int - desired relationship (less than, equal, not equal, etc.)
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
 
 	static boolean comp(BigDecimal x, BigDecimal y, Operation op)
-			throws BDTypeException {
+			throws UOMoRuntimeException {
 		switch (op) {
 		case EQ:
 			return (0 == x.compareTo(y));
@@ -300,7 +300,7 @@ abstract class UHelper {
 		case GE:
 			return (-1 != x.compareTo(y));
 		default:
-			throw new BDTypeException("Unknown compare operator: " + op);
+			throw new UOMoRuntimeException("Unknown compare operator: " + op);
 		}
 
 	}
@@ -313,9 +313,9 @@ abstract class UHelper {
 	 * @return IPrice
 	 * @param s
 	 *            java.lang.String
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
-	// public static IPrice CreatePrice(String s) throws BDTypeException {
+	// public static IPrice CreatePrice(String s) throws UOMoRuntimeException {
 	// String c = s.substring(0, 3);
 	// String v = s.substring(3);
 	// int len = v.length();

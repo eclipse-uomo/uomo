@@ -15,8 +15,9 @@ import java.util.*;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.BDTHelper;
-import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IMarket;
+import org.eclipse.uomo.core.UOMoRuntimeException;
+
 import org.unitsofmeasurement.quantity.Time;
 import javax.measure.Unit;
 
@@ -128,7 +129,7 @@ public class Market {
 			// return false;
 			//
 			// }
-			// catch (BDTypeException ex) {
+			// catch (UOMoRuntimeException ex) {
 			// System.err.println("Date error: " + ex);
 			// }
 			//
@@ -179,7 +180,7 @@ public class Market {
 			//
 			//
 			// }
-			// catch (BDTypeException ex) {
+			// catch (UOMoRuntimeException ex) {
 			// System.err.println("Date error: " + ex);
 			// }
 
@@ -306,7 +307,7 @@ public class Market {
 	 * @param s
 	 *            java.lang.String
 	 */
-	public static IMarket get(String s) throws BDTypeException {
+	public static IMarket get(String s) throws UOMoRuntimeException {
 
 		if (s.equals("")) //$NON-NLS-1$
 			return null;
@@ -314,7 +315,7 @@ public class Market {
 			IMarket mkt = BDTHelper.getMarkets().get(s);
 			if (mkt == null) {
 				// System.err.println("Invalid market code: " + s);
-				throw new BDTypeException(NLS.bind(
+				throw new UOMoRuntimeException(NLS.bind(
 						Messages.Market_invalid_code, s)); //$NON-NLS-1$
 			}
 			return mkt;

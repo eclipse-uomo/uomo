@@ -96,7 +96,7 @@ public class BDate implements IBasicType {
 	 * @return com.jpmorrsn.jbdtypes.TimeStamp
 	 * @param t
 	 *            com.jpmorrsn.jbdtypes.TimeTz
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
 	public TimeStamp buildTimeStamp(TimeTz t) throws UOMoRuntimeException {
 

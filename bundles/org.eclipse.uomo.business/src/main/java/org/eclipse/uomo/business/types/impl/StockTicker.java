@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2022, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,10 @@ import static org.eclipse.uomo.business.types.impl.DataHelper.BDT_DELIM;
 
 import org.eclipse.uomo.business.internal.Messages;
 import org.eclipse.uomo.business.types.BDTHelper;
-import org.eclipse.uomo.business.types.BDTypeException;
 import org.eclipse.uomo.business.types.IBDType;
 import org.eclipse.uomo.business.types.IMarket;
 import org.eclipse.uomo.core.ISymbol;
+import org.eclipse.uomo.core.UOMoRuntimeException;
 
 /**
  * Stock Ticker - composed of market, symbol and country codes - at least one of
@@ -36,22 +36,22 @@ public class StockTicker implements IBDType, ISymbol {
 	 * and country will usually be present - if both are missing, we use the
 	 * default country
 	 * 
-	 * @throws BDTypeException
+	 * @throws UOMoRuntimeException
 	 */
-	public StockTicker(String s) throws BDTypeException {
+	public StockTicker(String s) throws UOMoRuntimeException {
 		super();
 
 		int sp = s.indexOf(BDT_DELIM);
 		if (sp == -1)
-			throw new BDTypeException(Messages.StockTicker_invalid_symbol + s);
+			throw new UOMoRuntimeException(Messages.StockTicker_invalid_symbol + s);
 		else {
 			String tmpMarket = s.substring(0, sp);
 			if (sp > 0) {
 				try {
 					m_market = Market.get(tmpMarket);
 				} // verify market is valid (added Oct. 3)
-				catch (BDTypeException e) {
-					throw new BDTypeException(Messages.StockTicker_invalid_market
+				catch (RuntimeException e) {
+					throw new UOMoRuntimeException(Messages.StockTicker_invalid_market
 							+ s);
 				}
 			}
@@ -65,13 +65,13 @@ public class StockTicker implements IBDType, ISymbol {
 				m_country = s2.substring(sp + 1);
 				if (!m_country.equals("") //$NON-NLS-1$
 						&& !(BDTHelper.getCountries().containsKey(m_country)))
-					throw new BDTypeException(
+					throw new UOMoRuntimeException(
 							Messages.StockTicker_invalid_country + s);
 			}
 		}
 
 		if (m_sym.equals("")) //$NON-NLS-1$
-			throw new BDTypeException(Messages.StockTicker_missing_symbol
+			throw new UOMoRuntimeException(Messages.StockTicker_missing_symbol
 					+ s);
 
 		if (m_market.equals("") && m_country.equals("")) //$NON-NLS-1$ //$NON-NLS-2$
