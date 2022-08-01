@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<target name="UOMo for Eclipse Photon" sequenceNumber="1492180496">
+<target name="UOMo for Eclipse 2020-03" sequenceNumber="1492180496">
   <locations>
     <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -23,14 +23,14 @@
       <unit id="org.eclipse.jetty.servlet" version="0.0.0"/>
       <unit id="org.eclipse.jetty.server" version="0.0.0"/>
       <unit id="org.eclipse.jetty.util" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/releases/photon/"/>
+      <repository location="http://download.eclipse.org/releases/2020-03/"/>
     </location>
     <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 	  <unit id="javax.measure.unit-api" version="0.0.0"/>
       <unit id="org.hamcrest" version="1.1.0.v20090501071000"/>
       <unit id="ch.qos.logback.slf4j" version="1.1.2.v20160301-0943"/>
       <unit id="org.slf4j.log4j" version="1.7.2.v20130115-1340"/>
-      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20180330011457/repository/"/>
+      <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20200224183213/repository/"/>
     </location>
 	<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 		<unit id="jakarta.annotation-api" version="0.0.0"/>	      
