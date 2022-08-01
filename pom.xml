@@ -25,7 +25,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
-		<target.release>oxygen</target.release>
+		<target.release>photon</target.release>
 		
 		<!-- OSGi support -->
 		<osgi.version>6.0.0</osgi.version>
