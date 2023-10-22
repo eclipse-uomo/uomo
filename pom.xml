@@ -339,11 +339,6 @@
 			<id>tycho-snapshots</id>
 			<url>https://oss.sonatype.org/content/groups/public/</url>
 		</pluginRepository>
-		<pluginRepository>
-			<id>buchen-maven-repo</id>
-			<url>http://buchen.github.io/maven-repo</url>
-			<layout>default</layout>
-		</pluginRepository>
 		 <pluginRepository>
   			<id>dash-licenses-snapshots</id>
   			<url>https://repo.eclipse.org/content/repositories/dash-licenses-snapshots/</url>
