@@ -351,11 +351,6 @@
   	  			<enabled>true</enabled>
   			</snapshots>
   		</pluginRepository>
-		<pluginRepository><!-- TODO remove by late 2021 -->
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>http://jcenter.bintray.com</url>
-		</pluginRepository>
 	</pluginRepositories>
 
 	<ciManagement>
