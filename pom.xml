@@ -334,11 +334,6 @@
 			<id>tycho-snapshots</id>
 			<url>https://oss.sonatype.org/content/groups/public/</url>
 		</pluginRepository>
-		<pluginRepository>
-			<id>buchen-maven-repo</id>
-			<url>https://buchen.github.io/maven-repo</url>
-			<layout>default</layout>
-		</pluginRepository>
 	</pluginRepositories>
 
 	<ciManagement>
