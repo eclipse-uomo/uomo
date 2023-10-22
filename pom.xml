@@ -100,7 +100,7 @@
 
 	</contributors>
 	<scm>
-		<url>http://git.eclipse.org/gitroot/uomo/org.eclipse.uomo.git/</url>
+		<url>https://github.com/eclipse-uomo/uomo.git/</url>
 	</scm>
 	<organization>
 		<name>Eclipse Foundation</name>
@@ -338,11 +338,6 @@
 			<id>buchen-maven-repo</id>
 			<url>https://buchen.github.io/maven-repo</url>
 			<layout>default</layout>
-		</pluginRepository>
-		<pluginRepository><!-- TODO remove by late 2021 -->
-			<id>jcenter</id>
-			<name>JCenter</name>
-			<url>https://jcenter.bintray.com</url>
 		</pluginRepository>
 	</pluginRepositories>
 
