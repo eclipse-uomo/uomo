@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMo UCUM
 Bundle-SymbolicName: org.eclipse.uomo.ucum
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.0
 Export-Package: org.eclipse.uomo.ucum,
  org.eclipse.uomo.ucum.canonical,
  org.eclipse.uomo.ucum.expression,

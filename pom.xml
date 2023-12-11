@@ -18,7 +18,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.javaVersion>1.8</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
-		<uomo-version>0.8.0-SNAPSHOT</uomo-version>
+		<uomo-version>0.8.0</uomo-version>
 		<tycho-version>1.6.0</tycho-version>
 		<unit-api-version>1.0</unit-api-version>
 		<uom-lib-version>1.1</uom-lib-version>
@@ -36,7 +36,7 @@
 
 	<groupId>org.eclipse.uomo</groupId>
 	<artifactId>org.eclipse.uomo</artifactId>
-	<version>0.8.0-SNAPSHOT</version>
+	<version>0.8.0</version>
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo</name>
 
@@ -186,7 +186,7 @@
 						<artifact>
 							<groupId>org.eclipse.uomo</groupId>
 							<artifactId>org.eclipse.uomo.target</artifactId>
-							<version>0.8.0-SNAPSHOT</version>
+							<version>0.8.0</version>
 							<classifier>${target.release}</classifier>
 						</artifact>
 					</target>

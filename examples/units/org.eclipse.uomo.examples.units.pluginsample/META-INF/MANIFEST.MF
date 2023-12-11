@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UOMoPluginSample
 Bundle-SymbolicName: UOMoPluginSample; singleton:=true
-Bundle-Version: 0.1.0.SNAPSHOT
+Bundle-Version: 0.1.0
 Bundle-Activator: org.eclipse.uomo.examples.units.pluginsample.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
