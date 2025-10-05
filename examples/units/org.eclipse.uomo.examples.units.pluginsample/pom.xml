@@ -15,13 +15,6 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>org.unitsofmeasurement</groupId>
-  		<artifactId>unit-api</artifactId>
-  		<version>0.6.1</version>
-  		<type>bundle</type>
-  		<scope>compile</scope>
-  	</dependency>
-  	<dependency>
   		<groupId>org.eclipse.uomo</groupId>
   		<artifactId>org.eclipse.uomo.units</artifactId>
   		<version>0.8.0</version>
