@@ -1,4 +1,4 @@
-<%@ page import="org.unitsofmeasurement.quantity.*, org.eclipse.uomo.units.*, org.eclipse.uomo.units.impl.quantity.*" %>
+<%@ page import="javax.measure.quantity.*, org.eclipse.uomo.units.*, org.eclipse.uomo.units.impl.quantity.*" %>
 <html>
 <head>
 	<title>Eclipse UOMo</title>

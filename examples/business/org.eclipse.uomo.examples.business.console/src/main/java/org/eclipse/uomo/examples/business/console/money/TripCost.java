@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2005, 2017, Werner Keil and others.
+ * Copyright (c) 2005, 2025, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import static org.eclipse.uomo.business.money.MoneyUnit.EUR;
 import static org.eclipse.uomo.business.money.MoneyUnit.GBP;
 import static org.eclipse.uomo.business.money.MoneyUnit.USD;
 
-import org.unitsofmeasurement.quantity.Length;
-import org.unitsofmeasurement.unit.UnitFormat;
+import javax.measure.quantity.Length;
+import javax.measure.format.UnitFormat;
 
 import org.eclipse.uomo.business.money.MoneyConverter;
 import org.eclipse.uomo.business.money.MoneyUnit;

@@ -34,7 +34,7 @@ public class FahrenheitHandler extends SpecialUnitHandler<Temperature> {
 	}
 	
 	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.quantity.Quantity#unit()
+	 * @see javax.measure.quantity.Quantity#unit()
 	 */
 	@Override
 	public Unit<Temperature> getUnit() {
@@ -42,7 +42,7 @@ public class FahrenheitHandler extends SpecialUnitHandler<Temperature> {
 	}
 
 	/* (non-Javadoc)
-	 * @see org.unitsofmeasurement.quantity.Quantity#getValue()
+	 * @see javax.measure.quantity.Quantity#getValue()
 	 */
 	@Override
 	public BigDecimal getValue() {		

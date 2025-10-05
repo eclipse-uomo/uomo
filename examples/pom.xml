@@ -37,9 +37,9 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>org.unitsofmeasurement</groupId>
+				<groupId>javax.measure</groupId>
 				<artifactId>unit-api</artifactId>
-				<version>0.6.1</version>
+				<version>1.0</version>
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.uomo</groupId>

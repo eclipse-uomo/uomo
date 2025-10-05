@@ -18,7 +18,7 @@ import javax.measure.UnitConverter;
 /**
  * <p> This interface provides a set of mappings between
  *     {@link Unit Units} and symbols (both ways),
- *     and from {@link org.unitsofmeasurement.UnitConverter
+ *     and from {@link javax.measure.UnitConverter
  *     UnitConverter}s to prefixes symbols (also both ways).</p>
  *     
  * @author <a href="mailto:jean-marie@dautelle.com">Jean-Marie Dautelle</a>

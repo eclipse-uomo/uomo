@@ -15,7 +15,7 @@ package org.eclipse.uomo.units.impl;
  * 
  * <p>
  * The difference between dimensional models lies in the assumptions each makes and, in consequence,the operations each permits. For example, the
- * summation of a {@link org.unitsofmeasurement.quantity.Length length} and a {@link org.unitsofmeasurement.quantity.Duration duration} is not allowed
+ * summation of a {@link javax.measure.quantity.Length length} and a {@link javax.measure.quantity.Duration duration} is not allowed
  * by the standard model, but is quite valid in a relativistic context.
  * </p>
  * 

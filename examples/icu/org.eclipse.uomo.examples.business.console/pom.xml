@@ -11,7 +11,7 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.unitsofmeasurement</groupId>
+			<groupId>javax.measure</groupId>
 			<artifactId>unit-api</artifactId>
 		</dependency>
 		<dependency>
