@@ -4,17 +4,17 @@ Bundle-Name: UOMo Business
 Bundle-SymbolicName: org.eclipse.uomo.business
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Eclipse.org
-Import-Package: javax.measure;version="[1.0,2)",
- javax.measure.format;version="[1.0,2)",
- javax.measure.quantity;version="[1.0,2)",
- javax.measure.spi;version="[1.0,2)",
+Import-Package: javax.measure;version="[0.0.0,2.2.0)",
+ javax.measure.format;version="[0.0.0,2.2.0)",
+ javax.measure.quantity;version="[0.0.0,2.2.0)",
+ javax.measure.spi;version="[1.0.0,2.2.0)",
+ systems.uom.quantity,
  tech.units.indriya,
  tech.units.indriya.format,
  tech.units.indriya.function,
  tech.units.indriya.quantity,
  tech.units.indriya.spi,
- tech.units.indriya.unit,
- systems.uom.quantity
+ tech.units.indriya.unit
 Require-Bundle: org.eclipse.uomo.core;bundle-version="0.9.0",
  com.ibm.icu;bundle-version="4.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-9

@@ -89,7 +89,7 @@ public interface MonetaryAmount {
 	 *             expansion
 	 * @return {@code this / divisor}
 	 */
-	public MonetaryAmount divide(Number divisor);
+	//public MonetaryAmount divide(Number divisor);
 
 	/**
 	 * Returns a two-element {@code MonetaryAmount} array containing the result
@@ -605,7 +605,7 @@ public interface MonetaryAmount {
 	 *             if the representation type is not supported, or the target
 	 *             type can not provide the precision required.
 	 */
-	public <T> T asType(Class<T> type);
+	//public <T> T asType(Class<T> type);
 
 	/**
 	 * Access the class that models the representation of the numeric part of

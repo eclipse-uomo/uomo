@@ -39,7 +39,7 @@ public class MoneyDemo {
 		@SuppressWarnings("unused")
 		MoneyConverter converter = new MoneyConverter(USD, EUR, 1.4);
 		CurrencyUnit currency = MoneyUnit.of("CHF");
-		MonetaryAmount money = MoneyAmount.of(100, currency);
+		MonetaryAmount money = MoneyAmount.of(100, currency).getMonetaryAmount();
 		
 		System.out.println(money);
 //		System.out.println(money.getCurrency());

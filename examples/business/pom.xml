@@ -10,7 +10,9 @@
 	<packaging>pom</packaging>
 	<name>Eclipse UOMo Business Examples</name>
 	<modules>
+<!--	
     <module>org.eclipse.uomo.examples.business.console</module>
+-->    
 	</modules>
 	<!-- ==================================================== -->
     <!-- Repositories. This is where Maven looks for dependencies. 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2006, 2020, Werner Keil and others.
+ * Copyright (c) 2006, 2025, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,14 +12,13 @@ package org.eclipse.uomo.business.money;
 
 import org.eclipse.uomo.business.types.IMoney;
 import tech.units.indriya.AbstractSystemOfUnits;
-import javax.measure.spi.SystemOfUnits;
 import javax.measure.Unit;
 
 import com.ibm.icu.util.Currency;
 
 /**
  * @author <a href="mailto:uomo@catmedia.us">Werner Keil</a>
- * @version 0.6, $Date: 2013-05-20 $
+ * @version 0.8, $Date: 2025-10-05 $
  */
 public final class MonetaryUnits extends AbstractSystemOfUnits {
 	/**
@@ -47,7 +46,7 @@ public final class MonetaryUnits extends AbstractSystemOfUnits {
      *
      * @return the MonetaryUnits instance.
      */
-    public static SystemOfUnits getInstance() {
+    public static MonetaryUnits getInstance() {
         return INSTANCE;
     }
     private static final MonetaryUnits INSTANCE = new MonetaryUnits();
@@ -59,8 +58,7 @@ public final class MonetaryUnits extends AbstractSystemOfUnits {
      * @return <code>unit</code>.
      */
     private final static <U extends Unit<?>> U monetary(U unit) {
-        INSTANCE.add(unit);
-        return unit;
+    	return AbstractSystemOfUnits.Helper.addUnit(INSTANCE.getUnits(), unit, ISO_NAMESPACE);
     }
 
 	public String getName() {

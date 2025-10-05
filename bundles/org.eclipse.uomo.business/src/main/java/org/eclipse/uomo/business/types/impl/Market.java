@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2011, Werner Keil, Ikayzo and others.
+ * Copyright (c) 2005, 2025, Werner Keil, Ikayzo and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.uomo.business.types.BDTHelper;
 import org.eclipse.uomo.business.types.IMarket;
 import org.eclipse.uomo.core.UOMoRuntimeException;
 
-import org.unitsofmeasurement.quantity.Time;
+import javax.measure.quantity.Time;
 import javax.measure.Unit;
 
 import com.ibm.icu.util.Holiday;

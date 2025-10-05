@@ -15,9 +15,9 @@
   		<scope>compile</scope>
   	</dependency>
   	<dependency>
-  		<groupId>org.unitsofmeasurement</groupId>
+  		<groupId>javax.measure</groupId>
   		<artifactId>unit-api</artifactId>
-  		<version>0.6.1</version>
+  		<version>1.0</version>
   		<type>bundle</type>
   		<scope>compile</scope>
   	</dependency>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2005, 2014, Werner Keil and others.
+ * Copyright (c) 2005, 2025, Werner Keil and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,16 @@ import java.text.NumberFormat;
 import org.eclipse.uomo.business.internal.CurrencyUnit;
 import org.eclipse.uomo.business.internal.MonetaryAmount;
 import org.eclipse.uomo.business.internal.MonetaryOperator;
-import org.eclipse.uomo.business.types.Quantity;
-import org.eclipse.uomo.core.UOMoRuntimeException;
-import tech.units.indriya.AbstractConverter;
+import org.eclipse.uomo.business.types.*;
 import javax.measure.Quantity;
-import org.eclipse.uomo.units.impl.converter.RationalConverter;
-import org.unitsofmeasurement.unit.IncommensurableException;
-import org.unitsofmeasurement.unit.UnconvertibleException;
+import org.eclipse.uomo.core.UOMoRuntimeException;
+
+import tech.units.indriya.AbstractConverter;
+import tech.units.indriya.ComparableQuantity;
+import tech.units.indriya.function.RationalConverter;
+import tech.units.indriya.quantity.NumberQuantity;
+import javax.measure.IncommensurableException;
+import javax.measure.UnconvertibleException;
 import javax.measure.Unit;
 import javax.measure.UnitConverter;
 
@@ -39,13 +42,17 @@ import com.ibm.icu.util.Currency;
  * @author <a href="mailto:units@catmedia.us">Werner Keil</a>
  * @version 0.8, $Date: 2014-08-03 $
  */
-public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, MonetaryAmount,
-		Comparable<MonetaryAmount> {
+public class MoneyAmount extends NumberQuantity<IMoney> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	/**
 	 * Holds the base unit for money quantities (symbol "$").
 	 */
-	public final static MoneyUnit<Quantity> UNIT = new MoneyUnit<Quantity>(
+	public final static MoneyUnit<IMoney> UNIT = new MoneyUnit<IMoney>(
 			"$");
 
 	/**
@@ -133,10 +140,10 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 *             if the SI unit of the specified amount is not a
 	 *             {@link Currency}.
 	 */
-	public static MoneyAmount of(QuantityAmount<Quantity> amount) {
+	public static MoneyAmount of(Quantity<IMoney> amount) {
 		// MoneyAmount amountSI = amount.toSI();
 		return MoneyAmount.of(BigDecimal.valueOf(amount.getValue()
-				.doubleValue()), amount.unit().getSystemUnit());
+				.doubleValue()), amount.getUnit().getSystemUnit());
 	}
 
 	
@@ -162,7 +169,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @return the string representation of this money amount.
 	 */
 	public String toStringLocale() {
-		BigDecimal value = (BigDecimal) this.getNumber();
+		BigDecimal value = (BigDecimal) this.getValue();
 		// int digits = ((Currency) this.getUnit()).getDefaultFractionDigits();
 		// int exponent = value.getExponent();
 		// LargeInteger significand = value.getSignificand();
@@ -184,29 +191,29 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 
 	protected MoneyAmount plus(Quantity that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
-		return MoneyAmount.of(this.getNumber().doubleValue()
-				+ that.value().doubleValue(), getCurrency());
+		return MoneyAmount.of(this.getValue().doubleValue()
+				+ that.getValue().doubleValue(), getCurrency());
 	}
 	
 	protected MoneyAmount plus(MoneyAmount that) {
 		// Measure<BigDecimal, ?> amount = that.to((Unit) getCurrency());
-		return MoneyAmount.of(this.getNumber().doubleValue()
-				+ that.getNumber().doubleValue(), getCurrency());
+		return MoneyAmount.of(this.getValue().doubleValue()
+				+ that.getValue().doubleValue(), getCurrency());
 	}
 
 	protected MoneyAmount minus(MoneyAmount that) {
 		// MoneyAmount amount = that.to((Unit) getCurrency());
-		return MoneyAmount.of(this.getNumber().doubleValue()
-				- that.getNumber().doubleValue(), getCurrency());
+		return MoneyAmount.of(this.getValue().doubleValue()
+				- that.getValue().doubleValue(), getCurrency());
 	}
 
 	public MoneyAmount multiply(Number that) {
 		return MoneyAmount.of(
-				getNumber().doubleValue() * that.doubleValue(), getCurrency());
+				getValue().doubleValue() * that.doubleValue(), getCurrency());
 	}
 
 	public MoneyAmount multiply(long n) {
-		return MoneyAmount.of(getNumber().longValue() * n,
+		return MoneyAmount.of(getValue().longValue() * n,
 				getCurrency());
 	}
 
@@ -217,33 +224,33 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	
 	protected MoneyAmount times(MoneyAmount that) {
 		Unit<?> unit = unit().multiply(that.unit());
-		return MoneyAmount.of(((BigDecimal) getNumber())
-				.multiply((BigDecimal) that.getNumber()), unit);
+		return MoneyAmount.of(((BigDecimal) getValue())
+				.multiply((BigDecimal) that.getValue()), unit);
 	}
 
 	public MoneyAmount pow(int exp) {
-		return MoneyAmount.of(((BigDecimal) getNumber()).pow(BigDecimal
+		return MoneyAmount.of(((BigDecimal) getValue()).pow(BigDecimal
 				.valueOf(exp)), unit().pow(exp));
 	}
 
 	// protected MoneyAmount inverse() {
-	// return MoneyAmount.valueOf(((BigDecimal) getNumber()).inverse(),
+	// return MoneyAmount.valueOf(((BigDecimal) getValue()).inverse(),
 	// unit().inverse());
 	// }
 
 	public MoneyAmount divide(long n) {
-		return MoneyAmount.of(getNumber().longValue() / n,
+		return MoneyAmount.of(getValue().longValue() / n,
 				getCurrency());
 	}
 
 	protected MoneyAmount divide(MoneyAmount that) {
 		Unit<?> unit = unit().divide(that.unit());
-		return MoneyAmount.of(((BigDecimal) getNumber())
-				.divide((BigDecimal) that.getNumber()), unit);
+		return MoneyAmount.of(((BigDecimal) getValue())
+				.divide((BigDecimal) that.getValue()), unit);
 	}
 
 	public MoneyAmount copy() {
-		return MoneyAmount.of(getNumber(), getCurrency());
+		return MoneyAmount.of(getValue(), getCurrency());
 	}
 
 	/**
@@ -253,8 +260,8 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @provisional This API might change or be removed in a future release.
 	 */
 	@SuppressWarnings("unchecked")
-	public MoneyUnit<Quantity> unit() {
-		return (MoneyUnit<Quantity>) getUnit();
+	public MoneyUnit<IMoney> unit() {
+		return (MoneyUnit<IMoney>) getUnit();
 	}
 
 	public int compareTo(Quantity o) {
@@ -262,11 +269,11 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 		return 0;
 	}
 
-	public double doubleValue(Unit<Quantity> unit) {
-		Unit<Quantity> myUnit = unit();
+	public double doubleValue(Unit<IMoney> unit) {
+		Unit<IMoney> myUnit = unit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return converter.convert(getNumber().doubleValue());
+			return converter.convert(getValue().doubleValue());
 		} catch (UnconvertibleException e) {
 			throw e;
 		} catch (IncommensurableException e) {
@@ -274,11 +281,11 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 		}
 	}
 
-	public long longValue(Unit<Quantity> unit) throws ArithmeticException {
-		Unit<Quantity> myUnit = unit();
+	public long longValue(Unit<IMoney> unit) throws ArithmeticException {
+		Unit<IMoney> myUnit = unit();
 		try {
 			UnitConverter converter = unit.getConverterToAny(myUnit);
-			return (converter.convert(BigDecimal.valueOf(super.getNumber()
+			return (converter.convert(BigDecimal.valueOf(super.getValue()
 					.longValue())).longValue());
 		} catch (UnconvertibleException e) {
 			throw e;
@@ -287,25 +294,13 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 		}
 	}
 
-	public Quantity<Quantity> divide(Quantity<?> that) {
-		return divide((MoneyAmount) that);
-	}
-
-	public Quantity<Quantity> multiply(Quantity<?> that) {
-		return multiply((MonetaryAmount) that);
-	}
-
-	public Quantity<Quantity> to(Unit<Quantity> unit) {
-		return to(unit, MathContext.DECIMAL32);
-	}
-
-	protected Quantity<Quantity> to(Unit<Quantity> unit, MathContext ctx) {
+	protected Quantity<IMoney> to(Unit<IMoney> unit, MathContext ctx) {
 		if (this.unit().equals(unit))
 			return this;
 		UnitConverter cvtr = this.unit().getConverterTo(unit);
 		if (cvtr == AbstractConverter.IDENTITY)
-			return (Quantity<Quantity>) of(this.getNumber(), unit);
-		return (Quantity<Quantity>) of(convert(this.getNumber(), cvtr, ctx),
+			return (Quantity<IMoney>) of(this.getValue(), unit);
+		return (Quantity<IMoney>) of(convert(this.getValue(), cvtr, ctx),
 				unit);
 	}
 
@@ -323,16 +318,16 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 				throw new ArithmeticException("Divisor overflow");
 			return (value.longValue() * dividend.longValue())
 					/ (divisor.longValue());
-		} else if (cvtr instanceof AbstractConverter.Compound
+		} else if (cvtr instanceof AbstractConverter.Pair
 				&& cvtr.isLinear()) { // Do it in two parts.
-			AbstractConverter.Compound compound = (AbstractConverter.Compound) cvtr;
+			AbstractConverter.Pair compound = (AbstractConverter.Pair) cvtr;
 			Number firstConversion = convert(value, compound.getRight(), ctx);
 			Number secondConversion = convert(firstConversion,
 					compound.getLeft(), ctx);
 			return secondConversion;
 		} else { // Try using BigDecimal as intermediate.
 			BigDecimal decimalValue = BigDecimal.valueOf(value.doubleValue());
-			Number newValue = cvtr.convert(decimalValue.toBigDecimal(), ctx);
+			Number newValue = cvtr.convert(decimalValue);
 			return newValue;
 			// if (((FieldNumber)value) instanceof Decimal)
 			// return (N)((FieldNumber)Decimal.valueOf(newValue));
@@ -345,8 +340,8 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	}
 	
 	private final BigDecimal bigNumber() {
-		if (getNumber() instanceof BigDecimal) {
-			return (BigDecimal)getNumber();
+		if (getValue() instanceof BigDecimal) {
+			return (BigDecimal)getValue();
 		} else {
 			throw new UOMoRuntimeException(
 					new IllegalArgumentException("Cannot represent as BigDecimal"));
@@ -360,16 +355,6 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 */
 	public String serialize() {
 		return null;
-	}
-
-	public Number value() {
-		return getNumber();
-	}
-
-	public Quantity<? extends Quantity<Quantity>> inverse() {
-		final Quantity<? extends Quantity<Quantity>> m = of(value(), unit()
-				.inverse());
-		return m;
 	}
 
 	public int compareTo(MonetaryAmount o) {
@@ -387,32 +372,6 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	 
-	public MonetaryAmount divide(MonetaryAmount divisor) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	 
-	public MonetaryAmount divide(Number divisor) {
-		// TODO Auto-generated method stub
-		//return of((BigDecimal)value()).divide((BigDecimal)divisor));
-		return null;
-	}
-
-	 
-	public MonetaryAmount[] divideAndRemainder(MonetaryAmount divisor) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	 
-	public MonetaryAmount[] divideAndRemainder(Number divisor) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	 
 	public MonetaryAmount divideToIntegralValue(MonetaryAmount divisor) {
 		// TODO Auto-generated method stub
@@ -536,7 +495,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @see MonetaryAmount#intValue()
 	 */
 	public int intValue() {
-		return this.getNumber().intValue();
+		return this.getValue().intValue();
 	}
 
 	/*
@@ -554,7 +513,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @see MonetaryAmount#longValue()
 	 */
 	public long longValue() {
-		return this.getNumber().longValue();
+		return this.getValue().longValue();
 	}
 
 	/*
@@ -572,7 +531,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @see MonetaryAmount#floatValue()
 	 */
 	public float floatValue() {
-		return this.getNumber().floatValue();
+		return this.getValue().floatValue();
 	}
 
 	/*
@@ -581,7 +540,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @see MonetaryAmount#doubleValue()
 	 */
 	public double doubleValue() {
-		return this.getNumber().doubleValue();
+		return this.getValue().doubleValue();
 	}
 
 	/*
@@ -590,7 +549,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @see MonetaryAmount#byteValue()
 	 */
 	public byte byteValue() {
-		return this.getNumber().byteValue();
+		return this.getValue().byteValue();
 	}
 
 	/*
@@ -599,7 +558,7 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 	 * @see MonetaryAmount#shortValue()
 	 */
 	public short shortValue() {
-		return getNumber().shortValue();
+		return getValue().shortValue();
 	}
 
 	/*
@@ -672,41 +631,16 @@ public class MoneyAmount extends QuantityAmount<Quantity> implements Quantity, M
 
 	 
 	public boolean isNotEqualTo(MonetaryAmount amount) {
-		return !getNumber().equals(amount);
+		return !getValue().equals(amount);
 	}
 
-	public <T> T asType(Class<T> type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public Class<?> getNumberType() {
-		return getNumber().getClass();
+		return getValue().getClass();
 	}
 
 	public CurrencyUnit getCurrency() {
 		return (CurrencyUnit)unit();
 	}
 
-	@Override
-	public Quantity add(Quantity<Quantity> that) {
-		return plus((Quantity) that);
-	}
-
-	@Override
-	public MonetaryAmount add(MonetaryAmount augend) {
-		return plus((MoneyAmount) augend);
-	}
-
-	@Override
-	public Quantity<Quantity> subtract(Quantity<Quantity> that) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MonetaryAmount subtract(MonetaryAmount subtrahend) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
