@@ -6,8 +6,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/org.eclipse.uomo.icu"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Werner/.m2/repository/com/ibm/icu/icu4j/64.2/icu4j-64.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Werner/.m2/repository/org/eclipse/osgi/3.5.0.v20090520/osgi-3.5.0.v20090520.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

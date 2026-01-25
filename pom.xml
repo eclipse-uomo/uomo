@@ -13,24 +13,24 @@
 		<project.build.javaVersion>1.8</project.build.javaVersion>
 		<maven.compilerPlugin.version>2.3.2</maven.compilerPlugin.version>
 		<uomo-version>1.0.0-SNAPSHOT</uomo-version>
-		<tycho-version>2.7.0</tycho-version>
+		<tycho-version>4.0.10</tycho-version>
 		<unit-api-version>2.2</unit-api-version>
 		<uom-lib-version>2.2</uom-lib-version>
 		<indriya-version>2.2</indriya-version>
 		<si-version>2.1</si-version>
 		<systems-version>2.1</systems-version>
-		<icu4j-version>64.2</icu4j-version>
+		<icu4j-version>76.1</icu4j-version>
 		<junit.version>4.12</junit.version><!-- TODO update to 5 -->
 		<karaf.version>4.2.2</karaf.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<site.basedir>${project.basedir}</site.basedir>
-		<target.release>2021-12</target.release>
+		<target.release>2024-12</target.release>
 		
 		<!-- OSGi support -->
-		<osgi.version>6.0.0</osgi.version>
+		<osgi.version>7.0.0</osgi.version>
 		<osgi.compendium.version>${osgi.version}</osgi.compendium.version>
-		<osgi.annotation.version>6.0.0</osgi.annotation.version>		
+		<osgi.annotation.version>7.0.0</osgi.annotation.version>		
 	</properties>
 
 	<groupId>org.eclipse.uomo</groupId>

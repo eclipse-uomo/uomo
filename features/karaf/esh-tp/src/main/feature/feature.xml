@@ -19,8 +19,8 @@
 
   <feature name="esh-tp-measurement" version="${project.version}">
     <bundle>mvn:javax.measure/unit-api/2.2</bundle>
-    <bundle>mvn:tech.units/indriya/2.1.2</bundle>
-    <bundle>mvn:tec.uom.lib/uom-lib-common/2.1</bundle>
+    <bundle>mvn:tech.units/indriya/2.2.3</bundle>
+    <bundle>mvn:tec.uom.lib/uom-lib-common/2.2</bundle>
   </feature>
 
 </features>

@@ -142,8 +142,7 @@ This Agreement is governed by the laws of the State of New York and the intellec
    </url>
 
    <requires>
-      <import plugin="com.ibm.icu" version="4.2.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.uomo.core" version="0.9.0" match="greaterOrEqual"/>
+      <import plugin="com.ibm.icu" version="50.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.core" version="0.9.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.util" version="0.9.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.uomo.xml" version="0.9.0" match="greaterOrEqual"/>

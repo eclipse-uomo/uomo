@@ -4,8 +4,8 @@ Export-Package: org.eclipse.uomo.core,
  javax.measure.quantity,
  javax.measure.spi,
  javax.measure
-Private-Package: org.eclipse.uomo.core;version=0.2.0.SNAPSHOT,org.ecli
- pse.uomo.core.impl;version=0.2.0.SNAPSHOT
+Private-Package: org.eclipse.uomo.core;version=1.0.0.SNAPSHOT,org.ecli
+ pse.uomo.core.impl;version=1.0.0.SNAPSHOT
 Bundle-ActivationPolicy: lazy
 Tool: Bnd-0.0.160
 Bundle-Name: UOMo Core
