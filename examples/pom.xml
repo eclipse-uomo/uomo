@@ -97,12 +97,12 @@
 			<dependency>
 				<groupId>com.ibm.icu</groupId>
 				<artifactId>icu4j</artifactId>
-				<version>[${icu4j-version},)</version>
+				<version>${icu4j-version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.eclipse</groupId>
-				<artifactId>osgi</artifactId>
-				<version>3.5.0.v20090520</version>
+			    <groupId>org.eclipse.platform</groupId>
+			    <artifactId>org.eclipse.osgi</artifactId>
+			    <version>3.23.0</version>
 			</dependency>
 
 		</dependencies>

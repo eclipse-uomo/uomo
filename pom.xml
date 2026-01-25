@@ -19,7 +19,7 @@
 		<indriya-version>2.2</indriya-version>
 		<si-version>2.1</si-version>
 		<systems-version>2.1</systems-version>
-		<icu4j-version>76.1</icu4j-version>
+		<icu4j-version>78.1</icu4j-version>
 		<junit.version>4.12</junit.version><!-- TODO update to 5 -->
 		<karaf.version>4.2.2</karaf.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
