@@ -31,7 +31,7 @@
 	  	<unit id="uom-lib-common" version="0.0.0"/>
 	  	<unit id="tech.units.indriya" version="0.0.0"/>
 	  	<unit id="systems.uom.quantity" version="0.0.0"/>
-	  	<repository location="https://unitsofmeasurement.github.io/downloads/p2/uom-systems/2.2b/"/>
+	  	<repository location="https://unitsofmeasurement.github.io/downloads/p2/uom-systems/2.2/"/>
 	</location>
   </locations>
 </target>
