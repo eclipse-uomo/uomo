@@ -28,7 +28,7 @@
 		<dependency>
 			<groupId>systems.uom</groupId>
 			<artifactId>systems-quantity</artifactId>
-			<version>1.0</version>
+			<version>${systems-version}</version>
 		</dependency>
 	</dependencies>
 </project>
