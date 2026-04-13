@@ -297,24 +297,32 @@
     <!-- Repositories. This is where Maven looks for dependencies. The Maven 
         repository is implicit and doesn't need to be specified. -->
     <!-- ==================================================== -->
+  	<!-- Additional repositories -->
     <repositories>
         <repository>
-            <id>maven-geotoolkit.org</id>
-            <name>GeoToolkit Repository for Maven</name>
-            <url>https://maven.geotoolkit.org/</url>
-        </repository>
-        <repository>
-			<id>eclipse-central</id>
-			<name>Central Eclipse.org Nexus</name>
-			<url>https://maven.eclipse.org/nexus/content/groups/central/</url>
-		</repository>
-		<repository>
-			<id>spring-plugins</id>
-			<name>Spring Plugins Repository</name>
-			<url>https://repo.spring.io/plugins-release/</url>
-		</repository>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+            <id>ossrh-snapshot</id>
+            <name>OSSRH Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </repository>       
     </repositories>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>tycho-snapshots</id>
+			<url>https://oss.sonatype.org/content/groups/public/</url>
+		</pluginRepository>
+		 <pluginRepository>
+  			<id>dash-licenses-snapshots</id>
+  			<url>https://repo.eclipse.org/content/repositories/dash-licenses-snapshots/</url>
+  			<snapshots>
+  	  			<enabled>true</enabled>
+  			</snapshots>
+  		</pluginRepository>
+	</pluginRepositories>
+	
 	<ciManagement>
 		<system>Jenkins</system>
 		<url>https://ci.eclipse.org/uomo/</url>
